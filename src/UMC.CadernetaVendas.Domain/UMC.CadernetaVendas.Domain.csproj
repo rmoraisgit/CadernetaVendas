@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>
