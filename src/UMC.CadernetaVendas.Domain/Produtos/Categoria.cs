@@ -1,6 +1,24 @@
-﻿namespace UMC.CadernetaVendas.Domain.Produtos
+﻿using System;
+using UMC.CadernetaVendas.Domain.Core.Models;
+
+namespace UMC.CadernetaVendas.Domain.Produtos
 {
-    public class Categoria
+    public class Categoria : Entity<Categoria>
     {
+        public Categoria(string nome)
+        {
+            Id = Guid.NewGuid();
+            Nome = nome;
+        }
+
+        // EF Core - Construtor Vázio
+        protected Categoria() { }
+
+        public string Nome { get; private set; }
+
+        public override bool EhValido()
+        {
+            return true;
+        }
     }
 }
