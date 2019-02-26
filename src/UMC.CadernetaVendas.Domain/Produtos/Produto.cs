@@ -42,7 +42,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public bool Disponivel { get; private set; }
         public int Quantidade { get; private set; }
         public Guid CategoriaId { get; private set; }
-        public Guid CorId { get; private set; }
+        //public Guid CorId { get; private set; }
 
         // EF Core - Propriedades de Navegação
         public virtual Categoria Categoria { get; private set; }
@@ -55,7 +55,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
             return ValidationResult.IsValid;
         }
 
-        public void Validar()
+        private void Validar()
         {
             ValidarNome();
             ValidarValor();
@@ -78,6 +78,11 @@ namespace UMC.CadernetaVendas.Domain.Produtos
             RuleFor(c => c.Valor)
                 .NotEmpty().WithMessage("O valor do produto precisa ser fornecido")
                 .ExclusiveBetween(1, 50000).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
+        }
+
+        private void ValidarCapacidade()
+        {
+
         }
 
         //private void ValidarPeso()

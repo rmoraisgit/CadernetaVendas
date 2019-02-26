@@ -1,0 +1,14 @@
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.deps.json
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.runtimeconfig.json
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.runtimeconfig.dev.json
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.dll
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.pdb
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.csprojAssemblyReference.cache
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.csproj.CoreCompileInputs.cache
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.RazorAssemblyInfo.cache
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.RazorAssemblyInfo.cs
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.AssemblyInfoInputs.cache
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.AssemblyInfo.cs
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.RazorTargetAssemblyInfo.cache
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.dll
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.pdb

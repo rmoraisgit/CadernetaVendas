@@ -11,9 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{08F92BAA-945F-42C7-AD3A-30BCF8E3DC0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Domain", "src\UMC.CadernetaVendas.Domain\UMC.CadernetaVendas.Domain.csproj", "{6ADFDC46-D28A-439B-8A6F-C73D9A815FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Domain", "src\UMC.CadernetaVendas.Domain\UMC.CadernetaVendas.Domain.csproj", "{6ADFDC46-D28A-439B-8A6F-C73D9A815FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Domain.Core", "src\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj", "{3589720C-DE37-46E6-A274-9830B732586E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Domain.Core", "src\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj", "{3589720C-DE37-46E6-A274-9830B732586E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", "{A6E60997-03AE-4AB2-86D4-76035F814EB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{2BC21901-2473-4E64-AA19-89C7D54194EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Infra.Data", "src\UMC.CadernetaVendas.Infra.Data\UMC.CadernetaVendas.Infra.Data.csproj", "{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Services.Api", "src\UMC.CadernetaVendas.Services.Api\UMC.CadernetaVendas.Services.Api.csproj", "{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +37,14 @@ Global
 		{3589720C-DE37-46E6-A274-9830B732586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3589720C-DE37-46E6-A274-9830B732586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3589720C-DE37-46E6-A274-9830B732586E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +52,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6ADFDC46-D28A-439B-8A6F-C73D9A815FC8} = {E23A60FE-729F-4981-9B6B-AD51CE834A46}
 		{3589720C-DE37-46E6-A274-9830B732586E} = {E23A60FE-729F-4981-9B6B-AD51CE834A46}
+		{A6E60997-03AE-4AB2-86D4-76035F814EB5} = {9179A73A-DACC-4804-81A9-EDDC6DCFC48C}
+		{2BC21901-2473-4E64-AA19-89C7D54194EB} = {9179A73A-DACC-4804-81A9-EDDC6DCFC48C}
+		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A} = {A6E60997-03AE-4AB2-86D4-76035F814EB5}
+		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC} = {15610AC2-BB5E-4BA1-9CA6-52E46014AECB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {867772CE-AF43-4EFF-B2A7-CD66D49AE0B4}
