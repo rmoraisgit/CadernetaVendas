@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Produtos;
+using UMC.CadernetaVendas.Infra.Data.Extensions;
+using UMC.CadernetaVendas.Infra.Data.Mappings;
 
 namespace UMC.CadernetaVendas.Infra.Data.Context
 {
@@ -15,25 +17,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder<Produto>()
-            modelBuilder.Entity<Produto>().Ignore(c => c.ValidationResult);
-            modelBuilder.Entity<Produto>().Ignore(c => c.CascadeMode);
-
-            modelBuilder.Entity<Produto>()
-                .HasOne(p => p.Categoria)
-                .WithMany(c => c.Produtos)
-                .HasForeignKey(p => p.CategoriaId);
-
-            modelBuilder.Entity<Produto>().ToTable("Produtos");
-
-
-
-            modelBuilder.Entity<Categoria>().Ignore(c => c.ValidationResult);
-            modelBuilder.Entity<Categoria>().Ignore(c => c.CascadeMode);
-
-            modelBuilder.Entity<Categoria>().ToTable("Categorias");
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.AddConfiguration(new ProdutoMapping());
+            modelBuilder.AddConfiguration(new CategoriaMapping());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

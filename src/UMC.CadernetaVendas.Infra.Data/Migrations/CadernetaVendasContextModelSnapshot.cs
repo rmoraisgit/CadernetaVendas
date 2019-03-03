@@ -24,7 +24,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("Id");
 
@@ -36,27 +38,39 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<double>("Altura");
+                    b.Property<decimal?>("Altura")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
+                        .HasColumnType("decimal(5, 2)");
 
-                    b.Property<double>("Capacidade");
+                    b.Property<decimal?>("Capacidade")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
+                        .HasColumnType("numeric(5, 3)");
 
                     b.Property<Guid>("CategoriaId");
 
-                    b.Property<string>("Descricao");
+                    b.Property<string>("Descricao")
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Dimensao");
 
-                    b.Property<bool>("Disponivel");
+                    b.Property<bool?>("Disponivel");
 
-                    b.Property<double>("Largura");
+                    b.Property<decimal?>("Largura")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
+                        .HasColumnType("decimal(5, 2)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
 
-                    b.Property<double>("Peso");
+                    b.Property<decimal>("Peso")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
+                        .HasColumnType("numeric(5, 3)");
 
-                    b.Property<int>("Quantidade");
+                    b.Property<int?>("Quantidade");
 
-                    b.Property<decimal>("Valor");
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(5, 2)");
 
                     b.HasKey("Id");
 

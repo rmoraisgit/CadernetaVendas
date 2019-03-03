@@ -1,3 +1,4 @@
+C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\bin\Debug\netcoreapp2.2\appsettings.json
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.deps.json
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.runtimeconfig.json
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.runtimeconfig.dev.json
@@ -14,4 +15,3 @@ C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infr
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.csproj.CopyComplete
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.dll
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.pdb
-C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Infra.Data\bin\Debug\netcoreapp2.2\appsettings.json
