@@ -127,6 +127,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
                 .NotEmpty().WithMessage("A capacidade do produto em litros precisa ser fornecida")
                 .ExclusiveBetween(0.100, 100).WithMessage("A capacidade do produto em litros deve estar entre 200 mililitros e 100 litros");
         }
+
         #endregion
     }
 }
