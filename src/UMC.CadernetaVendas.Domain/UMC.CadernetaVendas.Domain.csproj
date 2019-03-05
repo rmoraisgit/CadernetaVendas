@@ -12,4 +12,8 @@
     <ProjectReference Include="..\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Produtos\Events\" />
+  </ItemGroup>
+
 </Project>

@@ -8,15 +8,16 @@ namespace UMC.CadernetaVendas.Domain.Produtos
 {
     public class Produto : Entity<Produto>
     {
-        public Produto(string nome,
-                       decimal valor,
-                       double peso,
-                       double altura,
-                       double largura,
-                       double capacidade,
-                       string descricao,
-                       Guid categoriaId,
-                       Guid corId)
+        public Produto(
+            string nome,
+            decimal valor,
+            double peso,
+            double altura,
+            double largura,
+            double capacidade,
+            string descricao,
+            Guid categoriaId
+            )
         {
             Id = Guid.NewGuid();
             Nome = nome;
@@ -26,6 +27,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
             Largura = largura;
             Capacidade = capacidade;
             Descricao = descricao;
+            CategoriaId = categoriaId;
         }
 
         // EF Core - Construtor Vázio
