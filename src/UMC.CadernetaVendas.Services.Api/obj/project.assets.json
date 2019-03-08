@@ -4773,6 +4773,20 @@
           "bin/placeholder/UMC.CadernetaVendas.Domain.Core.dll": {}
         }
       },
+      "UMC.CadernetaVendas.Infra.CrossCutting.IoC/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "UMC.CadernetaVendas.Domain": "1.0.0",
+          "UMC.CadernetaVendas.Infra.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll": {}
+        }
+      },
       "UMC.CadernetaVendas.Infra.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -13057,6 +13071,11 @@
       "path": "../UMC.CadernetaVendas.Domain.Core/UMC.CadernetaVendas.Domain.Core.csproj",
       "msbuildProject": "../UMC.CadernetaVendas.Domain.Core/UMC.CadernetaVendas.Domain.Core.csproj"
     },
+    "UMC.CadernetaVendas.Infra.CrossCutting.IoC/1.0.0": {
+      "type": "project",
+      "path": "../UMC.CadernetaVendas.Infra.CrossCutting.IoC/UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj",
+      "msbuildProject": "../UMC.CadernetaVendas.Infra.CrossCutting.IoC/UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj"
+    },
     "UMC.CadernetaVendas.Infra.Data/1.0.0": {
       "type": "project",
       "path": "../UMC.CadernetaVendas.Infra.Data/UMC.CadernetaVendas.Infra.Data.csproj",
@@ -13073,6 +13092,7 @@
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.0",
       "UMC.CadernetaVendas.Domain >= 1.0.0",
+      "UMC.CadernetaVendas.Infra.CrossCutting.IoC >= 1.0.0",
       "UMC.CadernetaVendas.Infra.Data >= 1.0.0"
     ]
   },
@@ -13108,6 +13128,9 @@
           "projectReferences": {
             "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj": {
               "projectPath": "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj"
+            },
+            "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj": {
+              "projectPath": "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj"
             },
             "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj": {
               "projectPath": "C:\\Users\\rmoraiss\\Desktop\\08.03\\CadernetaVendas\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj"

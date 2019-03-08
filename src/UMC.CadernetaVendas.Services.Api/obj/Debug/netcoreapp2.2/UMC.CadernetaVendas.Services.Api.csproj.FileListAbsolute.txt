@@ -67,3 +67,5 @@ C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.csproj.CopyComplete
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.dll
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Services.Api.pdb
+C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll
+C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Services.Api\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.pdb

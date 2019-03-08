@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UMC.CadernetaVendas.Domain\UMC.CadernetaVendas.Domain.csproj" />
+    <ProjectReference Include="..\UMC.CadernetaVendas.Infra.Data\UMC.CadernetaVendas.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

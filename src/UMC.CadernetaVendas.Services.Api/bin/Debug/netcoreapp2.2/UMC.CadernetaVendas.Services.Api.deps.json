@@ -32,6 +32,7 @@
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
           "UMC.CadernetaVendas.Domain": "1.0.0",
+          "UMC.CadernetaVendas.Infra.CrossCutting.IoC": "1.0.0",
           "UMC.CadernetaVendas.Infra.Data": "1.0.0"
         },
         "runtime": {
@@ -700,6 +701,18 @@
         },
         "compile": {
           "UMC.CadernetaVendas.Domain.Core.dll": {}
+        }
+      },
+      "UMC.CadernetaVendas.Infra.CrossCutting.IoC/1.0.0": {
+        "dependencies": {
+          "UMC.CadernetaVendas.Domain": "1.0.0",
+          "UMC.CadernetaVendas.Infra.Data": "1.0.0"
+        },
+        "runtime": {
+          "UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll": {}
+        },
+        "compile": {
+          "UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll": {}
         }
       },
       "UMC.CadernetaVendas.Infra.Data/1.0.0": {
@@ -3910,6 +3923,11 @@
       "sha512": ""
     },
     "UMC.CadernetaVendas.Domain.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UMC.CadernetaVendas.Infra.CrossCutting.IoC/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

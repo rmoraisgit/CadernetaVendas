@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 -
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Infra.Data", "src\UMC.CadernetaVendas.Infra.Data\UMC.CadernetaVendas.Infra.Data.csproj", "{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Services.Api", "src\UMC.CadernetaVendas.Services.Api\UMC.CadernetaVendas.Services.Api.csproj", "{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Services.Api", "src\UMC.CadernetaVendas.Services.Api\UMC.CadernetaVendas.Services.Api.csproj", "{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Infra.CrossCutting.IoC", "src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj", "{90D02670-B6F6-4955-AFBC-46B25CA10D99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{2BC21901-2473-4E64-AA19-89C7D54194EB} = {9179A73A-DACC-4804-81A9-EDDC6DCFC48C}
 		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A} = {A6E60997-03AE-4AB2-86D4-76035F814EB5}
 		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC} = {15610AC2-BB5E-4BA1-9CA6-52E46014AECB}
+		{90D02670-B6F6-4955-AFBC-46B25CA10D99} = {2BC21901-2473-4E64-AA19-89C7D54194EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {867772CE-AF43-4EFF-B2A7-CD66D49AE0B4}

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UMC.CadernetaVendas.Domain\UMC.CadernetaVendas.Domain.csproj" />
+    <ProjectReference Include="..\UMC.CadernetaVendas.Infra.CrossCutting.IoC\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\UMC.CadernetaVendas.Infra.Data\UMC.CadernetaVendas.Infra.Data.csproj" />
   </ItemGroup>
 

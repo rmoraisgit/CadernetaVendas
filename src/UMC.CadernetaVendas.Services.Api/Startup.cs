@@ -17,6 +17,7 @@ using UMC.CadernetaVendas.Domain.Produtos.Services;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Infra.Data.Repository;
 using UMC.CadernetaVendas.Infra.Data.Context;
+using UMC.CadernetaVendas.Services.Api.Configurations;
 
 namespace UMC.CadernetaVendas.Services.Api
 {
@@ -34,17 +35,8 @@ namespace UMC.CadernetaVendas.Services.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            #region Configurações AutoMapper
-
-            var config = AutoMapperConfiguration.RegisterMappings();
-            IMapper mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
-
-            #endregion
-
-            services.AddScoped<IProdutoService, ProdutoService>();
-            services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<CadernetaVendasContext>();
+            // Registrar todos as injeções de dependência
+            services.AddDIConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
