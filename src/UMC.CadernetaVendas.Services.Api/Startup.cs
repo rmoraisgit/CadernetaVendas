@@ -11,7 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using IConfigurationProvider = AutoMapper.IConfigurationProvider;
+using UMC.CadernetaVendas.Services.Api.AutoMapper;
+using UMC.CadernetaVendas.Domain.Interfaces;
+using UMC.CadernetaVendas.Domain.Produtos.Services;
+using UMC.CadernetaVendas.Domain.Produtos.Repository;
+using UMC.CadernetaVendas.Infra.Data.Repository;
+using UMC.CadernetaVendas.Infra.Data.Context;
 
 namespace UMC.CadernetaVendas.Services.Api
 {
@@ -29,10 +34,17 @@ namespace UMC.CadernetaVendas.Services.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // AutoMapper
-            //services.AddSingleton(Mapper.Configuration);
-            //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            //services.AddAutoMapper();
+            #region Configurações AutoMapper
+
+            var config = AutoMapperConfiguration.RegisterMappings();
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
+            #endregion
+
+            services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<CadernetaVendasContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

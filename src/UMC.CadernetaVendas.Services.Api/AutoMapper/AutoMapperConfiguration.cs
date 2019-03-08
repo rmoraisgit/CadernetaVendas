@@ -1,8 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UMC.CadernetaVendas.Services.Api.AutoMapper
 {
@@ -13,7 +9,7 @@ namespace UMC.CadernetaVendas.Services.Api.AutoMapper
             return new MapperConfiguration(ps =>
             {
                 ps.AddProfile(new DomainToViewModelMappingProfile());
-                //ps.AddProfile(new ViewModelToDomainMappingProfile());
+                ps.AddProfile(new ViewModelToDomainMappingProfile());
             });
         }
     }

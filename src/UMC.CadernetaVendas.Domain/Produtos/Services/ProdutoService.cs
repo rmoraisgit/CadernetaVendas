@@ -9,19 +9,17 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
 {
     public class ProdutoService : IProdutoService
     {
-        private readonly IDomainNotificationHandler<DomainNotification> _notifications;
         private readonly IProdutoRepository _produtoRepository;
 
-        public ProdutoService(IDomainNotificationHandler<DomainNotification> notifications,
-                              IProdutoRepository produtoRepository)
+        public ProdutoService(IProdutoRepository produtoRepository)
         {
-            _notifications = notifications;
             _produtoRepository = produtoRepository;
         }
 
         public Produto Adicionar(Produto obj)
         {
-            throw new NotImplementedException();
+            var produto = obj.EhValido();
+            return obj;
         }
 
         public Produto Atualizar(Produto obj)
@@ -46,7 +44,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _produtoRepository.Dispose();
         }
     }
 }

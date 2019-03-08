@@ -1,0 +1,1 @@
+Iniciado desenvolvimento da Web API Core 2.2. Criadas ViewModels Base e Produto. Criadas Controllers Base e Produtos. Configurado AutoMapper.

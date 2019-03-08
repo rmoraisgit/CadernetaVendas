@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="automapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2" />
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UMC.CadernetaVendas.Domain\UMC.CadernetaVendas.Domain.csproj" />
+    <ProjectReference Include="..\UMC.CadernetaVendas.Infra.Data\UMC.CadernetaVendas.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

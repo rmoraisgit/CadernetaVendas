@@ -1,20 +1,18 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace UMC.CadernetaVendas.Services.Api.ViewModels
 {
-    public class ProdutoViewModel
+    public class ProdutoViewModel : BaseViewModel
     {
-        public ProdutoViewModel()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        [Key]
-        public Guid Id { get; set; }
+        
+        //[Key]
+        //public Guid Id { get; set; }
 
         public string Nome { get; set; }
         public decimal Valor { get; set; }
@@ -27,5 +25,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public bool? Disponivel { get; set; }
         public int? Quantidade { get; set; }
         public Guid CategoriaId { get; set; }
+        //public FluentValidation.Results.ValidationResult ValidationResult { get; set; }
     }
 }
