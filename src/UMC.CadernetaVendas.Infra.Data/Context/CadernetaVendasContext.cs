@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Infra.Data.Extensions;
@@ -29,6 +30,20 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
                 .Build();
 
             optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+        }
+
+        public override int SaveChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.Entity.GetType().GetProperty("DataCadastro") != null))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+
+                if (entry.State == EntityState.Modified)
+                    entry.Property("DataCadastro").IsModified = false;
+            }
+
+            return base.SaveChanges();
         }
     }
 }
