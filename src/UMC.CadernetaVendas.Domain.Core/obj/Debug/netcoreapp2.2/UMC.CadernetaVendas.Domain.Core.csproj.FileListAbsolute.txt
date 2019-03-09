@@ -7,15 +7,6 @@ C:\_Projetos\UMC.CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\n
 C:\_Projetos\UMC.CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
 C:\_Projetos\UMC.CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\_Projetos\UMC.CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.deps.json
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csprojAssemblyReference.cache
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csproj.CoreCompileInputs.cache
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfoInputs.cache
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
-C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.deps.json
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
@@ -50,3 +41,11 @@ C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Domain.C
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\rmoraiss\Desktop\08.03\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.deps.json
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csproj.CoreCompileInputs.cache
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfoInputs.cache
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
+C:\Users\Rafael\Desktop\_Projetos\CadernetaVendas\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb

@@ -17,6 +17,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [Key]
         public Guid Id { get; set; }
         public FluentValidation.Results.ValidationResult ValidationResult { get; set; }
-        public IEnumerable<ModelError> Erros { get; set; }
+        public IEnumerable<ModelError> Errors { get; set; }
     }
 }

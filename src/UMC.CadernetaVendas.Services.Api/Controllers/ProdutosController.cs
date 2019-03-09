@@ -40,6 +40,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         {
             if (!ModelState.IsValid)
             {
+                produtoViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
                 return Response(produtoViewModel);
             }
 

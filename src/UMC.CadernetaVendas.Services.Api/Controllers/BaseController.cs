@@ -13,12 +13,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
     {
         protected new IActionResult Response<T>(T ViewModel = null) where T : BaseViewModel
         {
-            if (ViewModel.Erros?.Count() > 0)
+            if (ViewModel.Errors?.Count() > 0)
             {
                 return BadRequest(new
                 {
                     success = false,
-                    errors = ViewModel.Erros
+                    errors = ViewModel.Errors
                 });
             }
 
