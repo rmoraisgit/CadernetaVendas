@@ -48,7 +48,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<Guid>("CategoriaId");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("Dimensao");

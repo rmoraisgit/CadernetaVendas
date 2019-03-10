@@ -18,7 +18,10 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
 
         public Produto Adicionar(Produto obj)
         {
-            var produto = obj.EhValido();
+            if (!obj.EhValido()) return obj;
+
+            obj = _produtoRepository.Adicionar(obj);
+
             return obj;
         }
 

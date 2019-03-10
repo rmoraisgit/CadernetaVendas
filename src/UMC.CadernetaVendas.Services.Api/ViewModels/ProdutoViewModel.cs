@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-//using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,7 +40,5 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public int? Quantidade { get; set; }
 
         public Guid CategoriaId { get; set; }
-
-        //public FluentValidation.Results.ValidationResult ValidationResult { get; set; }
     }
 }

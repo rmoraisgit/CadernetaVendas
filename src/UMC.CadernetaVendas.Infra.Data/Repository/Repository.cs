@@ -20,13 +20,15 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
-        public void Adicionar(TEntity obj)
+        public TEntity Adicionar(TEntity obj)
         {
-            DbSet.Add(obj);
+            var objAdicionado = DbSet.Add(obj);
             Db.SaveChanges();
+
+            return objAdicionado.Entity;
         }
 
-        public void Atualizar(TEntity obj)
+        public TEntity Atualizar(TEntity obj)
         {
             throw new NotImplementedException();
         }
