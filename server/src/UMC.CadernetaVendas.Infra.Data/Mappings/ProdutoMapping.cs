@@ -42,6 +42,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .HasColumnType("varchar(300)")
                 .IsRequired();
 
+            builder.Property(p => p.DataCadastro)
+                .IsRequired();
+
             builder.Property(p => p.Disponivel)
                 .IsRequired(false);
 

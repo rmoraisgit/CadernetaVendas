@@ -10,8 +10,8 @@ using UMC.CadernetaVendas.Infra.Data.Context;
 namespace UMC.CadernetaVendas.Infra.Data.Migrations
 {
     [DbContext(typeof(CadernetaVendasContext))]
-    [Migration("20190310033759_TabelaProdutoComNovoCampo")]
-    partial class TabelaProdutoComNovoCampo
+    [Migration("20190312004141_AdicionadaColunaDataCadastro")]
+    partial class AdicionadaColunaDataCadastro
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

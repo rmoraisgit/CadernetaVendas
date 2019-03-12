@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UMC.CadernetaVendas.Infra.Data.Migrations
 {
-    public partial class TabelaProdutosComCamposCorretos : Migration
+    public partial class AdicionadaColunaDataCadastro : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,9 +31,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     Largura = table.Column<decimal>(type: "decimal(5, 2)", nullable: true),
                     Capacidade = table.Column<decimal>(type: "numeric(5, 3)", nullable: true),
                     Dimensao = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(type: "varchar(300)", nullable: true),
+                    Descricao = table.Column<string>(type: "varchar(300)", nullable: false),
                     Disponivel = table.Column<bool>(nullable: true),
                     Quantidade = table.Column<int>(nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     CategoriaId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>

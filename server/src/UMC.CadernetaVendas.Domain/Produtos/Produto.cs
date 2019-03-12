@@ -104,7 +104,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void ValidarAltura()
         {
             // Id da categoria Cozinha
-            if (CategoriaId.Equals("57b328e4-a8e3-4c61-ac9-59e110d2edd8")) return;
+            if (CategoriaId.ToString() == "57b328e4-a8e3-4c61-ac95-59e110d2edd8") return;
 
             RuleFor(c => c.Altura)
                 .NotEmpty().WithMessage("A altura do produto precisa ser fornecido")
@@ -114,7 +114,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void ValidarLargura()
         {
             // Id da categoria Cozinha
-            if (CategoriaId.Equals("57b328e4-a8e3-4c61-ac9-59e110d2edd8")) return;
+            if (CategoriaId.ToString() == "57b328e4-a8e3-4c61-ac95-59e110d2edd8") return;
 
             RuleFor(c => c.Altura)
                 .NotEmpty().WithMessage("A largura do produto precisa ser fornecido")

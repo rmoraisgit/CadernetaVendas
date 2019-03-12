@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("d7c4be02-f12b-4524-9cbe-51448eeebd97")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("UMC.CadernetaVendas.Services.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
