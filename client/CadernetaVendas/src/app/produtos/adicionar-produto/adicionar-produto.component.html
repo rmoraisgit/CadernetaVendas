@@ -1,3 +1,57 @@
-<p>
-  adicionar-produto works!
-</p>
+<div class="row mt-5">
+  
+  <div class="col-3">
+
+    <form [formGroup]="importarArquivoForm">
+    <div class="campo-imagem text-center">
+      <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-file">
+        <input 
+        formControlName="importFile" 
+        class="custom-file-input" 
+        id="validatedCustomFile" 
+        type="file" 
+        accept="image/*" 
+        (change)="onFileChange($event.target.files)">
+        <label #labelImport class="custom-file-label" for="validatedCustomFile">Selecione...</label>
+      </div>
+    </div>
+  </form>
+
+  </div>
+
+  <div class="col-6">
+    <form [formGroup]="produtoForm">
+
+      <div class="form-group">
+          <label for="nomeProduto">Nome</label>
+          <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
+      </div>
+
+      <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
+      </div>
+
+      <div class="form-group">
+          <label for="inputCategoria">Categoria</label>
+          <select id="inputCategoria" class="form-control" (change)="tioR($event.target.value)">
+            <option selected>Selecione...</option>
+            <option>Cama</option>
+            <option>Mesa</option>
+            <option>Banho</option>
+          </select>
+      </div>
+
+      <div *ngIf="categoriaSelecionada=='Banho'" class="form-group">
+          <label for="nomeProduto">Nome</label>
+          <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+  </div>
+</div>
