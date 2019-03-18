@@ -2,28 +2,38 @@
   
   <div class="col-3">
 
-    <form [formGroup]="importarArquivoForm">
-    <div class="campo-imagem text-center">
-      <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-    </div>
-
-    <div class="form-group">
-      <div class="custom-file">
-        <input 
-        formControlName="importFile" 
-        class="custom-file-input" 
-        id="validatedCustomFile" 
-        type="file" 
-        accept="image/*" 
-        (change)="onFileChange($event.target.files)">
-        <label #labelImport class="custom-file-label" for="validatedCustomFile">Selecione...</label>
-      </div>
-    </div>
-  </form>
+    
 
   </div>
 
   <div class="col-6">
+      <form [formGroup]="importarArquivoForm">
+          <div class="row">
+            <div class="col-3">
+              <div class="campo-imagem text-center">
+                  <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col-9">
+           
+              <div class="custom-file">
+                <input 
+                formControlName="importFile" 
+                class="custom-file-input" 
+                id="validatedCustomFile" 
+                type="file" 
+                accept="image/*" 
+                (change)="onFileChange($event.target.files)">
+                <label #labelImport class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
+              </div>
+            </div>
+        
+          </div>
+      
+          <div class="form-group">
+          </div>
+        </form>
+
     <form [formGroup]="produtoForm">
 
       <div class="form-group">
@@ -32,24 +42,46 @@
       </div>
 
       <div class="form-group">
-          <label for="descricao">Descrição</label>
-          <textarea class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
+      </div>
+
+      <div class="form-group">
+          <label for="peso">Peso</label>
+          <input formControlName="Peso" type="text" class="form-control" id="peso" placeholder="Informe o peso do produto">
       </div>
 
       <div class="form-group">
           <label for="inputCategoria">Categoria</label>
-          <select id="inputCategoria" class="form-control" (change)="tioR($event.target.value)">
+          <select id="inputCategoria" class="form-control" (change)="atualizarForm($event.target.value)">
             <option selected>Selecione...</option>
-            <option>Cama</option>
-            <option>Mesa</option>
-            <option>Banho</option>
+            <option value="f8a495a7-40dd-4e94-85c0-8e203aa8a94a">Cama</option>
+            <option value="c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b">Mesa</option>
+            <!-- <option value="f8a495a7-40dd-4e94-85c0-8e203aa8a94a">Banho</option> -->
+            <option value="57b328e4-a8e3-4c61-ac95-59e110d2edd8">Cozinha</option>
           </select>
       </div>
 
-      <div *ngIf="categoriaSelecionada=='Banho'" class="form-group">
+      <!-- <div *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'" class="form-group">
           <label for="nomeProduto">Nome</label>
           <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
+      </div> -->
+
+      <div *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'" class="form-row">
+        <div class="form-group col-md-6">
+          <label for="altura">Altura (metros)</label>
+          <input type="text" class="form-control" id="altura" placeholder="Informe a medida de altura">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="largura">Largura (metros)</label>
+          <input type="text" class="form-control" id="largura" placeholder="Informe a medida de largura">
+        </div>
       </div>
+
+      <div *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'" class="form-group">
+        <label for="capacidade">Capacidade (em litros)</label>
+        <input formControlName="Nome" type="text" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
+    </div>
 
       <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>

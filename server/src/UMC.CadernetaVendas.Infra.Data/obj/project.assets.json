@@ -3858,11 +3858,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj",
+      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj",
       "projectName": "UMC.CadernetaVendas.Infra.Data",
-      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj",
+      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj",
       "packagesPath": "C:\\Users\\rmoraiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\obj\\",
+      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3881,8 +3881,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj": {
-              "projectPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj"
+            "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj": {
+              "projectPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj"
             }
           }
         }

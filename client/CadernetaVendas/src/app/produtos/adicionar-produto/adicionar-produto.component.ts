@@ -27,7 +27,8 @@ export class AdicionarProdutoComponent implements OnInit {
 
     this.produtoForm = this.formBuilder.group({
       importFile: ['', Validators.required],
-      Nome: ['', Validators.required]
+      Nome: ['', Validators.required],
+      Peso: ['', Validators.required]
     });
   }
 
@@ -38,22 +39,26 @@ export class AdicionarProdutoComponent implements OnInit {
     this.fileToUpload = files.item(0);
   }
 
-  tioR(categoriaSelecionada: string){
-    console.log("OI")
+  atualizarForm(categoriaSelecionada: string) {
     console.log(categoriaSelecionada);
 
-    if(categoriaSelecionada == 'Banho'){
-      console.log("OI TIO RAFAEL")
+    switch (categoriaSelecionada) {
 
-      this.categoriaSelecionada = categoriaSelecionada;
-
-      console.log(categoriaSelecionada)
-      
-      // this.produtoForm = this.formBuilder.group({
-      //   importFile: ['', Validators.required],
-      //   Nome: ['', Validators.required]
-      // });
+      case 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a': {
+        this.categoriaSelecionada = categoriaSelecionada;
+        break;
+      }
+      case 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b': {
+        this.categoriaSelecionada = categoriaSelecionada;
+        break;
+      }
+      case '57b328e4-a8e3-4c61-ac95-59e110d2edd8': {
+        this.categoriaSelecionada = categoriaSelecionada;
+        break;
+      }
+      default:
+        this.categoriaSelecionada = '0';
+        break;
     }
-
   }
 }

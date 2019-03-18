@@ -839,11 +839,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
       "projectName": "UMC.CadernetaVendas.Domain",
-      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
+      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
       "packagesPath": "C:\\Users\\rmoraiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\obj\\",
+      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -862,8 +862,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj": {
-              "projectPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj"
+            "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj": {
+              "projectPath": "C:\\Users\\rmoraiss\\Desktop\\_Projetos\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj"
             }
           }
         }
