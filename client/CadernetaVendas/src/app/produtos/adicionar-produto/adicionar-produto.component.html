@@ -22,18 +22,16 @@
                 id="validatedCustomFile" 
                 type="file" 
                 accept="image/*" 
-                (change)="onFileChange($event.target.files)">
+                (change)="onFileChange($event.target.files[0])">
                 <label #labelImport class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
               </div>
             </div>
-        
           </div>
-    
         </form>
 
     <form [formGroup]="produtoForm">
 
-      <div class="form-group">
+      <div class="form-group mt-3">
           <label for="nomeProduto">Nome</label>
           <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
       </div>

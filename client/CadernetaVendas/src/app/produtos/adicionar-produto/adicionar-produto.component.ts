@@ -32,11 +32,20 @@ export class AdicionarProdutoComponent implements OnInit {
     });
   }
 
-  onFileChange(files: FileList) {
-    this.labelImport.nativeElement.innerText = Array.from(files)
-      .map(f => f.name)
-      .join(', ');
-    this.fileToUpload = files.item(0);
+  // onFileChange(files: FileList) {
+  //   this.labelImport.nativeElement.innerText = Array.from(files)
+  //     .map(f => f.name)
+  //     .join(', ');
+  //   this.fileToUpload = files.item(0);
+  // }
+
+    onFileChange(file: File) {
+    this.labelImport.nativeElement.innerText = file.name;
+      // .map(f => f.name)
+      // .join(', ');
+    this.fileToUpload = file;
+
+    console.log(file)
   }
 
   atualizarForm(categoriaSelecionada: string) {
