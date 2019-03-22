@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ProdutoService } from '../services/produto.service';
+import { Produto } from '../models/produto';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -17,7 +19,8 @@ export class AdicionarProdutoComponent implements OnInit {
   @ViewChild('labelImport')
   labelImport: ElementRef;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private produtoService: ProdutoService) { }
 
   ngOnInit() {
 
@@ -26,8 +29,9 @@ export class AdicionarProdutoComponent implements OnInit {
     });
 
     this.produtoForm = this.formBuilder.group({
-      importFile: ['', Validators.required],
+      // importFile: ['', Validators.required],
       Nome: ['', Validators.required],
+      Preco: ['', Validators.required],
       Peso: ['', Validators.required]
     });
   }
@@ -39,10 +43,8 @@ export class AdicionarProdutoComponent implements OnInit {
   //   this.fileToUpload = files.item(0);
   // }
 
-    onFileChange(file: File) {
+  onFileChange(file: File) {
     this.labelImport.nativeElement.innerText = file.name;
-      // .map(f => f.name)
-      // .join(', ');
     this.fileToUpload = file;
 
     console.log(file)
@@ -55,6 +57,9 @@ export class AdicionarProdutoComponent implements OnInit {
 
       case 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a': {
         this.categoriaSelecionada = categoriaSelecionada;
+
+        this.produtoForm.addControl('Altura', new FormControl('', Validators.required));
+        this.produtoForm.addControl('Largura', new FormControl('', Validators.required));
         break;
       }
       case 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b': {
@@ -69,5 +74,19 @@ export class AdicionarProdutoComponent implements OnInit {
         this.categoriaSelecionada = '0';
         break;
     }
+  }
+
+  adicionar(){
+
+    console.log("TESTE POST TOOP");
+    
+
+    let produto: Produto = this.produtoForm.getRawValue();
+    console.log(produto);
+
+    let a = this.produtoService.adicionarProduto(produto);
+
+    console.log(a.subscribe());
+    
   }
 }
