@@ -18,8 +18,21 @@ export class ProdutoService extends BaseService {
   //         .catch(super.serviceError);
   // };
 
-  adicionarProduto(produto: Produto) {
-      
-      return this.http.post(this.UrlServiceV1 + "produtos", produto, super.ObterHeaderJson());
+  adicionarProduto(nome: string, valor: number, peso: number, descricao: string, categoriaId: string, file: File,
+    altura?: number, largura?: number, capacidade?: number) {
+
+    const formData = new FormData();
+    formData.append('nome', nome);
+    formData.append('valor', valor.toString());
+    formData.append('peso', peso.toString());
+    formData.append('image', file);
+    formData.append('categoriaId', categoriaId);
+
+    altura != undefined ? formData.append('altura', altura.toString()) : "0";
+    largura != undefined ? formData.append('largura', largura.toString()) : "0";
+    capacidade != undefined ? formData.append('capacidade', capacidade.toString()) : "0";
+
+    return this.http.post(this.UrlServiceV1 + "produtos", formData);
   };
+
 }

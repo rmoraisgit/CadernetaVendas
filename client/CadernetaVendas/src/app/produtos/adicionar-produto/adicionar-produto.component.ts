@@ -12,15 +12,15 @@ export class AdicionarProdutoComponent implements OnInit {
 
   produtoForm: FormGroup;
   importarArquivoForm: FormGroup;
-  fileToUpload: File = null;
-
+  fileToUpload: File;
+  fotoURL: any;
   categoriaSelecionada: string = '';
 
   @ViewChild('labelImport')
   labelImport: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
-              private produtoService: ProdutoService) { }
+    private produtoService: ProdutoService) { }
 
   ngOnInit() {
 
@@ -29,25 +29,22 @@ export class AdicionarProdutoComponent implements OnInit {
     });
 
     this.produtoForm = this.formBuilder.group({
-      // importFile: ['', Validators.required],
-      Nome: ['', Validators.required],
-      Preco: ['', Validators.required],
-      Peso: ['', Validators.required]
+      nome: ['', Validators.required],
+      valor: ['', Validators.required],
+      peso: ['', Validators.required],
+      descricao: ['', Validators.required]
     });
   }
-
-  // onFileChange(files: FileList) {
-  //   this.labelImport.nativeElement.innerText = Array.from(files)
-  //     .map(f => f.name)
-  //     .join(', ');
-  //   this.fileToUpload = files.item(0);
-  // }
 
   onFileChange(file: File) {
     this.labelImport.nativeElement.innerText = file.name;
     this.fileToUpload = file;
 
-    console.log(file)
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (_event) => {
+      this.fotoURL = reader.result;
+    }
   }
 
   atualizarForm(categoriaSelecionada: string) {
@@ -55,18 +52,26 @@ export class AdicionarProdutoComponent implements OnInit {
 
     switch (categoriaSelecionada) {
 
+      // Categoria: Cama
       case 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a': {
         this.categoriaSelecionada = categoriaSelecionada;
 
-        this.produtoForm.addControl('Altura', new FormControl('', Validators.required));
-        this.produtoForm.addControl('Largura', new FormControl('', Validators.required));
+        this.produtoForm.addControl('altura', new FormControl('', Validators.required));
+        this.produtoForm.addControl('largura', new FormControl('', Validators.required));
         break;
       }
+      // Categoria: Mesa
       case 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b': {
         this.categoriaSelecionada = categoriaSelecionada;
+
+        this.produtoForm.addControl('altura', new FormControl('', Validators.required));
+        this.produtoForm.addControl('largura', new FormControl('', Validators.required));
         break;
       }
+      // Categoria: Panelas
       case '57b328e4-a8e3-4c61-ac95-59e110d2edd8': {
+        this.produtoForm.addControl('capacidade', new FormControl('', Validators.required));
+
         this.categoriaSelecionada = categoriaSelecionada;
         break;
       }
@@ -76,17 +81,14 @@ export class AdicionarProdutoComponent implements OnInit {
     }
   }
 
-  adicionar(){
+  adicionar() {
+    const produto: Produto = this.produtoForm.getRawValue();
 
-    console.log("TESTE POST TOOP");
-    
-
-    let produto: Produto = this.produtoForm.getRawValue();
     console.log(produto);
+    console.log(produto.capacidade);
 
-    let a = this.produtoService.adicionarProduto(produto);
+    let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade);
 
-    console.log(a.subscribe());
-    
+    console.log(resultado.subscribe());
   }
 }

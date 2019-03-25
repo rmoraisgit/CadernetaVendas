@@ -18,6 +18,7 @@ using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Infra.Data.Repository;
 using UMC.CadernetaVendas.Infra.Data.Context;
 using UMC.CadernetaVendas.Services.Api.Configurations;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace UMC.CadernetaVendas.Services.Api
 {
@@ -37,7 +38,6 @@ namespace UMC.CadernetaVendas.Services.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -45,6 +45,12 @@ namespace UMC.CadernetaVendas.Services.Api
                 {
                     builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                 });
+            });
+
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
             });
 
             // Registrar todos as injeções de dependência

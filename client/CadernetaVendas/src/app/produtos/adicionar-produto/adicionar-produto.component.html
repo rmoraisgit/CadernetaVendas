@@ -1,20 +1,20 @@
 <div class="row mt-5">
   
-  <div class="col-3">
-
-    
-
-  </div>
+  <div class="col-3"></div>
 
   <div class="col-6">
       <form [formGroup]="importarArquivoForm">
           <div class="row">
-            <div class="col-3">
+            <div class="col-4">
               <div class="campo-imagem text-center">
-                  <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                  <i class="fa fa-picture-o fa-5x" *ngIf="!fotoURL else fotoProduto" aria-hidden="true"></i>
+                <ng-template #fotoProduto>
+                  <img class="img-thumbnail" id="blah" [src]="fotoURL" alt="your image" />
+                </ng-template>
               </div>
             </div>
-            <div class="col-9">
+
+            <div class="col-8">
               <div class="custom-file">
                 <input 
                 formControlName="importFile" 
@@ -33,22 +33,22 @@
 
       <div class="form-group mt-3">
           <label for="nomeProduto">Nome</label>
-          <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
+          <input formControlName="nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
       </div>
 
       <div class="form-group mt-3">
         <label for="precoProduto">Preço</label>
-        <input formControlName="Preco" type="text" class="form-control" id="precoProduto" placeholder="Insira o nome do produto">
+        <input formControlName="valor" type="text" class="form-control" id="precoProduto" placeholder="Insira o nome do produto">
       </div>
 
       <div class="form-group">
         <label for="descricao">Descrição</label>
-        <textarea class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
+        <textarea formControlName="descricao" class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
       </div>
 
       <div class="form-group">
           <label for="peso">Peso</label>
-          <input formControlName="Peso" type="number" class="form-control" id="peso" placeholder="Informe o peso do produto">
+          <input formControlName="peso" type="number" class="form-control" id="peso" placeholder="Informe o peso do produto">
       </div>
 
       <div class="form-group">
@@ -67,23 +67,23 @@
           <input formControlName="Nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
       </div> -->
 
-      <div *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'" class="form-row">
+      <div class="form-row" *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'">
         <div class="form-group col-md-6">
           <label for="altura">Altura (metros)</label>
-          <input formControlName="Altura" type="text" class="form-control" id="altura" placeholder="Informe a medida de altura">
+          <input formControlName="altura" type="text" class="form-control" id="altura" placeholder="Informe a medida de altura">
         </div>
         <div class="form-group col-md-6">
           <label for="largura">Largura (metros)</label>
-          <input formControlName="Largura" type="text" class="form-control" id="largura" placeholder="Informe a medida de largura">
+          <input formControlName="largura" type="text" class="form-control" id="largura" placeholder="Informe a medida de largura">
         </div>
       </div>
 
-      <div *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'" class="form-group">
+      <div class="form-group" *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'">
         <label for="capacidade">Capacidade (em litros)</label>
-        <input formControlName="Nome" type="text" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
+        <input formControlName="capacidade" type="text" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
     </div>
 
-      <button type="submit" class="btn btn-primary">Adicionar</button>
+      <button class="btn btn-primary" type="submit">Adicionar</button>
     </form>
   </div>
 </div>

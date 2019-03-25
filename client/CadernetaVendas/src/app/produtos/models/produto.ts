@@ -1,14 +1,15 @@
 export class Produto {
     nome: string;
     valor: number;
-    oeso: number;
+    peso: number;
+    descricao: string;
     altura: number;
     largura: number;
     capacidade: number;
     dimensao: string;
-    descricao: string;
     disponivel: boolean;
     quantidade: number;
+    FormFile: any;
     dataCadastro: Date;
     categoriaId: string;
 }

@@ -36,8 +36,21 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]ProdutoViewModel produtoViewModel)
+        //public IActionResult Post([FromBody]ProdutoViewModel produtoViewModel)
+        public IActionResult Post()
         {
+            var produtoViewModel = new ProdutoViewModel()
+            {
+                Nome = Request.Form["nome"],
+                Valor = Convert.ToDecimal(Request.Form["valor"]),
+                Peso = Convert.ToDouble(Request.Form["peso"]),
+                Altura = Convert.ToDouble(Request.Form["altura"]),
+                Largura = Convert.ToDouble(Request.Form["largura"]),
+                Capacidade = Convert.ToDouble(Request.Form["capacidade"]),
+                CategoriaId = Guid.Parse(Request.Form["categoriaId"]),
+                FormFile = Request.Form.Files[0]
+            };
+
             if (!ModelState.IsValid)
             {
                 produtoViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);

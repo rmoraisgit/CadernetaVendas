@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -38,6 +39,8 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public bool? Disponivel { get; set; }
 
         public int? Quantidade { get; set; }
+
+        public IFormFile FormFile { get; set; }
 
         public Guid CategoriaId { get; set; }
     }
