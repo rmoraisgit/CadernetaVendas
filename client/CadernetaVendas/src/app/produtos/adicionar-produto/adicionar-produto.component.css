@@ -1,3 +1,7 @@
 .custom-file {
     margin-top: 37px;
 }
+
+#precoProduto {
+    text-align: left !important;
+}

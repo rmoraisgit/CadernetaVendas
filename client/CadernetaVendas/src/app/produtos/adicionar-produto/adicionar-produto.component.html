@@ -34,11 +34,26 @@
       <div class="form-group mt-3">
           <label for="nomeProduto">Nome</label>
           <input formControlName="nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
-      </div>
+          <!-- <ap-vmessage 
+            *ngIf="produtoForm.get('nome').errors?.maxlength"
+            text="O valor máximo de um produto novo é de R$50.000,00">
+        </ap-vmessage> -->
+        </div>
 
       <div class="form-group mt-3">
         <label for="precoProduto">Preço</label>
-        <input formControlName="valor" type="text" class="form-control" id="precoProduto" placeholder="Insira o nome do produto">
+        <input #inputValor formControlName="valor" ngClass="ng-invalid ? {{erro}} == ng-invalid ? ''" currencyMask class="form-control" 
+          type="text"
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+          (keyup)="erro = $event.target.value"
+          max="50000.00" 
+          id="precoProduto" 
+          placeholder="Insira o preço do produto">
+
+        <ap-vmessage #paulo
+          *ngIf="erro?.length > 12"
+          text="O valor máximo de um produto novo é de R$50.000,00">
+        </ap-vmessage>
       </div>
 
       <div class="form-group">

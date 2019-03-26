@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
+import { validateConfig } from '@angular/router/src/config';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -16,6 +17,8 @@ export class AdicionarProdutoComponent implements OnInit {
   fotoURL: any;
   categoriaSelecionada: string = '';
 
+  erro: any;
+
   @ViewChild('labelImport')
   labelImport: ElementRef;
 
@@ -29,8 +32,8 @@ export class AdicionarProdutoComponent implements OnInit {
     });
 
     this.produtoForm = this.formBuilder.group({
-      nome: ['', Validators.required],
-      valor: ['', Validators.required],
+      nome: ['', [Validators.required, Validators.maxLength(4)]],
+      valor: ['', [Validators.maxLength(4), Validators.maxLength(4)]],
       peso: ['', Validators.required],
       descricao: ['', Validators.required]
     });
@@ -88,6 +91,8 @@ export class AdicionarProdutoComponent implements OnInit {
     console.log(produto.capacidade);
 
     let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade);
+
+    console.log(this.erro)
 
     console.log(resultado.subscribe());
   }
