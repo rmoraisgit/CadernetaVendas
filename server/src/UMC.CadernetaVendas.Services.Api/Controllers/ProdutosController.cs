@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -47,6 +48,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
                 Altura = Convert.ToDouble(Request.Form["altura"]),
                 Largura = Convert.ToDouble(Request.Form["largura"]),
                 Capacidade = Convert.ToDouble(Request.Form["capacidade"]),
+                Descricao = Request.Form["descricao"],
                 CategoriaId = Guid.Parse(Request.Form["categoriaId"]),
                 FormFile = Request.Form.Files[0]
             };
@@ -58,6 +60,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             }
 
             var produto = _mapper.Map<Produto>(produtoViewModel);
+
+            using (var memoryStream = new MemoryStream())
+            {
+                produtoViewModel.FormFile.CopyToAsync(memoryStream);
+                produto.AvatarImage = memoryStream.ToArray();
+            }
 
             produtoViewModel = _mapper.Map<ProdutoViewModel>(_produtoService.Adicionar(produto));
 

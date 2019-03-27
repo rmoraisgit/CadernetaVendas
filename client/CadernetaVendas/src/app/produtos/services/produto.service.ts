@@ -25,6 +25,7 @@ export class ProdutoService extends BaseService {
     formData.append('nome', nome);
     formData.append('valor', valor.toString());
     formData.append('peso', peso.toString());
+    formData.append('descricao', descricao);
     formData.append('image', file);
     formData.append('categoriaId', categoriaId);
 
@@ -34,5 +35,4 @@ export class ProdutoService extends BaseService {
 
     return this.http.post(this.UrlServiceV1 + "produtos", formData);
   };
-
 }

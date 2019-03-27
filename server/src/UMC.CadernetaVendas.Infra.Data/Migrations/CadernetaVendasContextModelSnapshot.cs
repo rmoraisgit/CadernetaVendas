@@ -42,6 +42,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("decimal(5, 2)");
 
+                    b.Property<byte[]>("AvatarImage");
+
                     b.Property<decimal?>("Capacidade")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
                         .HasColumnType("numeric(5, 3)");

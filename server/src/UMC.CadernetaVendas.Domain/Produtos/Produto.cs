@@ -43,6 +43,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public string Descricao { get; private set; }
         public bool? Disponivel { get; private set; }
         public int? Quantidade { get; private set; }
+        public byte[] AvatarImage { get; set; }
         public DateTime DataCadastro { get; private set; }
         public Guid CategoriaId { get; private set; }
         //public Guid CorId { get; private set; }
@@ -84,7 +85,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         {
             RuleFor(c => c.Valor)
                 .NotEmpty().WithMessage("O valor do produto precisa ser fornecido")
-                .ExclusiveBetween(1, 50000).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
+                .ExclusiveBetween(1, 50001).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
         }
 
         private void ValidarDescricao()

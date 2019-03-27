@@ -55,7 +55,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+            return Db.SaveChanges();
         }
 
         public void Dispose()
