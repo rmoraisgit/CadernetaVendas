@@ -42,17 +42,17 @@
 
       <div class="form-group mt-3">
         <label for="precoProduto">Preço</label>
-        <input #inputValor formControlName="valor" ngClass="ng-invalid ? {{erro}} == ng-invalid ? ''" currencyMask class="form-control" 
+        <input #inputValor formControlName="valor" currencyMask class="form-control" 
           type="text"
           [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-          (keyup)="erro = $event.target.value"
+          (keyup)="verificarPrecoValido($event.target.value)"
           max="50000.00" 
-          id="precoProduto" 
+          id="precoProduto"
           placeholder="Insira o preço do produto">
 
-        <ap-vmessage #paulo
-          *ngIf="erro?.length > 12"
-          text="O valor máximo de um produto novo é de R$50.000,00">
+        <ap-vmessage
+          *ngIf="!precoValido"
+          text="O valor máximo de um novo produto é de R$50.000,00">
         </ap-vmessage>
       </div>
 
@@ -62,7 +62,7 @@
       </div>
 
       <div class="form-group">
-          <label for="peso">Peso</label>
+          <label for="peso">Peso (em kilos)</label>
           <input formControlName="peso" type="number" class="form-control" id="peso" placeholder="Informe o peso do produto">
       </div>
 

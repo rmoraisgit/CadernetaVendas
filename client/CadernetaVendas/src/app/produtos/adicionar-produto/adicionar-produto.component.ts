@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
-import { validateConfig } from '@angular/router/src/config';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -16,11 +15,9 @@ export class AdicionarProdutoComponent implements OnInit {
   fileToUpload: File;
   fotoURL: any;
   categoriaSelecionada: string = '';
+  precoValido: boolean = true;
 
-  erro: any;
-
-  @ViewChild('labelImport')
-  labelImport: ElementRef;
+  @ViewChild('labelImport') labelImport: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
     private produtoService: ProdutoService) { }
@@ -32,8 +29,8 @@ export class AdicionarProdutoComponent implements OnInit {
     });
 
     this.produtoForm = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.maxLength(4)]],
-      valor: ['', [Validators.maxLength(4), Validators.maxLength(4)]],
+      nome: ['', Validators.required],
+      valor: ['', Validators.required],
       peso: ['', Validators.required],
       descricao: ['', Validators.required]
     });
@@ -92,8 +89,18 @@ export class AdicionarProdutoComponent implements OnInit {
 
     let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade);
 
-    console.log(this.erro)
-
     console.log(resultado.subscribe());
+  }
+
+  verificarPrecoValido(event: string): void {
+    const conteudoEvento: string[] = event.split(' ');
+    const precoCorreto: string = conteudoEvento[1];
+
+    const conteudoPreco: string[] = precoCorreto.split(',');
+    const precoFormatoCorreto: string = conteudoPreco[0].replace('.', '');
+    const precoCentavos: string = conteudoPreco[1];
+
+    if (+precoFormatoCorreto >= 50000 && +precoCentavos > 0) this.precoValido = false;
+    else this.precoValido = true;
   }
 }
