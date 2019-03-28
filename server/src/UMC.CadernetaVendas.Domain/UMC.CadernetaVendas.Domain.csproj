@@ -5,15 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Produtos\Events\**" />
+    <EmbeddedResource Remove="Produtos\Events\**" />
+    <None Remove="Produtos\Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.1.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Produtos\Events\" />
   </ItemGroup>
 
 </Project>

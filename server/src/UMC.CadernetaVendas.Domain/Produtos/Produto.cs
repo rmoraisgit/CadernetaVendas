@@ -43,7 +43,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public string Descricao { get; private set; }
         public bool? Disponivel { get; private set; }
         public int? Quantidade { get; private set; }
-        public byte[] AvatarImage { get; set; }
+        public byte[] Foto { get; set; }
         public DateTime DataCadastro { get; private set; }
         public Guid CategoriaId { get; private set; }
         //public Guid CorId { get; private set; }

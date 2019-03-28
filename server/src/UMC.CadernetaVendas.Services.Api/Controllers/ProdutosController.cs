@@ -64,7 +64,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             using (var memoryStream = new MemoryStream())
             {
                 produtoViewModel.FormFile.CopyToAsync(memoryStream);
-                produto.AvatarImage = memoryStream.ToArray();
+                produto.Foto = memoryStream.ToArray();
             }
 
             produtoViewModel = _mapper.Map<ProdutoViewModel>(_produtoService.Adicionar(produto));

@@ -19,7 +19,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Valor)
-                .HasColumnType("decimal(5, 2)")
+                .HasColumnType("decimal(10, 2)")
                 .IsRequired();
 
             builder.Property(p => p.Peso)
@@ -50,6 +50,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
 
             builder.Property(p => p.Quantidade)
                 .IsRequired(false);
+
+            //builder.Property(p => p.Foto)
+            //    .image
 
             builder.Ignore(e => e.ValidationResult);
 

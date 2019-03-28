@@ -1,39 +1,70 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
+import { Observable, fromEvent, merge } from 'rxjs';
+import { GenericValidator } from 'src/app/uitls/genericValidator';
 
 @Component({
   selector: 'cv-adicionar-produto',
   templateUrl: './adicionar-produto.component.html',
   styleUrls: ['./adicionar-produto.component.css']
 })
-export class AdicionarProdutoComponent implements OnInit {
+export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
+
+
 
   produtoForm: FormGroup;
-  importarArquivoForm: FormGroup;
+  // importarArquivoForm: FormGroup;
   fileToUpload: File;
   fotoURL: any;
   categoriaSelecionada: string = '';
   precoValido: boolean = true;
 
+  validationMessages: { [key: string]: { [key: string]: string } };
+  displayMessage: { [key: string]: string } = {};
+  genericValidator: GenericValidator;
+
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+
   @ViewChild('labelImport') labelImport: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
-    private produtoService: ProdutoService) { }
+    private produtoService: ProdutoService) {
+
+    this.validationMessages = {
+      nome: {
+        required: 'O Nome é requerido',
+        minlength: 'O Nome precisa ter no mínimo 2 caracteres',
+        maxlength: 'O Nome precisa ter no máximo 150 caracteres'
+      }
+    }
+
+    this.genericValidator = new GenericValidator(this.validationMessages);
+  }
 
   ngOnInit() {
 
-    this.importarArquivoForm = this.formBuilder.group({
-      importFile: ['', Validators.required]
-    });
+    // this.importarArquivoForm = this.formBuilder.group({
+    //   importFile: ['', Validators.required]
+    // });
 
     this.produtoForm = this.formBuilder.group({
-      nome: ['', Validators.required],
+      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
       valor: ['', Validators.required],
       peso: ['', Validators.required],
       descricao: ['', Validators.required]
     });
+  }
+
+  ngAfterViewInit(): void {
+
+    let controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    merge(...controlBlurs).subscribe(value => {
+      this.displayMessage = this.genericValidator.processMessages(this.produtoForm);
+    })
   }
 
   onFileChange(file: File) {
