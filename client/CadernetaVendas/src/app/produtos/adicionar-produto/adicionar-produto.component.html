@@ -34,9 +34,13 @@
           <label for="nomeProduto">Nome</label>
           <input formControlName="nome" type="text" class="form-control" id="nomeProduto" placeholder="Insira o nome do produto">
        
-          <span class="text-danger" *ngIf="displayMessage.nome">
-          <p [innerHTML]="displayMessage.nome"></p>
-        </span>
+          <!-- <span class="text-danger" *ngIf="displayMessage.nome">
+            <p [innerHTML]="displayMessage.nome"></p>
+          </span> -->
+          <ap-vmessage 
+              *ngIf="displayMessage.nome"
+              text="{{displayMessage.nome}}">
+          </ap-vmessage>
       </div>
 
       <div class="form-group mt-3">
@@ -47,9 +51,13 @@
           max="50000.00" 
           placeholder="Insira o preço do produto">
 
-          <span class="text-danger" *ngIf="displayMessage.valor">
+          <!-- <span class="text-danger" *ngIf="displayMessage.valor">
               <p [innerHTML]="displayMessage.valor"></p>
-          </span>
+          </span> -->
+          <ap-vmessage 
+            *ngIf="displayMessage.valor"
+            text="{{displayMessage.valor}}">
+          </ap-vmessage>
       </div>
 
       <div class="form-group">
@@ -94,7 +102,7 @@
         <input formControlName="capacidade" type="text" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
       </div>
 
-      <button class="btn btn-primary" type="submit">Adicionar</button>
+      <button class="btn btn-primary" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
     </form>
   </div>
 </div>

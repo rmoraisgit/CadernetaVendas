@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { GenericValidator } from 'src/app/uitls/genericValidator';
-import { moedaValidator } from 'src/app/uitls/moedaValidator';
+import { GenericValidator } from 'src/app/utils/genericValidator';
+import { moedaValidator } from 'src/app/utils/moedaValidator';
 
 @Component({
   selector: 'cv-adicionar-produto',
