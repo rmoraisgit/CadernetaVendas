@@ -2,6 +2,11 @@
     margin-top: 37px;
 }
 
+.foto-produto {
+    height: 150px !important;
+    width: 200px !important;
+}
+
 #precoProduto {
     text-align: left !important;
 }

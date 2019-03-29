@@ -4,6 +4,7 @@ import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { GenericValidator } from 'src/app/uitls/genericValidator';
+import { moedaValidator } from 'src/app/uitls/moedaValidator';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -12,10 +13,7 @@ import { GenericValidator } from 'src/app/uitls/genericValidator';
 })
 export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
-
-
   produtoForm: FormGroup;
-  // importarArquivoForm: FormGroup;
   fileToUpload: File;
   fotoURL: any;
   categoriaSelecionada: string = '';
@@ -37,6 +35,10 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
         required: 'O Nome é requerido',
         minlength: 'O Nome precisa ter no mínimo 2 caracteres',
         maxlength: 'O Nome precisa ter no máximo 150 caracteres'
+      },
+      valor: {
+        required: 'O preço é requerido',
+        maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
       }
     }
 
@@ -44,14 +46,9 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
-    // this.importarArquivoForm = this.formBuilder.group({
-    //   importFile: ['', Validators.required]
-    // });
-
     this.produtoForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      valor: ['', Validators.required],
+      valor: ['', [Validators.required, moedaValidator]],
       peso: ['', Validators.required],
       descricao: ['', Validators.required]
     });
@@ -64,6 +61,7 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(value => {
       this.displayMessage = this.genericValidator.processMessages(this.produtoForm);
+      console.log(this.displayMessage)
     })
   }
 
@@ -121,17 +119,5 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade);
 
     console.log(resultado.subscribe());
-  }
-
-  verificarPrecoValido(event: string): void {
-    const conteudoEvento: string[] = event.split(' ');
-    const precoCorreto: string = conteudoEvento[1];
-
-    const conteudoPreco: string[] = precoCorreto.split(',');
-    const precoFormatoCorreto: string = conteudoPreco[0].replace('.', '');
-    const precoCentavos: string = conteudoPreco[1];
-
-    if (+precoFormatoCorreto >= 50000 && +precoCentavos > 0) this.precoValido = false;
-    else this.precoValido = true;
   }
 }
