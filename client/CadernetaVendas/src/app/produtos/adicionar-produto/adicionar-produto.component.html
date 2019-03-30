@@ -54,20 +54,30 @@
           <!-- <span class="text-danger" *ngIf="displayMessage.valor">
               <p [innerHTML]="displayMessage.valor"></p>
           </span> -->
-          <ap-vmessage 
-            *ngIf="displayMessage.valor"
-            text="{{displayMessage.valor}}">
-          </ap-vmessage>
+        <ap-vmessage 
+          *ngIf="displayMessage.valor"
+          text="{{displayMessage.valor}}">
+        </ap-vmessage>
       </div>
 
       <div class="form-group">
         <label for="descricao">Descrição</label>
         <textarea formControlName="descricao" class="form-control" id="descricao" rows="3" placeholder="Insira uma descrição sobre o produto"></textarea>
+      
+        <ap-vmessage 
+          *ngIf="displayMessage.descricao"
+          text="{{displayMessage.descricao}}">
+        </ap-vmessage>
       </div>
 
       <div class="form-group">
-          <label for="peso">Peso (em kilos)</label>
-          <input formControlName="peso" type="number" class="form-control" id="peso" placeholder="Informe o peso do produto">
+        <label for="peso">Peso (em kilos)</label>
+        <input formControlName="peso" type="number" class="form-control" id="peso" placeholder="Informe o peso do produto">
+      
+        <ap-vmessage 
+          *ngIf="displayMessage.peso"
+          text="{{displayMessage.peso}}">
+        </ap-vmessage>
       </div>
 
       <div class="form-group">
@@ -89,17 +99,17 @@
       <div class="form-row" *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'">
         <div class="form-group col-md-6">
           <label for="altura">Altura (metros)</label>
-          <input formControlName="altura" type="text" class="form-control" id="altura" placeholder="Informe a medida de altura">
+          <input formControlName="altura" type="number" class="form-control" id="altura" placeholder="Informe a medida de altura">
         </div>
         <div class="form-group col-md-6">
           <label for="largura">Largura (metros)</label>
-          <input formControlName="largura" type="text" class="form-control" id="largura" placeholder="Informe a medida de largura">
+          <input formControlName="largura" type="number" class="form-control" id="largura" placeholder="Informe a medida de largura">
         </div>
       </div>
 
       <div class="form-group" *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'">
         <label for="capacidade">Capacidade (em litros)</label>
-        <input formControlName="capacidade" type="text" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
+        <input formControlName="capacidade" type="number" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
       </div>
 
       <button class="btn btn-primary" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>

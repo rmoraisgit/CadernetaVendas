@@ -92,7 +92,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         {
             RuleFor(c => c.Nome)
                 .NotEmpty().WithMessage("A descrição do produto precisa ser fornecida")
-                .Length(2, 300).WithMessage("A descrição do produto precisa ter entre 2 e 300 caracteres");
+                .Length(10, 300).WithMessage("A descrição do produto precisa ter entre 2 e 300 caracteres");
         }
 
         private void ValidarPeso()
