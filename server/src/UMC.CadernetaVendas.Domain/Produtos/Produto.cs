@@ -90,16 +90,16 @@ namespace UMC.CadernetaVendas.Domain.Produtos
 
         private void ValidarDescricao()
         {
-            RuleFor(c => c.Nome)
+            RuleFor(c => c.Descricao)
                 .NotEmpty().WithMessage("A descrição do produto precisa ser fornecida")
-                .Length(10, 300).WithMessage("A descrição do produto precisa ter entre 2 e 300 caracteres");
+                .Length(9, 301).WithMessage("A descrição do produto precisa ter entre 10 e 300 caracteres");
         }
 
         private void ValidarPeso()
         {
             RuleFor(c => c.Peso)
                 .NotEmpty().WithMessage("O peso do produto precisa ser fornecido")
-                .ExclusiveBetween(0.200, 100).WithMessage("O peso deve estar entre 200 gramas e 100 kilos");
+                .ExclusiveBetween(0.199, 101).WithMessage("O peso deve estar entre 200 gramas e 100 kilos");
         }
 
         private void ValidarAltura()
@@ -125,11 +125,11 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void ValidarCapacidade()
         {
             // Id da categoria Cozinha
-            if (!CategoriaId.Equals("57b328e4-a8e3-4c61-ac9-59e110d2edd8")) return;
+            if (CategoriaId.ToString() != "57b328e4-a8e3-4c61-ac95-59e110d2edd8") return;
 
             RuleFor(c => c.Capacidade)
                 .NotEmpty().WithMessage("A capacidade do produto em litros precisa ser fornecida")
-                .ExclusiveBetween(0.100, 100).WithMessage("A capacidade do produto em litros deve estar entre 200 mililitros e 100 litros");
+                .ExclusiveBetween(0.99, 101).WithMessage("A capacidade do produto em litros deve estar entre 200 mililitros e 100 litros");
         }
 
         #endregion

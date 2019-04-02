@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
 import { Observable, fromEvent, merge } from 'rxjs';
+
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { moedaValidator } from 'src/app/utils/moedaValidator';
+import { pesoValidator } from 'src/app/utils/pesoValidator';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -38,7 +40,7 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
       },
       valor: {
         required: 'O preço é requerido',
-        maxValorMoeda: 'O valor máximo de um novo produto é de R$5  0.000,00'
+        maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
       },
       peso: {
         required: 'O peso é requerido',
@@ -59,8 +61,8 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     this.produtoForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
       valor: ['', [Validators.required, moedaValidator]],
-      peso: ['', Validators.required],
-      descricao: ['', Validators.required]
+      peso: ['', [Validators.required, pesoValidator]],
+      descricao: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]]
     });
   }
 

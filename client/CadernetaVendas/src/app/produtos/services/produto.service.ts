@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BaseService } from 'src/app/services/base.service';
@@ -23,16 +23,18 @@ export class ProdutoService extends BaseService {
 
     const formData = new FormData();
     formData.append('nome', nome);
-    formData.append('valor', valor.toString());
-    formData.append('peso', peso.toString());
+    formData.append('valor', valor.toString().replace('.', ','));
+    formData.append('peso', peso.toString().replace('.', ','));
     formData.append('descricao', descricao);
     formData.append('image', file);
     formData.append('categoriaId', categoriaId);
 
-    altura != undefined ? formData.append('altura', altura.toString()) : "0";
-    largura != undefined ? formData.append('largura', largura.toString()) : "0";
-    capacidade != undefined ? formData.append('capacidade', capacidade.toString()) : "0";
+    altura != undefined ? formData.append('altura', altura.toString().replace('.', ',')) : "0";
+    largura != undefined ? formData.append('largura', largura.toString().replace('.', ',')) : "0";
+    capacidade != undefined ? formData.append('capacidade', capacidade.toString().replace('.', ',')) : "0";
 
-    return this.http.post(this.UrlServiceV1 + "produtos", formData);
+    console.log(valor.toString());
+
+    return this.http.post(this.UrlServiceV1 + "produtos/adicionar", formData);
   };
 }

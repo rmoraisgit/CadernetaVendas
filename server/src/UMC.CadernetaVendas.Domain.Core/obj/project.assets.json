@@ -820,11 +820,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\AAA\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
+      "projectUniqueName": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
       "projectName": "UMC.CadernetaVendas.Domain.Core",
-      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\AAA\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
+      "projectPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
       "packagesPath": "C:\\Users\\rmoraiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\AAA\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\obj\\",
+      "outputPath": "C:\\Users\\rmoraiss\\Desktop\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
