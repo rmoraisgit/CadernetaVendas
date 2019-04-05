@@ -2,7 +2,7 @@
   
   <div class="col-3"></div>
 
-  <div class="col-6">
+  <div class="col-6 form-cadastro mb-5">
           <div class="row">
             <div class="col-4">
               <div class="campo-imagem text-center">
@@ -112,7 +112,9 @@
         <input formControlName="capacidade" type="number" class="form-control" id="capacidade" placeholder="Informe a capacidade do produto">
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
+      <div class="button-group text-center">
+        <button class="btn btn-primary" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
+      </div>
     </form>
   </div>
 </div>
