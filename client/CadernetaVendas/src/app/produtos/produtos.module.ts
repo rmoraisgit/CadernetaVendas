@@ -18,6 +18,7 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
     CommonModule,
     RouterModule,
     HttpClientModule,
+    RouterModule,
     ReactiveFormsModule,
     CurrencyMaskModule,
     FormsModule,

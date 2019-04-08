@@ -17,38 +17,19 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Preço</th>
-      <th scope="col">Qtd. Disponivel</th>
-      <th scope="col">Editar</th>
+      <th id="th-center" scope="col">Peso(em kg)</th>
+      <th  id="th-center" scope="col">Editar</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Cobertor</td>
-      <td>R$60,00</td>
-      <td>16</td>
-      <td>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Lençol</td>
-      <td>R$30,00</td>
-      <td>6</td>
-      <td>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Fronha</td>
-      <td>R$20,00</td>
-      <td>32</td>
-      <td>
+    <tr *ngFor="let produto of produtos">
+      <!-- <th scope="row">1</th> -->
+      <td>{{produto.nome}}</td>
+      <td>R${{produto.valor}}</td>
+      <td id="td-center">{{produto.peso}}kg</td>
+      <td id="td-center">  
         <i class="fa fa-pencil" aria-hidden="true"></i>
       </td>
     </tr>

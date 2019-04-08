@@ -15,7 +15,16 @@ table {
     text-align: center;
 }
 
+thead {
+    background-color: #689dd680;
+    border: 3px solid #bbb9b9;
+}
+
 th, td {
+    text-align: left;
+}
+
+#th-center, #td-center {
     text-align: center;
 }
 

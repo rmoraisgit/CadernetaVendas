@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
+using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
@@ -18,22 +19,25 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IProdutoService _produtoService;
+        private readonly IProdutoRepository _produtoRepository;
 
         public ProdutosController(IMapper mapper,
-                                  IProdutoService produtoService)
+                                  IProdutoService produtoService,
+                                  IProdutoRepository produtoRepository)
         {
             _mapper = mapper;
             _produtoService = produtoService;
+            _produtoRepository = produtoRepository;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public ProdutoViewModel Get()
+        public IEnumerable<ProdutoViewModel> Get()
         {
-            var produto = new Produto("RAFAEL", 10, 10, 10, 10, 10, "AAAAAA", Guid.NewGuid());
-            var teste = _mapper.Map<ProdutoViewModel>(produto);
+            //var produto = new Produto("RAFAEL", 10, 10, 10, 10, 10, "AAAAAA", Guid.NewGuid());
+            //var teste = _mapper.Map<ProdutoViewModel>(produto);
 
-            return teste;
+            return _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtoRepository.ObterTodos());
         }
 
         [HttpPost]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Core.Models;
@@ -45,7 +46,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return DbSet.ToList();
         }
 
         public void Remover(Guid id)

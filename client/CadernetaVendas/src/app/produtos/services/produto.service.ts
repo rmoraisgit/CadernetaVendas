@@ -12,11 +12,10 @@ export class ProdutoService extends BaseService {
 
   constructor(private http: HttpClient) { super(); }
 
-  // obterCategorias(): Observable<Categoria[]> {
-  //     return this.http
-  //         .get<Categoria[]>(this.UrlServiceV1 + "eventos/categorias")
-  //         .catch(super.serviceError);
-  // };
+  obterProdutos() {
+    
+      return this.http.get<Produto[]>(this.UrlServiceV1 + "produtos");
+  };
 
   adicionarProduto(nome: string, valor: number, peso: number, descricao: string, categoriaId: string, file: File,
     altura?: number, largura?: number, capacidade?: number) {

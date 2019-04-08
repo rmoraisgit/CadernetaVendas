@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { moedaValidator } from 'src/app/utils/moedaValidator';
@@ -33,7 +34,8 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private produtoService: ProdutoService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
     ) {
 
     this.validationMessages = {
@@ -132,11 +134,11 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     console.log(produto);
     console.log(produto.capacidade);
 
-    let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
-                                                        .subscribe(res => {
-                                                          this.alertService.success('Produto adicionado com sucesso.');
-                                                        });
+    this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
+                        .subscribe(res => {
+                          this.alertService.success('Produto adicionado com sucesso.');
+                          this.router.navigate(['produtos'])
+                        });
 
-    // console.log(resultado.subscribe());
   }
 }
