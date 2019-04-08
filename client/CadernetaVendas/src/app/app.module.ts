@@ -6,6 +6,7 @@ import { AppRoutesModule } from './app.routes.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
+import { AlertModule } from './shared/alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CoreModule } from './core/core.module';
     AppRoutesModule,
     CoreModule,
     HomeModule,
+    AlertModule,
     ProdutosModule
   ],
   providers: [],

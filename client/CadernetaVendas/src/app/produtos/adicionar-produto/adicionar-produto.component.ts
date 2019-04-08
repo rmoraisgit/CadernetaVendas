@@ -7,6 +7,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { moedaValidator } from 'src/app/utils/moedaValidator';
 import { pesoValidator } from 'src/app/utils/pesoValidator';
+import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -29,8 +30,11 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
   @ViewChild('labelImport') labelImport: ElementRef;
 
-  constructor(private formBuilder: FormBuilder,
-    private produtoService: ProdutoService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private produtoService: ProdutoService,
+    private alertService: AlertService
+    ) {
 
     this.validationMessages = {
       nome: {
@@ -128,8 +132,11 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     console.log(produto);
     console.log(produto.capacidade);
 
-    let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade);
+    let resultado = this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
+                                                        .subscribe(res => {
+                                                          this.alertService.success('Produto adicionado com sucesso.');
+                                                        });
 
-    console.log(resultado.subscribe());
+    // console.log(resultado.subscribe());
   }
 }
