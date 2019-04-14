@@ -7,6 +7,7 @@ import { ProdutosModule } from './produtos/produtos.module';
 import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
 import { AlertModule } from './shared/alert/alert.module';
+import { ClientesModule } from './clientes/clientes.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AlertModule } from './shared/alert/alert.module';
     CoreModule,
     HomeModule,
     AlertModule,
-    ProdutosModule
+    ProdutosModule,
+    ClientesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

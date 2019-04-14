@@ -1,0 +1,33 @@
+.row {
+    margin-bottom: 5px;
+}
+
+table {
+    border: 1px solid black;
+    background-color: #f9f5f5;
+}
+
+.row-titulo-produtos {
+    margin-top: 20px;
+}
+
+#titulo-clientes {
+    text-align: center;
+}
+
+thead {
+    background-color: #689dd680;
+    border: 3px solid #bbb9b9;
+}
+
+th, td {
+    text-align: left;
+}
+
+#th-center, #td-center {
+    text-align: center;
+}
+
+#btn-adicionar {
+    float: right;
+}

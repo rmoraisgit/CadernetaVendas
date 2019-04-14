@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdicionarProdutoComponent } from './produtos/adicionar-produto/adicionar-produto.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { ListaProdutosComponent } from './produtos/lista-produtos/lista-produtos.component';
+import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
+import { AdicionarClienteComponent } from './clientes/adicionar-cliente/adicionar-cliente.component';
 
 const routes: Routes = [
     {
@@ -17,6 +19,14 @@ const routes: Routes = [
     {
         path: 'produtos/adicionar',
         component: AdicionarProdutoComponent
+    },
+    {
+        path: 'clientes',
+        component: ListaClientesComponent
+    },
+    {
+        path: 'clientes/adicionar',
+        component: AdicionarClienteComponent
     }
 ]
 
