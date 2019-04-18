@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Domain.Produtos.Services;
@@ -19,6 +20,7 @@ namespace UMC.CadernetaVendas.Infra.CrossCutting.IoC
 
             // Infra - Data
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<CadernetaVendasContext>();
         }
     }

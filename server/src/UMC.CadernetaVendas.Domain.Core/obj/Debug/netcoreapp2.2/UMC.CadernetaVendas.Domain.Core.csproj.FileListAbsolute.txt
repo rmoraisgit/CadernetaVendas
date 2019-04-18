@@ -78,7 +78,6 @@ C:\Users\rmoraiss\Desktop\_Projetos\CadernetaVendas\server\src\UMC.CadernetaVend
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.deps.json
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
-C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csprojAssemblyReference.cache
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csproj.CoreCompileInputs.cache
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfoInputs.cache
 C:\Users\rmoraiss\Desktop\aaaa\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
