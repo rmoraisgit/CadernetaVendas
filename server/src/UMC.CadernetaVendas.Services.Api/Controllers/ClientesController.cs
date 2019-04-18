@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UMC.CadernetaVendas.Domain.Clientes;
+using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Interfaces;
-using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
@@ -16,24 +18,40 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
     public class ClientesController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly IProdutoService _produtoService;
-        private readonly IProdutoRepository _produtoRepository;
+        private readonly IClienteService _clienteService;
+        private readonly IClienteRepository _clienteRepository;
 
         public ClientesController(IMapper mapper,
-                                  IProdutoService produtoService,
-                                  IProdutoRepository produtoRepository)
+                                  IClienteService clienteService,
+                                  IClienteRepository clienteRepository)
         {
             _mapper = mapper;
-            _produtoService = produtoService;
-            _produtoRepository = produtoRepository;
+            _clienteService = clienteService;
+            _clienteRepository = clienteRepository;
         }
 
-        // GET: api/Clientes
         [HttpGet]
-        public IEnumerable<string> Get()
+        [AllowAnonymous]
+        public IEnumerable<ClienteViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
-            //return _mapper.Map<IEnumerable<ClienteViewModel>>(_clien.ObterTodos());
+            return _mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
+        }
+
+        [HttpPost]
+        [Route("adicionar")]
+        public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                clienteViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
+                return Response(clienteViewModel);
+            }
+
+            var produto = _mapper.Map<Cliente>(clienteViewModel);
+
+            clienteViewModel = _mapper.Map<ClienteViewModel>(_clienteService.Adicionar(produto));
+
+            return Response(clienteViewModel);
         }
 
         // GET: api/Clientes/5

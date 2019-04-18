@@ -42,7 +42,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        //public IActionResult Post([FromBody]ProdutoViewModel produtoViewModel)
         public IActionResult Adicionar()
         {
             var produtoViewModel = new ProdutoViewModel()
