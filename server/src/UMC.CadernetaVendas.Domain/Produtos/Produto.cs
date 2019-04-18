@@ -46,12 +46,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public byte[] Foto { get; set; }
         public DateTime DataCadastro { get; private set; }
         public Guid CategoriaId { get; private set; }
-        //public Guid CorId { get; private set; }
-
-        // EF Core - Propriedades de Navegação
         public virtual Categoria Categoria { get; private set; }
-        // public virtual Cor Cor { get; private set; }
-        // public virtual Compra Compra { get; private set; }
 
         public override bool EhValido()
         {

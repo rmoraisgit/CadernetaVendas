@@ -22,6 +22,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
 
             builder.Ignore(c => c.CascadeMode);
 
+            builder.HasMany(c => c.Produtos)
+                .WithOne(p => p.Categoria);
+
             builder.ToTable("Categorias");
         }
     }

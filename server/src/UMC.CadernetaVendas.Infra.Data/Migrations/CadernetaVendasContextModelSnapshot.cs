@@ -19,6 +19,77 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Clientes.Cliente", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<Guid>("EnderecoId");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<decimal>("SaldoDevedor")
+                        .HasColumnType("decimal(10, 2)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
+
+                    b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Clientes.Endereco", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .IsFixedLength(true)
+                        .HasMaxLength(8);
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<Guid>("ClienteId");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Enderecos");
+                });
+
             modelBuilder.Entity("UMC.CadernetaVendas.Domain.Produtos.Categoria", b =>
                 {
                     b.Property<Guid>("Id")
@@ -82,6 +153,14 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Clientes.Cliente", b =>
+                {
+                    b.HasOne("UMC.CadernetaVendas.Domain.Clientes.Endereco", "Endereco")
+                        .WithOne("Cliente")
+                        .HasForeignKey("UMC.CadernetaVendas.Domain.Clientes.Cliente", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("UMC.CadernetaVendas.Domain.Produtos.Produto", b =>
