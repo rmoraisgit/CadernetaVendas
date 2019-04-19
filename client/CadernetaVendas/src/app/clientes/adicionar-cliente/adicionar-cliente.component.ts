@@ -20,37 +20,45 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   constructor(private formBuilder: FormBuilder
-    ) { 
-      this.validationMessages = {
-        nome: {
-          required: 'O nome é requerido',
-          minlength: 'O Nome precisa ter no mínimo 2 caracteres',
-          maxlength: 'O Nome precisa ter no máximo 150 caracteres'
-        },
-        valor: {
-          required: 'O preço é requerido',
-          maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
-        },
-        peso: {
-          required: 'O peso é requerido',
-          minlength: 'A descrição precisa ter no mínimo 10 caracteres',
-          maxlength: 'A descrição precisa ter no mínimo 300 caracteres'
-        },
-        descricao: {
-          required: 'A descrição é requerida',
-          minlength: 'A descrição precisa ter no mínimo 10 caracteres',
-          maxlength: 'A descrição precisa ter no mínimo 300 caracteres'
-        }
+  ) {
+    this.validationMessages = {
+      nome: {
+        required: 'O nome é requerido',
+        minlength: 'O Nome precisa ter no mínimo 2 caracteres',
+        maxlength: 'O Nome precisa ter no máximo 150 caracteres'
+      },
+      cpf: {
+        required: 'O CPF é requerido',
+        minlength: 'Informe o CPF em um formato correto',
+        maxlength: 'Informe o CPF em um formato correto'
+      },
+      telefone: {
+        required: 'O telefone é requerido',
+        minlength: 'Informe o telefone em um formato correto',
+        maxlength: 'Informe o telefone em um formato correto'
+      },
+      celular: {
+        required: 'O celular é requerido',
+        minlength: 'Informe o celular em um formato correto',
+        maxlength: 'Informe o celular em um formato correto'
+      },
+      email: {
+        required: 'O email é requerido',
+        email: 'Informe o email em um formato correto'
       }
-
-      this.genericValidator = new GenericValidator(this.validationMessages);
     }
+
+    this.genericValidator = new GenericValidator(this.validationMessages);
+  }
 
   ngOnInit() {
 
     this.clienteForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      cpf: ['']
+      cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      telefone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      celular: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
