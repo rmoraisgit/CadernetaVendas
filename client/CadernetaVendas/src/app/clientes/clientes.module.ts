@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { AdicionarClienteComponent } from './adicionar-cliente/adicionar-cliente.component';
+import { VMessageModule } from '../shared/validation-message/vmessage.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdicionarClienteComponent } from './adicionar-cliente/adicionar-cliente
     RouterModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    VMessageModule
   ]
 })
 export class ClientesModule { }
