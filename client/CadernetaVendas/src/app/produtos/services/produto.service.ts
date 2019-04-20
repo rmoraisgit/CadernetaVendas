@@ -14,7 +14,7 @@ export class ProdutoService extends BaseService {
 
   obterProdutos() {
     
-      return this.http.get<Produto[]>(this.UrlServiceV1 + "produtos");
+      return this.http.get<Produto[]>(this.UrlServiceV1 + 'produtos');
   };
 
   adicionarProduto(nome: string, valor: number, peso: number, descricao: string, categoriaId: string, file: File,
@@ -28,12 +28,12 @@ export class ProdutoService extends BaseService {
     formData.append('image', file);
     formData.append('categoriaId', categoriaId);
 
-    altura != undefined ? formData.append('altura', altura.toString().replace('.', ',')) : "0";
-    largura != undefined ? formData.append('largura', largura.toString().replace('.', ',')) : "0";
-    capacidade != undefined ? formData.append('capacidade', capacidade.toString().replace('.', ',')) : "0";
+    altura != undefined ? formData.append('altura', altura.toString().replace('.', ',')) : '0';
+    largura != undefined ? formData.append('largura', largura.toString().replace('.', ',')) : '0';
+    capacidade != undefined ? formData.append('capacidade', capacidade.toString().replace('.', ',')) : '0';
 
     console.log(valor.toString());
 
-    return this.http.post(this.UrlServiceV1 + "produtos/adicionar", formData);
+    return this.http.post(this.UrlServiceV1 + 'produtos/adicionar', formData);
   };
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName } from '@angular/forms';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { GenericValidator } from 'src/app/utils/genericValidator';
+import { ClienteService } from '../services/cliente.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
   selector: 'cv-adicionar-cliente',
@@ -19,7 +22,11 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  constructor(private formBuilder: FormBuilder
+  constructor(
+    private formBuilder: FormBuilder,
+    private clienteService: ClienteService,
+    private alertService: AlertService,
+    private router: Router
   ) {
     this.validationMessages = {
       nome: {
@@ -71,6 +78,18 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
       this.displayMessage = this.genericValidator.processMessages(this.clienteForm);
       console.log(this.displayMessage)
     })
+  }
+
+  adicionar() {
+    const cliente = this.clienteForm.getRawValue();
+
+    console.log(cliente);
+
+    var response = this.clienteService.adicionarCliente(cliente).subscribe(res => {
+      this.alertService.success('Cliente adicionado com sucesso.')
+    });
+
+    console.log(response);
   }
 
 }
