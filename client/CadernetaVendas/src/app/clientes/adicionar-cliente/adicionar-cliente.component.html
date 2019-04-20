@@ -4,11 +4,9 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row justify-content-center">
 
-  <div class="col-3"></div>
-
-  <div class="col-6 mb-5">
+  <div class="col-7 mb-5">
     <hr>
     <div class="form-cadastro">
       <form [formGroup]="clienteForm" (submit)="adicionar()">
@@ -31,40 +29,91 @@
           </ap-vmessage>
         </div>
 
-        <div class="form-group mt-3">
-          <label for="telefone">Telefone</label>
-          <input formControlName="telefone" type='text' class="form-control" mask='(00) 0000-0000' id="telefone"
-            placeholder="Insira o telefone do cliente">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="telefone">Telefone</label>
+            <input formControlName="telefone" type='text' class="form-control" mask='(00) 0000-0000' id="telefone"
+              placeholder="Insira o telefone do cliente">
 
-          <ap-vmessage *ngIf="displayMessage.telefone" text="{{displayMessage.telefone}}">
-          </ap-vmessage>
+            <ap-vmessage *ngIf="displayMessage.telefone" text="{{displayMessage.telefone}}">
+            </ap-vmessage>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="celular">Celular</label>
+            <input formControlName="celular" type='text' class="form-control" mask='(00) 00000-0000' id="celular"
+              placeholder="Insira o celular do cliente">
+
+            <ap-vmessage *ngIf="displayMessage.celular" text="{{displayMessage.celular}}">
+            </ap-vmessage>
+          </div>
         </div>
 
-        <div class="form-group mt-3">
-          <label for="celular">Celular</label>
-          <input formControlName="celular" type='text' class="form-control" mask='(00) 00000-0000' id="celular"
-            placeholder="Insira o celular do cliente">
-
-          <ap-vmessage *ngIf="displayMessage.celular" text="{{displayMessage.celular}}">
-          </ap-vmessage>
-        </div>
-
-        <div class="form-group mt-3">
+        <div class="form-group mt-1">
           <label for="email">Email</label>
-          <input formControlName="email" type='text' class="form-control" id="email"
+          <input formControlName="email" type='email' class="form-control" id="email"
             placeholder="Insira o email do cliente">
 
           <ap-vmessage *ngIf="displayMessage.email" text="{{displayMessage.email}}">
           </ap-vmessage>
         </div>
 
-        <div class="form-group mt-3">
-          <label for="email">CEP</label>
-          <input formControlName="cep" type='text' class="form-control" id="cep"
-            placeholder="Insira o CEP do cliente" (focusout)="buscarDadosCEP($event.target.value)">
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="cep">CEP</label>
+            <input formControlName="cep" type='text' class="form-control" id="cep" placeholder="Insira o CEP do cliente"
+              (focusout)="buscarDadosCEP($event.target.value)">
 
-          <ap-vmessage *ngIf="displayMessage.cep" text="{{displayMessage.cep}}">
-          </ap-vmessage>
+            <ap-vmessage *ngIf="displayMessage.cep" text="{{displayMessage.cep}}">
+            </ap-vmessage>
+          </div>
+
+          <div class="form-group col-md-5">
+            <label for="cidade">Cidade</label>
+            <input formControlName="cidade" type='text' class="form-control" id="cidade">
+
+            <ap-vmessage *ngIf="displayMessage.cidade" text="{{displayMessage.cidade}}">
+            </ap-vmessage>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="estado">Estado</label>
+            <input formControlName="estado" type='text' class="form-control" id="estado">
+
+            <ap-vmessage *ngIf="displayMessage.estado" text="{{displayMessage.estado}}">
+            </ap-vmessage>
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-9 mt-1">
+            <label for="logradouro">Logradouro</label>
+            <input formControlName="logradouro" type='text' class="form-control" id="logradouro">
+
+            <ap-vmessage *ngIf="displayMessage.logradouro" text="{{displayMessage.logradouro}}">
+            </ap-vmessage>
+          </div>
+
+          <div class="form-group col-md-3 mt-1">
+            <label for="numero">Número</label>
+            <input formControlName="numero" type='text' class="form-control" id="numero">
+
+            <ap-vmessage *ngIf="displayMessage.numero" text="{{displayMessage.numero}}">
+            </ap-vmessage>
+          </div>
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="complemento">Complemento</label>
+            <input formControlName="complemento" type="text" class="form-control" id="complemento">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="bairro">Bairro</label>
+            <input formControlName="bairro" type="text" class="form-control" id="bairro">
+          </div>
         </div>
 
         <div class="button-group row">

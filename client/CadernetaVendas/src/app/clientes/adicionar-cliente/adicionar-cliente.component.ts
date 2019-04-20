@@ -7,6 +7,8 @@ import { GenericValidator } from 'src/app/utils/genericValidator';
 import { ClienteService } from '../services/cliente.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
+import { Cliente } from '../models/cliente';
+import { Endereco } from '../models/endereco';
 
 @Component({
   selector: 'cv-adicionar-cliente',
@@ -56,6 +58,40 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
       email: {
         required: 'O email é requerido',
         email: 'Informe o email em um formato correto'
+      },
+      cep: {
+        required: 'O CEP é requerido',
+        minlength: 'Informe o CEP em um formato correto',
+        maxlength: 'Informe o CEP em um formato correto'
+      },
+      logradouro: {
+        required: 'O logradouro é requerido',
+        minlength: 'Informe o logradouro em um formato correto',
+        maxlength: 'Informe o logradouro em um formato correto'
+      },
+      numero: {
+        required: 'O número da residência é requerido',
+        minlength: 'Informe o número em um formato correto',
+        maxlength: 'Informe o número em um formato correto'
+      },
+      complemento: {
+        minlength: 'Informe o complemento em um formato correto',
+        maxlength: 'Informe o complemento em um formato correto'
+      },
+      bairro: {
+        required: 'O bairro é requerido',
+        minlength: 'Informe o bairro em um formato correto',
+        maxlength: 'Informe o bairro em um formato correto'
+      },
+      cidade: {
+        required: 'A cidade é requerido',
+        minlength: 'Informe a cidade em um formato correto',
+        maxlength: 'Informe a cidade em um formato correto'
+      },
+      estado: {
+        required: 'O estado é requerido',
+        minlength: 'Informe o estado em um formato correto',
+        maxlength: 'Informe o estado em um formato correto'
       }
     }
 
@@ -71,6 +107,12 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
       celular: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      logradouro: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
+      numero: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(150)]],
+      complemento: ['', [Validators.minLength(2), Validators.maxLength(150)]],
+      bairro: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
+      cidade: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
+      estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
     });
   }
 
@@ -97,15 +139,23 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
     console.log(response);
   }
 
-  buscarDadosCEP(cepCliente:string){
+  buscarDadosCEP(cepCliente: string) {
 
-    var response = this.enderecoService.obterEndereco(cepCliente).subscribe(
+    const cliente = this.clienteForm.getRawValue();
+
+    this.enderecoService.obterEndereco(cepCliente).subscribe(
       res => {
-        console.log(res);
+        cliente.endereco = res;
+        this.preencherCamposEndereco(cliente.endereco);
       }
-    );
-    console.log("TIO TAFAEL")
-    console.log(cepCliente)
+    );    
   }
 
+  preencherCamposEndereco(endereco : Endereco){
+    this.clienteForm.get('logradouro').setValue(endereco.logradouro);
+    this.clienteForm.get('bairro').setValue(endereco.bairro);
+    this.clienteForm.get('complemento').setValue(endereco.complemento);
+    this.clienteForm.get('cidade').setValue(endereco.localidade);
+    this.clienteForm.get('estado').setValue(endereco.uf);
+  }
 }

@@ -1,4 +1,4 @@
-export class Endereco {
+export interface Endereco {
     cep: string;
     logradouro: string;
     complemento: string;
