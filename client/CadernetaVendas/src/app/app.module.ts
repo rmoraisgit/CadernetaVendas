@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 import { AppRoutesModule } from './app.routes.module';
@@ -16,6 +17,7 @@ import { ClientesModule } from './clientes/clientes.module';
   imports: [
     BrowserModule,
     AppRoutesModule,
+    HttpClientModule,
     CoreModule,
     HomeModule,
     AlertModule,

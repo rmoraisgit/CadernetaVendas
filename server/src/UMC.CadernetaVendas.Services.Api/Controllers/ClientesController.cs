@@ -39,7 +39,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
+        public IActionResult Post(ClienteViewModel clienteViewModel)
         {
             if (!ModelState.IsValid)
             {

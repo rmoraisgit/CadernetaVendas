@@ -23,6 +23,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public string Telefone { get; private set; }
         public string Celular { get; private set; }
         public string Email { get; private set; }
+        public DateTime DataCadastro { get; private set; }
         public Guid EnderecoId { get; private set; }
         public virtual Endereco Endereco { get; private set; }
       

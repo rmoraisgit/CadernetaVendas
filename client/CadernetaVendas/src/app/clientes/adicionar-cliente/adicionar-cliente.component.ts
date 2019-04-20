@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { ClienteService } from '../services/cliente.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { EnderecoService } from 'src/app/services/endereco.service';
 
 @Component({
   selector: 'cv-adicionar-cliente',
@@ -13,6 +14,8 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
   styleUrls: ['./adicionar-cliente.component.css']
 })
 export class AdicionarClienteComponent implements OnInit, AfterViewInit {
+
+  cepCliente: string = '';
 
   clienteForm: FormGroup;
 
@@ -25,6 +28,7 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private clienteService: ClienteService,
+    private enderecoService: EnderecoService,
     private alertService: AlertService,
     private router: Router
   ) {
@@ -65,7 +69,8 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
       cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       telefone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       celular: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      cep: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
     });
   }
 
@@ -90,6 +95,17 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
     });
 
     console.log(response);
+  }
+
+  buscarDadosCEP(cepCliente:string){
+
+    var response = this.enderecoService.obterEndereco(cepCliente).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
+    console.log("TIO TAFAEL")
+    console.log(cepCliente)
   }
 
 }

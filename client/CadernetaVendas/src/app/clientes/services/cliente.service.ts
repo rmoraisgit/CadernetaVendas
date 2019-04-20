@@ -14,11 +14,11 @@ export class ClienteService extends BaseService {
 
   obterClientes() {
     
-      return this.http.get<Cliente[]>(this.UrlServiceV1 + "clientes");
+      return this.http.get<Cliente[]>(this.UrlServiceV1 + 'clientes');
   };
 
   adicionarCliente(cliente : Cliente) {
 
-    return this.http.post(this.UrlServiceV1 + "clientes/adicionar", cliente, this.ObterHeaderJson());
+    return this.http.post(this.UrlServiceV1 + 'clientes/adicionar', cliente, this.ObterHeaderJson());
   };
 }

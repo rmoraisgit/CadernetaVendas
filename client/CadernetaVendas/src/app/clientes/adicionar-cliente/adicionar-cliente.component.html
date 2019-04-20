@@ -58,6 +58,15 @@
           </ap-vmessage>
         </div>
 
+        <div class="form-group mt-3">
+          <label for="email">CEP</label>
+          <input formControlName="cep" type='text' class="form-control" id="cep"
+            placeholder="Insira o CEP do cliente" (focusout)="buscarDadosCEP($event.target.value)">
+
+          <ap-vmessage *ngIf="displayMessage.cep" text="{{displayMessage.cep}}">
+          </ap-vmessage>
+        </div>
+
         <div class="button-group row">
           <div class="col-6">
             <button class="btn btn-primary" [routerLink]="['/clientes']" type="button">Voltar</button>
