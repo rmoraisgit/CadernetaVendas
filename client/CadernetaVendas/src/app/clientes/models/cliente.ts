@@ -1,7 +1,6 @@
-import { Endereco } from './endereco';
+// import { Endereco } from './endereco';
 
-export class Cliente {
-    
+export interface Cliente {   
     nome: string;
     cpf: string;
     saldoDevedor: number;
@@ -9,4 +8,14 @@ export class Cliente {
     celular: string;
     email: string;
     endereco: Endereco;
+}
+
+export interface Endereco {
+    cep: string;
+    logradouro: string;
+    numero: string;
+    complemento: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
 }

@@ -18,6 +18,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .HasColumnType("varchar(150)")
                 .IsRequired();
 
+            builder.Property(c => c.CPF)
+               .HasColumnType("varchar(11)")
+               .IsRequired();
+
             builder.Property(c => c.SaldoDevedor)
                 .HasColumnType("decimal(10, 2)")
                 .IsRequired();

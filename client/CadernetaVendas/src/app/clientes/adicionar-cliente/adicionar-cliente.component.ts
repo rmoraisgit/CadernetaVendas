@@ -7,8 +7,8 @@ import { GenericValidator } from 'src/app/utils/genericValidator';
 import { ClienteService } from '../services/cliente.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
-import { Cliente } from '../models/cliente';
-import { Endereco } from '../models/endereco';
+import { Cliente, Endereco } from '../models/cliente';
+// import { Endereco } from '../models/endereco';
 
 @Component({
   selector: 'cv-adicionar-cliente',
@@ -129,10 +129,29 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
 
   adicionar() {
     const cliente = this.clienteForm.getRawValue();
+    let clienteJSON = {
+        nome: cliente.nome,
+        cpf: cliente.cpf,
+        saldoDevedor: cliente.saldoDevedor,
+        telefone: cliente.telefone,
+        celular: cliente.celular,
+        email: cliente.email,
+        endereco: {
+          cep: cliente.cep,
+          logradouro: cliente.logradouro,
+          numero: cliente.numero,
+          complemento: cliente.complemento,
+          bairro: cliente.bairro,
+          cidade: cliente.cidade,
+          estado: cliente.estado
+        }
+    }
+    console.log(clienteJSON);
+    
 
     console.log(cliente);
 
-    var response = this.clienteService.adicionarCliente(cliente).subscribe(res => {
+    var response = this.clienteService.adicionarCliente(clienteJSON).subscribe(res => {
       this.alertService.success('Cliente adicionado com sucesso.')
     });
 
@@ -141,7 +160,7 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
 
   buscarDadosCEP(cepCliente: string) {
 
-    const cliente = this.clienteForm.getRawValue();
+    const cliente = this.clienteForm.getRawValue() as Cliente;
 
     this.enderecoService.obterEndereco(cepCliente).subscribe(
       res => {
@@ -155,7 +174,7 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
     this.clienteForm.get('logradouro').setValue(endereco.logradouro);
     this.clienteForm.get('bairro').setValue(endereco.bairro);
     this.clienteForm.get('complemento').setValue(endereco.complemento);
-    this.clienteForm.get('cidade').setValue(endereco.localidade);
-    this.clienteForm.get('estado').setValue(endereco.uf);
+    this.clienteForm.get('cidade').setValue(endereco.cidade);
+    this.clienteForm.get('estado').setValue(endereco.estado);
   }
 }

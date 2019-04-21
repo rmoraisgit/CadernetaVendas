@@ -60,7 +60,7 @@
         <div class="form-row">
           <div class="form-group col-md-5">
             <label for="cep">CEP</label>
-            <input formControlName="cep" type='text' class="form-control" id="cep" placeholder="Insira o CEP do cliente"
+            <input formControlName="cep" type='text' class="form-control" mask='00000-000' id="cep" placeholder="Insira o CEP do cliente"
               (focusout)="buscarDadosCEP($event.target.value)">
 
             <ap-vmessage *ngIf="displayMessage.cep" text="{{displayMessage.cep}}">

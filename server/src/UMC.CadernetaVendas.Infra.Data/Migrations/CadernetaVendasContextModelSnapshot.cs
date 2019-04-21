@@ -24,9 +24,15 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
                     b.Property<string>("Celular")
                         .IsRequired()
                         .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Email")
                         .IsRequired()

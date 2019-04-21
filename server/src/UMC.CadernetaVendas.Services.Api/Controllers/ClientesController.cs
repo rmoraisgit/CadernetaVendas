@@ -39,7 +39,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Post(ClienteViewModel clienteViewModel)
+        public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -47,9 +47,10 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
                 return Response(clienteViewModel);
             }
 
-            var produto = _mapper.Map<Cliente>(clienteViewModel);
+            var cliente = _mapper.Map<Cliente>(clienteViewModel);
+            cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
-            clienteViewModel = _mapper.Map<ClienteViewModel>(_clienteService.Adicionar(produto));
+            clienteViewModel = _mapper.Map<ClienteViewModel>(_clienteService.Adicionar(cliente));
 
             return Response(clienteViewModel);
         }

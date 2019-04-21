@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BaseService } from './base.service';
-import { Endereco } from '../clientes/models/endereco';
+import { Endereco } from '../clientes/models/cliente';
+// import { Endereco } from '../clientes/models/endereco';
 
 @Injectable({
     providedIn: 'root'

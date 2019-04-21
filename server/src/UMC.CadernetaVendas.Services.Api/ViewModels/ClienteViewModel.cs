@@ -13,6 +13,11 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [MaxLength(150, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
         public string Nome { get;  set; }
 
+        [Required(ErrorMessage = "O CPF é requerido")]
+        [MinLength(11, ErrorMessage = "O tamanho minimo do Nome é {1} caracteres")]
+        [MaxLength(11, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
+        public string CPF { get; set; }
+
         [Required(ErrorMessage = "O valor é requerido")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [DataType(DataType.Currency, ErrorMessage = "Moeda em formato inválido")]
@@ -29,6 +34,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [EmailAddress(ErrorMessage = "Preencha um E-mail válido")]
         public string Email { get;  set; }
         
-        public virtual ICollection<EnderecoViewModel> Enderecos { get;  set; }
+        public EnderecoViewModel Endereco { get;  set; }
     }
 }
