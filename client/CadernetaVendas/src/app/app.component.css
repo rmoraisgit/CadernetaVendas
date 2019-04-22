@@ -1,0 +1,6 @@
+.spacer {
+    height: 50px;
+    margin: 0 0 -50px 0;
+    /* margin: 20px 0 -50px 0; use this if you want #container to have a 'bottom padding', in this case of 20px */
+    background: transparent; /* you'll need this if #container's parent element has a different background from #container itself */
+}

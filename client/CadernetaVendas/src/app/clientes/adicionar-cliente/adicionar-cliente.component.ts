@@ -152,7 +152,8 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
     console.log(cliente);
 
     var response = this.clienteService.adicionarCliente(clienteJSON).subscribe(res => {
-      this.alertService.success('Cliente adicionado com sucesso.')
+      this.alertService.success('Cliente adicionado com sucesso.');
+      this.router.navigate(['clientes'])
     });
 
     console.log(response);
@@ -171,10 +172,13 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   }
 
   preencherCamposEndereco(endereco : Endereco){
+
+    console.log(endereco);
+
     this.clienteForm.get('logradouro').setValue(endereco.logradouro);
     this.clienteForm.get('bairro').setValue(endereco.bairro);
     this.clienteForm.get('complemento').setValue(endereco.complemento);
-    this.clienteForm.get('cidade').setValue(endereco.cidade);
-    this.clienteForm.get('estado').setValue(endereco.estado);
+    this.clienteForm.get('cidade').setValue(endereco.localidade);
+    this.clienteForm.get('estado').setValue(endereco.uf);
   }
 }

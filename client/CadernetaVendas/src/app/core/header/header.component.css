@@ -1,8 +1,27 @@
 header {
-    background-color: #4586cc80;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); 
+    /* background-color: #4586cc80; */
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0px rgba(0, 0, 0, 0.1), 0 1px 0px 0 rgba(0, 0, 0, 0.1); 
+}
+
+.header_content {
+    height: 90px;
 }
 
 a {
     font-size: 20px;
+}
+
+.main_nav li a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #384158;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+li {
+    margin-right: 44px;
 }

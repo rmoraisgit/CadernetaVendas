@@ -1,3 +1,8 @@
+.super-container {
+    padding: 20px;
+    background-color: #e9ecef;
+}
+
 .row {
     margin-bottom: 5px;
 }

@@ -21,7 +21,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
-        public TEntity Adicionar(TEntity obj)
+        public virtual TEntity Adicionar(TEntity obj)
         {
             var objAdicionado = DbSet.Add(obj);
             Db.SaveChanges();
@@ -29,22 +29,22 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             return objAdicionado.Entity;
         }
 
-        public TEntity Atualizar(TEntity obj)
+        public virtual TEntity Atualizar(TEntity obj)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEntity> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return DbSet.ToList();
         }

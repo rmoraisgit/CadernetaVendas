@@ -41,7 +41,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _clienteRepository.Dispose();
         }
 
         public void Remover(Guid id)
