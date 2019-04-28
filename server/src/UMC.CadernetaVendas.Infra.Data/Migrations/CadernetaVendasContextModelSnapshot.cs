@@ -96,6 +96,38 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.ToTable("Enderecos");
                 });
 
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Compras.Compra", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<string>("Fornecedor")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnName("decimal(10, 2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Compras");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Compras.CompraProduto", b =>
+                {
+                    b.Property<Guid>("CompraId");
+
+                    b.Property<Guid>("ProdutoId");
+
+                    b.HasKey("CompraId", "ProdutoId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("ComprasProdutos");
+                });
+
             modelBuilder.Entity("UMC.CadernetaVendas.Domain.Produtos.Categoria", b =>
                 {
                     b.Property<Guid>("Id")
@@ -166,6 +198,19 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.HasOne("UMC.CadernetaVendas.Domain.Clientes.Endereco", "Endereco")
                         .WithOne("Cliente")
                         .HasForeignKey("UMC.CadernetaVendas.Domain.Clientes.Cliente", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Compras.CompraProduto", b =>
+                {
+                    b.HasOne("UMC.CadernetaVendas.Domain.Compras.Compra", "Compra")
+                        .WithMany("ComprasProdutos")
+                        .HasForeignKey("CompraId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Produtos.Produto", "Produto")
+                        .WithMany("ComprasProdutos")
+                        .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
