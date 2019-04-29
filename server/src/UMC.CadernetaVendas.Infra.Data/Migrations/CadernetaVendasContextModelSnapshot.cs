@@ -108,7 +108,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.Property<decimal>("Total")
-                        .HasColumnName("decimal(10, 2)");
+                        .HasColumnType("decimal(10, 2)");
 
                     b.HasKey("Id");
 
@@ -120,6 +120,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<Guid>("CompraId");
 
                     b.Property<Guid>("ProdutoId");
+
+                    b.Property<Guid>("Id");
 
                     b.HasKey("CompraId", "ProdutoId");
 
@@ -157,6 +159,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<Guid>("CategoriaId");
 
+                    b.Property<Guid?>("CompraId");
+
                     b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Descricao")
@@ -190,6 +194,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("CompraId");
+
                     b.ToTable("Produtos");
                 });
 
@@ -220,6 +226,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                         .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Compras.Compra")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CompraId");
                 });
 #pragma warning restore 612, 618
         }

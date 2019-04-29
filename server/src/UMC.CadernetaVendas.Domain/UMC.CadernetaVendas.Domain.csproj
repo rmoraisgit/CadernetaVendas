@@ -18,8 +18,4 @@
     <ProjectReference Include="..\UMC.CadernetaVendas.Domain.Core\UMC.CadernetaVendas.Domain.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Compras\Services\" />
-  </ItemGroup>
-
 </Project>

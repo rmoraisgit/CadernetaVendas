@@ -22,13 +22,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .WithMany(p => p.ComprasProdutos)
                 .HasForeignKey(cp => cp.ProdutoId);
 
-            //builder.Ignore(cp => cp.Compra.ValidationResult);
+            builder.Ignore(c => c.ValidationResult);
 
-            //builder.Ignore(cp => cp.Compra.CascadeMode);
-
-            //builder.Ignore(cp => cp.Produto.ValidationResult);
-
-            //builder.Ignore(cp => cp.Produto.CascadeMode);
+            builder.Ignore(c => c.CascadeMode);
 
             builder.ToTable("ComprasProdutos");
         }

@@ -21,10 +21,17 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
+        //public virtual TEntity Adicionar(TEntity obj)
+        //{
+        //    var objAdicionado = DbSet.Add(obj);
+        //    Db.SaveChanges();
+
+        //    return objAdicionado.Entity;
+        //}
+
         public virtual TEntity Adicionar(TEntity obj)
         {
             var objAdicionado = DbSet.Add(obj);
-            Db.SaveChanges();
 
             return objAdicionado.Entity;
         }

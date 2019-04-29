@@ -11,6 +11,7 @@ using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Domain.Produtos.Services;
 using UMC.CadernetaVendas.Infra.Data.Context;
 using UMC.CadernetaVendas.Infra.Data.Repository;
+using UMC.CadernetaVendas.Infra.Data.UoW;
 
 namespace UMC.CadernetaVendas.Infra.CrossCutting.IoC
 {
@@ -27,7 +28,11 @@ namespace UMC.CadernetaVendas.Infra.CrossCutting.IoC
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ICompraRepository, CompraRepository>();
+            services.AddScoped<ICompraProdutoRepository, CompraProdutoRepository>();
             services.AddScoped<CadernetaVendasContext>();
+
+            // Infra - UoW
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

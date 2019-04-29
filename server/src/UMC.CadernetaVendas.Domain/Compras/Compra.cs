@@ -8,11 +8,10 @@ namespace UMC.CadernetaVendas.Domain.Compras
 {
     public class Compra : Entity<Compra>
     {
-        public Compra(string fornecedor, decimal total, ICollection<Guid> idsProdutos)
+        public Compra(string fornecedor, decimal total)
         {
             Fornecedor = fornecedor;
             Total = total;
-            IdsProdutos = idsProdutos;
         }
 
         public string Fornecedor { get; private set; }
@@ -25,7 +24,12 @@ namespace UMC.CadernetaVendas.Domain.Compras
 
         public override bool EhValido()
         {
-            throw new NotImplementedException();
+            return true;
+        }
+
+        public void AtribuirIdsProdutos(ICollection<Guid> idsProdutos)
+        {
+            IdsProdutos = idsProdutos;
         }
     }
 }

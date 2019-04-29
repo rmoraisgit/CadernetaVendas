@@ -19,8 +19,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(c => c.Total)
-                .HasColumnName("decimal(10, 2)")
+                .HasColumnType("decimal(10, 2)")
                 .IsRequired();
+
+            builder.Ignore(c => c.IdsProdutos);
 
             builder.Ignore(c => c.ValidationResult);
 

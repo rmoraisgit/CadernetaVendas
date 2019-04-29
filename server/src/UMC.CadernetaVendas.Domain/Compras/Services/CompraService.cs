@@ -10,32 +10,38 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
     public class CompraService : ICompraService
     {
         private readonly ICompraRepository _compraRepository;
+        private readonly ICompraProdutoRepository _compraProdutoRepository;
+        private readonly IUnitOfWork _UoW;
 
-        public CompraService(ICompraRepository compraRepository)
+        public CompraService(ICompraRepository compraRepository,
+                             ICompraProdutoRepository compraProdutoRepository,
+                             IUnitOfWork uow)
         {
             _compraRepository = compraRepository;
+            _compraProdutoRepository = compraProdutoRepository;
+            _UoW = uow;
         }
 
         public Compra Registrar(Compra compra)
         {
             if (!compra.EhValido()) return compra;
 
-            var idsProdutos = new Collection<Guid>();
+            _compraRepository.Adicionar(compra);
 
             foreach (var idProduto in compra.IdsProdutos)
             {
-                idsProdutos.Add(idProduto);
+                var compraProduto = new CompraProduto(compra.Id, idProduto);
+                _compraProdutoRepository.Adicionar(compraProduto);
             }
 
-            //var compraProduto = new CompraProduto(compra, idsProdutos);
+            _UoW.Commit();
 
-            return 
-
+            return compra;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _compraRepository.Dispose();
         }
     }
 }
