@@ -7,6 +7,12 @@ namespace UMC.CadernetaVendas.Domain.Compras
 {
     public class CompraProduto
     {
+        public CompraProduto(Guid compraId, Guid produtoId)
+        {
+            CompraId = compraId;
+            ProdutoId = produtoId;
+        }
+
         public Guid CompraId { get; private set; }
         public virtual Compra Compra { get; private set; }
         public Guid ProdutoId { get; private set; }

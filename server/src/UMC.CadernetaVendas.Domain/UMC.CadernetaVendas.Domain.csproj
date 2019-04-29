@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Compras\Services\" />
-    <Folder Include="Compras\Repository\" />
   </ItemGroup>
 
 </Project>
