@@ -10,10 +10,13 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
     public class ProdutoService : IProdutoService
     {
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IUnitOfWork _UoW;
 
-        public ProdutoService(IProdutoRepository produtoRepository)
+        public ProdutoService(IProdutoRepository produtoRepository,
+                              IUnitOfWork uow)
         {
             _produtoRepository = produtoRepository;
+            _UoW = uow;
         }
 
         public Produto Adicionar(Produto obj)
@@ -21,6 +24,8 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
             if (!obj.EhValido()) return obj;
 
             obj = _produtoRepository.Adicionar(obj);
+
+            _UoW.Commit();
 
             return obj;
         }

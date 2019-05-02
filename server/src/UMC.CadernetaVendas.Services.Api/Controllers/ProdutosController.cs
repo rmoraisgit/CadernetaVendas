@@ -47,7 +47,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             var produtoViewModel = new ProdutoViewModel()
             {
                 Nome = Request.Form["nome"],
-                Valor = Convert.ToDecimal(Request.Form["valor"]),
+                //Valor = Convert.ToDecimal(Request.Form["valor"]),
                 Peso = Convert.ToDouble(Request.Form["peso"]),
                 Altura = Convert.ToDouble(Request.Form["altura"]),
                 Largura = Convert.ToDouble(Request.Form["largura"]),

@@ -187,12 +187,11 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<int?>("Quantidade");
 
-                    b.Property<decimal>("Valor")
+                    b.Property<decimal>("ValorCompra")
                         .HasColumnType("decimal(10, 2)");
 
-                    b.Property<decimal>("ValorCompra");
-
-                    b.Property<decimal>("ValorVenda");
+                    b.Property<decimal>("ValorVenda")
+                        .HasColumnType("decimal(10, 2)");
 
                     b.HasKey("Id");
 

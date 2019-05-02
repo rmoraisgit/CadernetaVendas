@@ -11,7 +11,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
     {
         public Produto(
             string nome,
-            decimal valor,
+            //decimal valor,
             double peso,
             double altura,
             double largura,
@@ -22,7 +22,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         {
             Id = Guid.NewGuid();
             Nome = nome;
-            Valor = valor;
+            //Valor = valor;
             Peso = peso;
             Altura = altura;
             Largura = largura;
@@ -35,7 +35,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         protected Produto() { }
 
         public string Nome { get; private set; }
-        public decimal Valor { get; private set; }
+        //public decimal Valor { get; private set; }
         public decimal ValorCompra { get; private set; }
         public decimal ValorVenda { get; private set; }
         public double Peso { get; private set; }
@@ -61,7 +61,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void Validar()
         {
             ValidarNome();
-            ValidarValor();
+            //ValidarValor();
             ValidarDescricao();
             ValidarPeso();
             ValidarCapacidade();
@@ -80,12 +80,12 @@ namespace UMC.CadernetaVendas.Domain.Produtos
                 .Length(2, 150).WithMessage("O nome do produto precisa ter entre 2 e 150 caracteres");
         }
 
-        private void ValidarValor()
-        {
-            RuleFor(c => c.Valor)
-                .NotEmpty().WithMessage("O valor do produto precisa ser fornecido")
-                .ExclusiveBetween(1, 50001).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
-        }
+        //private void ValidarValor()
+        //{
+        //    RuleFor(c => c.Valor)
+        //        .NotEmpty().WithMessage("O valor do produto precisa ser fornecido")
+        //        .ExclusiveBetween(1, 50001).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
+        //}
 
         private void ValidarDescricao()
         {

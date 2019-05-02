@@ -44,10 +44,10 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
         minlength: 'O Nome precisa ter no mínimo 2 caracteres',
         maxlength: 'O Nome precisa ter no máximo 150 caracteres'
       },
-      valor: {
-        required: 'O preço é requerido',
-        maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
-      },
+      // valor: {
+      //   required: 'O preço é requerido',
+      //   maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
+      // },
       peso: {
         required: 'O peso é requerido',
         minlength: 'A descrição precisa ter no mínimo 10 caracteres',
@@ -66,7 +66,7 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.produtoForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      valor: ['', [Validators.required, moedaValidator]],
+      // valor: ['', [Validators.required, moedaValidator]],
       peso: ['', [Validators.required, pesoValidator]],
       descricao: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]]
     });
@@ -134,7 +134,7 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     console.log(produto);
     console.log(produto.capacidade);
 
-    this.produtoService.adicionarProduto(produto.nome, produto.valor, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
+    this.produtoService.adicionarProduto(produto.nome, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
                         .subscribe(res => {
                           this.alertService.success('Produto adicionado com sucesso.');
                           this.router.navigate(['produtos'])
