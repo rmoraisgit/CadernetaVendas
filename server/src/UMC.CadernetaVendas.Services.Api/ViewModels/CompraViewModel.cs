@@ -13,12 +13,10 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [Required(ErrorMessage = "O Fornecedor é requerido")]
         public string Fornecedor { get; set; }
 
-        [Required(ErrorMessage = "O Total é requerido")]
+        [Required(ErrorMessage = "O Total da compra é requerido")]
         public decimal Total { get; set; }
 
-        [Required(ErrorMessage = "Os IdsProdutos é requerido")]
+        [Required(ErrorMessage = "Os ids dos produtos são requeridos")]
         public ICollection<Guid> IdsProdutos { get; set; }
-        //public virtual ICollection<Produto> Produtos { get; private set; }
-        //public virtual ICollection<CompraProduto> ComprasProdutos { get; private set; }
     }
 }

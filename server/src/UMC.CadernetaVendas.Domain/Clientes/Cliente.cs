@@ -33,7 +33,6 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 
         public override bool EhValido()
         {
-            //throw new NotImplementedException();
             ValidationResult = Validate(this);
             return true;
         }

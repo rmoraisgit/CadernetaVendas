@@ -19,6 +19,9 @@ namespace UMC.CadernetaVendas.Domain.Compras
         public Guid ProdutoId { get; private set; }
         public virtual Produto Produto { get; private set; }
 
+        protected CompraProduto() { }
+
+
         public override bool EhValido()
         {
             return true;

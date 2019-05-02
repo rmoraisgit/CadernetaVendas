@@ -22,8 +22,12 @@ namespace UMC.CadernetaVendas.Domain.Compras
         public virtual ICollection<Produto> Produtos { get; private set; }
         public virtual ICollection<CompraProduto> ComprasProdutos { get; private set; }
 
+        // EF Core - Construtor Vázio
+        protected Compra() { }
+
         public override bool EhValido()
         {
+            ValidationResult = Validate(this);
             return true;
         }
 

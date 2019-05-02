@@ -36,24 +36,21 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Compras/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/Compras
         [HttpPost]
         [Route("adicionar")]
-        public void Post([FromBody] CompraViewModel compraViewModel)
+        public IActionResult Post([FromBody] CompraViewModel compraViewModel)
         {
-            var a = 0;
+            if (!ModelState.IsValid)
+            {
+                compraViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
+                return Response(compraViewModel);
+            }
 
-            var compra = new Compra(compraViewModel.Fornecedor, compraViewModel.Total);
-            compra.AtribuirIdsProdutos(compraViewModel.IdsProdutos);
-       
-            _compraService.Registrar(compra);
+            var compra = _mapper.Map<Compra>(compraViewModel);
+
+            compraViewModel = _mapper.Map<CompraViewModel>(_compraService.Registrar(compra));
+
+            return Response(compraViewModel);
         }
 
         // PUT: api/Compras/5
