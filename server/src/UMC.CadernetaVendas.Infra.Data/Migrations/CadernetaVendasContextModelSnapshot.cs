@@ -190,6 +190,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<decimal>("Valor")
                         .HasColumnType("decimal(10, 2)");
 
+                    b.Property<decimal>("ValorCompra");
+
+                    b.Property<decimal>("ValorVenda");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");

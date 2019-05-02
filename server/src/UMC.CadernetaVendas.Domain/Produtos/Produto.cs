@@ -36,6 +36,8 @@ namespace UMC.CadernetaVendas.Domain.Produtos
 
         public string Nome { get; private set; }
         public decimal Valor { get; private set; }
+        public decimal ValorCompra { get; private set; }
+        public decimal ValorVenda { get; private set; }
         public double Peso { get; private set; }
         public double? Altura { get; private set; }
         public double? Largura { get; private set; }
@@ -130,5 +132,16 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         }
 
         #endregion
+
+        public void AtualizarValorCompra(decimal novoValor)
+        {
+            ValorCompra = novoValor;
+            AtualizarValorVenda(ValorCompra);
+        }
+
+        private void AtualizarValorVenda(decimal valorCompra)
+        {
+            ValorVenda = valorCompra + ((valorCompra * 20) / 100);
+        }
     }
 }

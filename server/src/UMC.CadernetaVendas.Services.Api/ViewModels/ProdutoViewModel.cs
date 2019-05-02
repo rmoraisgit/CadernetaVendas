@@ -20,6 +20,10 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [DataType(DataType.Currency, ErrorMessage = "Moeda em formato inválido")]
         public decimal Valor { get; set; }
 
+        public decimal ValorCompra { get; set; }
+
+        public decimal ValorVenda { get; set; }
+
         [Required(ErrorMessage = "O peso é requerido")]
         public double Peso { get; set; }
 

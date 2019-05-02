@@ -38,7 +38,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public virtual TEntity Atualizar(TEntity obj)
         {
-            throw new NotImplementedException();
+            DbSet.Update(obj);
+            return obj;
         }
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
@@ -48,7 +49,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public virtual TEntity ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return DbSet.FirstOrDefault(t => t.Id == id);
         }
 
         public virtual IEnumerable<TEntity> ObterTodos()

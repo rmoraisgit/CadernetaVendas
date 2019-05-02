@@ -16,7 +16,10 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [Required(ErrorMessage = "O Total da compra é requerido")]
         public decimal Total { get; set; }
 
-        [Required(ErrorMessage = "Os ids dos produtos são requeridos")]
-        public ICollection<Guid> IdsProdutos { get; set; }
+        //[Required(ErrorMessage = "Os ids dos produtos são requeridos")]
+        //public ICollection<Guid> IdsProdutos { get; set; }
+
+        [Required(ErrorMessage = "Os produtos são requeridos")]
+        public ICollection<ProdutoViewModel> Produtos { get; set; }
     }
 }
