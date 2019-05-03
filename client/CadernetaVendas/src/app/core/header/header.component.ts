@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'cv-header',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private render: Renderer) { }
 
   ngOnInit() {
+  }
+
+  mouseEnter(elemento: ElementRef) {
+    console.log(elemento);
+    this.render.setElementStyle(elemento, 'color', '#37c6f0');
+  }
+
+  mouseLeave(elemento: ElementRef) {
+    console.log(elemento);
+    this.render.setElementStyle(elemento, 'color', '#384158');
   }
 
 }

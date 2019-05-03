@@ -11,7 +11,7 @@ p {
 
 .footer {
     display: block;
-    position: fixed;
+    position: absolute;
     width: 100%;
     background: #1e2434;
     padding-top: 25px;
