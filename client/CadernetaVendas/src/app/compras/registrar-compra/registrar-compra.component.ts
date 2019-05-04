@@ -1,18 +1,40 @@
-import {Component} from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
+import { GenericValidator } from 'src/app/utils/genericValidator';
+import { validationMessagesCompra } from './validation-messages-compra';
 
 @Component({
   selector: 'cv-registrar-compra',
-  templateUrl: 'registrar-compra.component.html'
+  templateUrl: 'registrar-compra.component.html',
+  styleUrls: ['./registrar-compra.component.css']
 })
-export class RegistrarCompraComponent {
+export class RegistrarCompraComponent implements OnInit {
+
+  compraForm: FormGroup;
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  displayMessage: { [key: string]: string } = {};
+  genericValidator: GenericValidator;
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+
+  constructor(private formBuilder: FormBuilder,
+    private modalService: NgbModal) {
+
+    this.genericValidator = new GenericValidator(validationMessagesCompra);
+  }
+
+  ngOnInit(): void {
+
+    this.compraForm = this.formBuilder.group({
+      fornecedor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
+      total: ['', [Validators.required]]
+    });
+  }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -25,7 +47,11 @@ export class RegistrarCompraComponent {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
+  }
+
+  registrar() {
+
   }
 }

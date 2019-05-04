@@ -6,17 +6,18 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <!-- <form>
       <div class="form-group">
         <label for="dateOfBirth">Date of birth</label>
-        <!-- <div class="input-group">
+        <div class="input-group">
           <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
           </div>
-        </div> -->
+        </div>
       </div>
-    </form>
+    </form> -->
+    <cv-itens-compra></cv-itens-compra>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
@@ -28,3 +29,96 @@
 <hr>
 
 <pre>{{closeResult}}</pre>
+
+<div class="row">
+  <div class="col-12">
+    <h1 class="mt-5 titulo">Registro de Compra</h1>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6">
+    <hr>
+    <div class="form-cadastro">
+      <form [formGroup]="compraForm" (submit)="registrar()">
+
+        <div class="form-group mt-2">
+          <label for="fornecedor">Fornecedor</label>
+          <input formControlName="fornecedor" type="text" class="form-control" id="fornecedor"
+            placeholder="Insira o nome do fornecedor">
+
+          <ap-vmessage *ngIf="displayMessage.fornecedor" text="{{displayMessage.fornecedor}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Produtos</label>
+          <button class="btn btn-primary mb-1" style="float: right;" type="button" >Procurar</button>
+          <!-- <textarea class="form-control" id="descricao" rows="3"
+            placeholder="Insira uma descrição sobre o produto"></textarea> -->
+
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Cobertor</td>
+                <td>R$200,00</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- <ap-vmessage *ngIf="displayMessage.descricao" text="{{displayMessage.descricao}}">
+          </ap-vmessage> -->
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="peso">Peso (em kilos)</label>
+          <input formControlName="peso" type="number" class="form-control" id="peso"
+            placeholder="Informe o peso do produto">
+
+          <ap-vmessage *ngIf="displayMessage.peso" text="{{displayMessage.peso}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="inputCategoria">Categoria</label>
+          <select id="inputCategoria" class="form-control" (change)="atualizarForm($event.target.value)">
+            <option selected>Selecione...</option>
+            <option value="f8a495a7-40dd-4e94-85c0-8e203aa8a94a">Cama</option>
+            <option value="c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b">Mesa</option>
+            <option value="57b328e4-a8e3-4c61-ac95-59e110d2edd8">Cozinha</option>
+          </select>
+        </div>
+
+        <div class="form-row"
+          *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'">
+          <div class="form-group col-md-6">
+            <label for="altura">Altura (metros)</label>
+            <input formControlName="altura" type="number" class="form-control" id="altura"
+              placeholder="Informe a medida de altura">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="largura">Largura (metros)</label>
+            <input formControlName="largura" type="number" class="form-control" id="largura"
+              placeholder="Informe a medida de largura">
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'">
+          <label for="capacidade">Capacidade (em litros)</label>
+          <input formControlName="capacidade" type="number" class="form-control" id="capacidade"
+            placeholder="Informe a capacidade do produto">
+        </div>
+
+        <div class="button-group row">
+          <div class="col-6">
+            <button class="btn btn-primary" [routerLink]="['/produtos']" type="button">Voltar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
+          </div>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { GenericValidator } from 'src/app/utils/genericValidator';
 import { moedaValidator } from 'src/app/utils/moedaValidator';
 import { pesoValidator } from 'src/app/utils/pesoValidator';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { validationMessagesProduto } from './validation-messages-produto';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -23,7 +24,6 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   categoriaSelecionada: string = '';
   precoValido: boolean = true;
 
-  validationMessages: { [key: string]: { [key: string]: string } };
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
 
@@ -35,32 +35,9 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private produtoService: ProdutoService,
     private alertService: AlertService,
-    private router: Router
-    ) {
+    private router: Router) {
 
-    this.validationMessages = {
-      nome: {
-        required: 'O nome é requerido',
-        minlength: 'O Nome precisa ter no mínimo 2 caracteres',
-        maxlength: 'O Nome precisa ter no máximo 150 caracteres'
-      },
-      // valor: {
-      //   required: 'O preço é requerido',
-      //   maxValorMoeda: 'O valor máximo de um novo produto é de R$50.000,00'
-      // },
-      peso: {
-        required: 'O peso é requerido',
-        minlength: 'A descrição precisa ter no mínimo 10 caracteres',
-        maxlength: 'A descrição precisa ter no mínimo 300 caracteres'
-      },
-      descricao: {
-        required: 'A descrição é requerida',
-        minlength: 'A descrição precisa ter no mínimo 10 caracteres',
-        maxlength: 'A descrição precisa ter no mínimo 300 caracteres'
-      }
-    }
-
-    this.genericValidator = new GenericValidator(this.validationMessages);
+    this.genericValidator = new GenericValidator(validationMessagesProduto);
   }
 
   ngOnInit() {
@@ -135,10 +112,10 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     console.log(produto.capacidade);
 
     this.produtoService.adicionarProduto(produto.nome, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
-                        .subscribe(res => {
-                          this.alertService.success('Produto adicionado com sucesso.');
-                          this.router.navigate(['produtos'])
-                        });
+      .subscribe(res => {
+        this.alertService.success('Produto adicionado com sucesso.');
+        this.router.navigate(['produtos'])
+      });
 
   }
 }
