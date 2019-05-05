@@ -1,0 +1,7 @@
+th, td {
+    text-align: left;
+}
+
+#th-center, #td-center {
+    text-align: center;
+}

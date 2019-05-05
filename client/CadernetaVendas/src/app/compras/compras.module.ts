@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { RegistrarCompraComponent } from './registrar-compra/registrar-compra.component';
 import { ItensCompraComponent } from './registrar-compra/itens-compra/itens-compra.component';
 import { VMessageModule } from '../shared/validation-message/vmessage.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    NgbModule,
     VMessageModule
   ],
   exports: [

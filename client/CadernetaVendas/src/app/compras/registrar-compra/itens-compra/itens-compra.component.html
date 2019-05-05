@@ -1,3 +1,37 @@
 <p>
   itens-compra works!
 </p>
+
+<div class="itens-compra">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <!-- <th id="th-center" scope="col"></th> -->
+        <th scope="col">Nome</th>
+        <!-- <th scope="col">Preço</th> -->
+        <th scope="col">Peso(em kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr (click)="selecionarItem($event.target)" *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          
+        <!-- <td id="td-center">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+
+          <input type="checkbox" aria-label="Radio button for following text input">
+    
+        </td> -->
+        <td style="display: none;">{{produto.id}}</td>
+        <td>{{produto.nome}}kg</td>
+        <td>R${{produto.peso}}</td>
+      </tr>
+      <ngb-pagination
+          [(page)]="page"
+          [pageSize]="5"
+          [collectionSize]="produtos.length"></ngb-pagination>
+    </tbody>
+  </table>
+
+</div>

@@ -53,7 +53,7 @@
 
         <div class="form-group">
           <label for="descricao">Produtos</label>
-          <button class="btn btn-primary mb-1" style="float: right;" type="button" >Procurar</button>
+          <button class="btn btn-primary mb-1" (click)="open(content)" style="float: right;" type="button" >Procurar</button>
           <!-- <textarea class="form-control" id="descricao" rows="3"
             placeholder="Insira uma descrição sobre o produto"></textarea> -->
 
@@ -63,6 +63,7 @@
                 <td>Cobertor</td>
                 <td>R$200,00</td>
                 <td>3</td>
+                <td><i class="fa fa-window-close" aria-hidden="true"></i></td>
               </tr>
             </tbody>
           </table>
