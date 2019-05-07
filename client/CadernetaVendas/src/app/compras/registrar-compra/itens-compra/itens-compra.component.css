@@ -5,3 +5,7 @@ th, td {
 #th-center, #td-center {
     text-align: center;
 }
+
+.selecionado {
+    background-color: #d2d2d2;
+}
