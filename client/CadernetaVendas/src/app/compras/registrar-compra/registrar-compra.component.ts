@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, ViewChild } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
+import { ItensCompraComponent } from './itens-compra/itens-compra.component';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -15,9 +16,12 @@ export class RegistrarCompraComponent implements OnInit {
   compraForm: FormGroup;
   closeResult: string;
 
+  produtos: any[] = [];
+
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  @ViewChild('itensCompra') itensCompra : ItensCompraComponent;
 
   constructor(private formBuilder: FormBuilder,
     private modalService: NgbModal) {
@@ -53,5 +57,17 @@ export class RegistrarCompraComponent implements OnInit {
 
   registrar() {
 
+  }
+
+  obterProdutoParaCarrinho() {
+
+    console.log('AAA')
+
+    // this.itensCompraService.obterItem().subscribe(
+    //   res => { console.log(res) }
+    // )
+    // console.log(this.itensCompra.produtosSelecionados);
+
+    console.log(this.produtos)
   }
 }

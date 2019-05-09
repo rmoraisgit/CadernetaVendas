@@ -6,25 +6,14 @@
     </button>
   </div>
   <div class="modal-body">
-    <!-- <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
-    </form> -->
-    <cv-itens-compra></cv-itens-compra>
+
+    <cv-itens-compra [produtosSelecionados]="produtos" (enviarProduto)="obterProdutoParaCarrinho($event)" #itensCompra></cv-itens-compra>
+
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="obterProdutoParaCarrinho()">Save</button>
   </div>
 </ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
 
 <hr>
 
@@ -119,6 +108,7 @@
             <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
           </div>
         </div> -->
+        <button class="btn btn-success" (submit)="algo()"></button>
       </form>
     </div>
   </div>
