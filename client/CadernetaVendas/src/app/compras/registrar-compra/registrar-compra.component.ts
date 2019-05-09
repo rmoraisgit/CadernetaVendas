@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/fo
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
 import { ItensCompraComponent } from './itens-compra/itens-compra.component';
+import { Produto } from 'src/app/produtos/models/produto';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -16,12 +17,12 @@ export class RegistrarCompraComponent implements OnInit {
   compraForm: FormGroup;
   closeResult: string;
 
-  produtos: any[] = [];
+  produtos: Produto[] = [];
+  novoProdutoCarrinho : any;
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-  @ViewChild('itensCompra') itensCompra : ItensCompraComponent;
 
   constructor(private formBuilder: FormBuilder,
     private modalService: NgbModal) {
@@ -59,15 +60,18 @@ export class RegistrarCompraComponent implements OnInit {
 
   }
 
-  obterProdutoParaCarrinho() {
+  obterProdutoParaCarrinho(event) {
 
-    console.log('AAA')
+    console.log('AAABV')
+  this.produtos.push(event)
+    console.log(this.produtos);
+    console.log(this.produtos);
 
-    // this.itensCompraService.obterItem().subscribe(
-    //   res => { console.log(res) }
-    // )
-    // console.log(this.itensCompra.produtosSelecionados);
+    this.cu(this.produtos)
+  }
 
-    console.log(this.produtos)
+  cu(produtos){
+    console.log(produtos)
+    console.log(produtos[0][0])
   }
 }
