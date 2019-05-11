@@ -48,17 +48,25 @@
           <table class="table table-bordered">
             <thead>
               <th>Nome</th>
-              <th>Preço</th>
+              <th>Preço unit.</th>
               <th>Qtd.</th>
+              <th>Preço final</th>
+              <th></th>
             </thead>
             <tbody>
-              <tr *ngFor="let produto of produtos">
+              <tr *ngFor="let produto of compra.produtosCompra">
                 <td style="display: none;">{{produto.id}}</td>
                 <td>{{produto.nome}}</td>
-                <td>{{produto.valor}}</td>
+                <td>{{produto.valorUnitario}}</td>
                 <td>{{produto.quantidade}}</td>
-                <td><i (click)="removerProdutoCarrinho($event.target)" class="fa fa-window-close"
-                    aria-hidden="true"></i></td>
+                <td>{{produto.valorFinal}}</td>
+                <td class="text-center">
+                  <i (click)="removerProdutoCarrinho($event.target)" 
+                    (mouseenter)="mouseEnter($event.target)" 
+                    (mouseleave)="mouseLeave($event.target)"
+                    class="fa fa-window-close"
+                    aria-hidden="true"></i>
+                </td>
               </tr>
             </tbody>
           </table>

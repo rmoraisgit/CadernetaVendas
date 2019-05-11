@@ -43,14 +43,14 @@
   <div class="form-row">
     <div class="col-md-6 mt-2">
       <label for="precoUnitario">Preço unit.</label>
-      <input #precoUnitario formControlName="precoUnitario" [disabled]="!habilitadoPrecoUnitario" type="text"
+      <input #precoUnitario formControlName="precoUnitario" [disabled]="!habilitadoPrecoUnitario" type="number"
         class="form-control" id="precoUnitario">
 
     </div>
 
     <div class="col-md-6 mt-2">
       <label for="quantidade">Quantidade</label>
-      <input #quantidade formControlName="quantidade" [disabled]="!habilitadoQuantidade" type="text"
+      <input #quantidade formControlName="quantidade" [disabled]="!habilitadoQuantidade" type="number"
         class="form-control" id="quantidade">
 <!-- 
       <ap-vmessage *ngIf="displayMessage.quantidade" text="{{displayMessage.quantidade}}">

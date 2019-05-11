@@ -7,6 +7,7 @@ import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoService } from 'src/app/produtos/services/produto.service';
 import { ValidationMessagesItensCompra } from './validation-messages-itens-compra';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProdutoCompra } from '../../models/compra';
 
 @Component({
   selector: 'cv-itens-compra',
@@ -27,10 +28,10 @@ export class ItensCompraComponent implements OnInit {
   pageSize: number = 5;
   collectionSize = this.produtos.length;
 
-  produtosSelecionados: Produto[] = [];
-  produtoSelecionado: Produto;
+  produtosSelecionados: ProdutoCompra[] = [];
+  produtoSelecionado: ProdutoCompra;
 
-  @Output() enviarProduto: EventEmitter<Produto> = new EventEmitter<Produto>();
+  @Output() enviarProduto: EventEmitter<ProdutoCompra> = new EventEmitter<ProdutoCompra>();
 
   itensForm: FormGroup;
 
@@ -67,7 +68,7 @@ export class ItensCompraComponent implements OnInit {
     let idProduto = elemento.parentNode.cells[0].innerText;
     let nomeProduto = elemento.parentNode.cells[1].innerText;
 
-    const produto: Produto = new Produto();
+    const produto: ProdutoCompra = new ProdutoCompra();
     produto.id = idProduto;
     produto.nome = nomeProduto;
 
@@ -113,9 +114,13 @@ export class ItensCompraComponent implements OnInit {
 
   enviarProdutoParaCarrinho() {
 
-    this.produtoSelecionado.valor = this.itensForm.get('precoUnitario').value;
+    this.produtoSelecionado.valorUnitario = this.itensForm.get('precoUnitario').value;
     this.produtoSelecionado.quantidade = this.itensForm.get('quantidade').value;
 
+    this.produtoSelecionado.valorFinal = this.produtoSelecionado.valorUnitario * this.produtoSelecionado.quantidade;
+
+
+    console.log(this.produtosSelecionados)
     console.log(this.produtoSelecionado)
 
     this.enviarProduto.emit(this.produtoSelecionado);

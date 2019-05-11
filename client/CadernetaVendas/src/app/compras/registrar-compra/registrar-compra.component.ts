@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
@@ -6,6 +6,7 @@ import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
 import { ItensCompraComponent } from './itens-compra/itens-compra.component';
 import { Produto } from 'src/app/produtos/models/produto';
+import { ProdutoCompra, Compra } from '../models/compra';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -18,6 +19,7 @@ export class RegistrarCompraComponent implements OnInit {
   closeResult: string;
 
   produtos: Produto[] = [];
+  compra: Compra = new Compra();
   novoProdutoCarrinho: any;
 
   displayMessage: { [key: string]: string } = {};
@@ -25,6 +27,7 @@ export class RegistrarCompraComponent implements OnInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   constructor(private formBuilder: FormBuilder,
+    private render: Renderer,
     private modalService: NgbModal) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
@@ -60,12 +63,33 @@ export class RegistrarCompraComponent implements OnInit {
 
   }
 
-  obterProdutoParaCarrinho(event) {
+  obterProdutoParaCarrinho(produto: ProdutoCompra) {
 
+    console.log(produto.quantidade)
+    let quantidade = produto.quantidade;
+    let precoUnit = produto.valorUnitario;
+
+    console.log(+quantidade * +precoUnit);
+    // console.log(a);
     console.log('AAABV')
-    this.produtos.push(event)
-    console.log(this.produtos);
+    console.log(this.compra)
+    console.log(produto)
+    produto.valorFinal = this.calcularPrecoFinalProduto(+produto.valorUnitario, +produto.quantidade);
+    // this.produtos.push(event)
+    this.compra.produtosCompra.push(produto);
+    // this.calcularPrecoFinalProduto(this.compra.produtosCompra)
+    // console.log(this.produtos);
+    console.log(this.compra);
 
+
+  }
+
+  private calcularPrecoFinalProduto(valorUnitario, quantidade): number {
+
+    console.log(valorUnitario)
+    // console.log(produto.valorUnitario)
+    // console.log(res)
+    return +valorUnitario * +quantidade;
   }
 
   removerProdutoCarrinho(event) {
@@ -85,14 +109,30 @@ export class RegistrarCompraComponent implements OnInit {
     console.log('ANTES DE REMOVER')
     console.log(this.produtos);
 
-    this.produtos.forEach(produto => {
-      if (produto.id == idProdutoRemovido){
-        this.produtos = this.produtos.filter(p => p.id !== idProdutoRemovido);
+    // this.produtos.forEach(produto => {
+    //   if (produto.id == idProdutoRemovido){
+    //     this.produtos = this.produtos.filter(p => p.id !== idProdutoRemovido);
+    //   }
+    // });
+
+    this.compra.produtosCompra.forEach(produto => {
+      if (produto.id == idProdutoRemovido) {
+        this.compra.produtosCompra = this.compra.produtosCompra.filter(p => p.id !== idProdutoRemovido);
       }
     });
 
     console.log('DEPOIS DE REMOVER')
     console.log(this.produtos);
+  }
+
+  mouseEnter(elemento: ElementRef) {
+    console.log(elemento);
+    this.render.setElementStyle(elemento, 'color', '#37c6f0');
+  }
+
+  mouseLeave(elemento: ElementRef) {
+    console.log(elemento);
+    this.render.setElementStyle(elemento, 'color', '#384158');
   }
 
 }
