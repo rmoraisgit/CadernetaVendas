@@ -47,8 +47,8 @@ export class ItensCompraComponent implements OnInit {
 
     this.itensForm = this.formBuilder.group({
       produto: [''],
-      precoUnitario: [{ value: '', disabled: false }, Validators.required],
-      quantidade: [{ value: '', disabled: false }, Validators.required],
+      precoUnitario: [{ value: '', disabled: true }, Validators.required],
+      quantidade: [{ value: '', disabled: true }, Validators.required],
       auxiliar: ['', Validators.required]
     });
 

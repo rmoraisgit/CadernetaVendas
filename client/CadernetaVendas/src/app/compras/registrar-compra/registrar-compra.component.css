@@ -13,3 +13,13 @@
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
+
+.carrinho-vazio {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.btn-100-width {
+    width: 100%;
+}

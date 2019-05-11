@@ -29,6 +29,16 @@
   <div class="col-6">
     <hr>
     <div class="form-cadastro">
+
+      <ng-template #carrinhoVazio>
+        <div class="row carrinho-vazio ml-0 mt-1">
+          <div class="col-12">
+            <h5 class="text-center mt-1">O Seu carrinho está vázio</h5>
+            <p class="text-center">Clique em "Procurar" para adicionar produtos</p>
+          </div>
+        </div>
+      </ng-template>
+
       <form [formGroup]="compraForm" (submit)="registrar()">
 
         <div class="form-group mt-2">
@@ -45,7 +55,8 @@
           <button class="btn btn-primary mb-1" (click)="open(content)" style="float: right;"
             type="button">Procurar</button>
 
-          <table class="table table-bordered">
+
+          <table class="table table-bordered" *ngIf="compra.produtosCompra.length != 0 else carrinhoVazio">
             <thead>
               <th>Nome</th>
               <th>Preço unit.</th>
@@ -61,11 +72,8 @@
                 <td>{{produto.quantidade}}</td>
                 <td>{{produto.valorFinal}}</td>
                 <td class="text-center">
-                  <i (click)="removerProdutoCarrinho($event.target)" 
-                    (mouseenter)="mouseEnter($event.target)" 
-                    (mouseleave)="mouseLeave($event.target)"
-                    class="fa fa-window-close"
-                    aria-hidden="true"></i>
+                  <i (click)="removerProdutoCarrinho($event.target)" (mouseenter)="mouseEnter($event.target)"
+                    (mouseleave)="mouseLeave($event.target)" class="fa fa-window-close" aria-hidden="true"></i>
                 </td>
               </tr>
             </tbody>
@@ -76,7 +84,15 @@
         </div>
 
 
-        <button class="btn btn-success"></button>
+        <div class="button-group row">
+          <div class="col-6 text-center">
+            <button class="btn btn-primary btn-100-width" [routerLink]="['/produtos']" type="button">Voltar</button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn btn-success btn-100-width" type="submit"
+              [disabled]="compraForm.invalid">Adicionar</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
