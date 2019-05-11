@@ -42,9 +42,8 @@
 
         <div class="form-group">
           <label for="descricao">Produtos</label>
-          <button class="btn btn-primary mb-1" (click)="open(content)" style="float: right;" type="button" >Procurar</button>
-          <!-- <textarea class="form-control" id="descricao" rows="3"
-            placeholder="Insira uma descrição sobre o produto"></textarea> -->
+          <button class="btn btn-primary mb-1" (click)="open(content)" style="float: right;"
+            type="button">Procurar</button>
 
           <table class="table table-bordered">
             <thead>
@@ -54,10 +53,12 @@
             </thead>
             <tbody>
               <tr *ngFor="let produto of produtos">
+                <td style="display: none;">{{produto.id}}</td>
                 <td>{{produto.nome}}</td>
                 <td>{{produto.valor}}</td>
                 <td>{{produto.quantidade}}</td>
-                <td><i class="fa fa-window-close" aria-hidden="true"></i></td>
+                <td><i (click)="removerProdutoCarrinho($event.target)" class="fa fa-window-close"
+                    aria-hidden="true"></i></td>
               </tr>
             </tbody>
           </table>
@@ -66,7 +67,7 @@
           </ap-vmessage> -->
         </div>
 
-       
+
         <button class="btn btn-success"></button>
       </form>
     </div>

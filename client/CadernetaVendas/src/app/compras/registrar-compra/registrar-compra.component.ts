@@ -18,7 +18,7 @@ export class RegistrarCompraComponent implements OnInit {
   closeResult: string;
 
   produtos: Produto[] = [];
-  novoProdutoCarrinho : any;
+  novoProdutoCarrinho: any;
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
@@ -63,15 +63,36 @@ export class RegistrarCompraComponent implements OnInit {
   obterProdutoParaCarrinho(event) {
 
     console.log('AAABV')
-  this.produtos.push(event)
-    console.log(this.produtos);
+    this.produtos.push(event)
     console.log(this.produtos);
 
-    this.cu(this.produtos)
   }
 
-  cu(produtos){
-    console.log(produtos)
-    console.log(produtos[0][0])
+  removerProdutoCarrinho(event) {
+
+    console.log(event.parentNode.parentNode.cells)
+    console.log(event);
+
+    let idProduto: string = event.parentNode.parentNode.cells[0].innerText;
+    console.log(idProduto);
+
+    // event.parentNode.parentNode.remove();
+    this.removerProdutoLista(idProduto)
   }
+
+  removerProdutoLista(idProdutoRemovido: string) {
+
+    console.log('ANTES DE REMOVER')
+    console.log(this.produtos);
+
+    this.produtos.forEach(produto => {
+      if (produto.id == idProdutoRemovido){
+        this.produtos = this.produtos.filter(p => p.id !== idProdutoRemovido);
+      }
+    });
+
+    console.log('DEPOIS DE REMOVER')
+    console.log(this.produtos);
+  }
+
 }

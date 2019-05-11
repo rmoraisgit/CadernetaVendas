@@ -85,6 +85,7 @@ export class ItensCompraComponent implements OnInit {
 
     this.produtosSelecionados.push(produto);
     this.produtoSelecionado = produto;
+    console.log(this.produtoSelecionado)
   }
 
 
@@ -114,6 +115,8 @@ export class ItensCompraComponent implements OnInit {
 
     this.produtoSelecionado.valor = this.itensForm.get('precoUnitario').value;
     this.produtoSelecionado.quantidade = this.itensForm.get('quantidade').value;
+
+    console.log(this.produtoSelecionado)
 
     this.enviarProduto.emit(this.produtoSelecionado);
     this.modalService.dismissAll();
