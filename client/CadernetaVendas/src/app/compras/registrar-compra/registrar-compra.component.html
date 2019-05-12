@@ -33,6 +33,7 @@
       <ng-template #carrinhoVazio>
         <div class="row carrinho-vazio ml-0 mt-1">
           <div class="col-12">
+            <span style="float: left;"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></span>
             <h5 class="text-center mt-1">O Seu carrinho está vázio</h5>
             <p class="text-center">Clique em "Procurar" para adicionar produtos</p>
           </div>
@@ -83,8 +84,15 @@
           </ap-vmessage> -->
         </div>
 
+        <div class="form-group row justify-content-end mt-4">
+          <label for="total" class="col-3 mt-2"><b>TOTAL PAGO:</b></label>
+          <div class="col-6">
+            <input formControlName="total" type="text" class="form-control" id="total">
+          </div>
+        </div>
 
-        <div class="button-group row">
+
+        <div class="button-group row mt-4">
           <div class="col-6 text-center">
             <button class="btn btn-primary btn-100-width" [routerLink]="['/produtos']" type="button">Voltar</button>
           </div>

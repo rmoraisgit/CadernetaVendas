@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer, AfterViewInit } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
@@ -7,13 +7,14 @@ import { validationMessagesCompra } from './validation-messages-compra';
 import { ItensCompraComponent } from './itens-compra/itens-compra.component';
 import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoCompra, Compra } from '../models/compra';
+import { Observable, fromEvent, merge } from 'rxjs';
 
 @Component({
   selector: 'cv-registrar-compra',
   templateUrl: 'registrar-compra.component.html',
   styleUrls: ['./registrar-compra.component.css']
 })
-export class RegistrarCompraComponent implements OnInit {
+export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   compraForm: FormGroup;
   closeResult: string;
@@ -37,8 +38,19 @@ export class RegistrarCompraComponent implements OnInit {
 
     this.compraForm = this.formBuilder.group({
       fornecedor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      total: ['', [Validators.required]]
+      total: [{value: '', disabled: true}]
     });
+  }
+
+  ngAfterViewInit(): void {
+
+    let controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    merge(...controlBlurs).subscribe(value => {
+      this.displayMessage = this.genericValidator.processMessages(this.compraForm);
+      console.log(this.displayMessage)
+    })
   }
 
   open(content) {
