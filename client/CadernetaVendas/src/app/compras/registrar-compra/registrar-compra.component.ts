@@ -38,7 +38,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
     this.compraForm = this.formBuilder.group({
       fornecedor: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      total: [{value: '', disabled: true}]
+      total: [{ value: '', disabled: true }]
     });
   }
 
@@ -93,7 +93,9 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     // console.log(this.produtos);
     console.log(this.compra);
 
+    this.calcularValorTotalPago();
 
+    this.compraForm.get('total').setValue(this.calcularValorTotalPago());
   }
 
   private calcularPrecoFinalProduto(valorUnitario, quantidade): number {
@@ -102,6 +104,19 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     // console.log(produto.valorUnitario)
     // console.log(res)
     return +valorUnitario * +quantidade;
+  }
+
+  private calcularValorTotalPago(): Number {
+
+    let valorTotalCompra: number = 0;
+
+    this.compra.produtosCompra.forEach(produto => {
+      valorTotalCompra += produto.valorFinal;
+    });
+
+    console.log(valorTotalCompra);
+
+    return valorTotalCompra
   }
 
   removerProdutoCarrinho(event) {

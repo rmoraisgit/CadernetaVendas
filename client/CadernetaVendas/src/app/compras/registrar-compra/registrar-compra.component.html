@@ -98,7 +98,7 @@
           </div>
           <div class="col-6 text-center">
             <button class="btn btn-success btn-100-width" type="submit"
-              [disabled]="compraForm.invalid">Adicionar</button>
+              [disabled]="compraForm.invalid || compra.produtosCompra.length == 0">Adicionar</button>
           </div>
         </div>
       </form>
