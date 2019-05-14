@@ -21,6 +21,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 
         [Required(ErrorMessage = "Os produtos são requeridos")]
         //public ICollection<ProdutoViewModel> Produtos { get; set; }
-        public ICollection<CompraProdutoViewModel> ComprasProdutos { get; set; }
+        public ICollection<CompraProdutoViewModel> ProdutosCompra { get; set; }
     }
 }

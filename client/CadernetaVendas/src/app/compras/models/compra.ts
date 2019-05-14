@@ -5,11 +5,13 @@ export class Compra {
     }
 
     id: string;
+    fornecedor: string;
+    total: number;
     produtosCompra: ProdutoCompra[];
 }
 
 export class ProdutoCompra {
-    id: string;
+    produtoId: string;
     nome: string;
     valorUnitario: number;
     valorUnitarioFormatado : any;

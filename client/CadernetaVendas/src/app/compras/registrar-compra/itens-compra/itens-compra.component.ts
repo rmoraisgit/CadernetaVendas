@@ -69,7 +69,7 @@ export class ItensCompraComponent implements OnInit {
     let nomeProduto = elemento.parentNode.cells[1].innerText;
 
     const produto: ProdutoCompra = new ProdutoCompra();
-    produto.id = idProduto;
+    produto.produtoId = idProduto;
     produto.nome = nomeProduto;
 
     this.nomeProduto.nativeElement.value = nomeProduto;

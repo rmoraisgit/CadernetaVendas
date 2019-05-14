@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer, AfterViewInit } from '@angular/core';
-
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from '@angular/forms';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
+import { Observable, fromEvent, merge } from 'rxjs';
+
 import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoCompra, Compra } from '../models/compra';
-import { Observable, fromEvent, merge } from 'rxjs';
+import { CompraService } from '../services/compra.service';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -28,7 +29,8 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   constructor(private formBuilder: FormBuilder,
     private render: Renderer,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private compraService: CompraService) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
 
@@ -72,7 +74,18 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   }
 
   registrar() {
+    console.log('TIO RAFAEL')
+    
+    this.compra.fornecedor = this.compraForm.get('fornecedor').value;
+    this.compra.total = this.compraForm.get('total').value;
+    
+    console.log(this.compra)
 
+    this.compraService.registrarCompra(this.compra).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
   }
 
   obterProdutoParaCarrinho(produto: ProdutoCompra) {
@@ -136,8 +149,8 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     console.log(this.produtos);
 
     this.compra.produtosCompra.forEach(produto => {
-      if (produto.id == idProdutoRemovido) {
-        this.compra.produtosCompra = this.compra.produtosCompra.filter(p => p.id !== idProdutoRemovido);
+      if (produto.produtoId == idProdutoRemovido) {
+        this.compra.produtosCompra = this.compra.produtosCompra.filter(p => p.produtoId !== idProdutoRemovido);
       }
     });
 

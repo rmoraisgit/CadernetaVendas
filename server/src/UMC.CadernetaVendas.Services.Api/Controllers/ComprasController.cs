@@ -42,7 +42,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost]
-        [Route("adicionar")]
+        [Route("registrar")]
         public IActionResult Post([FromBody] CompraViewModel compraViewModel)
         {
             if (!ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             var compra = _mapper.Map<Compra>(compraViewModel);
 
-            compra.AdicionarProdutos(_mapper.Map<List<CompraProduto>>(compraViewModel.ComprasProdutos));
+            compra.AdicionarProdutos(_mapper.Map<List<CompraProduto>>(compraViewModel.ProdutosCompra));
 
             compraViewModel = _mapper.Map<CompraViewModel>(_compraService.Registrar(compra));
 
