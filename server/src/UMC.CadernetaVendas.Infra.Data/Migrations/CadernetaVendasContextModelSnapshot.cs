@@ -121,7 +121,11 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<Guid>("ProdutoId");
 
-                    b.Property<Guid>("Id");
+                    b.Property<int>("Quantidade");
+
+                    b.Property<decimal>("ValorFinal");
+
+                    b.Property<decimal>("ValorUnitario");
 
                     b.HasKey("CompraId", "ProdutoId");
 

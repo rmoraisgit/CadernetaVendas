@@ -15,10 +15,6 @@
   </div> -->
 </ng-template>
 
-<hr>
-
-<pre>{{closeResult}}</pre>
-
 <div class="row">
   <div class="col-12">
     <h1 class="mt-5 titulo">Registro de Compra</h1>
@@ -69,9 +65,15 @@
               <tr *ngFor="let produto of compra.produtosCompra">
                 <td style="display: none;">{{produto.id}}</td>
                 <td>{{produto.nome}}</td>
-                <td>{{produto.valorUnitario}}</td>
+                <td>
+                  <input class="form-control input-disabled" type="text" disabled="true"
+                    value="R$ {{produto.valorUnitarioFormatado | number}}" />
+                </td>
                 <td>{{produto.quantidade}}</td>
-                <td>{{produto.valorFinal}}</td>
+                <td>
+                    <input class="form-control input-disabled" type="text" disabled="true"
+                    value="R$ {{produto.valorFinal | number}}" />
+                </td>
                 <td class="text-center">
                   <i (click)="removerProdutoCarrinho($event.target)" (mouseenter)="mouseEnter($event.target)"
                     (mouseleave)="mouseLeave($event.target)" class="fa fa-window-close" aria-hidden="true"></i>
@@ -87,7 +89,8 @@
         <div class="form-group row justify-content-end mt-4">
           <label for="total" class="col-3 mt-2"><b>TOTAL PAGO:</b></label>
           <div class="col-6">
-            <input formControlName="total" type="text" class="form-control" id="total">
+            <input formControlName="total" currencyMask type="text" class="form-control" id="total" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
           </div>
         </div>
 

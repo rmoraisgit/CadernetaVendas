@@ -15,12 +15,14 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
             builder.HasKey(cp => new { cp.CompraId, cp.ProdutoId });
 
             builder.HasOne(cp => cp.Compra)
-                .WithMany(c=>c.ComprasProdutos)
+                .WithMany(c => c.ComprasProdutos)
                 .HasForeignKey(cp => cp.CompraId);
 
             builder.HasOne(cp => cp.Produto)
                 .WithMany(p => p.ComprasProdutos)
                 .HasForeignKey(cp => cp.ProdutoId);
+
+            builder.Ignore(cp => cp.Id);
 
             builder.Ignore(c => c.ValidationResult);
 

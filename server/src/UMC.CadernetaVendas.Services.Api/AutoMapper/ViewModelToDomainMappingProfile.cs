@@ -18,6 +18,7 @@ namespace UMC.CadernetaVendas.Services.Api.AutoMapper
             CreateMap<ClienteViewModel, Cliente>();
             CreateMap<EnderecoViewModel, Endereco>();
             CreateMap<CompraViewModel, Compra>();
+            CreateMap<CompraProdutoViewModel, CompraProduto>();
         }
     }
 }

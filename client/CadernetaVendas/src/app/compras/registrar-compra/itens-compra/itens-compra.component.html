@@ -43,23 +43,23 @@
   <div class="form-row">
     <div class="col-md-6 mt-2">
       <label for="precoUnitario">Preço unit.</label>
-      <input #precoUnitario formControlName="precoUnitario" [disabled]="!habilitadoPrecoUnitario" type="number"
-        class="form-control" id="precoUnitario">
-
+      <input #precoUnitario formControlName="precoUnitario" [disabled]="!habilitadoPrecoUnitario" type="text"
+        class="form-control" id="precoUnitario" currencyMask
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
     </div>
 
     <div class="col-md-6 mt-2">
       <label for="quantidade">Quantidade</label>
       <input #quantidade formControlName="quantidade" [disabled]="!habilitadoQuantidade" type="number"
         class="form-control" id="quantidade">
-<!-- 
+      <!-- 
       <ap-vmessage *ngIf="displayMessage.quantidade" text="{{displayMessage.quantidade}}">
       </ap-vmessage> -->
     </div>
-    <input style="display: none;" formControlName="auxiliar" type="text"
-        class="form-control" id="auxiliar">
+    <input style="display: none;" formControlName="auxiliar" type="text" class="form-control" id="auxiliar">
   </div>
   <div class="mt-4" style="text-align: center;">
-    <button (click)="enviarProdutoParaCarrinho()" [disabled]="itensForm.invalid" class="btn btn-primary">Adicionar ao carrinho</button>
+    <button (click)="enviarProdutoParaCarrinho()" [disabled]="itensForm.invalid" class="btn btn-primary">Adicionar ao
+      carrinho</button>
   </div>
 </form>

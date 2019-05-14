@@ -20,6 +20,7 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         //public ICollection<Guid> IdsProdutos { get; set; }
 
         [Required(ErrorMessage = "Os produtos são requeridos")]
-        public ICollection<ProdutoViewModel> Produtos { get; set; }
+        //public ICollection<ProdutoViewModel> Produtos { get; set; }
+        public ICollection<CompraProdutoViewModel> ComprasProdutos { get; set; }
     }
 }

@@ -119,7 +119,6 @@ export class ItensCompraComponent implements OnInit {
 
     this.produtoSelecionado.valorFinal = this.produtoSelecionado.valorUnitario * this.produtoSelecionado.quantidade;
 
-
     console.log(this.produtosSelecionados)
     console.log(this.produtoSelecionado)
 

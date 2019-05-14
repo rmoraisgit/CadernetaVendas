@@ -31,6 +31,11 @@ namespace UMC.CadernetaVendas.Domain.Compras
             return true;
         }
 
+        public void AdicionarProdutos(List<CompraProduto> comprasProdutos)
+        {
+            ComprasProdutos = comprasProdutos;
+        }
+
         public void AtribuirIdsProdutos(ICollection<Guid> idsProdutos)
         {
             IdsProdutos = idsProdutos;

@@ -23,3 +23,8 @@
 .btn-100-width {
     width: 100%;
 }
+
+.input-disabled {
+    background-color: white;
+    border: 0px;
+}

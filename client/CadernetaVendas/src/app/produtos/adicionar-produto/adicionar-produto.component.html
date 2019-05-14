@@ -43,16 +43,6 @@
           </ap-vmessage>
         </div>
 
-        <!-- <div class="form-group mt-3">
-          <label for="precoProduto">Preço</label>
-          <input #inputValor formControlName="valor" currencyMask class="form-control" id="precoProduto" type="text"
-            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" max="50000.00"
-            placeholder="Insira o preço do produto" disabled="true">
-
-          <ap-vmessage *ngIf="displayMessage.valor" text="{{displayMessage.valor}}">
-          </ap-vmessage>
-        </div> -->
-
         <div class="form-group">
           <label for="descricao">Descrição</label>
           <textarea formControlName="descricao" class="form-control" id="descricao" rows="3"

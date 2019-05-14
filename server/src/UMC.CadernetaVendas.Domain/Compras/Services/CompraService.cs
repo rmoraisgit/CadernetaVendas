@@ -33,10 +33,10 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
 
             _compraRepository.Adicionar(compra);
 
-            foreach (var produto in compra.Produtos)
+            foreach (var produto in compra.ComprasProdutos)
             {
-                var compraProduto = new CompraProduto(compra.Id, produto.Id);
-                _compraProdutoRepository.Adicionar(compraProduto);
+                //var compraProduto = new CompraProduto(compra.Id, produto.Id, produto.Quantidade, produto.ValorUnitario, produto.ValorFinal);
+                _compraProdutoRepository.Adicionar(produto);
 
                 ValidarPrecoProduto(produto);
             }
@@ -51,13 +51,13 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             _compraRepository.Dispose();
         }
 
-        private void ValidarPrecoProduto(Produto produto)
+        private void ValidarPrecoProduto(CompraProduto produto)
         {
-            var produtoAtual = _produtoRepository.ObterPorId(produto.Id);
+            var produtoAtual = _produtoRepository.ObterPorId(produto.ProdutoId);
 
-            if (produtoAtual.ValorCompra > produto.ValorCompra) return;
+            if (produtoAtual.ValorCompra > produto.ValorUnitario) return;
 
-            produtoAtual.AtualizarValorCompra(produto.ValorCompra);
+            produtoAtual.AtualizarValorCompra(produto.ValorUnitario);
 
             _produtoRepository.Atualizar(produtoAtual);
         }

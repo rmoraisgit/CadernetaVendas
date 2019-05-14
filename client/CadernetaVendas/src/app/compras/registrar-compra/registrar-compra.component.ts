@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer, AfterViewInit } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from '@angular/forms';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
-import { ItensCompraComponent } from './itens-compra/itens-compra.component';
 import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoCompra, Compra } from '../models/compra';
 import { Observable, fromEvent, merge } from 'rxjs';
@@ -21,7 +20,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   produtos: Produto[] = [];
   compra: Compra = new Compra();
-  novoProdutoCarrinho: any;
+  novoProdutoCarrinho: ProdutoCompra;
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
@@ -32,6 +31,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     private modalService: NgbModal) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
+
   }
 
   ngOnInit(): void {
@@ -77,20 +77,15 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   obterProdutoParaCarrinho(produto: ProdutoCompra) {
 
-    console.log(produto.quantidade)
     let quantidade = produto.quantidade;
     let precoUnit = produto.valorUnitario;
 
-    console.log(+quantidade * +precoUnit);
-    // console.log(a);
-    console.log('AAABV')
-    console.log(this.compra)
-    console.log(produto)
     produto.valorFinal = this.calcularPrecoFinalProduto(+produto.valorUnitario, +produto.quantidade);
-    // this.produtos.push(event)
+
+    produto.valorUnitarioFormatado = produto.valorUnitario;
+
     this.compra.produtosCompra.push(produto);
-    // this.calcularPrecoFinalProduto(this.compra.produtosCompra)
-    // console.log(this.produtos);
+
     console.log(this.compra);
 
     this.calcularValorTotalPago();
@@ -101,14 +96,18 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   private calcularPrecoFinalProduto(valorUnitario, quantidade): number {
 
     console.log(valorUnitario)
-    // console.log(produto.valorUnitario)
-    // console.log(res)
+
     return +valorUnitario * +quantidade;
   }
 
   private calcularValorTotalPago(): Number {
 
     let valorTotalCompra: number = 0;
+
+    if (this.compra.produtosCompra.length == 0) {
+      console.log('TEM Q ZERAR O TOTAL')
+      return 0;
+    }
 
     this.compra.produtosCompra.forEach(produto => {
       valorTotalCompra += produto.valorFinal;
@@ -136,17 +135,13 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     console.log('ANTES DE REMOVER')
     console.log(this.produtos);
 
-    // this.produtos.forEach(produto => {
-    //   if (produto.id == idProdutoRemovido){
-    //     this.produtos = this.produtos.filter(p => p.id !== idProdutoRemovido);
-    //   }
-    // });
-
     this.compra.produtosCompra.forEach(produto => {
       if (produto.id == idProdutoRemovido) {
         this.compra.produtosCompra = this.compra.produtosCompra.filter(p => p.id !== idProdutoRemovido);
       }
     });
+
+    this.compraForm.get('total').setValue(this.calcularValorTotalPago());
 
     console.log('DEPOIS DE REMOVER')
     console.log(this.produtos);
@@ -161,5 +156,4 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     console.log(elemento);
     this.render.setElementStyle(elemento, 'color', '#384158');
   }
-
 }

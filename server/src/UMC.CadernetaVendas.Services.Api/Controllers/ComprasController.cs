@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Compras.Repository;
 using UMC.CadernetaVendas.Domain.Interfaces;
+using UMC.CadernetaVendas.Domain.Produtos;
+using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
@@ -19,14 +21,17 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         private readonly IMapper _mapper;
         private readonly ICompraService _compraService;
         private readonly ICompraRepository _compraRepository;
+        private readonly IProdutoRepository _produtoRepository;
 
         public ComprasController(IMapper mapper,
                                   ICompraService compraService,
-                                  ICompraRepository compraRepository)
+                                  ICompraRepository compraRepository,
+                                  IProdutoRepository produtoRepository)
         {
             _mapper = mapper;
             _compraService = compraService;
             _compraRepository = compraRepository;
+            _produtoRepository = produtoRepository;
         }
 
         // GET: api/Compras
@@ -47,6 +52,8 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             }
 
             var compra = _mapper.Map<Compra>(compraViewModel);
+
+            compra.AdicionarProdutos(_mapper.Map<List<CompraProduto>>(compraViewModel.ComprasProdutos));
 
             compraViewModel = _mapper.Map<CompraViewModel>(_compraService.Registrar(compra));
 

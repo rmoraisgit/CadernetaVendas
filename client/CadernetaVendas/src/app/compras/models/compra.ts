@@ -12,6 +12,7 @@ export class ProdutoCompra {
     id: string;
     nome: string;
     valorUnitario: number;
+    valorUnitarioFormatado : any;
     valorFinal: number;
     quantidade: number;
 }
