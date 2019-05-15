@@ -1,44 +1,54 @@
-<div class="row row-titulo-produtos">
-  <div class="col-md-12">
-    <h1 id="titulo-clientes">
-      Clientes
-    </h1>
+<div class="super-container mt-3">
+  <div class="row row-titulo-produtos">
+    <div class="col-md-12">
+      <h1 id="titulo-clientes">
+        Clientes
+      </h1>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-
-    <button class="btn btn-primary" type="button" [routerLink]="['/clientes/adicionar']"
-      id="btn-adicionar">ADICIONAR</button>
+  <div *ngIf="clientes.length == 0; else listaClientes" class="row justify-content-center mt-5">
+    <cv-empty-message titulo="Você ainda não possui clientes cadastrados"
+      corpo="Clique no botão adicionar para cadastrar seu primeiro cliente">
+      <button class="btn btn-success text-center" [routerLink]="['/clientes/adicionar']" type="button">ADICIONAR</button>
+    </cv-empty-message>
   </div>
-</div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Celular</th>
-      <th scope="col">Bairro</th>
-      <th scope="col">Cidade</th>
-      <th id="th-center" scope="col">Dívidas</th>
-      <th id="th-center" scope="col">Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cliente of clientes">
-      <td>{{cliente.nome}}</td>
-      <td>{{cliente.telefone}}</td>
-      <td>{{cliente.celular}}</td>
-      <td>{{cliente.endereco.bairro}}</td>
-      <td>{{cliente.endereco.cidade}}</td>
-      <td id="td-center">
-        <i class="fa fa-usd"></i>
-      </td>
-      <td id="td-center">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <ng-template #listaClientes>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="button" [routerLink]="['/clientes/adicionar']"
+          id="btn-adicionar">ADICIONAR</button>
+      </div>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Bairro</th>
+          <th scope="col">Cidade</th>
+          <th id="th-center" scope="col">Dívidas</th>
+          <th id="th-center" scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{cliente.nome}}</td>
+          <td>{{cliente.telefone}}</td>
+          <td>{{cliente.celular}}</td>
+          <td>{{cliente.endereco.bairro}}</td>
+          <td>{{cliente.endereco.cidade}}</td>
+          <td id="td-center">
+            <i class="fa fa-usd"></i>
+          </td>
+          <td id="td-center">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</div>

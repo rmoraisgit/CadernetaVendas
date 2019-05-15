@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChildren, ElementRef, ViewChild, Renderer, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, Renderer, AfterViewInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { validationMessagesCompra } from './validation-messages-compra';
 import { Observable, fromEvent, merge } from 'rxjs';
@@ -8,6 +8,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoCompra, Compra } from '../models/compra';
 import { CompraService } from '../services/compra.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -27,10 +28,12 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private render: Renderer,
     private modalService: NgbModal,
-    private compraService: CompraService) {
+    private compraService: CompraService,
+    private alertService : AlertService) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
 
@@ -75,15 +78,16 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   registrar() {
     console.log('TIO RAFAEL')
-    
+
     this.compra.fornecedor = this.compraForm.get('fornecedor').value;
     this.compra.total = this.compraForm.get('total').value;
-    
+
     console.log(this.compra)
 
     this.compraService.registrarCompra(this.compra).subscribe(
       res => {
         console.log(res);
+        this.alertService.success('Compra registrada com sucesso.')
       }
     )
   }

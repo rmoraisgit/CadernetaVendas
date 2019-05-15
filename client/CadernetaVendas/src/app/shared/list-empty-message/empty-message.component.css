@@ -1,0 +1,26 @@
+.component {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Roboto Slab',serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    color: #384158;
+    margin-bottom: 0;
+}
+
+p {
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    line-height: 1.85;
+    font-weight: 400;
+    color: #76777a;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}

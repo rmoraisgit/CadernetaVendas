@@ -9,10 +9,13 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly IUnitOfWork _UoW;
 
-        public ClienteService(IClienteRepository clienteRepository)
+        public ClienteService(IClienteRepository clienteRepository,
+                              IUnitOfWork uow)
         {
             _clienteRepository = clienteRepository;
+            _UoW = uow;
         }
 
         public Cliente Adicionar(Cliente obj)
@@ -20,6 +23,8 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
             if (!obj.EhValido()) return obj;
 
             obj = _clienteRepository.Adicionar(obj);
+
+            _UoW.Commit();
 
             return obj;
         }

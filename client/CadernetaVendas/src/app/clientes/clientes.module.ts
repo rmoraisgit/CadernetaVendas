@@ -8,6 +8,7 @@ import {NgxMaskModule} from 'ngx-mask'
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { AdicionarClienteComponent } from './adicionar-cliente/adicionar-cliente.component';
 import { VMessageModule } from '../shared/validation-message/vmessage.module';
+import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
     RouterModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    VMessageModule
+    VMessageModule,
+    ListEmptyMessageModule
   ]
 })
 export class ClientesModule { }
