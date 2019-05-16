@@ -11,9 +11,15 @@ a {
     font-size: 20px;
 }
 
+.img-logo {
+    height: 60px; 
+    width: 60px; 
+    transform: rotate(4deg);
+}
+
 .logo_text {
     font-family: 'Roboto Slab',serif;
-    font-size: 36px;
+    font-size: 23px;
     font-weight: 700;
     line-height: .75;
     color: #384158;

@@ -3,51 +3,51 @@
     <div class="col">
       <header class="header_content">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="#"><i class="fa fa-book fa-2x" aria-hidden="true"></i></a>
+          <a class="navbar-brand" [routerLink]="['']">
+            <div class="logo">
+              <img class="img-logo"src="../../../assets/tablet.png">
+              <span class="logo_text">Caderneta de Vendas</span>
+            </div>
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav main_nav">
-              <li class="nav-item active">
+            <ul class="navbar-nav main_nav" style="margin-left: auto!important;">
+              <!-- <li class="nav-item active">
                 <a class="nav-link" 
-                   [routerLink]="['']" 
+                   
                    (mouseenter)="mouseEnter($event.target)" 
                    (mouseleave)="mouseLeave($event.target)"
                    >Página Inicial
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" 
-                   [routerLink]="['clientes']" 
-                   (mouseenter)="mouseEnter($event.target)" 
-                   (mouseleave)="mouseLeave($event.target)"
-                  >Clientes
+                <a class="nav-link" [routerLink]="['clientes']" (mouseenter)="mouseEnter($event.target)"
+                  (mouseleave)="mouseLeave($event.target)">Clientes
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" 
-                   [routerLink]="['produtos']"
-                   (mouseenter)="mouseEnter($event.target)" 
-                   (mouseleave)="mouseLeave($event.target)"
-                   >Produtos
+                <a class="nav-link" [routerLink]="['produtos']" (mouseenter)="mouseEnter($event.target)"
+                  (mouseleave)="mouseLeave($event.target)">Produtos
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" 
-                  [routerLink]="['compras']"
-                   (mouseenter)="mouseEnter($event.target)" 
-                   (mouseleave)="mouseLeave($event.target)">
-                   Compras
+                <a class="nav-link" [routerLink]="['compras']" (mouseenter)="mouseEnter($event.target)"
+                  (mouseleave)="mouseLeave($event.target)">
+                  Compras
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" 
-                  [routerLink]="['']"
-                   (mouseenter)="mouseEnter($event.target)" 
-                   (mouseleave)="mouseLeave($event.target)">
-                   Vendas
+                <a class="nav-link" [routerLink]="['vendas']" (mouseenter)="mouseEnter($event.target)"
+                  (mouseleave)="mouseLeave($event.target)">
+                  Vendas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-info" style="color: #fff;" [routerLink]="['vendas']">
+                  Acesse o sistema
                 </a>
               </li>
             </ul>

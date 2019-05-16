@@ -3,13 +3,6 @@
     background-color: #e9ecef;
 }
 
-.titulo {
-    font-weight: 700;
-    -webkit-font-smoothing: antialiased;
-    color: #384158;
-    text-align: center;
-}
-
 .row {
     margin-bottom: 5px;
 }

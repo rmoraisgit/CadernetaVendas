@@ -8,6 +8,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { VMessageModule } from '../shared/validation-message/vmessage.module';
+import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
     ReactiveFormsModule,
     CurrencyMaskModule,
     FormsModule,
-    VMessageModule
+    VMessageModule,
+    ListEmptyMessageModule
   ]
 })
 export class ProdutosModule { }

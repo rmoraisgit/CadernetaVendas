@@ -9,11 +9,14 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import pt from '@angular/common/locales/pt';
+import { ListaComprasComponent } from './lista-compras/lista-compras.component';
+import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 
 registerLocaleData(pt, 'pt-BR');
 
 @NgModule({
   declarations: [
+    ListaComprasComponent,
     RegistrarCompraComponent, 
     ItensCompraComponent
   ],
@@ -23,7 +26,8 @@ registerLocaleData(pt, 'pt-BR');
     RouterModule,
     NgbModule,
     CurrencyMaskModule,
-    VMessageModule
+    VMessageModule,
+    ListEmptyMessageModule
   ],
   exports: [
     RegistrarCompraComponent

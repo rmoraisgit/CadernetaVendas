@@ -1,21 +1,27 @@
+<p>
+  lista-compras works!
+</p>
+
 <div class="super-container mt-3">
   <div class="row row-titulo-produtos">
     <div class="col-md-12">
-      <h1 class="titulo">Produtos</h1>
+      <h1 id="titulo-produtos">
+        Histórico de Compras
+      </h1>
     </div>
   </div>
 
-  <ng-template #erroListaProduto>
+  <ng-template #erroListaCompras>
     <div class="row justify-content-center mt-5">
-      <cv-empty-message titulo="Você ainda não possui produtos cadastrados"
-        corpo="Clique no botão adicionar para cadastrar seu primeiro produto">
+      <cv-empty-message titulo="Você ainda não registrou uma compra"
+        corpo="Clique no botão adicionar para registrar sua primeira compra">
         <button class="btn btn-success text-center" [routerLink]="['/produtos/adicionar']"
           type="button">ADICIONAR</button>
       </cv-empty-message>
     </div>
   </ng-template>
 
-  <div *ngIf="produtos.length != 0; else erroListaProduto">
+  <div *ngIf="produtos.length != 0; else erroListaCompras">
     <div class="row">
       <div class="col-md-12">
         <button class="btn btn-primary" type="button" [routerLink]="['/produtos/adicionar']"
