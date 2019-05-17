@@ -46,6 +46,11 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             return compra;
         }
 
+        public IEnumerable<Compra> BuscarTodas()
+        {
+            return _compraRepository.ObterTodos();
+        }
+
         public void Dispose()
         {
             _compraRepository.Dispose();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Compras;
@@ -10,5 +11,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
     public class CompraRepository : Repository<Compra>, ICompraRepository
     {
         public CompraRepository(CadernetaVendasContext context) : base(context) { }
+
+        public override IEnumerable<Compra> ObterTodos()
+        {
+            return DbSet.Include(c => c.ComprasProdutos);
+        }
     }
 }

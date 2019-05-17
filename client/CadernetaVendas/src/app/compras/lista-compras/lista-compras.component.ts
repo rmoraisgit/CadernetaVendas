@@ -9,11 +9,16 @@ import { CompraService } from '../services/compra.service';
 })
 export class ListaComprasComponent implements OnInit {
 
-  produtos: Compra[] = [];
+  compras: Compra[] = [];
 
   constructor(private compraService: CompraService) { }
 
   ngOnInit() {
+    this.compraService.obterCompras().subscribe(
+      compras => {
+        this.compras = compras;
+        console.log(compras);
+      }
+    )
   }
-
 }

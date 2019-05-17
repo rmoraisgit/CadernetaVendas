@@ -1,13 +1,7 @@
-<p>
-  lista-compras works!
-</p>
-
 <div class="super-container mt-3">
   <div class="row row-titulo-produtos">
     <div class="col-md-12">
-      <h1 id="titulo-produtos">
-        Histórico de Compras
-      </h1>
+      <h1 class="titulo">Histórico de Compras</h1>
     </div>
   </div>
 
@@ -21,10 +15,10 @@
     </div>
   </ng-template>
 
-  <div *ngIf="produtos.length != 0; else erroListaCompras">
+  <div *ngIf="compras.length != 0; else erroListaCompras">
     <div class="row">
       <div class="col-md-12">
-        <button class="btn btn-primary" type="button" [routerLink]="['/produtos/adicionar']"
+        <button class="btn btn-primary" type="button" [routerLink]="['/compras/registrar']"
           id="btn-adicionar">ADICIONAR</button>
       </div>
     </div>
@@ -32,19 +26,19 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Preço</th>
-          <th id="th-center" scope="col">Peso(em kg)</th>
-          <th id="th-center" scope="col">Editar</th>
+          <th scope="col">Fornecedor</th>
+          <th scope="col">Data da Compra</th>
+          <th id="th-center" scope="col">TOTAL</th>
+          <th id="th-center" scope="col">Detalhes</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let produto of produtos">
-          <td>{{produto.nome}}</td>
-          <td>R${{produto.valor}}</td>
-          <td id="td-center">{{produto.peso}}kg</td>
+        <tr *ngFor="let compra of compras">
+          <td>{{compra.fornecedor}}</td>
+          <td>{{compra.dataCadastro | date :'shortDate'}} </td>
+          <td id="td-center">R${{compra.total | number}}</td>
           <td id="td-center">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <i class="fa fa-search-plus" aria-hidden="true"></i>
           </td>
         </tr>
       </tbody>

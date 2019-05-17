@@ -32,6 +32,10 @@ const routes: Routes = [
     },
     {
         path: 'compras',
+        component: ListaComprasComponent
+    },
+    {
+        path: 'compras/registrar',
         component: RegistrarCompraComponent
     },
     {

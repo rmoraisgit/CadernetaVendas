@@ -11,6 +11,10 @@ a {
     font-size: 20px;
 }
 
+.logo {
+    display: flex;
+}
+
 .img-logo {
     height: 60px; 
     width: 60px; 
@@ -30,6 +34,8 @@ a {
     -ms-transition: all 200ms ease;
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
+    margin-top: 18px;
+    text-align: right;
 }
 
 .main_nav li a {

@@ -18,5 +18,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public Guid Id { get; set; }
         public FluentValidation.Results.ValidationResult ValidationResult { get; set; }
         public IEnumerable<ModelError> Errors { get; set; }
+        public DateTime DataCadastro { get; set; }
     }
 }

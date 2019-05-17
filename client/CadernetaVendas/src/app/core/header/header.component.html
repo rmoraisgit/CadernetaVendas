@@ -5,8 +5,12 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" [routerLink]="['']">
             <div class="logo">
-              <img class="img-logo"src="../../../assets/tablet.png">
-              <span class="logo_text">Caderneta de Vendas</span>
+              <img class="img-logo" src="../../../assets/tablet.png">
+              <div class=logo_text>
+                <span class="">Caderneta de Vendas</span>
+                <br>
+                <small style="color:red; font-size: 12px">beta</small>
+              </div>
             </div>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -15,14 +19,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav main_nav" style="margin-left: auto!important;">
-              <!-- <li class="nav-item active">
-                <a class="nav-link" 
-                   
-                   (mouseenter)="mouseEnter($event.target)" 
-                   (mouseleave)="mouseLeave($event.target)"
-                   >Página Inicial
-                </a>
-              </li> -->
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['clientes']" (mouseenter)="mouseEnter($event.target)"
                   (mouseleave)="mouseLeave($event.target)">Clientes

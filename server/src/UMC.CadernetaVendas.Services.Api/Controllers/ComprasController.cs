@@ -36,9 +36,9 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         // GET: api/Compras
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<CompraViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _mapper.Map<IEnumerable<CompraViewModel>>(_compraRepository.ObterTodos());
         }
 
         [HttpPost]

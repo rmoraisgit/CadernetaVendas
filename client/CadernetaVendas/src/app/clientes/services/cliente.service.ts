@@ -13,12 +13,10 @@ export class ClienteService extends BaseService {
   constructor(private http: HttpClient) { super(); }
 
   obterClientes() {
-    
-      return this.http.get<Cliente[]>(this.UrlServiceV1 + 'clientes');
+    return this.http.get<Cliente[]>(this.UrlServiceV1 + 'clientes');
   };
 
-  adicionarCliente(cliente : any) {
-
+  adicionarCliente(cliente: any) {
     return this.http.post(this.UrlServiceV1 + 'clientes/adicionar', cliente, this.ObterHeaderJson());
   };
 }
