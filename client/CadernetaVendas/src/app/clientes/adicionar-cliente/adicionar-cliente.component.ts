@@ -146,17 +146,11 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
           estado: cliente.estado
         }
     }
-    console.log(clienteJSON);
     
-
-    console.log(cliente);
-
     var response = this.clienteService.adicionarCliente(clienteJSON).subscribe(res => {
       this.alertService.success('Cliente adicionado com sucesso.');
       this.router.navigate(['clientes'])
     });
-
-    console.log(response);
   }
 
   buscarDadosCEP(cepCliente: string) {
@@ -172,8 +166,6 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   }
 
   preencherCamposEndereco(endereco : Endereco){
-
-    console.log(endereco);
 
     this.clienteForm.get('logradouro').setValue(endereco.logradouro);
     this.clienteForm.get('bairro').setValue(endereco.bairro);

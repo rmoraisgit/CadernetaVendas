@@ -100,3 +100,4 @@ C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVenda
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csprojAssemblyReference.cache

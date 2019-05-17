@@ -56,7 +56,6 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(value => {
       this.displayMessage = this.genericValidator.processMessages(this.produtoForm);
-      console.log(this.displayMessage)
     })
   }
 
@@ -72,7 +71,6 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   }
 
   atualizarForm(categoriaSelecionada: string) {
-    console.log(categoriaSelecionada);
 
     switch (categoriaSelecionada) {
 
@@ -108,13 +106,10 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   adicionar() {
     const produto: Produto = this.produtoForm.getRawValue();
 
-    console.log(produto);
-    console.log(produto.capacidade);
-
     this.produtoService.adicionarProduto(produto.nome, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
       .subscribe(res => {
         this.alertService.success('Produto adicionado com sucesso.');
-        this.router.navigate(['produtos'])
+        this.router.navigate(['produtos']);
       });
 
   }

@@ -32,8 +32,6 @@ export class ProdutoService extends BaseService {
     largura != undefined ? formData.append('largura', largura.toString().replace('.', ',')) : '0';
     capacidade != undefined ? formData.append('capacidade', capacidade.toString().replace('.', ',')) : '0';
 
-    // console.log(valor.toString());
-
     return this.http.post(this.UrlServiceV1 + 'produtos/adicionar', formData);
   };
 }

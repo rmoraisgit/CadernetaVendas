@@ -9,6 +9,7 @@ import { Produto } from 'src/app/produtos/models/produto';
 import { ProdutoCompra, Compra } from '../models/compra';
 import { CompraService } from '../services/compra.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -31,9 +32,10 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private render: Renderer,
+    private router: Router,
     private modalService: NgbModal,
     private compraService: CompraService,
-    private alertService : AlertService) {
+    private alertService: AlertService) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
 
@@ -87,7 +89,8 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     this.compraService.registrarCompra(this.compra).subscribe(
       res => {
         console.log(res);
-        this.alertService.success('Compra registrada com sucesso.')
+        this.alertService.success('Compra registrada com sucesso.');
+        this.router.navigate(['compras']);
       }
     )
   }
@@ -121,10 +124,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
     let valorTotalCompra: number = 0;
 
-    if (this.compra.produtosCompra.length == 0) {
-      console.log('TEM Q ZERAR O TOTAL')
-      return 0;
-    }
+    if (this.compra.produtosCompra.length == 0) return 0
 
     this.compra.produtosCompra.forEach(produto => {
       valorTotalCompra += produto.valorFinal;
@@ -136,9 +136,6 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   }
 
   removerProdutoCarrinho(event) {
-
-    console.log(event.parentNode.parentNode.cells)
-    console.log(event);
 
     let idProduto: string = event.parentNode.parentNode.cells[0].innerText;
     console.log(idProduto);

@@ -13,12 +13,10 @@ export class HeaderComponent implements OnInit {
   }
 
   mouseEnter(elemento: ElementRef) {
-    console.log(elemento);
     this.render.setElementStyle(elemento, 'color', '#37c6f0');
   }
 
   mouseLeave(elemento: ElementRef) {
-    console.log(elemento);
     this.render.setElementStyle(elemento, 'color', '#384158');
   }
 
