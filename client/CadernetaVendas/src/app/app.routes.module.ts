@@ -8,11 +8,16 @@ import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes
 import { AdicionarClienteComponent } from './clientes/adicionar-cliente/adicionar-cliente.component';
 import { RegistrarCompraComponent } from './compras/registrar-compra/registrar-compra.component';
 import { ListaComprasComponent } from './compras/lista-compras/lista-compras.component';
+import { LoginComponent } from './login/login/login.component';
 
 const routes: Routes = [
     {
         path: '',
         component: HomePageComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'produtos',

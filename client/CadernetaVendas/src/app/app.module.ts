@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { AlertModule } from './shared/alert/alert.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { ComprasModule } from './compras/compras.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ComprasModule } from './compras/compras.module';
     HttpClientModule,
     NgbModule,
     CoreModule,
+    LoginModule,
     HomeModule,
     AlertModule,
     ProdutosModule,

@@ -1,0 +1,10 @@
+.titulo {
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    color: #384158;
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+}
