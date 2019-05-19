@@ -5,13 +5,15 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from '../shared/alert/alert.module';
 import { FooterComponent } from './footer/footer.component';
+import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule, 
     RouterModule,
-    AlertModule
+    AlertModule,
+    ChangeColorOnHoverModule
   ],
   exports: [
     HeaderComponent,

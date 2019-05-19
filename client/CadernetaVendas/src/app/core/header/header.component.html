@@ -20,31 +20,19 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav main_nav" style="margin-left: auto!important;">
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['clientes']" (mouseenter)="mouseEnter($event.target)"
-                  (mouseleave)="mouseLeave($event.target)">Clientes
-                </a>
+                <a class="nav-link" cvChangeColorOnHover [routerLink]="['clientes']">Clientes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['produtos']" (mouseenter)="mouseEnter($event.target)"
-                  (mouseleave)="mouseLeave($event.target)">Produtos
-                </a>
+                <a class="nav-link" cvChangeColorOnHover [routerLink]="['produtos']">Produtos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['compras']" (mouseenter)="mouseEnter($event.target)"
-                  (mouseleave)="mouseLeave($event.target)">
-                  Compras
-                </a>
+                <a class="nav-link" cvChangeColorOnHover [routerLink]="['compras']">Compras</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['vendas']" (mouseenter)="mouseEnter($event.target)"
-                  (mouseleave)="mouseLeave($event.target)">
-                  Vendas
-                </a>
+                <a class="nav-link" cvChangeColorOnHover [routerLink]="['vendas']">Vendas</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-info" style="color: #fff;" [routerLink]="['vendas']">
-                  Acesse o sistema
-                </a>
+                <a class="btn btn-info" style="color: #fff;" [routerLink]="['vendas']">Acesse o sistema</a>
               </li>
             </ul>
           </div>

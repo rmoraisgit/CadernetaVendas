@@ -9,15 +9,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private render: Renderer) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  mouseEnter(elemento: ElementRef) {
-    this.render.setElementStyle(elemento, 'color', '#37c6f0');
-  }
+  // mouseEnter(elemento: ElementRef) {
+  //   this.render.setElementStyle(elemento, 'color', '#37c6f0');
+  // }
 
-  mouseLeave(elemento: ElementRef) {
-    this.render.setElementStyle(elemento, 'color', '#384158');
-  }
-
+  // mouseLeave(elemento: ElementRef) {
+  //   this.render.setElementStyle(elemento, 'color', '#384158');
+  // }
 }

@@ -9,6 +9,7 @@ import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { VMessageModule } from '../shared/validation-message/vmessage.module';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
+import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
+    ChangeColorOnHoverModule,
     CurrencyMaskModule,
     FormsModule,
     VMessageModule,

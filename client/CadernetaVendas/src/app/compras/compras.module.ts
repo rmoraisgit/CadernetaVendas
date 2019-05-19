@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ListaComprasComponent } from './lista-compras/lista-compras.component';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
+import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 
 registerLocaleData(pt, 'pt-BR');
 
@@ -24,6 +25,7 @@ registerLocaleData(pt, 'pt-BR');
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    ChangeColorOnHoverModule,
     NgbModule,
     CurrencyMaskModule,
     VMessageModule,
