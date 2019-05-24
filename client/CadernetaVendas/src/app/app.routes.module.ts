@@ -9,6 +9,7 @@ import { AdicionarClienteComponent } from './clientes/adicionar-cliente/adiciona
 import { RegistrarCompraComponent } from './compras/registrar-compra/registrar-compra.component';
 import { ListaComprasComponent } from './compras/lista-compras/lista-compras.component';
 import { LoginComponent } from './login/login/login.component';
+import { ListaProdutosResolver } from './produtos/lista-produtos/lista-produtos.resolver';
 
 const routes: Routes = [
     {
@@ -21,7 +22,10 @@ const routes: Routes = [
     },
     {
         path: 'produtos',
-        component: ListaProdutosComponent
+        component: ListaProdutosComponent,
+        resolve: {
+            produtos: ListaProdutosResolver
+        }
     },
     {
         path: 'produtos/adicionar',

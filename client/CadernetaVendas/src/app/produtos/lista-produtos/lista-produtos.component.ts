@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cv-lista-produtos',
@@ -11,12 +12,9 @@ export class ListaProdutosComponent implements OnInit {
 
   produtos: Produto[] = [];
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    
-    this.produtoService.obterProdutos().subscribe(produtos => {
-      this.produtos = produtos
-    })
+    this.produtos = this.activatedRoute.snapshot.data["produtos"];
   }
 }

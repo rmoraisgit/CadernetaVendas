@@ -6,13 +6,8 @@
     </button>
   </div>
   <div class="modal-body">
-
     <cv-itens-compra (enviarProduto)="obterProdutoParaCarrinho($event)"></cv-itens-compra>
-
   </div>
-  <!-- <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="getDismissReason($event)" (click)="obterProdutoParaCarrinho()">Save</button>
-  </div> -->
 </ng-template>
 
 <div class="row">
@@ -75,8 +70,9 @@
                     value="R$ {{produto.valorFinal | number}}" />
                 </td>
                 <td class="text-center">
-                  <i (click)="removerProdutoCarrinho($event.target)" (mouseenter)="mouseEnter($event.target)"
-                    (mouseleave)="mouseLeave($event.target)" class="fa fa-window-close" aria-hidden="true"></i>
+                  <i  class="fa fa-window-close" cvChangeColorOnHover (click)="removerProdutoCarrinho($event.target)"
+                    aria-hidden="true">
+                  </i>
                 </td>
               </tr>
             </tbody>

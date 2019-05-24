@@ -134,3 +134,20 @@ C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVenda
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj.CopyComplete
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll
 C:\Users\rmoraiss\Desktop\02.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.pdb
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.deps.json
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.pdb
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.dll
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.dll
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.pdb
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.Data.pdb
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\bin\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csprojAssemblyReference.cache
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj.CoreCompileInputs.cache
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.AssemblyInfoInputs.cache
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.AssemblyInfo.cs
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj.CopyComplete
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.dll
+C:\Users\rmoraiss\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Infra.CrossCutting.IoC.pdb

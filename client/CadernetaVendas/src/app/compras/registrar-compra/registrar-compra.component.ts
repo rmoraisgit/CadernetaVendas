@@ -138,16 +138,11 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
   removerProdutoCarrinho(event) {
 
     let idProduto: string = event.parentNode.parentNode.cells[0].innerText;
-    console.log(idProduto);
-
-    // event.parentNode.parentNode.remove();
+    
     this.removerProdutoLista(idProduto)
   }
 
   removerProdutoLista(idProdutoRemovido: string) {
-
-    console.log('ANTES DE REMOVER')
-    console.log(this.produtos);
 
     this.compra.produtosCompra.forEach(produto => {
       if (produto.produtoId == idProdutoRemovido) {
@@ -159,15 +154,5 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
     console.log('DEPOIS DE REMOVER')
     console.log(this.produtos);
-  }
-
-  mouseEnter(elemento: ElementRef) {
-    console.log(elemento);
-    this.render.setElementStyle(elemento, 'color', '#37c6f0');
-  }
-
-  mouseLeave(elemento: ElementRef) {
-    console.log(elemento);
-    this.render.setElementStyle(elemento, 'color', '#384158');
   }
 }
