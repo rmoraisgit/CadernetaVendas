@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Core.Models;
+using UMC.CadernetaVendas.Domain.Vendas;
 
 namespace UMC.CadernetaVendas.Domain.Produtos
 {
@@ -50,6 +51,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public DateTime DataCadastro { get; private set; }
         public Guid CategoriaId { get; private set; }
         public virtual Categoria Categoria { get; private set; }
+        public virtual ICollection<VendaProduto> VendasProdutos { get; private set; }
         public virtual ICollection<CompraProduto> ComprasProdutos { get; private set; }
 
         public override bool EhValido()

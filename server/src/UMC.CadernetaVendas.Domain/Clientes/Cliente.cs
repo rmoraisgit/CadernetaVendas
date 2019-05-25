@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Core.Models;
+using UMC.CadernetaVendas.Domain.Vendas;
 
 namespace UMC.CadernetaVendas.Domain.Clientes
 {
@@ -27,7 +28,8 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public DateTime DataCadastro { get; private set; }
         public Guid EnderecoId { get; private set; }
         public virtual Endereco Endereco { get; private set; }
-      
+        public virtual ICollection<VendaCliente> VendasClientes { get; set; }
+
         // EF Core - Construtor Vázio
         protected Cliente() { }
 

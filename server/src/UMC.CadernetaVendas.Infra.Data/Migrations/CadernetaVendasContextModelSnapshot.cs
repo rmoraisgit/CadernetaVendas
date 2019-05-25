@@ -51,10 +51,14 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
+                    b.Property<Guid?>("VendaId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EnderecoId")
                         .IsUnique();
+
+                    b.HasIndex("VendaId");
 
                     b.ToTable("Clientes");
                 });
@@ -197,13 +201,64 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<decimal>("ValorVenda")
                         .HasColumnType("decimal(10, 2)");
 
+                    b.Property<Guid?>("VendaId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
                     b.HasIndex("CompraId");
 
+                    b.HasIndex("VendaId");
+
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Vendas.Venda", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(10, 2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vendas");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Vendas.VendaCliente", b =>
+                {
+                    b.Property<Guid>("VendaId");
+
+                    b.Property<Guid>("ClienteId");
+
+                    b.HasKey("VendaId", "ClienteId");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("VendasClientes");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Vendas.VendaProduto", b =>
+                {
+                    b.Property<Guid>("VendaId");
+
+                    b.Property<Guid>("ProdutoId");
+
+                    b.Property<int>("Quantidade");
+
+                    b.Property<decimal>("ValorSugerido");
+
+                    b.Property<decimal>("ValorVenda");
+
+                    b.HasKey("VendaId", "ProdutoId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("VendasProdutos");
                 });
 
             modelBuilder.Entity("UMC.CadernetaVendas.Domain.Clientes.Cliente", b =>
@@ -212,6 +267,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                         .WithOne("Cliente")
                         .HasForeignKey("UMC.CadernetaVendas.Domain.Clientes.Cliente", "EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Vendas.Venda")
+                        .WithMany("Clientes")
+                        .HasForeignKey("VendaId");
                 });
 
             modelBuilder.Entity("UMC.CadernetaVendas.Domain.Compras.CompraProduto", b =>
@@ -237,6 +296,36 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.HasOne("UMC.CadernetaVendas.Domain.Compras.Compra")
                         .WithMany("Produtos")
                         .HasForeignKey("CompraId");
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Vendas.Venda")
+                        .WithMany("Produtos")
+                        .HasForeignKey("VendaId");
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Vendas.VendaCliente", b =>
+                {
+                    b.HasOne("UMC.CadernetaVendas.Domain.Clientes.Cliente", "Cliente")
+                        .WithMany("VendasClientes")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Vendas.Venda", "Venda")
+                        .WithMany("VendasClientes")
+                        .HasForeignKey("VendaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("UMC.CadernetaVendas.Domain.Vendas.VendaProduto", b =>
+                {
+                    b.HasOne("UMC.CadernetaVendas.Domain.Produtos.Produto", "Produto")
+                        .WithMany("VendasProdutos")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("UMC.CadernetaVendas.Domain.Vendas.Venda", "Venda")
+                        .WithMany("VendasProdutos")
+                        .HasForeignKey("VendaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

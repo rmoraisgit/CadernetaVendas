@@ -8,8 +8,10 @@ using System.Text;
 using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Produtos;
+using UMC.CadernetaVendas.Domain.Vendas;
 using UMC.CadernetaVendas.Infra.Data.Extensions;
 using UMC.CadernetaVendas.Infra.Data.Mappings;
+using UMC.CadernetaVendas.Infra.Data.Mappings.Vendas;
 
 namespace UMC.CadernetaVendas.Infra.Data.Context
 {
@@ -24,6 +26,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
         public DbSet<Compra> Compras { get; set; }
         public DbSet<CompraProduto> ComprasProdutos { get; set; }
 
+        public DbSet<Venda> Venda { get; set; }
+        public DbSet<VendaProduto> VendasProdutos { get; set; }
+        public DbSet<VendaCliente> VendasClientes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfiguration(new ProdutoMapping());
@@ -34,6 +40,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
 
             modelBuilder.AddConfiguration(new CompraMapping());
             modelBuilder.AddConfiguration(new CompraProdutoMapping());
+
+            modelBuilder.AddConfiguration(new VendaMapping());
+            modelBuilder.AddConfiguration(new VendaProdutoMapping());
+            modelBuilder.AddConfiguration(new VendaClienteMapping());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
