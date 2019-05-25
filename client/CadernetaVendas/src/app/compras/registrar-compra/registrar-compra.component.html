@@ -1,20 +1,8 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Produtos Cadastrados</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
+<ng-template #modalCompra>
+  <cv-modal tituloModal="Produtos Disponíveis">
     <cv-itens-compra (enviarProduto)="obterProdutoParaCarrinho($event)"></cv-itens-compra>
-  </div>
+  </cv-modal>
 </ng-template>
-
-<div class="row">
-  <div class="col-12">
-    <h1 class="mt-5 titulo">Registro de Compra</h1>
-  </div>
-</div>
 
 <div class="row justify-content-center">
   <div class="col-6">
@@ -44,7 +32,7 @@
 
         <div class="form-group">
           <label for="descricao">Produtos</label>
-          <button class="btn btn-primary mb-1" (click)="open(content)" style="float: right;"
+          <button class="btn btn-primary mb-1" (click)="open(modalCompra)" style="float: right;"
             type="button">Procurar</button>
 
 
@@ -70,7 +58,7 @@
                     value="R$ {{produto.valorFinal | number}}" />
                 </td>
                 <td class="text-center">
-                  <i  class="fa fa-window-close" cvChangeColorOnHover (click)="removerProdutoCarrinho($event.target)"
+                  <i class="fa fa-window-close" cvChangeColorOnHover (click)="removerProdutoCarrinho($event.target)"
                     aria-hidden="true">
                   </i>
                 </td>

@@ -12,6 +12,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ListaComprasComponent } from './lista-compras/lista-compras.component';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
+import { ModalModule } from '../shared/modal/modal.module';
 
 registerLocaleData(pt, 'pt-BR');
 
@@ -29,7 +30,8 @@ registerLocaleData(pt, 'pt-BR');
     NgbModule,
     CurrencyMaskModule,
     VMessageModule,
-    ListEmptyMessageModule
+    ListEmptyMessageModule,
+    ModalModule
   ],
   exports: [
     RegistrarCompraComponent

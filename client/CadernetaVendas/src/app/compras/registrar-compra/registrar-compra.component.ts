@@ -10,6 +10,7 @@ import { ProdutoCompra, Compra } from '../models/compra';
 import { CompraService } from '../services/compra.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { Router } from '@angular/router';
+import { ModalService } from 'src/app/shared/modal/modal.service';
 
 @Component({
   selector: 'cv-registrar-compra',
@@ -33,7 +34,8 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private render: Renderer,
     private router: Router,
-    private modalService: NgbModal,
+    private ngbModalService: NgbModal,
+    private modalService: ModalService,
     private compraService: CompraService,
     private alertService: AlertService) {
 
@@ -60,12 +62,9 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     })
   }
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  open(modalCompra) {
+    
+    this.modalService.abrirModal(modalCompra);
   }
 
   private getDismissReason(reason: any): string {
