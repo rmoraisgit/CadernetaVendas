@@ -23,12 +23,11 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
-        public DbSet<Compra> Compras { get; set; }
-        public DbSet<CompraProduto> ComprasProdutos { get; set; }
-
         public DbSet<Venda> Venda { get; set; }
         public DbSet<VendaProduto> VendasProdutos { get; set; }
-        public DbSet<VendaCliente> VendasClientes { get; set; }
+
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<CompraProduto> ComprasProdutos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,12 +37,11 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
             modelBuilder.AddConfiguration(new ClienteMapping());
             modelBuilder.AddConfiguration(new EnderecoMapping());
 
-            modelBuilder.AddConfiguration(new CompraMapping());
-            modelBuilder.AddConfiguration(new CompraProdutoMapping());
-
             modelBuilder.AddConfiguration(new VendaMapping());
             modelBuilder.AddConfiguration(new VendaProdutoMapping());
-            modelBuilder.AddConfiguration(new VendaClienteMapping());
+
+            modelBuilder.AddConfiguration(new CompraMapping());
+            modelBuilder.AddConfiguration(new CompraProdutoMapping());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -19,15 +19,14 @@ namespace UMC.CadernetaVendas.Domain.Vendas
         public DateTime DataCadastro { get; private set; }
         public decimal Total { get; private set; }
 
+        /* Cliente */
+        public Guid ClienteId { get; set; }
+        public virtual Cliente Cliente { get; private set; }
+
         /* Produtos */
         public virtual ICollection<Guid> IdsProdutos { get; private set; }
         public virtual ICollection<Produto> Produtos { get; private set; }
         public virtual ICollection<VendaProduto> VendasProdutos { get; private set; }
-
-        /* Clientes */
-        public virtual ICollection<Guid> IdsClientes { get; private set; }
-        public virtual ICollection<Cliente> Clientes { get; private set; }
-        public virtual ICollection<VendaCliente> VendasClientes { get; private set; }
 
         public override bool EhValido()
         {

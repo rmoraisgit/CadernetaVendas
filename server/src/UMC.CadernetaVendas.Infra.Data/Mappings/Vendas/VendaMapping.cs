@@ -14,17 +14,19 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings.Vendas
         {
             builder.HasKey(p => p.Id);
 
-            builder.Property(c => c.Total)
+            builder.Property(v => v.Total)
                 .HasColumnType("decimal(10, 2)")
                 .IsRequired();
 
-            builder.Ignore(c => c.IdsProdutos);
+            builder.Ignore(v => v.IdsProdutos);
 
-            builder.Ignore(c => c.IdsClientes);
+            builder.Ignore(v => v.ValidationResult);
 
-            builder.Ignore(c => c.ValidationResult);
+            builder.Ignore(v => v.CascadeMode);
 
-            builder.Ignore(c => c.CascadeMode);
+            builder.HasOne(v => v.Cliente)
+               .WithMany(c => c.Vendas)
+               .HasForeignKey(v => v.ClienteId);
 
             builder.ToTable("Vendas");
         }

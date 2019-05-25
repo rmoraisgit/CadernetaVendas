@@ -7,6 +7,5 @@ namespace UMC.CadernetaVendas.Domain.Compras.Repository
 {
     public interface ICompraRepository : IRepository<Compra>
     {
-
     }
 }

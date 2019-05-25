@@ -28,7 +28,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public DateTime DataCadastro { get; private set; }
         public Guid EnderecoId { get; private set; }
         public virtual Endereco Endereco { get; private set; }
-        public virtual ICollection<VendaCliente> VendasClientes { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
 
         // EF Core - Construtor Vázio
         protected Cliente() { }

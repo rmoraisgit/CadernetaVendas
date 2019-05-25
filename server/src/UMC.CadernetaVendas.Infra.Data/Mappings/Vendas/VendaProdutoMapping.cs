@@ -24,9 +24,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings.Vendas
 
             builder.Ignore(vp => vp.Id);
 
-            builder.Ignore(c => c.ValidationResult);
+            builder.Ignore(v => v.ValidationResult);
 
-            builder.Ignore(c => c.CascadeMode);
+            builder.Ignore(v => v.CascadeMode);
 
             builder.ToTable("VendasProdutos");
         }
