@@ -21,7 +21,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         private readonly IMapper _mapper;
         private readonly ICompraService _compraService;
         private readonly ICompraRepository _compraRepository;
-        private readonly IProdutoRepository _produtoRepository;
 
         public ComprasController(IMapper mapper,
                                   ICompraService compraService,
@@ -31,7 +30,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             _mapper = mapper;
             _compraService = compraService;
             _compraRepository = compraRepository;
-            _produtoRepository = produtoRepository;
         }
 
         // GET: api/Compras

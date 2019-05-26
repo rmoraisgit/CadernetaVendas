@@ -32,5 +32,10 @@ namespace UMC.CadernetaVendas.Domain.Vendas
         {
             throw new NotImplementedException();
         }
+
+        public void AdicionarProdutos(List<VendaProduto> vendasProdutos)
+        {
+            VendasProdutos = vendasProdutos;
+        }
     }
 }

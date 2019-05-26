@@ -109,3 +109,4 @@ C:\Users\Rafael\Desktop\04.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.
 C:\Users\Rafael\Desktop\04.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
 C:\Users\Rafael\Desktop\04.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\Rafael\Desktop\04.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\Rafael\Desktop\04.05.19\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csprojAssemblyReference.cache

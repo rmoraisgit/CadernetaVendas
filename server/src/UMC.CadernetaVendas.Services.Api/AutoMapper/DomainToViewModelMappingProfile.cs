@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Produtos;
+using UMC.CadernetaVendas.Domain.Vendas;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.AutoMapper
@@ -17,6 +18,8 @@ namespace UMC.CadernetaVendas.Services.Api.AutoMapper
             CreateMap<Produto, ProdutoViewModel>();
             CreateMap<Cliente, ClienteViewModel>();
             CreateMap<Endereco, EnderecoViewModel>();
+            CreateMap<Venda, VendaViewModel>();
+            CreateMap<VendaProduto, VendaProdutoViewModel>();
             CreateMap<Compra, CompraViewModel>();
             CreateMap<CompraProduto, CompraProdutoViewModel>();
         }
