@@ -12,6 +12,7 @@ import { AlertModule } from './shared/alert/alert.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { ComprasModule } from './compras/compras.module';
 import { LoginModule } from './login/login.module';
+import { VendasModule } from './vendas/vendas.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginModule } from './login/login.module';
     AlertModule,
     ProdutosModule,
     ClientesModule,
+    VendasModule,
     ComprasModule
   ],
   providers: [],

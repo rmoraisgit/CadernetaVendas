@@ -10,6 +10,8 @@ import { RegistrarCompraComponent } from './compras/registrar-compra/registrar-c
 import { ListaComprasComponent } from './compras/lista-compras/lista-compras.component';
 import { LoginComponent } from './login/login/login.component';
 import { ListaProdutosResolver } from './produtos/lista-produtos/lista-produtos.resolver';
+import { ListaVendasComponent } from './vendas/lista-vendas/lista-vendas.component';
+import { RegistrarVendaComponent } from './vendas/registrar-venda/registrar-venda.component';
 
 const routes: Routes = [
     {
@@ -49,7 +51,11 @@ const routes: Routes = [
     },
     {
         path: 'vendas',
-        component: ListaComprasComponent
+        component: ListaVendasComponent
+    },
+    {
+        path: 'vendas/registrar',
+        component: RegistrarVendaComponent
     }
 ]
 
