@@ -54,6 +54,7 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
         public void Dispose()
         {
             _compraRepository.Dispose();
+            _compraProdutoRepository.Dispose();
         }
 
         private void ValidarPrecoProduto(CompraProduto produto)

@@ -30,7 +30,8 @@ namespace UMC.CadernetaVendas.Domain.Vendas
 
         public override bool EhValido()
         {
-            throw new NotImplementedException();
+            ValidationResult = Validate(this);
+            return true;
         }
 
         public void AdicionarProdutos(List<VendaProduto> vendasProdutos)

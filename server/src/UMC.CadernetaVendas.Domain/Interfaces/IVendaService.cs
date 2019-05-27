@@ -7,7 +7,7 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
 {
     public interface IVendaService : IDisposable
     {
-        Venda Registrar(Venda compra);
+        Venda Registrar(Venda venda);
         IEnumerable<Venda> BuscarTodas();
     }
 }
