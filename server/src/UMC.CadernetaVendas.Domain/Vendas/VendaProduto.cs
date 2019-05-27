@@ -8,13 +8,14 @@ namespace UMC.CadernetaVendas.Domain.Vendas
 {
     public class VendaProduto : Entity<VendaProduto>
     {
-        public VendaProduto(Guid vendaId, Guid produtoId, int quantidade, decimal valorVenda, decimal valorSugerido)
+        public VendaProduto(Guid vendaId, Guid produtoId, int quantidade, decimal valorVenda, decimal valorSugerido, decimal valorFinal)
         {
             VendaId = vendaId;
             ProdutoId = produtoId;
             Quantidade = quantidade;
             ValorVenda = valorVenda;
             ValorSugerido = valorSugerido;
+            ValorFinal = valorFinal;
         }
 
         protected VendaProduto() { }
@@ -26,6 +27,7 @@ namespace UMC.CadernetaVendas.Domain.Vendas
         public int Quantidade { get; private set; }
         public decimal ValorVenda { get; private set; }
         public decimal ValorSugerido { get; private set; }
+        public decimal ValorFinal { get; private set; }
 
         public override bool EhValido()
         {

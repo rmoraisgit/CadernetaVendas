@@ -1,3 +1,97 @@
-<p>
-  registrar-venda works!
-</p>
+<ng-template #modalProdutos>
+  <cv-modal tituloModal="Produtos Disponíveis">
+    <cv-itens-venda (enviarProduto)="obterProdutoParaCarrinho($event)"></cv-itens-venda>
+  </cv-modal>
+</ng-template>
+
+<div class="row">
+  <div class="col-12">
+    <h1 class="mt-5 titulo">Formulário de Registro</h1>
+    <h3 class="mt-2 titulo">Venda</h3>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6">
+    <hr>
+    <div class="form-cadastro">
+
+      <ng-template #carrinhoVazio>
+        <div class="row carrinho-vazio ml-0 mt-1">
+          <div class="col-12">
+            <span style="float: left;"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></span>
+            <h5 class="text-center mt-1">O Seu carrinho está vázio</h5>
+            <p class="text-center">Clique em "Procurar" para adicionar produtos</p>
+          </div>
+        </div>
+      </ng-template>
+
+      <form [formGroup]="vendaForm" (submit)="registrar()">
+
+        <div class="form-group mt-2">
+          <label for="cliente">Cliente</label>
+          <input formControlName="cliente" type="text" class="form-control" id="cliente"
+            placeholder="Insira o nome do cliente">
+
+          <ap-vmessage *ngIf="displayMessage.cliente" text="{{displayMessage.cliente}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Produtos</label>
+          <button class="btn btn-primary mb-1" (click)="open(modalProdutos)" style="float: right;"
+            type="button">Procurar</button>
+
+
+          <table class="table table-bordered" *ngIf="venda.produtosVenda.length != 0 else carrinhoVazio">
+            <thead>
+              <th>Nome</th>
+              <th>Preço unit.</th>
+              <th>Qtd.</th>
+              <th>Preço final</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let produto of venda.produtosVenda">
+                <td style="display: none;">{{produto.produtoId}}</td>
+                <td>{{produto.nome}}</td>
+                <td>
+                  <input class="form-control input-disabled" type="text" disabled="true"
+                    value="R$ {{produto.valorUnitarioFormatado | number}}" />
+                </td>
+                <td>{{produto.quantidade}}</td>
+                <td>
+                  <input class="form-control input-disabled" type="text" disabled="true"
+                    value="R$ {{produto.valorFinal | number}}" />
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-window-close" cvChangeColorOnHover (click)="removerProdutoCarrinho($event.target)"
+                    aria-hidden="true">
+                  </i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group row justify-content-end mt-4">
+          <label for="total" class="col-3 mt-2"><b>TOTAL PAGO:</b></label>
+          <div class="col-6">
+            <input formControlName="total" currencyMask type="text" class="form-control" id="total" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="button-group row mt-4">
+          <div class="col-6 text-center">
+            <button class="btn btn-primary btn-100-width" [routerLink]="['/vendas']" type="button">Voltar</button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn btn-success btn-100-width" type="submit"
+              [disabled]="vendaForm.invalid || venda.produtosVenda.length == 0">Registrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

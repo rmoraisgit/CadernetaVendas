@@ -1,0 +1,71 @@
+<div class="itens-venda">
+
+  <div class="tabela-itens" style="height: 300px;">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Peso(em kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr (click)="selecionarItem($event.target)"
+          *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+
+
+          <td style="display: none;">{{produto.id}}</td>
+          <td>{{produto.nome}}</td>
+          <td>{{produto.peso}}kg</td>
+          <td style="display: none;">{{produto.valorVenda}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination>
+
+</div>
+
+<form [formGroup]="itensForm">
+
+  <div class="form-group mt-2">
+    <label for="produto">Produto</label>
+    <input #nomeProduto formControlName="produto" disabled type="text" class="form-control" id="produto">
+
+    <ap-vmessage *ngIf="displayMessage.produto" text="{{displayMessage.produto}}">
+    </ap-vmessage>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-6 mt-2">
+      <label for="quantidade">Quantidade</label>
+      <input #quantidade formControlName="quantidade" [disabled]="!habilitadoQuantidade" type="number"
+        class="form-control" id="quantidade">
+
+      <ap-vmessage *ngIf="displayMessage.quantidade" text="{{displayMessage.quantidade}}">
+      </ap-vmessage>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-6 mt-2">
+      <label for="precoSugerido">Preço sugerido para venda</label>
+      <input #precoSugerido formControlName="precoSugerido" [disabled]="!habilitadoPrecoSugerido" type="text"
+        class="form-control" id="precoSugerido" currencyMask
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+    </div>
+
+    <div class="col-md-6 mt-2">
+      <label for="precoVenda">Defina o preco para venda</label>
+      <input #precoVenda formControlName="precoVenda" [disabled]="!habilitadoprecoVenda" type="text"
+        class="form-control" id="precoVenda" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+    </div>
+
+    <input style="display: none;" formControlName="auxiliar" type="text" class="form-control" id="auxiliar">
+  </div>
+  <div class="mt-4" style="text-align: center;">
+    <button (click)="enviarProdutoParaCarrinho()" [disabled]="itensForm.invalid" class="btn btn-primary">Adicionar ao
+      carrinho</button>
+  </div>
+</form>

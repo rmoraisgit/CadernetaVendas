@@ -20,7 +20,6 @@ import { ModalService } from 'src/app/shared/modal/modal.service';
 export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   compraForm: FormGroup;
-  closeResult: string;
 
   produtos: Produto[] = [];
   compra: Compra = new Compra();
@@ -32,9 +31,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private render: Renderer,
     private router: Router,
-    private ngbModalService: NgbModal,
     private modalService: ModalService,
     private compraService: CompraService,
     private alertService: AlertService) {
@@ -67,18 +64,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     this.modalService.abrirModal(modalCompra);
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
   registrar() {
-    console.log('TIO RAFAEL')
 
     this.compra.fornecedor = this.compraForm.get('fornecedor').value;
     this.compra.total = this.compraForm.get('total').value;

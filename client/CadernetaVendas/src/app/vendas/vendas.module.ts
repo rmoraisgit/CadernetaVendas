@@ -11,11 +11,12 @@ import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-ho
 import { ModalModule } from '../shared/modal/modal.module';
 import { ListaVendasComponent } from './lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './registrar-venda/registrar-venda.component';
+import { ItensVendaComponent } from './registrar-venda/itens-venda/itens-venda.component';
 
 @NgModule({
   declarations: [
     ListaVendasComponent, 
-    RegistrarVendaComponent
+    RegistrarVendaComponent, ItensVendaComponent
   ],
   imports: [
     CommonModule,
