@@ -237,6 +237,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<int>("Quantidade");
 
+                    b.Property<decimal>("ValorFinal");
+
                     b.Property<decimal>("ValorSugerido");
 
                     b.Property<decimal>("ValorVenda");

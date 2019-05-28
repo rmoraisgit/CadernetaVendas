@@ -31,9 +31,9 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<VendaViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _mapper.Map<IEnumerable<VendaViewModel>>(_vendaRepository.ObterTodos());
         }
 
         [HttpPost]

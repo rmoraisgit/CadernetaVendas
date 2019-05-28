@@ -1,1 +1,49 @@
 <button class="btn btn-primary" [routerLink]="['/vendas/registrar']">Registrar</button>
+
+<div class="super-container mt-3">
+    <div class="row row-titulo-produtos">
+      <div class="col-md-12">
+        <h1 class="titulo">Histórico de Vendas</h1>
+      </div>
+    </div>
+  
+    <ng-template #erroListaVendas>
+      <div class="row justify-content-center mt-5">
+        <cv-empty-message titulo="Você ainda não registrou uma venda"
+          corpo="Clique no botão adicionar para registrar sua primeira venda">
+          <button class="btn btn-success text-center" [routerLink]="['/vendas/registrar']"
+            type="button">ADICIONAR</button>
+        </cv-empty-message>
+      </div>
+    </ng-template>
+  
+    <div *ngIf="vendas.length != 0; else erroListaVendas">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-success" type="button" [routerLink]="['/vendas/registrar']"
+            id="btn-adicionar">Registrar nova venda</button>
+        </div>
+      </div>
+  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Data da Compra</th>
+            <th id="th-center" scope="col">TOTAL</th>
+            <th id="th-center" scope="col">Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venda of vendas">
+            <td>{{venda.cliente.nome}}</td>
+            <td>{{venda.dataCadastro | date :'shortDate'}} </td>
+            <td id="td-center">R${{venda.total | number}}</td>
+            <td id="td-center">
+              <i class="fa fa-search-plus" cvChangeColorOnHover aria-hidden="true"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -14,7 +14,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public override IEnumerable<Venda> ObterTodos()
         {
-            return DbSet.Include(c => c.VendasProdutos);
+            return DbSet.Include(c => c.VendasProdutos).Include(c=>c.Cliente);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public string Nome { get; set; }
         public decimal ValorVenda { get; set; }
         public decimal ValorSugerido { get; set; }
+        public decimal ValorFinal { get; set; }
         public int Quantidade { get; set; }
     }
 }

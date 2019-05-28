@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VendasService } from '../services/vendas.service';
+import { Venda } from '../models/venda';
 
 @Component({
   selector: 'cv-lista-vendas',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaVendasComponent implements OnInit {
 
-  constructor() { }
+  vendas: Venda[] = [];
+
+  constructor(private vendaService: VendasService) { }
 
   ngOnInit() {
+    this.vendaService.obterVendas().subscribe(
+      vendas => {
+        this.vendas = vendas;
+        console.log(vendas);
+      }
+    )
   }
 
 }

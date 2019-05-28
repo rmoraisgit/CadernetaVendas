@@ -1,6 +1,7 @@
 // import { Endereco } from './endereco';
 
-export interface Cliente {   
+export class Cliente {   
+    id: string;
     nome: string;
     cpf: string;
     saldoDevedor: number;
@@ -10,7 +11,7 @@ export interface Cliente {
     endereco: Endereco;
 }
 
-export interface Endereco {
+export class Endereco {
     cep: string;
     logradouro: string;
     numero: string;

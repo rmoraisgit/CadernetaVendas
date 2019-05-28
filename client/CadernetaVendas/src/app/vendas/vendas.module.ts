@@ -12,11 +12,12 @@ import { ModalModule } from '../shared/modal/modal.module';
 import { ListaVendasComponent } from './lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './registrar-venda/registrar-venda.component';
 import { ItensVendaComponent } from './registrar-venda/itens-venda/itens-venda.component';
+import { ClientesDisponiveisComponent } from './registrar-venda/clientes-disponiveis/clientes-disponiveis.component';
 
 @NgModule({
   declarations: [
     ListaVendasComponent, 
-    RegistrarVendaComponent, ItensVendaComponent
+    RegistrarVendaComponent, ItensVendaComponent, ClientesDisponiveisComponent
   ],
   imports: [
     CommonModule,
