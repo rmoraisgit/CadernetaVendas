@@ -21,7 +21,7 @@
   <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="clientes.length"></ngb-pagination>
 
   <div class="mt-4" style="text-align: center;">
-    <button (click)="enviarClienteParaForm()" [disabled]="clientesSelecionados.length == 0" class="btn btn-primary">Confirmar</button>
+    <button (click)="enviarClienteParaForm()" [disabled]="!clienteSelecionado" class="btn btn-primary">Confirmar</button>
   </div>
 
 </div>

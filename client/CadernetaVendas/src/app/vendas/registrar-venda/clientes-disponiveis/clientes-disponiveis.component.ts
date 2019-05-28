@@ -11,7 +11,6 @@ import { ModalService } from 'src/app/shared/modal/modal.service';
 export class ClientesDisponiveisComponent implements OnInit {
 
   clientes: Cliente[] = [];
-  cliente: Cliente = new Cliente();
 
   clientesSelecionados: Cliente[] = [];
   clienteSelecionado: Cliente;
@@ -34,17 +33,10 @@ export class ClientesDisponiveisComponent implements OnInit {
 
   selecionarItem(elemento: any) /* elemento: ElementRef */ {
 
-    if (this.clientesSelecionados.length != 0) {
+    if (this.clienteSelecionado != undefined) {
       this.desmarcarItem(elemento);
       return;
     }
-
-    console.log(this.cliente);
-
-    console.log('AAAAAAA E NOID')
-    console.log(elemento);
-    console.log(elemento.parentNode.cells[0].innerText)
-    console.log(elemento.parentNode.cells[1].innerText)
 
     let clienteId = elemento.parentNode.cells[0].innerText;
     let nomeCliente = elemento.parentNode.cells[1].innerText;
@@ -55,7 +47,6 @@ export class ClientesDisponiveisComponent implements OnInit {
 
     elemento.parentNode.className = 'selecionado';
 
-    this.clientesSelecionados.push(cliente);
     this.clienteSelecionado = cliente;
     console.log(this.clienteSelecionado)
   }
@@ -68,7 +59,7 @@ export class ClientesDisponiveisComponent implements OnInit {
 
     elemento.parentNode.className = 'nao-selecionado';
 
-    this.clientesSelecionados = [];
+    this.clienteSelecionado = new Cliente();
   }
 
   enviarClienteParaForm() {
