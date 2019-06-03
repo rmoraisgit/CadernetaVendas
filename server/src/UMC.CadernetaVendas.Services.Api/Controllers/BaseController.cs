@@ -11,7 +11,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
     [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {
-        protected new IActionResult Response<T>(T ViewModel = null) where T : BaseViewModel
+        protected new ActionResult Response<T>(T ViewModel = null) where T : BaseViewModel
         {
             if (ViewModel.Errors?.Count() > 0)
             {

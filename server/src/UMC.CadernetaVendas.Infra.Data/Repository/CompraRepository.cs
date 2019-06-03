@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Compras.Repository;
 using UMC.CadernetaVendas.Infra.Data.Context;
@@ -12,9 +13,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
     {
         public CompraRepository(CadernetaVendasContext context) : base(context) { }
 
-        public override IEnumerable<Compra> ObterTodos()
+        public override async Task<IEnumerable<Compra>> ObterTodos()
         {
-            return DbSet.Include(c => c.ComprasProdutos);
+            return await DbSet.Include(c => c.ComprasProdutos).ToListAsync();
         }
     }
 }

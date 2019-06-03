@@ -13161,11 +13161,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\UMC.CadernetaVendas.Services.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\UMC.CadernetaVendas.Services.Api.csproj",
       "projectName": "UMC.CadernetaVendas.Services.Api",
-      "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\UMC.CadernetaVendas.Services.Api.csproj",
+      "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\UMC.CadernetaVendas.Services.Api.csproj",
       "packagesPath": "C:\\Users\\Rafael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\obj\\",
+      "outputPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Services.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13184,14 +13184,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj": {
-              "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj"
+            "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj": {
+              "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj"
             },
-            "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj": {
-              "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj"
+            "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj": {
+              "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.CrossCutting.IoC\\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj"
             },
-            "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj": {
-              "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj"
+            "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj": {
+              "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Infra.Data\\UMC.CadernetaVendas.Infra.Data.csproj"
             }
           }
         }

@@ -841,11 +841,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
       "projectName": "UMC.CadernetaVendas.Domain",
-      "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
+      "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\UMC.CadernetaVendas.Domain.csproj",
       "packagesPath": "C:\\Users\\Rafael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -864,8 +864,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj": {
-              "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj"
+            "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj": {
+              "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj"
             }
           }
         }

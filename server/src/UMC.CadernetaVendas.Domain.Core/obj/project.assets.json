@@ -822,11 +822,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
       "projectName": "UMC.CadernetaVendas.Domain.Core",
-      "projectPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
+      "projectPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\UMC.CadernetaVendas.Domain.Core.csproj",
       "packagesPath": "C:\\Users\\Rafael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafael\\Desktop\\Junho_TCC\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\obj\\",
+      "outputPath": "C:\\Users\\Rafael\\Desktop\\Caderneta de Vendas\\CadernetaVendas\\server\\src\\UMC.CadernetaVendas.Domain.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

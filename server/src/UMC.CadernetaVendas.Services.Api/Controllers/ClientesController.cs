@@ -32,13 +32,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IEnumerable<ClienteViewModel> Get()
+        public async Task<ActionResult<IEnumerable<ClienteViewModel>>> Get()
         {
-            return _mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
+            return Ok(_mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteRepository.ObterTodos()));
         }
 
-        [HttpPost]
-        [Route("adicionar")]
+        [HttpPost("adicionar")]
         public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
         {
             if (!ModelState.IsValid)

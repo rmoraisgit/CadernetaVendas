@@ -34,13 +34,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         // GET: api/Compras
         [HttpGet]
-        public IEnumerable<CompraViewModel> Get()
+        public async Task<ActionResult<IEnumerable<CompraViewModel>>> Get()
         {
-            return _mapper.Map<IEnumerable<CompraViewModel>>(_compraRepository.ObterTodos());
+            return Ok(_mapper.Map<IEnumerable<CompraViewModel>>(await _compraRepository.ObterTodos()));
         }
 
-        [HttpPost]
-        [Route("registrar")]
+        [HttpPost("registrar")]
         public IActionResult Post([FromBody] CompraViewModel compraViewModel)
         {
             if (!ModelState.IsValid)

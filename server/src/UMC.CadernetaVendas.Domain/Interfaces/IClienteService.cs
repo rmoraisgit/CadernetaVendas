@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Clientes;
 
 namespace UMC.CadernetaVendas.Domain.Interfaces
@@ -11,6 +12,6 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
         Cliente Atualizar(Cliente obj);
         void Remover(Guid id);
         Cliente BuscaPorId(Guid id);
-        IEnumerable<Cliente> BuscarTodos();
+        Task<IEnumerable<Cliente>> BuscarTodos();
     }
 }

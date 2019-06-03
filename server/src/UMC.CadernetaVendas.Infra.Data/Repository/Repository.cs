@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Core.Models;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Infra.Data.Context;
@@ -20,14 +21,6 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             Db = context;
             DbSet = Db.Set<TEntity>();
         }
-
-        //public virtual TEntity Adicionar(TEntity obj)
-        //{
-        //    var objAdicionado = DbSet.Add(obj);
-        //    Db.SaveChanges();
-
-        //    return objAdicionado.Entity;
-        //}
 
         public virtual TEntity Adicionar(TEntity obj)
         {
@@ -52,9 +45,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             return DbSet.FirstOrDefault(t => t.Id == id);
         }
 
-        public virtual IEnumerable<TEntity> ObterTodos()
+        public virtual async Task<IEnumerable<TEntity>> ObterTodos()
         {
-            return DbSet.ToList();
+            return await DbSet.ToListAsync();
         }
 
         public void Remover(Guid id)

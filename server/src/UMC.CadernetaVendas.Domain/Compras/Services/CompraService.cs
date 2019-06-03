@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Compras.Repository;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
@@ -46,9 +47,9 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             return compra;
         }
 
-        public IEnumerable<Compra> BuscarTodas()
+        public async Task<IEnumerable<Compra>> BuscarTodas()
         {
-            return _compraRepository.ObterTodos();
+            return await _compraRepository.ObterTodos();
         }
 
         public void Dispose()

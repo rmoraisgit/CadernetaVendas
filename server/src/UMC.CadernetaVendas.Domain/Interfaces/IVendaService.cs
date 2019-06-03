@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Vendas;
 
 namespace UMC.CadernetaVendas.Domain.Interfaces
@@ -8,6 +9,6 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
     public interface IVendaService : IDisposable
     {
         Venda Registrar(Venda venda);
-        IEnumerable<Venda> BuscarTodas();
+        Task<IEnumerable<Venda>> BuscarTodas();
     }
 }

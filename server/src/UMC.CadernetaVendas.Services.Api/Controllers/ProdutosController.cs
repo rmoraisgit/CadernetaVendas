@@ -32,17 +32,13 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IEnumerable<ProdutoViewModel> Get()
+        public async Task<ActionResult<IEnumerable<ProdutoViewModel>>> Get()
         {
-            //var produto = new Produto("RAFAEL", 10, 10, 10, 10, 10, "AAAAAA", Guid.NewGuid());
-            //var teste = _mapper.Map<ProdutoViewModel>(produto);
-
-            return _mapper.Map<IEnumerable<ProdutoViewModel>>(_produtoRepository.ObterTodos());
+            return Ok(_mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterTodos()));
         }
 
-        [HttpPost]
-        [Route("adicionar")]
-        public IActionResult Adicionar()
+        [HttpPost("adicionar")]
+        public ActionResult<ProdutoViewModel> Adicionar()
         {
             var produtoViewModel = new ProdutoViewModel()
             {

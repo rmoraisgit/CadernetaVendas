@@ -31,13 +31,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<VendaViewModel> Get()
+        public async Task<ActionResult<IEnumerable<VendaViewModel>>> Get()
         {
-            return _mapper.Map<IEnumerable<VendaViewModel>>(_vendaRepository.ObterTodos());
+            return Ok(_mapper.Map<IEnumerable<VendaViewModel>>(await _vendaRepository.ObterTodos()));
         }
 
-        [HttpPost]
-        [Route("registrar")]
+        [HttpPost("registrar")]
         public IActionResult Post([FromBody] VendaViewModel vendaViewModel)
         {
             if (!ModelState.IsValid)

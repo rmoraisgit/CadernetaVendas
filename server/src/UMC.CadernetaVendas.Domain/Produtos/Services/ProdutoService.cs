@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Core.Notifications;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
@@ -40,7 +41,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Produto> BuscarTodos()
+        public async Task<IEnumerable<Produto>> BuscarTodos()
         {
             throw new NotImplementedException();
         }
