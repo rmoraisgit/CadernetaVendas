@@ -8,32 +8,32 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 {
     public class ClienteViewModel : BaseViewModel
     {
-        [Required(ErrorMessage = "O Nome é requerido")]
-        [MinLength(2, ErrorMessage = "O tamanho minimo do Nome é {1} caracteres")]
-        [MaxLength(150, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
-        public string Nome { get;  set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(150, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O CPF é requerido")]
-        [MinLength(11, ErrorMessage = "O tamanho minimo do Nome é {1} caracteres")]
-        [MaxLength(11, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(11, ErrorMessage = "O campo {0} precisa ter {1} caracteres", MinimumLength = 11)]
         public string CPF { get; set; }
 
-        [Required(ErrorMessage = "O valor é requerido")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [DataType(DataType.Currency, ErrorMessage = "Moeda em formato inválido")]
         public decimal SaldoDevedor { get; set; }
 
-        [Required(ErrorMessage = "O valor é requerido")]
-        public string Telefone { get;  set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(20, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 10)]
+        public string Telefone { get; set; }
 
-        [Required(ErrorMessage = "O valor é requerido")]
-        public string Celular { get;  set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(20, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 10)]
+        public string Celular { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório")]
-        [MaxLength(50, ErrorMessage = "Máximo {0} caracteres")]
-        [EmailAddress(ErrorMessage = "Preencha um E-mail válido")]
-        public string Email { get;  set; }
-        
-        public EnderecoViewModel Endereco { get;  set; }
+        [EmailAddress(ErrorMessage = "Preencha um e-mail válido")]
+        [StringLength(150, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        public string Email { get; set; }
+
+        public EnderecoViewModel Endereco { get; set; }
     }
 }
