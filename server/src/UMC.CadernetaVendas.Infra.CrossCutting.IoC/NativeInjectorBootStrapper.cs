@@ -6,6 +6,7 @@ using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Clientes.Services;
 using UMC.CadernetaVendas.Domain.Compras.Repository;
 using UMC.CadernetaVendas.Domain.Compras.Services;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Domain.Produtos.Services;
@@ -21,6 +22,9 @@ namespace UMC.CadernetaVendas.Infra.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            // Notificador
+            services.AddScoped<INotificador, Notificador>();
+
             // Domain - Services
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IClienteService, ClienteService>();

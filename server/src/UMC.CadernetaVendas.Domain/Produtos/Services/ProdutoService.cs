@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using UMC.CadernetaVendas.Domain.Core.Notifications;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
+using UMC.CadernetaVendas.Domain.Services;
 
 namespace UMC.CadernetaVendas.Domain.Produtos.Services
 {
-    public class ProdutoService : IProdutoService
+    public class ProdutoService : BaseService, IProdutoService
     {
         private readonly IProdutoRepository _produtoRepository;
         private readonly IUnitOfWork _UoW;
 
         public ProdutoService(IProdutoRepository produtoRepository,
-                              IUnitOfWork uow)
+                              IUnitOfWork uow,
+                              INotificador notificador) : base(notificador)
         {
             _produtoRepository = produtoRepository;
             _UoW = uow;
@@ -22,7 +24,10 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
 
         public Produto Adicionar(Produto obj)
         {
-            if (!obj.EhValido()) return obj;
+            if (!obj.EhValido())
+            {
+                Notificar(obj.ValidationResult);
+            }
 
             obj = _produtoRepository.Adicionar(obj);
 
