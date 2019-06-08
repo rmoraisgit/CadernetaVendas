@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
@@ -23,7 +24,8 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         public ProdutosController(IMapper mapper,
                                   IProdutoService produtoService,
-                                  IProdutoRepository produtoRepository)
+                                  IProdutoRepository produtoRepository,
+                                  INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _produtoService = produtoService;

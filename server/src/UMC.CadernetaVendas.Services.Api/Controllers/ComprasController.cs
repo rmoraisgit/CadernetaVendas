@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Compras.Repository;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
@@ -25,7 +26,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         public ComprasController(IMapper mapper,
                                   ICompraService compraService,
                                   ICompraRepository compraRepository,
-                                  IProdutoRepository produtoRepository)
+                                  INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _compraService = compraService;

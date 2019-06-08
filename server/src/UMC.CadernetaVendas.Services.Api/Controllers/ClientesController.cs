@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Clientes.Repository;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
@@ -23,7 +24,8 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         public ClientesController(IMapper mapper,
                                   IClienteService clienteService,
-                                  IClienteRepository clienteRepository)
+                                  IClienteRepository clienteRepository,
+                                  INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _clienteService = clienteService;
@@ -40,18 +42,14 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         [HttpPost("adicionar")]
         public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                clienteViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
-                return Response(clienteViewModel);
-            }
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
             clienteViewModel = _mapper.Map<ClienteViewModel>(_clienteService.Adicionar(cliente));
 
-            return Response(clienteViewModel);
+            return CustomResponse(clienteViewModel);
         }
 
         // GET: api/Clientes/5

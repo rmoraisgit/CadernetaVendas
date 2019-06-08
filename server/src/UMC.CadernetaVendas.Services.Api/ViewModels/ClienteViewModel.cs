@@ -22,11 +22,11 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public decimal SaldoDevedor { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(20, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 10)]
+        [StringLength(10, ErrorMessage = "O campo {0} precisa ter {1} caracteres", MinimumLength = 10)]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(20, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 10)]
+        [StringLength(11, ErrorMessage = "O campo {0} precisa ter {1} caracteres", MinimumLength = 11)]
         public string Celular { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório")]
