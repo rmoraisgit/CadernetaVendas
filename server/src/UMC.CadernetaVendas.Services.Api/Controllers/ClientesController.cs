@@ -15,7 +15,6 @@ using UMC.CadernetaVendas.Services.Api.ViewModels;
 namespace UMC.CadernetaVendas.Services.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class ClientesController : BaseController
     {
         private readonly IMapper _mapper;

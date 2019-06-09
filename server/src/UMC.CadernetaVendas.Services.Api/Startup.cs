@@ -29,7 +29,7 @@ namespace UMC.CadernetaVendas.Services.Api
             Configuration = configuration;
         }
 
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        // readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
 
@@ -41,10 +41,13 @@ namespace UMC.CadernetaVendas.Services.Api
 
             services.AddCors(options =>
             {
-                options.AddPolicy(MyAllowSpecificOrigins,
+                options.AddPolicy("Desenvolvimento",
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
                 });
             });
 
@@ -71,7 +74,7 @@ namespace UMC.CadernetaVendas.Services.Api
                 app.UseHsts();
             }
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("Desenvolvimento");
 
             app.UseHttpsRedirection();
             app.UseMvc();

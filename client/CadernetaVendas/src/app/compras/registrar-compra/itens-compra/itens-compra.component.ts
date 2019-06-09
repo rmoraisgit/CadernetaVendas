@@ -89,7 +89,6 @@ export class ItensCompraComponent implements OnInit {
     console.log(this.produtoSelecionado)
   }
 
-
   desmarcarItem(elemento: any) {
 
     if (elemento.parentNode.className != 'selecionado') return;

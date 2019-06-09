@@ -44,6 +44,8 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 
         public int? Quantidade { get; set; }
 
+        public byte[] Foto { get; set; }
+
         public IFormFile FormFile { get; set; }
 
         public Guid CategoriaId { get; set; }

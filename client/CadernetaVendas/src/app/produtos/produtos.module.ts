@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
@@ -22,6 +23,7 @@ import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-ho
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
+    NgbModule,
     ChangeColorOnHoverModule,
     CurrencyMaskModule,
     FormsModule,

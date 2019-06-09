@@ -10,6 +10,7 @@ using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
 {
+    [ApiController]
     [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {

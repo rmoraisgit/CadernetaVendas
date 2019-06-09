@@ -11,6 +11,7 @@ export class Produto {
     disponivel: boolean;
     quantidade: number;
     FormFile: any;
+    foto: any;
     dataCadastro: Date;
     categoriaId: string;
 }

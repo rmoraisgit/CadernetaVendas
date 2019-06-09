@@ -13,10 +13,10 @@
       <div class="row">
         <div class="col-4">
           <div class="campo-imagem text-center">
-            <i class="fa fa-picture-o fa-5x" *ngIf="!fotoURL else fotoProduto" aria-hidden="true"></i>
+            <img class="img-thumbnail rounded foto-produto" *ngIf="!fotoURL else fotoProduto" id="empty-image" src="../../../assets/empty-image.png" alt="sem foto" />
             <ng-template #fotoProduto>
               <picture>
-                <img class="img-thumbnail rounded foto-produto" id="blah" [src]="fotoURL" alt="foto produto" />
+                <img class="img-thumbnail rounded foto-produto" id="foto-produto" [src]="fotoURL" alt="foto produto" />
               </picture>
             </ng-template>
           </div>

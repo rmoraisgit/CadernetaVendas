@@ -24,8 +24,9 @@
     </div>
 
     <table class="table table-hover">
-      <thead>
+      <thead class="thead-dark">
         <tr>
+          <th></th>
           <th scope="col">Nome</th>
           <th scope="col">Preço</th>
           <th id="th-center" scope="col">Peso(em kg)</th>
@@ -33,7 +34,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let produto of produtos">
+        <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td><img class="foto-produto" [src]="produto.foto" title="{{ produto.nome }}" alt="{{ produto.nome }}" style="width: 130px; height: 100px"></td>
           <td>{{produto.nome}}</td>
           <td>R${{produto.valorVenda}}</td>
           <td id="td-center">{{produto.peso}}kg</td>
@@ -43,5 +45,6 @@
         </tr>
       </tbody>
     </table>
+    <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination>
   </div>
 </div>
