@@ -15,7 +15,7 @@ export abstract class BaseService {
     protected ObterHeaderFormData() {
         return {
             headers: new HttpHeaders({
-                'Content-Type': 'multipart/form-data',
+                'Content-Disposition': 'form-data; name="produto"'
             })
         };
     }

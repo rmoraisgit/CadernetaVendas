@@ -22,14 +22,16 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   fileToUpload: File;
   fotoURL: any;
   categoriaSelecionada: string = '';
-  precoValido: boolean = true;
+  imagemForm: any;
+  imagemNome: string;
+  imageBase64: any;
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  @ViewChild('labelImport') labelImport: ElementRef;
+  @ViewChild('nomeImagem') nomeImagem: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,9 +60,20 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     })
   }
 
-  onFileChange(file: File) {
-    this.labelImport.nativeElement.innerText = file.name;
-    this.fileToUpload = file;
+  // file: File
+  uploadFoto(file: any) {
+
+    if (file.length == 0) return;
+
+    this.imagemForm = file[0];
+    this.imagemNome = file[0].name;
+    this.nomeImagem.nativeElement.innerText = file[0].name
+    
+    this.atualizarFotoExibicao(file[0]);
+  }
+
+  // file: File
+  atualizarFotoExibicao(file: any) {
 
     var reader = new FileReader();
     reader.readAsDataURL(file);
@@ -103,13 +116,20 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   }
 
   adicionar() {
+    
     const produto: Produto = this.produtoForm.getRawValue();
+    produto.categoriaId = this.categoriaSelecionada;
 
-    this.produtoService.adicionarProduto(produto.nome, produto.peso, produto.descricao, this.categoriaSelecionada, this.fileToUpload, produto.altura, produto.largura, produto.capacidade)
-      .subscribe(res => {
-        this.alertService.success('Produto adicionado com sucesso.');
-        this.router.navigate(['produtos']);
-      });
+    let formdata = new FormData();
+    // produto.FormFile = this.imagemNome;
+    // produto.imagemUpload = null;
 
+    formdata.append('produto', JSON.stringify(produto));
+    formdata.append('FormFile', this.imagemForm, this.imagemNome);
+
+    return this.produtoService.adicionarProduto(formdata).subscribe(res => {
+      this.alertService.success('Produto adicionado com sucesso.');
+      this.router.navigate(['produtos']);
+    });
   }
 }

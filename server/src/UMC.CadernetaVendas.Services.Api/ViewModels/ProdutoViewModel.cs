@@ -1,13 +1,16 @@
 ﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using UMC.CadernetaVendas.Services.Api.Extensions;
 
 namespace UMC.CadernetaVendas.Services.Api.ViewModels
 {
+    [ModelBinder(typeof(JsonWithFilesFormDataModelBinder), Name = "produto")]
     public class ProdutoViewModel : BaseViewModel
     {
         [Required(ErrorMessage = "O Nome é requerido")]

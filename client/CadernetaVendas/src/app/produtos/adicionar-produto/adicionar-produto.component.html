@@ -24,9 +24,9 @@
 
         <div class="col-8">
           <div class="custom-file">
-            <input class="custom-file-input" id="validatedCustomFile" type="file" accept="image/*"
-              (change)="onFileChange($event.target.files[0])">
-            <label #labelImport class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
+            <input class="custom-file-input" #fileInput id="validatedCustomFile" type="file" accept="image/*"
+              (change)="uploadFoto(fileInput.files)">
+            <label #nomeImagem class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
           </div>
         </div>
       </div>

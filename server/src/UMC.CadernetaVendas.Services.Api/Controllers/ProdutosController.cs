@@ -40,20 +40,20 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost("adicionar")]
-        public ActionResult<ProdutoViewModel> Adicionar()
+        public ActionResult<ProdutoViewModel> Adicionar(ProdutoViewModel produtoViewModel)
         {
-            var produtoViewModel = new ProdutoViewModel()
-            {
-                Nome = Request.Form["nome"],
-                //Valor = Convert.ToDecimal(Request.Form["valor"]),
-                Peso = Convert.ToDouble(Request.Form["peso"]),
-                Altura = Convert.ToDouble(Request.Form["altura"]),
-                Largura = Convert.ToDouble(Request.Form["largura"]),
-                Capacidade = Convert.ToDouble(Request.Form["capacidade"]),
-                Descricao = Request.Form["descricao"],
-                CategoriaId = Guid.Parse(Request.Form["categoriaId"]),
-                FormFile = Request.Form.Files[0]
-            };
+            //var produtoViewModel = new ProdutoViewModel()
+            //{
+            //    Nome = Request.Form["nome"],
+            //    //Valor = Convert.ToDecimal(Request.Form["valor"]),
+            //    Peso = Convert.ToDouble(Request.Form["peso"]),
+            //    Altura = Convert.ToDouble(Request.Form["altura"]),
+            //    Largura = Convert.ToDouble(Request.Form["largura"]),
+            //    Capacidade = Convert.ToDouble(Request.Form["capacidade"]),
+            //    Descricao = Request.Form["descricao"],
+            //    CategoriaId = Guid.Parse(Request.Form["categoriaId"]),
+            //    FormFile = Request.Form.Files[0]
+            //};
 
             if (!ModelState.IsValid)
             {

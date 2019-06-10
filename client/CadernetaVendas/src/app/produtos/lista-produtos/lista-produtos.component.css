@@ -38,3 +38,8 @@ th, td {
 #btn-adicionar {
     float: right;
 }
+
+.foto-produto {
+    height: 150px !important;
+    width: 200px !important;
+}
