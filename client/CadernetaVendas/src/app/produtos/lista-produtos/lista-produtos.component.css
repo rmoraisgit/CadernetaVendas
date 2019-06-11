@@ -40,6 +40,6 @@ th, td {
 }
 
 .foto-produto {
-    height: 150px !important;
-    width: 200px !important;
+    width: 130px;
+    height: 100px;
 }

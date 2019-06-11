@@ -35,7 +35,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-          <td><img class="foto-produto" [src]="produto.foto" title="{{ produto.nome }}" alt="{{ produto.nome }}" style="width: 130px; height: 100px"></td>
+          <td><img class="foto-produto" [src]="produto.foto" title="{{ produto.nome }}" alt="{{ produto.nome }}"></td>
           <td>{{produto.nome}}</td>
           <td>R${{produto.valorVenda}}</td>
           <td id="td-center">{{produto.peso}}kg</td>
