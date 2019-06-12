@@ -3,34 +3,40 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Clientes.Repository;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
+using UMC.CadernetaVendas.Domain.Services;
 
 namespace UMC.CadernetaVendas.Domain.Clientes.Services
 {
-    public class ClienteService : IClienteService
+    public class ClienteService : BaseService, IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IUnitOfWork _UoW;
 
         public ClienteService(IClienteRepository clienteRepository,
-                              IUnitOfWork uow)
+                              IUnitOfWork uow,
+                              INotificador notificador) : base(notificador)
         {
             _clienteRepository = clienteRepository;
             _UoW = uow;
         }
 
-        public Cliente Adicionar(Cliente obj)
+        public async Task Adicionar(Cliente cliente)
         {
-            if (!obj.EhValido()) return obj;
+            if (!cliente.EhValido())
+            {
+                Notificar(cliente.ValidationResult);
+                return;
+            }
 
-            obj = _clienteRepository.Adicionar(obj);
+            await _clienteRepository.Adicionar(cliente);
 
-            _UoW.Commit();
+            await _UoW.Commit();
 
-            return obj;
         }
 
-        public Cliente Atualizar(Cliente obj)
+        public Cliente Atualizar(Cliente cliente)
         {
             throw new NotImplementedException();
         }

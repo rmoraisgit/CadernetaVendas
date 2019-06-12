@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
+using UMC.CadernetaVendas.Domain.Services;
 using UMC.CadernetaVendas.Domain.Vendas.Repository;
 
 namespace UMC.CadernetaVendas.Domain.Vendas.Services
 {
-    public class VendaService : IVendaService
+    public class VendaService : BaseService, IVendaService
     {
         private readonly IVendaRepository _vendaRepository;
         private readonly IProdutoRepository _produtoRepository;
@@ -18,7 +20,8 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
         public VendaService(IVendaRepository vendaRepository,
                              IProdutoRepository produtoRepository,
                              IVendaProdutoRepository vendaProdutoRepository,
-                             IUnitOfWork uow)
+                             IUnitOfWork uow,
+                             INotificador notificador) : base(notificador)
         {
             _vendaRepository = vendaRepository;
             _produtoRepository = produtoRepository;
@@ -26,21 +29,23 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
             _UoW = uow;
         }
 
-        public Venda Registrar(Venda venda)
+        public async Task Registrar(Venda venda)
         {
-            if (!venda.EhValido()) return venda;
+            if (!venda.EhValido())
+            {
+                Notificar(venda.ValidationResult);
+                return;
+            }
 
-            _vendaRepository.Adicionar(venda);
+            await _vendaRepository.Adicionar(venda);
 
             foreach (var produto in venda.VendasProdutos)
             {
-                _vendaProdutoRepository.Adicionar(produto);
+                await _vendaProdutoRepository.Adicionar(produto);
             }
 
-            _UoW.Commit();
-
-            return venda;
-        }
+            await _UoW.Commit();
+                    }
 
         public async Task<IEnumerable<Venda>> BuscarTodas()
         {

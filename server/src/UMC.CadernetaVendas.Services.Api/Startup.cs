@@ -11,14 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using UMC.CadernetaVendas.Services.Api.AutoMapper;
-using UMC.CadernetaVendas.Domain.Interfaces;
-using UMC.CadernetaVendas.Domain.Produtos.Services;
-using UMC.CadernetaVendas.Domain.Produtos.Repository;
-using UMC.CadernetaVendas.Infra.Data.Repository;
 using UMC.CadernetaVendas.Infra.Data.Context;
 using UMC.CadernetaVendas.Services.Api.Configurations;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.EntityFrameworkCore;
 
 namespace UMC.CadernetaVendas.Services.Api
 {
@@ -29,13 +25,16 @@ namespace UMC.CadernetaVendas.Services.Api
             Configuration = configuration;
         }
 
-        // readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CadernetaVendasContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 

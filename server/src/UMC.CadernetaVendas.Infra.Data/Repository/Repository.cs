@@ -22,11 +22,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             DbSet = Db.Set<TEntity>();
         }
 
-        public virtual TEntity Adicionar(TEntity obj)
+        public virtual async Task Adicionar(TEntity obj)
         {
-            var objAdicionado = DbSet.Add(obj);
-
-            return objAdicionado.Entity;
+            var objAdicionado = await DbSet.AddAsync(obj);
         }
 
         public virtual TEntity Atualizar(TEntity obj)

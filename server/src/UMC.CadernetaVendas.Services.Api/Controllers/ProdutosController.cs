@@ -40,38 +40,21 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost("adicionar")]
-        public ActionResult<ProdutoViewModel> Adicionar(ProdutoViewModel produtoViewModel)
+        public async Task<ActionResult<ProdutoViewModel>> Adicionar(ProdutoViewModel produtoViewModel)
         {
-            //var produtoViewModel = new ProdutoViewModel()
-            //{
-            //    Nome = Request.Form["nome"],
-            //    //Valor = Convert.ToDecimal(Request.Form["valor"]),
-            //    Peso = Convert.ToDouble(Request.Form["peso"]),
-            //    Altura = Convert.ToDouble(Request.Form["altura"]),
-            //    Largura = Convert.ToDouble(Request.Form["largura"]),
-            //    Capacidade = Convert.ToDouble(Request.Form["capacidade"]),
-            //    Descricao = Request.Form["descricao"],
-            //    CategoriaId = Guid.Parse(Request.Form["categoriaId"]),
-            //    FormFile = Request.Form.Files[0]
-            //};
-
-            if (!ModelState.IsValid)
-            {
-                produtoViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
-                return Response(produtoViewModel);
-            }
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var produto = _mapper.Map<Produto>(produtoViewModel);
 
             using (var memoryStream = new MemoryStream())
             {
-                produtoViewModel.FormFile.CopyToAsync(memoryStream);
+                await produtoViewModel.FormFile.CopyToAsync(memoryStream);
                 produto.Foto = memoryStream.ToArray();
             }
 
-            produtoViewModel = _mapper.Map<ProdutoViewModel>(_produtoService.Adicionar(produto));
+            await _produtoService.Adicionar(produto);
 
-            return Response(produtoViewModel);
+            return CustomResponse(produtoViewModel);
         }
     }
 }

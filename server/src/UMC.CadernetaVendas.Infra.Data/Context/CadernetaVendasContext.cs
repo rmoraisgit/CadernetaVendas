@@ -17,6 +17,8 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
 {
     public class CadernetaVendasContext : DbContext
     {
+        public CadernetaVendasContext(DbContextOptions options) : base(options) { }
+
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
@@ -42,16 +44,6 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
 
             modelBuilder.AddConfiguration(new CompraMapping());
             modelBuilder.AddConfiguration(new CompraProdutoMapping());
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
         public override int SaveChanges()

@@ -41,21 +41,17 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost("registrar")]
-        public IActionResult Post([FromBody] CompraViewModel compraViewModel)
+        public async Task<ActionResult<CompraViewModel>> Registrar([FromBody] CompraViewModel compraViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                compraViewModel.Errors = ModelState.Values.SelectMany(v => v.Errors);
-                return Response(compraViewModel);
-            }
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var compra = _mapper.Map<Compra>(compraViewModel);
 
             compra.AdicionarProdutos(_mapper.Map<List<CompraProduto>>(compraViewModel.ProdutosCompra));
 
-            compraViewModel = _mapper.Map<CompraViewModel>(_compraService.Registrar(compra));
+            await _compraService.Registrar(compra);
 
-            return Response(compraViewModel);
+            return CustomResponse(compraViewModel);
         }
 
         // PUT: api/Compras/5

@@ -8,7 +8,7 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
 {
     public interface IVendaService : IDisposable
     {
-        Venda Registrar(Venda venda);
+        Task Registrar(Venda venda);
         Task<IEnumerable<Venda>> BuscarTodas();
     }
 }

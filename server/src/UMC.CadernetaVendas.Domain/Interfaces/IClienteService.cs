@@ -8,8 +8,8 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
 {
     public interface IClienteService : IDisposable
     {
-        Cliente Adicionar(Cliente obj);
-        Cliente Atualizar(Cliente obj);
+        Task Adicionar(Cliente cliente);
+        Cliente Atualizar(Cliente cliente);
         void Remover(Guid id);
         Cliente BuscaPorId(Guid id);
         Task<IEnumerable<Cliente>> BuscarTodos();

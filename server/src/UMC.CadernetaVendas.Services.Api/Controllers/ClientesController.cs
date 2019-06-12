@@ -39,14 +39,14 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpPost("adicionar")]
-        public IActionResult Post([FromBody]ClienteViewModel clienteViewModel)
+        public async Task<ActionResult<ClienteViewModel>> Post([FromBody]ClienteViewModel clienteViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
-            clienteViewModel = _mapper.Map<ClienteViewModel>(_clienteService.Adicionar(cliente));
+            await _clienteService.Adicionar(cliente);
 
             return CustomResponse(clienteViewModel);
         }

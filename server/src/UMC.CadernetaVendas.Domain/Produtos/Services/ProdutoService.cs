@@ -22,18 +22,17 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
             _UoW = uow;
         }
 
-        public Produto Adicionar(Produto obj)
+        public async Task Adicionar(Produto obj)
         {
             if (!obj.EhValido())
             {
                 Notificar(obj.ValidationResult);
+                return;
             }
 
-            obj = _produtoRepository.Adicionar(obj);
+            await _produtoRepository.Adicionar(obj);
 
-            _UoW.Commit();
-
-            return obj;
+            await _UoW.Commit();
         }
 
         public Produto Atualizar(Produto obj)

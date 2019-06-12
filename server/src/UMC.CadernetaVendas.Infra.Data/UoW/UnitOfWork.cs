@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Infra.Data.Context;
 
@@ -17,9 +18,9 @@ namespace UMC.CadernetaVendas.Infra.Data.UoW
             _disposable = false;
         }
 
-        public void Commit()
+        public async Task<int> Commit()
         {
-            _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
         public virtual void Dispose(bool disposed)
