@@ -64,7 +64,7 @@
 
         <div class="form-group">
           <label for="inputCategoria">Categoria</label>
-          <select id="inputCategoria" class="form-control" (change)="atualizarForm($event.target.value)">
+          <select formControlName="select" class="form-control" id="inputCategoria" (change)="atualizarForm($event.target.value)">
             <option selected>Selecione...</option>
             <option value="f8a495a7-40dd-4e94-85c0-8e203aa8a94a">Cama</option>
             <option value="c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b">Mesa</option>

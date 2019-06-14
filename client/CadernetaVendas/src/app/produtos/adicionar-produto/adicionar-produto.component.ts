@@ -10,6 +10,7 @@ import { moedaValidator } from 'src/app/utils/moedaValidator';
 import { pesoValidator } from 'src/app/utils/pesoValidator';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { validationMessagesProduto } from './validation-messages-produto';
+import { selectValidator } from 'src/app/utils/selectValidator';
 
 @Component({
   selector: 'cv-adicionar-produto',
@@ -46,7 +47,8 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     this.produtoForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
       peso: ['', [Validators.required, pesoValidator]],
-      descricao: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]]
+      descricao: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]],
+      select: ['Selecione...', [selectValidator]]
     });
   }
 
@@ -68,7 +70,7 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
     this.imagemForm = file[0];
     this.imagemNome = file[0].name;
     this.nomeImagem.nativeElement.innerText = file[0].name
-    
+
     this.atualizarFotoExibicao(file[0]);
   }
 
@@ -88,35 +90,61 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
       // Categoria: Cama
       case 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a': {
+
+        this.removerTodosControles();
+
         this.categoriaSelecionada = categoriaSelecionada;
 
         this.produtoForm.addControl('altura', new FormControl('', Validators.required));
         this.produtoForm.addControl('largura', new FormControl('', Validators.required));
+
         break;
       }
       // Categoria: Mesa
       case 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b': {
+
+        this.removerTodosControles();
+
         this.categoriaSelecionada = categoriaSelecionada;
 
         this.produtoForm.addControl('altura', new FormControl('', Validators.required));
         this.produtoForm.addControl('largura', new FormControl('', Validators.required));
+
         break;
       }
       // Categoria: Panelas
       case '57b328e4-a8e3-4c61-ac95-59e110d2edd8': {
+
+        this.removerTodosControles();
+
         this.produtoForm.addControl('capacidade', new FormControl('', Validators.required));
 
         this.categoriaSelecionada = categoriaSelecionada;
+
         break;
       }
       default:
+        this.removerTodosControles();
         this.categoriaSelecionada = '0';
         break;
     }
+
+  }
+
+  removerTodosControles() {
+
+    if (this.produtoForm.get('capacidade') != null)
+      this.produtoForm.removeControl('capacidade');
+
+    if (this.produtoForm.get('altura') != null)
+      this.produtoForm.removeControl('altura');
+
+    if (this.produtoForm.get('largura') != null)
+      this.produtoForm.removeControl('largura');
   }
 
   adicionar() {
-    
+
     const produto: Produto = this.produtoForm.getRawValue();
     produto.categoriaId = this.categoriaSelecionada;
 
