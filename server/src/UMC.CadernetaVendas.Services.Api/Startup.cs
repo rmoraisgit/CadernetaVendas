@@ -50,12 +50,6 @@ namespace UMC.CadernetaVendas.Services.Api
                 });
             });
 
-            services.Configure<FormOptions>(x =>
-            {
-                x.ValueLengthLimit = int.MaxValue;
-                x.MultipartBodyLengthLimit = int.MaxValue; // In case of multipart
-            });
-
             // Registrar todos as injeções de dependência
             services.AddDIConfiguration();
         }
@@ -76,6 +70,7 @@ namespace UMC.CadernetaVendas.Services.Api
             app.UseCors("Desenvolvimento");
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

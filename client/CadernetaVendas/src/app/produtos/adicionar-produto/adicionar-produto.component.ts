@@ -128,7 +128,6 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
         this.categoriaSelecionada = '0';
         break;
     }
-
   }
 
   removerTodosControles() {
