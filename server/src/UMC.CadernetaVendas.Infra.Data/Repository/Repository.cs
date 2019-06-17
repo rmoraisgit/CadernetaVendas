@@ -35,7 +35,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return DbSet.AsNoTracking().Where(predicate).ToList();
         }
 
         public virtual TEntity ObterPorId(Guid id)

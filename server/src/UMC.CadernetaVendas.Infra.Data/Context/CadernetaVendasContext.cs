@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Compras;
 using UMC.CadernetaVendas.Domain.Produtos;
@@ -58,6 +60,20 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
             }
 
             return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.Entity.GetType().GetProperty("DataCadastro") != null))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+
+                if (entry.State == EntityState.Modified)
+                    entry.Property("DataCadastro").IsModified = false;
+            }
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }

@@ -17,6 +17,7 @@ import { Cliente, Endereco } from '../models/cliente';
 })
 export class AdicionarClienteComponent implements OnInit, AfterViewInit {
 
+  errors: any[] = [];
   cepCliente: string = '';
 
   clienteForm: FormGroup;
@@ -130,27 +131,31 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   adicionar() {
     const cliente = this.clienteForm.getRawValue();
     let clienteJSON = {
-        nome: cliente.nome,
-        cpf: cliente.cpf,
-        saldoDevedor: cliente.saldoDevedor,
-        telefone: cliente.telefone,
-        celular: cliente.celular,
-        email: cliente.email,
-        endereco: {
-          cep: cliente.cep,
-          logradouro: cliente.logradouro,
-          numero: cliente.numero,
-          complemento: cliente.complemento,
-          bairro: cliente.bairro,
-          cidade: cliente.cidade,
-          estado: cliente.estado
-        }
+      nome: cliente.nome,
+      cpf: cliente.cpf,
+      saldoDevedor: cliente.saldoDevedor,
+      telefone: cliente.telefone,
+      celular: cliente.celular,
+      email: cliente.email,
+      endereco: {
+        cep: cliente.cep,
+        logradouro: cliente.logradouro,
+        numero: cliente.numero,
+        complemento: cliente.complemento,
+        bairro: cliente.bairro,
+        cidade: cliente.cidade,
+        estado: cliente.estado
+      }
     }
-    
-    var response = this.clienteService.adicionarCliente(clienteJSON).subscribe(res => {
-      this.alertService.success('Cliente adicionado com sucesso.');
-      this.router.navigate(['clientes'])
-    });
+
+    var response = this.clienteService.adicionarCliente(clienteJSON).subscribe(
+      res => {
+        this.alertService.success('Cliente adicionado com sucesso.');
+        this.router.navigate(['clientes'])
+      },
+
+      fail => { console.log(fail); this.errors = fail.error.errors }
+    );
   }
 
   buscarDadosCEP(cepCliente: string) {
@@ -162,15 +167,19 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
         cliente.endereco = res;
         this.preencherCamposEndereco(cliente.endereco);
       }
-    );    
+    );
   }
 
-  preencherCamposEndereco(endereco : Endereco){
+  preencherCamposEndereco(endereco: Endereco) {
 
     this.clienteForm.get('logradouro').setValue(endereco.logradouro);
     this.clienteForm.get('bairro').setValue(endereco.bairro);
     this.clienteForm.get('complemento').setValue(endereco.complemento);
     this.clienteForm.get('cidade').setValue(endereco.localidade);
     this.clienteForm.get('estado').setValue(endereco.uf);
+  }
+
+  fecharErros() {
+    this.errors = [];
   }
 }

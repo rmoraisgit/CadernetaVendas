@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Services;
+using UMC.CadernetaVendas.Domain.Validations;
 
 namespace UMC.CadernetaVendas.Domain.Clientes.Services
 {
@@ -29,6 +31,18 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
                 Notificar(cliente.ValidationResult);
                 return;
             }
+
+            if (!CPFValidation.Validar(cliente.CPF))
+            {
+                Notificar("Cliente com CPF inválido");
+                return;
+            }
+
+            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF).Any()) { 
+                Notificar("Já existe um cliente com este CPF informado.");
+                return;
+            }
+
 
             await _clienteRepository.Adicionar(cliente);
 

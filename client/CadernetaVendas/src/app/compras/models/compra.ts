@@ -7,6 +7,7 @@ export class Compra {
     id: string;
     fornecedor: string;
     total: number;
+    dataCadastro: Date;
     produtosCompra: ProdutoCompra[];
 }
 
