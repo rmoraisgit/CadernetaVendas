@@ -14,6 +14,7 @@ using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ClientesController : BaseController
     {
@@ -32,7 +33,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<ClienteViewModel>>> Get()
         {
             return Ok(_mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteRepository.ObterTodos()));
