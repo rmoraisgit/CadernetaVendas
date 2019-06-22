@@ -1,30 +1,48 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="mt-5 titulo">Seja bem vindo!</h1>
+  </div>
+</div>
+
 <div class="row justify-content-center mt-5">
   <div class="col-6">
-    <form [formGroup]="loginForm">
-      <h1 class="titulo">Seja bem vindo!</h1>
-      <hr>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="Insira seu email">
-        <small id="emailHelp" class="form-text text-muted"></small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group">
-        <a cvChangeColorOnHover [routerLink]="['login']">Esqueceu sua senha?</a>
-      </div>
+    <div class="form-cadastro">
+      <form [formGroup]="loginForm">
 
-      <div class="button-group row mt-4">
-        <div class="col-6">
-          <button class="btn btn-primary" [routerLink]="['/produtos']" type="button">Voltar</button>
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <button type="button" class="close" (click)="fecharErros()" aria-label="fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+
+          <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
         </div>
-        <div class="col-6">
-          <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
+
+        <div class="form-group">
+          <label for="InputEmail1">Email</label>
+          <input formControlName="email" class="form-control" type="email" placeholder="Insira seu email">
         </div>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="InputPassword1">Password</label>
+          <input formControlName="password" class="form-control" type="password" id="exampleInputPassword1"
+            placeholder="Password">
+        </div>
+        <div class="form-group">
+          <a cvChangeColorOnHover [routerLink]="['login']">Esqueceu sua senha?</a>
+        </div>
+
+        <div class="button-group row mt-4">
+          <div class="col-6">
+            <button class="btn btn-success" (click)="login()" type="button"
+              [disabled]="loginForm.invalid">Entrar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary" type="button">Criar nova conta</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
