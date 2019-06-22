@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.authenticate(email, password)
         .subscribe(
-          result => { console.log('DEU SUCESSO'); this.onSaveComplete(result) },
+          success => { console.log('DEU SUCESSO'); this.onSaveComplete(success) },
           fail => { console.log('DEU ERRO'); this.onError(fail.error) }
         );
     }

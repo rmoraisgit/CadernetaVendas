@@ -37,20 +37,7 @@ namespace UMC.CadernetaVendas.Services.Api
 
             services.AddIdentityConfiguration(Configuration);
 
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Desenvolvimento",
-                builder =>
-                {
-                    builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials();
-                });
-            });
+            services.WebApiConfig();
 
             // Registrar todos as injeções de dependência
             services.AddDIConfiguration();
@@ -71,9 +58,9 @@ namespace UMC.CadernetaVendas.Services.Api
 
             app.UseCors("Desenvolvimento");
 
-            app.UseHttpsRedirection();
             app.UseAuthentication();
-            app.UseMvc();
+
+            app.UseMvcConfiguration();
         }
     }
 }
