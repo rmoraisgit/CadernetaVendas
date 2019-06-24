@@ -18,5 +18,12 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
         {
             return await DbSet.Include(c => c.Endereco).ToListAsync();
         }
+
+        public override async Task<Cliente> ObterPorId(Guid id)
+        {
+            return await DbSet.AsNoTracking()
+                .Include(c => c.Endereco)
+                .FirstOrDefaultAsync(c=> c.Id == id);
+        }
     }
 }

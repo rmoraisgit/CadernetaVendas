@@ -45,11 +45,6 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
             }
 
             await _UoW.Commit();
-                    }
-
-        public async Task<IEnumerable<Venda>> BuscarTodas()
-        {
-            throw new NotImplementedException();
         }
 
         public void Dispose()

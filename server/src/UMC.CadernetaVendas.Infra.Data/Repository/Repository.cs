@@ -27,10 +27,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             var objAdicionado = await DbSet.AddAsync(obj);
         }
 
-        public virtual TEntity Atualizar(TEntity obj)
+        public virtual void Atualizar(TEntity obj)
         {
             DbSet.Update(obj);
-            return obj;
         }
 
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
@@ -38,9 +37,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
             return DbSet.AsNoTracking().Where(predicate).ToList();
         }
 
-        public virtual TEntity ObterPorId(Guid id)
+        public virtual async Task<TEntity> ObterPorId(Guid id)
         {
-            return DbSet.FirstOrDefault(t => t.Id == id);
+            return await DbSet.FindAsync(id);
         }
 
         public virtual async Task<IEnumerable<TEntity>> ObterTodos()

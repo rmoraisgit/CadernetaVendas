@@ -9,9 +9,7 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
     public interface IProdutoService : IDisposable
     {
         Task Adicionar(Produto obj);
-        Produto Atualizar(Produto obj);
+        Task Atualizar(Produto obj);
         void Remover(Guid id);
-        Produto BuscaPorId(Guid id);
-        Task<IEnumerable<Produto>> BuscarTodos();
     }
 }

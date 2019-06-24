@@ -38,31 +38,40 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
                 return;
             }
 
-            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF).Any()) { 
+            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF).Any())
+            {
                 Notificar("Já existe um cliente com este CPF informado.");
                 return;
             }
 
 
             await _clienteRepository.Adicionar(cliente);
-
             await _UoW.Commit();
 
         }
 
-        public Cliente Atualizar(Cliente cliente)
+        public async Task Atualizar(Cliente cliente)
         {
-            throw new NotImplementedException();
-        }
+            if (!cliente.EhValido())
+            {
+                Notificar(cliente.ValidationResult);
+                return;
+            }
 
-        public Cliente BuscaPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+            if (!CPFValidation.Validar(cliente.CPF))
+            {
+                Notificar("Cliente com CPF inválido");
+                return;
+            }
 
-        public async Task<IEnumerable<Cliente>> BuscarTodos()
-        {
-            throw new NotImplementedException();
+            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF).Any())
+            {
+                Notificar("Já existe um cliente com este CPF informado.");
+                return;
+            }
+
+            _clienteRepository.Atualizar(cliente);
+            await _UoW.Commit();
         }
 
         public void Dispose()

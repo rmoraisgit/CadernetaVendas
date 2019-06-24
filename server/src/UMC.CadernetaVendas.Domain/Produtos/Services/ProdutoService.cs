@@ -35,17 +35,19 @@ namespace UMC.CadernetaVendas.Domain.Produtos.Services
             await _UoW.Commit();
         }
 
-        public Produto Atualizar(Produto obj)
+        public async Task Atualizar(Produto obj)
         {
-            throw new NotImplementedException();
+            if (!obj.EhValido())
+            {
+                Notificar(obj.ValidationResult);
+                return;
+            }
+
+            _produtoRepository.Atualizar(obj);
+            await _UoW.Commit();
         }
 
         public Produto BuscaPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Produto>> BuscarTodos()
         {
             throw new NotImplementedException();
         }

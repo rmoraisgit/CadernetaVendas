@@ -45,7 +45,7 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             {
                 await _compraProdutoRepository.Adicionar(produto);
 
-                ValidarPrecoProduto(produto);
+                await ValidarPrecoProdutoAsync(produto);
             }
 
             await _UoW.Commit();
@@ -62,9 +62,9 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             _compraProdutoRepository.Dispose();
         }
 
-        private void ValidarPrecoProduto(CompraProduto produto)
+        private async Task ValidarPrecoProdutoAsync(CompraProduto produto)
         {
-            var produtoAtual = _produtoRepository.ObterPorId(produto.ProdutoId);
+            var produtoAtual = await _produtoRepository.ObterPorId(produto.ProdutoId);
 
             if (produtoAtual.ValorCompra > produto.ValorUnitario) return;
 

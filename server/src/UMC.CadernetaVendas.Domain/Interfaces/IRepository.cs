@@ -10,9 +10,9 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity<TEntity>
     {
         Task Adicionar(TEntity obj);
-        TEntity ObterPorId(Guid id);
+        Task<TEntity> ObterPorId(Guid id);
         Task<IEnumerable<TEntity>> ObterTodos();
-        TEntity Atualizar(TEntity obj);
+        void Atualizar(TEntity obj);
         void Remover(Guid id);
         IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
         int SaveChanges();
