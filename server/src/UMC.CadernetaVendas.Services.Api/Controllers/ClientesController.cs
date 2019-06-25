@@ -61,8 +61,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(clienteViewModel);
         }
 
-
-        // PUT: api/Clientes/5
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> Atualizar(Guid id, [FromBody]ClienteViewModel clienteViewModel)
         {
