@@ -10,6 +10,7 @@ using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
+using UMC.CadernetaVendas.Services.Api.Extensions;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
@@ -61,6 +62,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(clienteViewModel);
         }
 
+        [ClaimsAuthorize("Cliente", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> Atualizar(Guid id, [FromBody]ClienteViewModel clienteViewModel)
         {

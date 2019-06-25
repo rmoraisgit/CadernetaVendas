@@ -15,13 +15,16 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IUnitOfWork _UoW;
+        private readonly IUser _user;
 
         public ClienteService(IClienteRepository clienteRepository,
                               IUnitOfWork uow,
+                              IUser user,
                               INotificador notificador) : base(notificador)
         {
             _clienteRepository = clienteRepository;
             _UoW = uow;
+            _user = user;
         }
 
         public async Task Adicionar(Cliente cliente)
@@ -64,11 +67,12 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
                 return;
             }
 
-            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF).Any())
+            if (_clienteRepository.Buscar(c => c.CPF == cliente.CPF && c.Id != cliente.Id).Any())
             {
                 Notificar("Já existe um cliente com este CPF informado.");
                 return;
             }
+
 
             _clienteRepository.Atualizar(cliente);
             await _UoW.Commit();
