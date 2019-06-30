@@ -6,6 +6,20 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20190428201401_NovoManyToManyComprasProdutos.cs" />
+    <Compile Remove="Migrations\20190630135051_d.cs" />
+    <Compile Remove="Migrations\20190630135051_d.Designer.cs" />
+    <Compile Remove="Migrations\20190630135224_NovaColunaAtivoClientes.cs" />
+    <Compile Remove="Migrations\20190630135224_NovaColunaAtivoClientes.Designer.cs" />
+    <Compile Remove="Migrations\20190630135622_NovaColunaAtivoCliente.cs" />
+    <Compile Remove="Migrations\20190630135622_NovaColunaAtivoCliente.Designer.cs" />
+    <Compile Remove="Migrations\20190630135723_NovaColunaAtivoClientes.cs" />
+    <Compile Remove="Migrations\20190630135723_NovaColunaAtivoClientes.Designer.cs" />
+    <Compile Remove="Migrations\20190630140338_NovaColunaAtivoClientes.cs" />
+    <Compile Remove="Migrations\20190630140338_NovaColunaAtivoClientes.Designer.cs" />
+    <Compile Remove="Migrations\20190630140916_NovaColunaAtivoClientes.cs" />
+    <Compile Remove="Migrations\20190630141455_NovaColunaAtivoClientes.cs" />
+    <Compile Remove="Migrations\20190630141744_teste.cs" />
+    <Compile Remove="Migrations\20190630142101_tyeste2.cs" />
   </ItemGroup>
 
   <ItemGroup>

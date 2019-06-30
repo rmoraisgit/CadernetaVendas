@@ -24,6 +24,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("varchar(11)");
@@ -237,11 +240,14 @@ namespace UMC.CadernetaVendas.Infra.Data.Migrations
 
                     b.Property<int>("Quantidade");
 
-                    b.Property<decimal>("ValorFinal");
+                    b.Property<decimal>("ValorFinal")
+                        .HasColumnType("decimal(10, 2)");
 
-                    b.Property<decimal>("ValorSugerido");
+                    b.Property<decimal>("ValorSugerido")
+                        .HasColumnType("decimal(10, 2)");
 
-                    b.Property<decimal>("ValorVenda");
+                    b.Property<decimal>("ValorVenda")
+                        .HasColumnType("decimal(10, 2)");
 
                     b.HasKey("VendaId", "ProdutoId");
 

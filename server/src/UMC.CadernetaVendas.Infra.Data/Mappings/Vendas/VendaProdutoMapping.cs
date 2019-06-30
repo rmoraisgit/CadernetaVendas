@@ -22,6 +22,18 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings.Vendas
                 .WithMany(p => p.VendasProdutos)
                 .HasForeignKey(vp => vp.ProdutoId);
 
+            builder.Property(p => p.ValorVenda)
+                .HasColumnType("decimal(10, 2)")
+                .IsRequired();
+
+            builder.Property(p => p.ValorSugerido)
+                .HasColumnType("decimal(10, 2)")
+                .IsRequired();
+
+            builder.Property(p => p.ValorFinal)
+                .HasColumnType("decimal(10, 2)")
+                .IsRequired();
+
             builder.Ignore(vp => vp.Id);
 
             builder.Ignore(v => v.ValidationResult);

@@ -38,6 +38,10 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .HasColumnType("varchar(150)")
                 .IsRequired();
 
+            builder.Property(c => c.Ativo)
+                .HasColumnType("bit")
+                .IsRequired();
+
             builder.Ignore(e => e.ValidationResult);
 
             builder.Ignore(e => e.CascadeMode);

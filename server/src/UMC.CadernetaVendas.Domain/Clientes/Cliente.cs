@@ -8,7 +8,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 {
     public class Cliente : Entity<Cliente>
     {
-        public Cliente(string nome, string cpf, string telefone, string celular, string email, Endereco endereco)
+        public Cliente(string nome, string cpf, string telefone, string celular, string email, bool ativo, Endereco endereco)
         {
             Nome = nome;
             CPF = cpf;
@@ -16,6 +16,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
             Celular = celular;
             Email = email;
             Endereco = endereco;
+            Ativo = Ativo;
             SaldoDevedor = 0;
         }
 
@@ -25,6 +26,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public string Telefone { get; private set; }
         public string Celular { get; private set; }
         public string Email { get; private set; }
+        public bool Ativo { get; private set; }
         public DateTime DataCadastro { get; private set; }
         public Guid EnderecoId { get; private set; }
         public virtual Endereco Endereco { get; private set; }

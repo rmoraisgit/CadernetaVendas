@@ -55,8 +55,15 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
                 if (entry.State == EntityState.Added)
                     entry.Property("DataCadastro").CurrentValue = DateTime.Now;
 
+
                 if (entry.State == EntityState.Modified)
                     entry.Property("DataCadastro").IsModified = false;
+            }
+
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.Entity.GetType().GetProperty("Ativo") != null))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("Ativo").CurrentValue = true;
             }
 
             return base.SaveChanges();
@@ -71,6 +78,12 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
 
                 if (entry.State == EntityState.Modified)
                     entry.Property("DataCadastro").IsModified = false;
+            }
+
+            foreach (var entry in ChangeTracker.Entries().Where(e => e.Entity.GetType().GetProperty("Ativo") != null))
+            {
+                if (entry.State == EntityState.Added)
+                    entry.Property("Ativo").CurrentValue = true;
             }
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);

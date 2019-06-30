@@ -34,9 +34,19 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProdutoViewModel>>> Get()
+        public async Task<ActionResult<IEnumerable<ProdutoViewModel>>> ObterTodos()
         {
             return Ok(_mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterTodos()));
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<ProdutoViewModel>> ObterPorId(Guid id)
+        {
+            var produto = await ObterProduto(id);
+
+            if (produto == null) return NotFound();
+
+            return Ok(produto);
         }
 
         [HttpPost("adicionar")]
@@ -55,6 +65,11 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             await _produtoService.Adicionar(produto);
 
             return CustomResponse(produtoViewModel);
+        }
+
+        private async Task<ProdutoViewModel> ObterProduto(Guid id)
+        {
+            return _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterPorId(id));
         }
     }
 }

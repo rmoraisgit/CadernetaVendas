@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login/login.component';
 import { ListaProdutosResolver } from './produtos/lista-produtos/lista-produtos.resolver';
 import { ListaVendasComponent } from './vendas/lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './vendas/registrar-venda/registrar-venda.component';
+import { DetalhesProdutoComponent } from './produtos/detalhes-produto/detalhes.produto.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
         path: 'produtos/adicionar',
         component: AdicionarProdutoComponent
+    },
+    {
+        path: 'produtos/detalhes/:produtoId',
+        component: DetalhesProdutoComponent
     },
     {
         path: 'clientes',

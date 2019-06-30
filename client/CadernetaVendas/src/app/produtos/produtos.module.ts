@@ -11,11 +11,13 @@ import { ListaProdutosComponent } from './lista-produtos/lista-produtos.componen
 import { VMessageModule } from '../shared/validation-message/vmessage.module';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
+import { DetalhesProdutoComponent } from './detalhes-produto/detalhes.produto.component';
 
 @NgModule({
   declarations: [
     AdicionarProdutoComponent,
-    ListaProdutosComponent
+    ListaProdutosComponent,
+    DetalhesProdutoComponent
   ],
   imports: [
     CommonModule,

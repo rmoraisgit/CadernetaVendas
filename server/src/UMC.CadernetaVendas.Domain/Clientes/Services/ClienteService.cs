@@ -78,14 +78,15 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
             await _UoW.Commit();
         }
 
+        public void Remover(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
         }
 
-        public void Remover(Guid id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

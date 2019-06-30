@@ -12,7 +12,7 @@ import { TokenService } from 'src/app/core/token/token.service';
 export class ClienteService extends BaseService {
 
   constructor(private http: HttpClient,
-    private tokenService: TokenService) { super(); }
+              private tokenService: TokenService) { super(); }
 
   obterClientes() {
     return this.http.get<Cliente[]>(this.UrlServiceV1 + 'clientes',
@@ -24,6 +24,10 @@ export class ClienteService extends BaseService {
   };
 
   adicionarCliente(cliente: any) {
-    return this.http.post(this.UrlServiceV1 + 'clientes/adicionar', cliente, this.ObterHeaderJson());
+    return this.http.post(this.UrlServiceV1 + 'clientes/adicionar', cliente,
+    {
+      headers: this.ObterHeaderJson()
+        .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   };
 }
