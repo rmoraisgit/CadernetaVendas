@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { TokenService } from '../core/token/token.service';
+import { throwError } from 'rxjs';
 
 export abstract class BaseService {
     protected UrlServiceV1: string = 'https://localhost:5002/api/';
@@ -25,5 +25,9 @@ export abstract class BaseService {
     protected obterTokenUsuario(): string {
         console.log(localStorage.getItem('userToken'));
         return window.localStorage.getItem('userToken');
+    }
+
+    protected extractData(response: any) {
+        return response.data || {};
     }
 }

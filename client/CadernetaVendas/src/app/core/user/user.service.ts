@@ -17,11 +17,11 @@ export class UserService {
         // this.tokenService.hasToken() && this.decodeAndNotify();
     }
 
-    setToken(tokenValue: string) {
+    setUserToken(tokenValue: string) {
         this.tokenService.setToken(tokenValue);
     }
 
-    getUser() {
-        return this.userSubject.asObservable();
+    setUserApp(userValue: string){
+        window.localStorage.setItem('userApp', userValue);
     }
 }

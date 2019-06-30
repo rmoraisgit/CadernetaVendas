@@ -42,22 +42,29 @@ export class LoginComponent implements OnInit {
 
       this.authService.authenticate(email, password)
         .subscribe(
-          success => { console.log('DEU SUCESSO'); this.onSaveComplete(success) },
-          fail => { console.log('DEU ERRO'); this.onError(fail.error) }
+          success => {
+            console.log('DEU SUCESSO');
+            this.onSaveComplete(success);
+          },
+          fail => {
+            console.log('DEU ERRO');
+            this.onError(fail);
+          }
         );
     }
   }
 
-  onSaveComplete(result: any) {
-    console.log(result)
-    this.authService.persistirUserApp(result);
+  onSaveComplete(data: any) {
+    console.log(data)
+    // this.authService.persistirUserApp(data);
+    this.authService.persistirTokenUserApp(data);
     this.alertService.success('Login efetuado com sucesso.');
     this.router.navigate([''])
   }
 
   onError(fail: any) {
     console.log(fail)
-    this.errors = fail.errors;
+    this.errors = fail.error.errors;
     this.loginForm.reset();
     this.inputUserName.nativeElement.focus();
   }
