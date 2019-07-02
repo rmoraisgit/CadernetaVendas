@@ -23,7 +23,7 @@ export class ProdutoService extends BaseService {
   };
 
   obterProdutoPorId(id: string) {
-    return this.http.get<Produto[]>(this.UrlServiceV1 + `produtos/${id}`,
+    return this.http.get<Produto>(this.UrlServiceV1 + `produtos/${id}`,
       {
         headers: this.ObterHeaderJson()
           .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)

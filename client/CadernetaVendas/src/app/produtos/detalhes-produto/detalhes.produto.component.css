@@ -1,0 +1,31 @@
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    color: #384158;
+    text-align: center;
+}
+
+.card {
+    width: 15rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+.btn-edit {
+    background-color: #e2e3e4;
+    color: black;
+    height: 30px;
+}
+
+.span-btn {
+    font-size: 15px;
+    display: inherit;
+    margin-top: -6px;
+}
+
+.infos-produto {
+    background-color: #e9ecef;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

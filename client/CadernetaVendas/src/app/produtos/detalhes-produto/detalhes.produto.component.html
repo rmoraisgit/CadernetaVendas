@@ -1,1 +1,51 @@
-<H1>TESTE: DETALHES DO PRODUTO</H1>
+<h1>TESTE: DETALHES DO PRODUTO</h1>
+
+<div class="row">
+    <div class="col-10">
+        <div class="row">
+            <div class="col-4 infos-produto">
+                <div class="">
+                    <div class="card">
+                        <img class="img-thumbnail rounded foto-produto" id="foto-produto" [src]="fotoURL"
+                            alt="foto produto" />
+                        <div class="card-body">
+                            <div class="custom-file">
+                                <input class="custom-file-input" #fileInput id="validatedCustomFile" type="file"
+                                    accept="image/*" (change)="uploadFoto(fileInput.files)">
+                                <label #nomeImagem class="custom-file-label" for="validatedCustomFile">Editar
+                                    imagem</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-center mt-1">{{produto.nome}}</h3>
+
+                    <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
+                        <span class="span-btn">editar produto</span>
+                    </button>
+
+                    <p>Quantidade disponível: 5{{produto.quantidade}}</p>
+
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 data-toggle="collapse" data-target="#collapseDescricao" aria-expanded="false"
+                                    aria-controls="collapseDescricao">
+                                    Descrição
+                                </h5>
+                            </div>
+
+                            <div id="collapseDescricao" class="collapse hide" aria-labelledby="headingOne"
+                                data-parent="#accordion">
+                                <div class="card-body">
+                                    {{produto.descricao}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
