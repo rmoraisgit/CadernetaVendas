@@ -41,11 +41,15 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
 
             await _compraRepository.Adicionar(compra);
 
-            foreach (var produto in compra.ComprasProdutos)
+            foreach (var produtoCompra in compra.ComprasProdutos)
             {
-                await _compraProdutoRepository.Adicionar(produto);
+                var produto = await ObterProduto(produtoCompra);
 
-                await ValidarPrecoProdutoAsync(produto);
+                ValidarPrecoProduto(produtoCompra, produto);
+                AtualizarEstoque(produtoCompra, produto);
+
+                _produtoRepository.Atualizar(produto);
+                await _compraProdutoRepository.Adicionar(produtoCompra);
             }
 
             await _UoW.Commit();
@@ -62,15 +66,21 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             _compraProdutoRepository.Dispose();
         }
 
-        private async Task ValidarPrecoProdutoAsync(CompraProduto produto)
+        private void ValidarPrecoProduto(CompraProduto compraProduto, Produto produto)
         {
-            var produtoAtual = await _produtoRepository.ObterPorId(produto.ProdutoId);
+            if (produto.ValorCompra > compraProduto.ValorUnitario) return;
 
-            if (produtoAtual.ValorCompra > produto.ValorUnitario) return;
+            produto.AtualizarValorCompra(compraProduto.ValorUnitario);
+        }
 
-            produtoAtual.AtualizarValorCompra(produto.ValorUnitario);
+        private void AtualizarEstoque(CompraProduto compraProduto, Produto produto)
+        {
+            produto.IncrementarEstoque(compraProduto.Quantidade);
+        }
 
-            _produtoRepository.Atualizar(produtoAtual);
+        private async Task<Produto> ObterProduto(CompraProduto compraProduto)
+        {
+            return await _produtoRepository.ObterPorId(compraProduto.ProdutoId);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
+using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
 using UMC.CadernetaVendas.Domain.Services;
 using UMC.CadernetaVendas.Domain.Vendas.Repository;
@@ -39,9 +40,20 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
 
             await _vendaRepository.Adicionar(venda);
 
-            foreach (var produto in venda.VendasProdutos)
+            foreach (var produtoVenda in venda.VendasProdutos)
             {
-                await _vendaProdutoRepository.Adicionar(produto);
+                var produto = await ObterProduto(produtoVenda);
+
+                if (!QuantidadeSuficienteNoEstoque(produtoVenda, produto))
+                {
+                    Notificar("Não há itens suficientes em estoque para concluir essa operação.");
+                    return;
+                }
+
+                produto.DecrementarEstoque(produtoVenda.Quantidade);
+
+                _produtoRepository.Atualizar(produto);
+                await _vendaProdutoRepository.Adicionar(produtoVenda);
             }
 
             await _UoW.Commit();
@@ -51,6 +63,16 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
         {
             _vendaRepository.Dispose();
             _vendaProdutoRepository.Dispose();
+        }
+
+        private bool QuantidadeSuficienteNoEstoque(VendaProduto vendaProduto, Produto produto)
+        {
+            return produto.Quantidade - vendaProduto.Quantidade >= 0;
+        }
+
+        private async Task<Produto> ObterProduto(VendaProduto vendaProduto)
+        {
+            return await _produtoRepository.ObterPorId(vendaProduto.ProdutoId);
         }
     }
 }

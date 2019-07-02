@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 10px;
 }
 
+
 .btn-edit {
     background-color: #e2e3e4;
     color: black;
@@ -28,4 +29,9 @@ h1, h2, h3, h4, h5 {
     background-color: #e9ecef;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+table {
+    border: 1px solid black;
+    background-color: #f9f5f5;
 }

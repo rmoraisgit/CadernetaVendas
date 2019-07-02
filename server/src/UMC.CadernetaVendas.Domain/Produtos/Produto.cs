@@ -12,7 +12,6 @@ namespace UMC.CadernetaVendas.Domain.Produtos
     {
         public Produto(
             string nome,
-            //decimal valor,
             double peso,
             double altura,
             double largura,
@@ -36,7 +35,6 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         protected Produto() { }
 
         public string Nome { get; private set; }
-        //public decimal Valor { get; private set; }
         public decimal ValorCompra { get; private set; }
         public decimal ValorVenda { get; private set; }
         public double Peso { get; private set; }
@@ -46,7 +44,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         public string Dimensao { get; private set; }
         public string Descricao { get; private set; }
         public bool? Disponivel { get; private set; }
-        public int? Quantidade { get; private set; }
+        public int Quantidade { get; private set; }
         public byte[] Foto { get; set; }
         public DateTime DataCadastro { get; private set; }
         public Guid CategoriaId { get; private set; }
@@ -63,7 +61,6 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void Validar()
         {
             ValidarNome();
-            //ValidarValor();
             ValidarDescricao();
             ValidarPeso();
             ValidarCapacidade();
@@ -144,6 +141,16 @@ namespace UMC.CadernetaVendas.Domain.Produtos
         private void AtualizarValorVenda(decimal valorCompra)
         {
             ValorVenda = valorCompra + ((valorCompra * 20) / 100);
+        }
+
+        public void IncrementarEstoque(int quantidade)
+        {
+            Quantidade += quantidade;
+        }
+
+        public void DecrementarEstoque(int quantidade)
+        {
+            Quantidade -= quantidade;
         }
     }
 }

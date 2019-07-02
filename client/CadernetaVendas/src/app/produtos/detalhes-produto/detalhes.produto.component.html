@@ -1,7 +1,12 @@
-<h1>TESTE: DETALHES DO PRODUTO</h1>
+<div class="row">
+    <div class="col-12">
+        <h1 class="mt-5">Detalhes do Produto</h1>
+    </div>
+</div>
 
 <div class="row">
-    <div class="col-10">
+    <div class="col-12">
+        <hr>
         <div class="row">
             <div class="col-4 infos-produto">
                 <div class="">
@@ -46,6 +51,29 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-8">
+                <h3>Kardex</h3>
+                <table class="table table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Operação</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Disponível</th>
+                            <th scope="col">Data do processo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"> -->
+                           <tr>
+                            <td>Venda</td>
+                            <td>10</td>
+                            <td id="td-center">50</td>
+                            <td id="td-center">12/08/1996</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination> -->
             </div>
         </div>
     </div>

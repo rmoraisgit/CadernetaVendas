@@ -57,7 +57,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .IsRequired(false);
 
             builder.Property(p => p.Quantidade)
-                .IsRequired(false);
+                .HasColumnType("int");
 
             //builder.Property(p => p.Foto)
             //    .image
