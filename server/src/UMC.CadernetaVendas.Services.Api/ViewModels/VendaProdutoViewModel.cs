@@ -14,5 +14,7 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public decimal ValorSugerido { get; set; }
         public decimal ValorFinal { get; set; }
         public int Quantidade { get; set; }
+        public int QuantidadeAntes { get; set; }
+        public int QuantidadeDepois { get; set; }
     }
 }

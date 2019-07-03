@@ -11,6 +11,7 @@ using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Domain.Produtos.Repository;
+using UMC.CadernetaVendas.Domain.Vendas.Repository;
 using UMC.CadernetaVendas.Services.Api.ViewModels;
 
 namespace UMC.CadernetaVendas.Services.Api.Controllers
@@ -21,15 +22,18 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IProdutoService _produtoService;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly IVendaProdutoRepository _vendaProdutoRepository;
 
         public ProdutosController(IMapper mapper,
                                   IProdutoService produtoService,
                                   IProdutoRepository produtoRepository,
+                                  IVendaProdutoRepository vendaProdutoRepository,
                                   INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _produtoService = produtoService;
             _produtoRepository = produtoRepository;
+            _vendaProdutoRepository = vendaProdutoRepository;
         }
 
         [HttpGet]
@@ -45,6 +49,8 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             var produto = await ObterProduto(id);
 
             if (produto == null) return NotFound();
+
+            produto.vendasProduto.AddRange(_mapper.Map<IEnumerable<VendaProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
 
             return Ok(produto);
         }

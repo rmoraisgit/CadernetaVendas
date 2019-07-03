@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -50,6 +51,8 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public byte[] Foto { get; set; }
 
         public IFormFile FormFile { get; set; }
+
+        public List<VendaProdutoViewModel> vendasProduto { get; set; }
 
         public Guid CategoriaId { get; set; }
     }

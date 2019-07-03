@@ -50,6 +50,7 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
                     return;
                 }
 
+                produtoVenda.GerarKardex(produto.Quantidade, produtoVenda.Quantidade);
                 produto.DecrementarEstoque(produtoVenda.Quantidade);
 
                 _produtoRepository.Atualizar(produto);

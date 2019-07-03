@@ -24,6 +24,7 @@ export class RegistrarVendaComponent implements OnInit, AfterViewInit {
   clientes: Cliente[] = [];
   venda: Venda = new Venda();
   novoProdutoCarrinho: ProdutoVenda;
+  errors: any[] = [];
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
@@ -171,7 +172,12 @@ export class RegistrarVendaComponent implements OnInit, AfterViewInit {
         console.log(res);
         this.alertService.success('Venda registrada com sucesso.');
         this.router.navigate(['vendas']);
-      }
+      },
+      fail => { console.log(fail); this.errors = fail.error.errors }
     )
+  }
+
+  fecharErros() {
+    this.errors = [];
   }
 }
