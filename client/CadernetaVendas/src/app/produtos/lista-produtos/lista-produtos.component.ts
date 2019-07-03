@@ -21,7 +21,6 @@ export class ListaProdutosComponent implements OnInit {
   ngOnInit() {
     this.produtos = this.activatedRoute.snapshot.data["produtos"];
     console.log(this.produtos)
-    console.log(this.produtos[0].foto)
     this.produtos.forEach(produto => {
       produto.foto = "data:image/png;base64," + produto.foto
     });

@@ -58,18 +58,18 @@
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col">Operação</th>
-                            <th scope="col">Quantidade</th>
-                            <th scope="col">Disponível</th>
+                            <th scope="col">Quantidade antes</th>
+                            <th scope="col">Quantidade depois</th>
+                            <!-- <th scope="col">Disponível</th> -->
                             <th scope="col">Data do processo</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"> -->
-                           <tr>
+                          <tr *ngFor="let dataKardex of produto.kardex">
                             <td>Venda</td>
-                            <td>10</td>
-                            <td id="td-center">50</td>
-                            <td id="td-center">12/08/1996</td>
+                            <td>{{dataKardex.quantidadeAntes}}</td>
+                            <td id="td-center">{{dataKardex.quantidadeDepois}}</td>
+                            <td id="td-center">{{dataKardex.dataCadastro | date}}</td>
                           </tr>
                         </tbody>
                       </table>

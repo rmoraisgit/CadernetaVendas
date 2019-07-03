@@ -14,6 +14,11 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
     [ModelBinder(typeof(JsonWithFilesFormDataModelBinder), Name = "produto")]
     public class ProdutoViewModel : BaseViewModel
     {
+        public ProdutoViewModel()
+        {
+            kardex = new List<KardexProdutoViewModel>();
+        }
+
         [Required(ErrorMessage = "O Nome é requerido")]
         [MinLength(2, ErrorMessage = "O tamanho minimo do Nome é {1} caracteres")]
         [MaxLength(150, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
@@ -52,7 +57,11 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 
         public IFormFile FormFile { get; set; }
 
-        public List<VendaProdutoViewModel> vendasProduto { get; set; }
+        public IEnumerable<VendaProdutoViewModel> vendasProduto { get; set; }
+
+        public IEnumerable<VendaProdutoViewModel> comprasProduto { get; set; }
+
+        public List<KardexProdutoViewModel> kardex { get; set; }
 
         public Guid CategoriaId { get; set; }
     }

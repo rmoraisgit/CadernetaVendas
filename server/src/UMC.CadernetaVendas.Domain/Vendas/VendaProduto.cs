@@ -30,6 +30,7 @@ namespace UMC.CadernetaVendas.Domain.Vendas
         public decimal ValorVenda { get; private set; }
         public decimal ValorSugerido { get; private set; }
         public decimal ValorFinal { get; private set; }
+        public DateTime DataCadastro { get; private set; }
 
         public override bool EhValido()
         {

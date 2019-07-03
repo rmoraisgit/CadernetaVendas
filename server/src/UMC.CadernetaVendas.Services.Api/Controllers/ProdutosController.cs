@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UMC.CadernetaVendas.Domain.Compras.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
@@ -23,17 +24,20 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         private readonly IProdutoService _produtoService;
         private readonly IProdutoRepository _produtoRepository;
         private readonly IVendaProdutoRepository _vendaProdutoRepository;
+        private readonly ICompraProdutoRepository _compraProdutoRepository;
 
         public ProdutosController(IMapper mapper,
                                   IProdutoService produtoService,
                                   IProdutoRepository produtoRepository,
                                   IVendaProdutoRepository vendaProdutoRepository,
+                                  ICompraProdutoRepository compraProdutoRepository,
                                   INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _produtoService = produtoService;
             _produtoRepository = produtoRepository;
             _vendaProdutoRepository = vendaProdutoRepository;
+            _compraProdutoRepository = compraProdutoRepository;
         }
 
         [HttpGet]
@@ -50,7 +54,11 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             if (produto == null) return NotFound();
 
-            produto.vendasProduto.AddRange(_mapper.Map<IEnumerable<VendaProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
+            //produto.vendasProduto.AddRange(_mapper.Map<IEnumerable<VendaProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
+            produto.kardex.AddRange(_mapper.Map<IEnumerable<KardexProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
+            produto.kardex.AddRange(_mapper.Map<IEnumerable<KardexProdutoViewModel>>(await _compraProdutoRepository.ObterComprasProdutoPorId(id)));
+
+            produto.kardex = produto.kardex.OrderByDescending(k => k.DataCadastro).ToList();
 
             return Ok(produto);
         }

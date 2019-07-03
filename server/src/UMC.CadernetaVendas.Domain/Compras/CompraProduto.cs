@@ -26,6 +26,7 @@ namespace UMC.CadernetaVendas.Domain.Compras
         public int Quantidade { get; private set; }
         public decimal ValorUnitario { get; private set; }
         public decimal ValorFinal { get; private set; }
+        public DateTime DataCadastro { get; private set; }
 
         public override bool EhValido()
         {
