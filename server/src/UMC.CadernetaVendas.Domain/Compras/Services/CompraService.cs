@@ -45,6 +45,8 @@ namespace UMC.CadernetaVendas.Domain.Compras.Services
             {
                 var produto = await ObterProduto(produtoCompra);
 
+                produtoCompra.GerarKardex(produto.Quantidade, produtoCompra.Quantidade);
+
                 ValidarPrecoProduto(produtoCompra, produto);
                 AtualizarEstoque(produtoCompra, produto);
 

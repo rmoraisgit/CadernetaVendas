@@ -24,6 +24,8 @@ namespace UMC.CadernetaVendas.Domain.Compras
         public Guid ProdutoId { get; private set; }
         public virtual Produto Produto { get; private set; }
         public int Quantidade { get; private set; }
+        public int QuantidadeAntes { get; private set; }
+        public int QuantidadeDepois { get; private set; }
         public decimal ValorUnitario { get; private set; }
         public decimal ValorFinal { get; private set; }
         public DateTime DataCadastro { get; private set; }
@@ -32,6 +34,12 @@ namespace UMC.CadernetaVendas.Domain.Compras
         {
             ValidationResult = Validate(this);
             return true;
+        }
+
+        public void GerarKardex(int quantidadeAnterior, int quantidadeComprada)
+        {
+            QuantidadeAntes = quantidadeAnterior;
+            QuantidadeDepois = QuantidadeAntes + quantidadeComprada;
         }
     }
 }

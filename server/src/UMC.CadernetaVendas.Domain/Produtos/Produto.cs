@@ -150,7 +150,7 @@ namespace UMC.CadernetaVendas.Domain.Produtos
 
         public void DecrementarEstoque(int quantidade)
         {
-            Quantidade =- quantidade;
+            Quantidade -= quantidade;
         }
     }
 }

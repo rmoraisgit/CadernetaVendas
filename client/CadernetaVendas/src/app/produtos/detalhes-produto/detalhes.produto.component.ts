@@ -16,6 +16,7 @@ export class DetalhesProdutoComponent implements OnInit {
     imagemForm: any;
     imagemNome: string;
     imageBase64: any;
+    activatedAngleDown: boolean = true;
 
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     @ViewChild('nomeImagem') nomeImagem: ElementRef;
@@ -54,5 +55,13 @@ export class DetalhesProdutoComponent implements OnInit {
         reader.onload = (_event) => {
             this.fotoURL = reader.result;
         }
+    }
+
+    alterarDireacaoIconeSeta() {
+        if (this.activatedAngleDown) {
+            this.activatedAngleDown = false;
+            return;
+        }
+        this.activatedAngleDown = true;
     }
 }

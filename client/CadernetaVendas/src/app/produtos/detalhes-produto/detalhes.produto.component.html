@@ -27,19 +27,41 @@
                 <div>
                     <h3 class="text-center mt-1">{{produto.nome}}</h3>
 
+                    <div class="text-center mb-3">
+                        <small>Cadastrado no dia {{produto.dataCadastro | date}}</small>
+                    </div>
+
                     <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
                         <span class="span-btn">editar produto</span>
                     </button>
 
-                    <p>Quantidade disponível: {{produto.quantidade}}</p>
+                    <div class="saldo-estoque mb-3">
+                        <span>Saldo disponível:</span>
+                        <span class="ml-1"
+                            [ngClass]="produto.quantidade > 0 ? 'estoque-cheio' : 'estoque-vazio'">{{produto.quantidade}}</span>
+                    </div>
+
 
                     <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 data-toggle="collapse" data-target="#collapseDescricao" aria-expanded="false"
-                                    aria-controls="collapseDescricao">
+                        <div class="card card-descricao">
+                            <div class="card-header card-header-descricao" id="headingOne">
+                                <p id="descricao">
                                     Descrição
-                                </h5>
+                                </p>
+                                <div (click)="alterarDireacaoIconeSeta()">
+                                    <i class="fa fa-2x angle fa-angle-double-down" style="float: right;"
+                                        *ngIf="activatedAngleDown else AngleUp" aria-hidden="true"
+                                        data-toggle="collapse" data-target="#collapseDescricao" aria-expanded="false"
+                                        aria-controls="collapseDescricao">
+                                    </i>
+                                    <ng-template #AngleUp>
+                                        <i class="fa fa-2x angle fa-angle-double-up" style="float: right;"
+                                            aria-hidden="true" data-toggle="collapse" data-target="#collapseDescricao"
+                                            aria-expanded="false" aria-controls="collapseDescricao">
+                                        </i>
+                                    </ng-template>
+                                </div>
+
                             </div>
 
                             <div id="collapseDescricao" class="collapse hide" aria-labelledby="headingOne"
@@ -49,31 +71,51 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="medidas-produto text-center mt-3">
+                            <b>
+                                <p>Medidas:</p>
+                            </b>
+                            <p>Altura: {{produto.altura}} metro(s) | Largura: {{produto.largura}} metro(s)</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-8">
                 <h3>Kardex</h3>
                 <table class="table table-hover">
-                        <thead class="thead-dark">
-                          <tr>
+                    <thead class="thead-dark">
+                        <tr>
                             <th scope="col">Operação</th>
-                            <th scope="col">Quantidade antes</th>
-                            <th scope="col">Quantidade depois</th>
-                            <!-- <th scope="col">Disponível</th> -->
-                            <th scope="col">Data do processo</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let dataKardex of produto.kardex">
-                            <td>Venda</td>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Saldo anterior</th>
+                            <th scope="col">Saldo atual</th>
+                            <th scope="col">Data processamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dataKardex of produto.kardex">
+                            <td *ngIf="dataKardex.quantidadeAntes > dataKardex.quantidadeDepois else operacaoCompra">
+                                Venda
+                            </td>
+                            <ng-template #operacaoCompra>
+                                <td>Compra</td>
+                            </ng-template>
+                            <td>{{dataKardex.quantidade}}</td>
                             <td>{{dataKardex.quantidadeAntes}}</td>
                             <td id="td-center">{{dataKardex.quantidadeDepois}}</td>
-                            <td id="td-center">{{dataKardex.dataCadastro | date}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <!-- <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination> -->
+                            <td scope="col-2" id="td-center">{{dataKardex.dataCadastro | date}}
+                                <i class="fa fa-arrow-down ml-3" style="color: red" aria-hidden="true"
+                                    *ngIf="dataKardex.quantidadeAntes > dataKardex.quantidadeDepois else iconeCompra">
+                                </i>
+                                <ng-template #iconeCompra>
+                                    <i class="fa fa-arrow-up ml-3" style="color: green" aria-hidden="true">
+                                    </i>
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination> -->
             </div>
         </div>
     </div>
