@@ -24,11 +24,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [MaxLength(150, ErrorMessage = "O tamanho máximo do Nome é {1} caracteres")]
         public string Nome { get; set; }
 
-        //[Required(ErrorMessage = "O valor é requerido")]
-        //[DisplayFormat(DataFormatString = "{0:C}")]
-        //[DataType(DataType.Currency, ErrorMessage = "Moeda em formato inválido")]
-        //public decimal Valor { get; set; }
-
         public decimal ValorCompra { get; set; }
 
         public decimal ValorVenda { get; set; }

@@ -15,7 +15,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public int Quantidade { get; set; }
         public int QuantidadeAntes { get; set; }
         public int QuantidadeDepois { get; set; }
-        public string TipoOperacao { get; set; }
 
     }
 }

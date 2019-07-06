@@ -19,6 +19,7 @@ import { selectValidator } from 'src/app/utils/selectValidator';
 })
 export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
+  errors: any[] = [];
   produtoForm: FormGroup;
   fileToUpload: File;
   fotoURL: any;
@@ -144,12 +145,17 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
 
   adicionar() {
 
+    console.log(this.imagemForm);
+
+    if (this.imagemForm == undefined) {
+      this.errors.push("Insira uma imagem para o produto")
+      return;
+    }
+
     const produto: Produto = this.produtoForm.getRawValue();
     produto.categoriaId = this.categoriaSelecionada;
 
     let formdata = new FormData();
-    // produto.FormFile = this.imagemNome;
-    // produto.imagemUpload = null;
 
     formdata.append('produto', JSON.stringify(produto));
     formdata.append('FormFile', this.imagemForm, this.imagemNome);
@@ -158,5 +164,9 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
       this.alertService.success('Produto adicionado com sucesso.');
       this.router.navigate(['produtos']);
     });
+  }
+
+  fecharErros() {
+    this.errors = [];
   }
 }

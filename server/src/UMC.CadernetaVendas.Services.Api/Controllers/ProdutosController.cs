@@ -54,7 +54,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             if (produto == null) return NotFound();
 
-            //produto.vendasProduto.AddRange(_mapper.Map<IEnumerable<VendaProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
             produto.kardex.AddRange(_mapper.Map<IEnumerable<KardexProdutoViewModel>>(await _vendaProdutoRepository.ObterVendasProdutoPorId(id)));
             produto.kardex.AddRange(_mapper.Map<IEnumerable<KardexProdutoViewModel>>(await _compraProdutoRepository.ObterComprasProdutoPorId(id)));
 
@@ -70,10 +69,9 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             var produto = _mapper.Map<Produto>(produtoViewModel);
 
-            using (var memoryStream = new MemoryStream())
+            if(!await UploadArquivo(produtoViewModel.FormFile, produto))
             {
-                await produtoViewModel.FormFile.CopyToAsync(memoryStream);
-                produto.Foto = memoryStream.ToArray();
+                return CustomResponse(ModelState);
             }
 
             await _produtoService.Adicionar(produto);
@@ -81,9 +79,43 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(produtoViewModel);
         }
 
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<ProdutoViewModel>> Atualizar(Guid id, ProdutoViewModel produtoViewModel)
+        {
+            if (id != produtoViewModel.Id)
+            {
+                NotificarErro("O id informado não é o mesmo que foi passado na query");
+                return CustomResponse(produtoViewModel);
+
+            }
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
+
+            return CustomResponse(produtoViewModel);
+        }
+
         private async Task<ProdutoViewModel> ObterProduto(Guid id)
         {
             return _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterPorId(id));
+        }
+
+        private async Task<bool> UploadArquivo(IFormFile file, Produto produto)
+        {
+            if (file == null || file.Length == 0)
+            {
+                NotificarErro("Forneça uma imagem para este produto!");
+                return false;
+            }
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                produto.Foto = memoryStream.ToArray();
+            }
+
+            return true;
         }
     }
 }
