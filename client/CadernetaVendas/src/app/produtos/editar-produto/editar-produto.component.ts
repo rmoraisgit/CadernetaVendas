@@ -1,22 +1,31 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 import { ProdutoService } from '../services/produto.service';
-import { Produto } from '../models/produto';
+import { Produto, Categoria } from '../models/produto';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { pesoValidator } from 'src/app/utils/pesoValidator';
 import { AlertService } from 'src/app/shared/alert/alert.service';
-import { validationMessagesProduto } from './validation-messages-produto';
 import { selectValidator } from 'src/app/utils/selectValidator';
+import { validationMessagesProduto } from '../adicionar-produto/validation-messages-produto';
 
 @Component({
-  selector: 'cv-adicionar-produto',
-  templateUrl: './adicionar-produto.component.html',
-  styleUrls: ['./adicionar-produto.component.css']
+  selector: 'cv-editar-produto',
+  templateUrl: './editar-produto.component.html',
+  styleUrls: ['./editar-produto.component.css']
 })
-export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
+export class EditarProdutoComponent implements OnInit {
+
+  produto: Produto;
+
+  categorias: Categoria[] =
+    [
+      { id: "f8a495a7-40dd-4e94-85c0-8e203aa8a94a", nome: "Cama" },
+      { id: 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b', nome: 'Mesa' },
+      { id: "57b328e4-a8e3-4c61-ac95-59e110d2edd8", nome: "Cozinha" },
+    ]
 
   errors: any[] = [];
   produtoForm: FormGroup;
@@ -32,23 +41,45 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   @ViewChild('nomeImagem') nomeImagem: ElementRef;
+  @ViewChild('selectCategorias') selectCategorias: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
     private produtoService: ProdutoService,
     private alertService: AlertService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute) {
 
     this.genericValidator = new GenericValidator(validationMessagesProduto);
   }
 
   ngOnInit() {
+    const idProduto = this.route.snapshot.params.produtoId;
+
+    this.produtoService.obterProdutoPorId(idProduto)
+      .subscribe(produto => {
+        this.produto = produto;
+        this.fotoURL = "data:image/png;base64," + this.produto.foto;
+        this.produto.kardex = produto.kardex;
+        this.preencherFormComDadosProduto();
+        console.log(this.produto);
+        this.produtoForm.addControl('select', new FormControl(this.categoriaSelecionada))
+      });
+  }
+
+  preencherFormComDadosProduto() {
     this.produtoForm = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
-      peso: ['', [Validators.required, pesoValidator]],
-      descricao: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]],
-      select: ['Selecione...', [selectValidator]]
+      nome: [this.produto.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
+      peso: [this.produto.peso, [Validators.required, pesoValidator]],
+      descricao: [this.produto.descricao, [Validators.required, Validators.minLength(10), Validators.maxLength(300)]],
+      // select: ['r']
     });
+
+    this.preencherCategoriaComDadosProduto();
+  }
+
+  preencherCategoriaComDadosProduto() {
+    console.log(this.selectCategorias);
   }
 
   ngAfterViewInit(): void {
@@ -167,4 +198,5 @@ export class AdicionarProdutoComponent implements OnInit, AfterViewInit {
   fecharErros() {
     this.errors = [];
   }
+
 }

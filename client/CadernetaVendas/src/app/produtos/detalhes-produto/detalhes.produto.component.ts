@@ -21,8 +21,9 @@ export class DetalhesProdutoComponent implements OnInit {
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     @ViewChild('nomeImagem') nomeImagem: ElementRef;
 
-    constructor(private route: ActivatedRoute,
-        private produtoService: ProdutoService) { }
+    constructor(
+                private route: ActivatedRoute,
+                private produtoService: ProdutoService) { }
 
     ngOnInit(): void {
         const idProduto = this.route.snapshot.params.produtoId;

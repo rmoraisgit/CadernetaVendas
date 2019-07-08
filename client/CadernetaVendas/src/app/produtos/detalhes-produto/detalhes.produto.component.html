@@ -30,10 +30,12 @@
                     <div class="text-center mb-3">
                         <small>Cadastrado no dia {{produto.dataCadastro | date}}</small>
                     </div>
+                    <a [routerLink]="['/produtos', 'editar', produto.id]">
+                        <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
 
-                    <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
-                        <span class="span-btn">editar produto</span>
-                    </button>
+                            <span class="span-btn">editar produto</span>
+                        </button>
+                    </a>
 
                     <div class="saldo-estoque mb-3">
                         <span>Saldo disponível:</span>

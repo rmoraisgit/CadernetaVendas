@@ -12,12 +12,14 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes.produto.component';
+import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 
 @NgModule({
   declarations: [
     AdicionarProdutoComponent,
     ListaProdutosComponent,
-    DetalhesProdutoComponent
+    DetalhesProdutoComponent,
+    EditarProdutoComponent
   ],
   imports: [
     CommonModule,

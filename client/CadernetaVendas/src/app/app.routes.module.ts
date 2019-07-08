@@ -13,6 +13,7 @@ import { ListaProdutosResolver } from './produtos/lista-produtos/lista-produtos.
 import { ListaVendasComponent } from './vendas/lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './vendas/registrar-venda/registrar-venda.component';
 import { DetalhesProdutoComponent } from './produtos/detalhes-produto/detalhes.produto.component';
+import { EditarProdutoComponent } from './produtos/editar-produto/editar-produto.component';
 
 const routes: Routes = [
     {
@@ -37,6 +38,10 @@ const routes: Routes = [
     {
         path: 'produtos/detalhes/:produtoId',
         component: DetalhesProdutoComponent
+    },
+    {
+        path: 'produtos/editar/:produtoId',
+        component: EditarProdutoComponent
     },
     {
         path: 'clientes',
