@@ -84,7 +84,7 @@
             </div>
             <div class="col-8">
                 <h3>Kardex</h3>
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="produto.kardex.length else produtoSemTransacoes">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Operação</th>
@@ -117,7 +117,25 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination> -->
+
+                <ng-template #produtoSemTransacoes>
+                    <div class="container-sem-transacoes mt-3">
+                        <h4 class="">Esse produto ainda não possui transações de estoque</h4>
+                        <p class="transacao-text text-center mt-3">Selecione uma das opções abaixo para realizar a
+                            primeira transação:</p>
+                        <div class="button-group row mt-3">
+                            <div class="col-6">
+                                <button class="btn btn-info btn-transacoes" [routerLink]="['/compras', 'registrar']"
+                                    type="button">Registrar compra</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-info btn-transacoes" [routerLink]="['/vendas', 'registrar']"
+                                    type="submit">Registrar venda</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
             </div>
         </div>
     </div>

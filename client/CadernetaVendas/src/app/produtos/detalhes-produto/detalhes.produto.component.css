@@ -67,6 +67,22 @@ table {
     background-color: #f9f5f5;
 }
 
+.container-sem-transacoes {
+    background-color: #e9ecef;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 3rem;  
+}
+
+.transacao-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-transacoes {
+    width: 100%;
+    font-weight: 500;
+}
+
 .saldo-estoque {
     font-weight: 500;
 }

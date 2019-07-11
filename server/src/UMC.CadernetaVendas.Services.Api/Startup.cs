@@ -15,6 +15,7 @@ using UMC.CadernetaVendas.Infra.Data.Context;
 using UMC.CadernetaVendas.Services.Api.Configurations;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace UMC.CadernetaVendas.Services.Api
 {
@@ -39,6 +40,12 @@ namespace UMC.CadernetaVendas.Services.Api
 
             services.WebApiConfig();
 
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
+
             // Registrar todos as injeções de dependência
             services.AddDIConfiguration();
         }
@@ -61,6 +68,11 @@ namespace UMC.CadernetaVendas.Services.Api
             app.UseAuthentication();
 
             app.UseMvcConfiguration();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c=> {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }
