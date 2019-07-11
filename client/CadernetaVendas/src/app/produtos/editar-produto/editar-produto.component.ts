@@ -10,6 +10,7 @@ import { pesoValidator } from 'src/app/utils/pesoValidator';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { selectValidator } from 'src/app/utils/selectValidator';
 import { validationMessagesProduto } from '../adicionar-produto/validation-messages-produto';
+import { Input } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'cv-editar-produto',
@@ -33,7 +34,7 @@ export class EditarProdutoComponent implements OnInit {
   fotoURL: any;
   categoriaSelecionada: string = '';
   imagemForm: any;
-  imagemNome: string;;
+  imagemNome: string;
 
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
@@ -41,6 +42,7 @@ export class EditarProdutoComponent implements OnInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   @ViewChild('nomeImagem') nomeImagem: ElementRef;
+  @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('selectCategorias') selectCategorias: ElementRef;
 
   constructor(
@@ -54,13 +56,16 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   ngOnInit() {
+
     const idProduto = this.route.snapshot.params.produtoId;
 
     this.produtoService.obterProdutoPorId(idProduto)
       .subscribe(produto => {
         this.produto = produto;
         this.fotoURL = "data:image/png;base64," + this.produto.foto;
-        this.produto.kardex = produto.kardex;
+        this.obterInfosFileOnInit();
+        // this.imagemForm = file[0];
+        // this.imagemNome = file[0].name;
         this.preencherFormComDadosProduto();
         console.log(this.produto);
         this.produtoForm.addControl('select', new FormControl(this.categoriaSelecionada))
@@ -70,8 +75,6 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   preencherFormComDadosProduto() {
-
-    let teste = new FormControl(this.categorias[0].nome, selectValidator);
 
     this.produtoForm = this.formBuilder.group({
       nome: [this.produto.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
@@ -105,8 +108,27 @@ export class EditarProdutoComponent implements OnInit {
     }
   }
 
-  definirValoresIniciais() {
+  obterInfosFileOnInit() {
+    console.log(this.produto.foto)
+    console.log(this.fileInput.nativeElement.files);
 
+    const imageName = this.imagemNome + '.jpeg';
+    // call method that creates a blob from dataUri
+    const imageBlob = this.dataURItoBlob(this.produto.foto);
+    this.imagemForm = new File([imageBlob], imageName, { type: 'image/jpeg' });
+
+    console.log(this.imagemForm);
+  }
+
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 
   ngAfterViewInit(): void {
@@ -210,7 +232,7 @@ export class EditarProdutoComponent implements OnInit {
       this.produtoForm.removeControl('largura');
   }
 
-  adicionar() {
+  atualizar() {
 
     console.log(this.imagemForm);
 
@@ -220,6 +242,7 @@ export class EditarProdutoComponent implements OnInit {
     }
 
     const produto: Produto = this.produtoForm.getRawValue();
+    produto.id = this.produto.id;
     produto.categoriaId = this.categoriaSelecionada;
 
     let formdata = new FormData();
@@ -227,7 +250,7 @@ export class EditarProdutoComponent implements OnInit {
     formdata.append('produto', JSON.stringify(produto));
     formdata.append('FormFile', this.imagemForm, this.imagemNome);
 
-    return this.produtoService.adicionarProduto(formdata).subscribe(res => {
+    return this.produtoService.atualizarProduto(this.produto.id, formdata).subscribe(res => {
       this.alertService.success('Produto adicionado com sucesso.');
       this.router.navigate(['produtos']);
     });

@@ -33,4 +33,8 @@ export class ProdutoService extends BaseService {
   adicionarProduto(produto: FormData) {
     return this.http.post(this.UrlServiceV1 + 'produtos/adicionar', produto, this.ObterHeaderFormData());
   };
+
+  atualizarProduto(id: string, produto: FormData) {
+    return this.http.put(this.UrlServiceV1 + `produtos/${id}`, produto, this.ObterHeaderFormData());
+  };
 }

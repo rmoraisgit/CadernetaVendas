@@ -1,122 +1,121 @@
 <div class="row">
-    <div class="col-12">
-      <h1 class="mt-5 titulo">Editar Produto</h1>
-      <h3 class="mt-2 titulo">{{produto.nome}}</h3>
-    </div>
+  <div class="col-12">
+    <h1 class="mt-5 titulo">Editar Produto</h1>
+    <h3 class="mt-2 titulo">{{produto.nome}}</h3>
   </div>
-  
-  <div class="row justify-content-center">
-  
-    <div class="col-6">
-  
-      <div class="alert alert-danger" *ngIf="errors.length > 0">
-        <button type="button" class="close" (click)="fecharErros()" aria-label="fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
-  
-        <ul>
-          <li *ngFor="let error of errors">{{ error }}</li>
-        </ul>
-      </div>
-  
-      <hr>
-      <div class="form-cadastro">
-        <div class="row">
-          <div class="col-4">
-            <div class="campo-imagem text-center">
-              <img class="img-thumbnail rounded foto-produto" *ngIf="!fotoURL else fotoProduto" id="empty-image"
-                src="../../../assets/empty-image.png" alt="sem foto" />
-              <ng-template #fotoProduto>
-                <picture>
-                  <img class="img-thumbnail rounded foto-produto" id="foto-produto" [src]="fotoURL" alt="foto produto" />
-                </picture>
-              </ng-template>
-            </div>
-          </div>
-  
-          <div class="col-8">
-            <div class="custom-file">
-              <input class="custom-file-input" #fileInput id="validatedCustomFile" type="file" accept="image/*"
-                (change)="uploadFoto(fileInput.files)">
-              <label #nomeImagem class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
-            </div>
+</div>
+
+<div class="row justify-content-center">
+
+  <div class="col-6">
+
+    <div class="alert alert-danger" *ngIf="errors.length > 0">
+      <button type="button" class="close" (click)="fecharErros()" aria-label="fechar">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+
+      <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+    </div>
+
+    <hr>
+    <div class="form-cadastro">
+      <div class="row">
+        <div class="col-4">
+          <div class="campo-imagem text-center">
+            <img class="img-thumbnail rounded foto-produto" *ngIf="!fotoURL else fotoProduto" id="empty-image"
+              src="../../../assets/empty-image.png" alt="sem foto" />
+            <ng-template #fotoProduto>
+              <picture>
+                <img class="img-thumbnail rounded foto-produto" id="foto-produto" [src]="fotoURL" alt="foto produto" />
+              </picture>
+            </ng-template>
           </div>
         </div>
-  
-        <hr>
-  
-        <form [formGroup]="produtoForm" (submit)="adicionar()">
-  
-          <div class="form-group mt-2">
-            <label for="nomeProduto">Nome</label>
-            <input formControlName="nome" type="text" class="form-control" id="nomeProduto"
-              placeholder="Insira o nome do produto">
-  
-            <ap-vmessage *ngIf="displayMessage.nome" text="{{displayMessage.nome}}">
-            </ap-vmessage>
+
+        <div class="col-8">
+          <div class="custom-file">
+            <input class="custom-file-input" #fileInput id="validatedCustomFile" type="file" accept="image/*"
+              (change)="uploadFoto(fileInput.files)">
+            <label #nomeImagem class="custom-file-label" for="validatedCustomFile">Selecione uma imagem...</label>
           </div>
-  
-          <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <textarea formControlName="descricao" class="form-control" id="descricao" rows="3"
-              placeholder="Insira uma descrição sobre o produto"></textarea>
-  
-            <ap-vmessage *ngIf="displayMessage.descricao" text="{{displayMessage.descricao}}">
-            </ap-vmessage>
-          </div>
-  
-          <div class="form-group">
-            <label for="peso">Peso (em kilos)</label>
-            <input formControlName="peso" type="number" class="form-control" id="peso"
-              placeholder="Informe o peso do produto">
-  
-            <ap-vmessage *ngIf="displayMessage.peso" text="{{displayMessage.peso}}">
-            </ap-vmessage>
-          </div>
-          
-          <div class="form-group">
-              <label for="inputCategoria">Categoria</label>
-              <select formControlName="select" #selectCategorias class="form-control" id="inputCategoria"
-                (change)="atualizarForm($event.target.value)">
-                <option value="Selecione...">Selecione...</option>
-                <option *ngFor="let categoria of categorias" 
-                        [value]="categoria.id" 
-                        [selected]="categoria.id == produto.categoriaId">
-                  {{categoria.nome}}
-                </option>
-              </select>
-            </div>
-  
-          <div class="form-row"
-            *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'">
-            <div class="form-group col-md-6">
-              <label for="altura">Altura (metros)</label>
-              <input formControlName="altura" type="number" class="form-control" id="altura"
-                placeholder="Informe a medida de altura">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="largura">Largura (metros)</label>
-              <input formControlName="largura" type="number" class="form-control" id="largura"
-                placeholder="Informe a medida de largura">
-            </div>
-          </div>
-  
-          <div class="form-group" *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'">
-            <label for="capacidade">Capacidade (em litros)</label>
-            <input formControlName="capacidade" type="number" class="form-control" id="capacidade"
-              placeholder="Informe a capacidade do produto" [value]="produto.capacidade">
-          </div>
-  
-          <div class="button-group row">
-            <div class="col-6">
-              <button class="btn btn-primary" [routerLink]="['/produtos']" type="button">Voltar</button>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
+
+      <hr>
+
+      <form [formGroup]="produtoForm" (submit)="atualizar()">
+
+        <div class="form-group mt-2">
+          <label for="nomeProduto">Nome</label>
+          <input formControlName="nome" type="text" class="form-control" id="nomeProduto"
+            placeholder="Insira o nome do produto">
+
+          <ap-vmessage *ngIf="displayMessage.nome" text="{{displayMessage.nome}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea formControlName="descricao" class="form-control" id="descricao" rows="3"
+            placeholder="Insira uma descrição sobre o produto"></textarea>
+
+          <ap-vmessage *ngIf="displayMessage.descricao" text="{{displayMessage.descricao}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="peso">Peso (em kilos)</label>
+          <input formControlName="peso" type="number" class="form-control" id="peso"
+            placeholder="Informe o peso do produto">
+
+          <ap-vmessage *ngIf="displayMessage.peso" text="{{displayMessage.peso}}">
+          </ap-vmessage>
+        </div>
+
+        <div class="form-group">
+          <label for="inputCategoria">Categoria</label>
+          <select formControlName="select" #selectCategorias class="form-control" id="inputCategoria"
+            (change)="atualizarForm($event.target.value)">
+            <option value="Selecione...">Selecione...</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id"
+              [selected]="categoria.id == produto.categoriaId">
+              {{categoria.nome}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-row"
+          *ngIf="categoriaSelecionada == 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a' || categoriaSelecionada == 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b'">
+          <div class="form-group col-md-6">
+            <label for="altura">Altura (metros)</label>
+            <input formControlName="altura" type="number" class="form-control" id="altura"
+              placeholder="Informe a medida de altura">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="largura">Largura (metros)</label>
+            <input formControlName="largura" type="number" class="form-control" id="largura"
+              placeholder="Informe a medida de largura">
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="categoriaSelecionada == '57b328e4-a8e3-4c61-ac95-59e110d2edd8'">
+          <label for="capacidade">Capacidade (em litros)</label>
+          <input formControlName="capacidade" type="number" class="form-control" id="capacidade"
+            placeholder="Informe a capacidade do produto" [value]="produto.capacidade">
+        </div>
+
+        <div class="button-group row">
+          <div class="col-6">
+            <button class="btn btn-primary" [routerLink]="['/produtos']" type="button">Voltar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Adicionar</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>

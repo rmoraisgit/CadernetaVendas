@@ -86,12 +86,18 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             {
                 NotificarErro("O id informado não é o mesmo que foi passado na query");
                 return CustomResponse(produtoViewModel);
-
             }
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _produtoService.Atualizar(_mapper.Map<Produto>(produtoViewModel));
+            var produto = _mapper.Map<Produto>(produtoViewModel);
+
+            if (!await UploadArquivo(produtoViewModel.FormFile, produto))
+            {
+                return CustomResponse(ModelState);
+            }
+
+            await _produtoService.Atualizar(produto);
 
             return CustomResponse(produtoViewModel);
         }
