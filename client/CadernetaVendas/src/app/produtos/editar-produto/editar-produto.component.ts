@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 import { ProdutoService } from '../services/produto.service';
 import { Produto, Categoria } from '../models/produto';
@@ -10,7 +10,6 @@ import { pesoValidator } from 'src/app/utils/pesoValidator';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { selectValidator } from 'src/app/utils/selectValidator';
 import { validationMessagesProduto } from '../adicionar-produto/validation-messages-produto';
-import { Input } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'cv-editar-produto',
@@ -23,9 +22,9 @@ export class EditarProdutoComponent implements OnInit {
 
   categorias: Categoria[] =
     [
-      { id: "f8a495a7-40dd-4e94-85c0-8e203aa8a94a", nome: "Cama" },
+      { id: 'f8a495a7-40dd-4e94-85c0-8e203aa8a94a', nome: 'Cama' },
       { id: 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b', nome: 'Mesa' },
-      { id: "57b328e4-a8e3-4c61-ac95-59e110d2edd8", nome: "Cozinha" }
+      { id: '57b328e4-a8e3-4c61-ac95-59e110d2edd8', nome: 'Cozinha' }
     ]
 
   errors: any[] = [];
@@ -40,9 +39,7 @@ export class EditarProdutoComponent implements OnInit {
   genericValidator: GenericValidator;
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-
   @ViewChild('nomeImagem') nomeImagem: ElementRef;
-  @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('selectCategorias') selectCategorias: ElementRef;
 
   constructor(
@@ -61,17 +58,17 @@ export class EditarProdutoComponent implements OnInit {
 
     this.produtoService.obterProdutoPorId(idProduto)
       .subscribe(produto => {
-        this.produto = produto;
-        this.fotoURL = "data:image/png;base64," + this.produto.foto;
+        this.atribuirValoresProduto(produto);
         this.obterInfosFileOnInit();
-        // this.imagemForm = file[0];
-        // this.imagemNome = file[0].name;
         this.preencherFormComDadosProduto();
-        console.log(this.produto);
-        this.produtoForm.addControl('select', new FormControl(this.categoriaSelecionada))
-        this.categoriaSelecionada = produto.categoriaId;
         this.atualizarForm(produto.categoriaId);
       });
+  }
+
+  atribuirValoresProduto(produto: any) {
+    this.produto = produto;
+    this.categoriaSelecionada = produto.categoriaId;
+    this.fotoURL = 'data:image/png;base64,' + this.produto.foto;
   }
 
   preencherFormComDadosProduto() {
@@ -87,7 +84,6 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   preencherCategoriaComDadosProduto(idCategoria: string) {
-    console.log(idCategoria);
 
     switch (idCategoria) {
 
@@ -109,9 +105,6 @@ export class EditarProdutoComponent implements OnInit {
   }
 
   obterInfosFileOnInit() {
-    console.log(this.produto.foto)
-    console.log(this.fileInput.nativeElement.files);
-
     const imageName = this.imagemNome + '.jpeg';
     // call method that creates a blob from dataUri
     const imageBlob = this.dataURItoBlob(this.produto.foto);
@@ -186,8 +179,6 @@ export class EditarProdutoComponent implements OnInit {
       // Categoria: Mesa
       case 'c7792c4a-4020-45e4-bc58-6dd4f0cdeb8b': {
 
-        console.log('SOU 1 MESA')
-
         this.removerTodosControles();
 
         this.categoriaSelecionada = categoriaSelecionada;
@@ -234,8 +225,6 @@ export class EditarProdutoComponent implements OnInit {
 
   atualizar() {
 
-    console.log(this.imagemForm);
-
     if (this.imagemForm == undefined) {
       this.errors.push("Insira uma imagem para o produto")
       return;
@@ -259,5 +248,4 @@ export class EditarProdutoComponent implements OnInit {
   fecharErros() {
     this.errors = [];
   }
-
 }
