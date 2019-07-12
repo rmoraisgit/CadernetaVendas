@@ -109,7 +109,7 @@
 
         <div class="button-group row">
           <div class="col-6">
-            <button class="btn btn-primary" [routerLink]="['/produtos']" type="button">Voltar</button>
+            <button class="btn btn-primary" [routerLink]="['/produtos', 'detalhes', produto.id]" type="button">Voltar</button>
           </div>
           <div class="col-6">
             <button class="btn btn-success" type="submit" [disabled]="produtoForm.invalid">Atualizar</button>

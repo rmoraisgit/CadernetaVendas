@@ -30,7 +30,7 @@
           <th scope="col">Nome</th>
           <th scope="col">Preço de Venda</th>
           <th id="th-center" scope="col">Peso(em kg)</th>
-          <th id="th-center" scope="col">Editar</th>
+          <th id="th-center" scope="col">Detalhes</th>
         </tr>
       </thead>
       <tbody>
@@ -40,8 +40,8 @@
           <td>R${{produto.valorVenda}}</td>
           <td id="td-center">{{produto.peso}}kg</td>
           <td id="td-center">
-            <a [routerLink]="['detalhes', produto.id]">
-              <i class="fa fa-pencil" cvChangeColorOnHover aria-hidden="true"></i>
+            <a [routerLink]="['detalhes', produto.id]" style="color: rgb(56, 65, 88);">
+              <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>
             </a>
           </td>
         </tr>

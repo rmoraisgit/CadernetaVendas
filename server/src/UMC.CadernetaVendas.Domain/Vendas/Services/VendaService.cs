@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Produtos;
@@ -16,17 +17,20 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
         private readonly IVendaRepository _vendaRepository;
         private readonly IProdutoRepository _produtoRepository;
         private readonly IVendaProdutoRepository _vendaProdutoRepository;
+        private readonly IClienteRepository _clienteRepository;
         private readonly IUnitOfWork _UoW;
 
         public VendaService(IVendaRepository vendaRepository,
                              IProdutoRepository produtoRepository,
                              IVendaProdutoRepository vendaProdutoRepository,
+                             IClienteRepository clienteRepository,
                              IUnitOfWork uow,
                              INotificador notificador) : base(notificador)
         {
             _vendaRepository = vendaRepository;
             _produtoRepository = produtoRepository;
             _vendaProdutoRepository = vendaProdutoRepository;
+            _clienteRepository = clienteRepository;
             _UoW = uow;
         }
 
@@ -57,6 +61,8 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
                 await _vendaProdutoRepository.Adicionar(produtoVenda);
             }
 
+            await IncrementarSaldoDevedorCliente(venda.ClienteId, venda.Total);
+
             await _UoW.Commit();
         }
 
@@ -74,6 +80,13 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
         private async Task<Produto> ObterProduto(VendaProduto vendaProduto)
         {
             return await _produtoRepository.ObterPorId(vendaProduto.ProdutoId);
+        }
+
+        private async Task IncrementarSaldoDevedorCliente(Guid clienteId, decimal valorTotalVenda)
+        {
+            var cliente = await _clienteRepository.ObterPorId(clienteId);
+            cliente.IncrementarSaldoDevedor(valorTotalVenda);
+            _clienteRepository.Atualizar(cliente);
         }
     }
 }

@@ -37,17 +37,6 @@ export class DetalhesProdutoComponent implements OnInit {
             });
     }
 
-    uploadFoto(file: any) {
-
-        if (file.length == 0) return;
-
-        this.imagemForm = file[0];
-        this.imagemNome = file[0].name;
-        this.nomeImagem.nativeElement.innerText = file[0].name
-
-        this.atualizarFotoExibicao(file[0]);
-    }
-
     // file: File
     atualizarFotoExibicao(file: any) {
 

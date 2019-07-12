@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
 using UMC.CadernetaVendas.Domain.Vendas;
@@ -24,6 +25,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         public VendasController(IMapper mapper,
                                 IVendaService vendaService,
                                 IVendaRepository vendaRepository,
+                                IClienteRepository clienteRepository,
                                 INotificador notificador) : base(notificador)
         {
             _mapper = mapper;

@@ -45,5 +45,10 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         {
             Endereco = endereco;
         }
+
+        public void IncrementarSaldoDevedor(decimal valorCompra)
+        {
+            SaldoDevedor += valorCompra;
+        }
     }
 }

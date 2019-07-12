@@ -241,7 +241,7 @@ export class EditarProdutoComponent implements OnInit {
 
     return this.produtoService.atualizarProduto(this.produto.id, formdata).subscribe(res => {
       this.alertService.success('Produto adicionado com sucesso.');
-      this.router.navigate(['produtos']);
+      this.router.navigate(['produtos', 'detalhes', produto.id]);
     });
   }
 
