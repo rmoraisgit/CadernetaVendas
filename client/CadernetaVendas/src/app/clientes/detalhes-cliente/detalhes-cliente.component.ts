@@ -12,17 +12,26 @@ import { Cliente } from '../models/cliente';
 export class DetalhesClienteComponent implements OnInit {
 
   cliente: Cliente;
+  enderecoFormatado: string = '';
 
   constructor(private route: ActivatedRoute,
-              private clienteService: ClienteService) { }
+    private clienteService: ClienteService) { }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     const clienteId = this.route.snapshot.params.clienteId;
 
     this.clienteService.obterClientePorId(clienteId)
       .subscribe(cliente => {
         console.log(cliente);
         this.cliente = cliente;
+        this.formatarEndereco();
       })
   }
+
+  private formatarEndereco(): void {
+
+    this.enderecoFormatado =
+      `${this.cliente.endereco.logradouro}, ${this.cliente.endereco.numero} <br>
+      ${this.cliente.endereco.bairro} - ${this.cliente.endereco.cidade}/${this.cliente.endereco.estado}`;
+  };
 }

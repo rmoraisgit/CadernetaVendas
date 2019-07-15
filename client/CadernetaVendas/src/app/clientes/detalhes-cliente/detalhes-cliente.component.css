@@ -2,9 +2,47 @@ h1, h2, h3, h4, h5 {
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
     color: #384158;
-    text-align: center;
 }
 
 h5 {
     font-size: 1.35rem;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}
+
+span {
+    font-weight: 500;
+}
+
+.titulo-info {
+    font-size: 1.05rem;
+    color: #384158;
+    font-weight: 700;
+}
+
+.infos-cliente {
+    background-color: #e9ecef;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nome-cliente {
+    display: inline;
+}
+
+.status-cliente {
+    display: inline;
+}
+
+.saldo-devedor {
+    background-color: #e9ecef;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 3rem;
+}
+
+.btn-cancelar-divida {
+    font-weight: 500;
+    float: right;
 }

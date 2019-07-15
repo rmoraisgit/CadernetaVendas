@@ -1,11 +1,55 @@
 <div class="row">
   <div class="col-12 mt-5">
-      <a [routerLink]="['/clientes']">
-          <button class="btn btn-info" style="float: left;">
-              <i class="fa fa-arrow-left" aria-hidden="true"></i>
-              Voltar
-          </button>
-      </a>
-      <h1>Detalhes do Cliente</h1>
+    <a [routerLink]="['/clientes']">
+      <button class="btn btn-info" style="float: left;">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Voltar
+      </button>
+    </a>
+    <h1 class="text-center">Detalhes do Cliente</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <hr>
+    <div class="row">
+      <div class="col-5 infos-cliente">
+        <div>
+          <h4 class="nome-cliente mr-2">{{cliente.nome}}</h4>
+          <div class="status-cliente mb-2" [ngSwitch]="cliente.ativo">
+            <small *ngSwitchCase="true">ativo <i class="fa fa-check-circle" style="color: green;" aria-hidden="true"></i>
+            </small>
+            <small *ngSwitchCase="false">desativado <i class="fa fa-circle" style="color: red;"
+                aria-hidden="true"></i></small>
+          </div>
+        </div>
+        <div class="mb-2">
+          <small>Cadastrado no dia {{cliente.dataCadastro | date}}</small>
+        </div>
+
+        <p style="font-weight: 500;" [innerHtml]="enderecoFormatado"></p>
+        <hr>
+        <div id="campo-cpf">
+          <span class="titulo-info">CPF: </span>
+          <span>{{cliente.cpf | mask: '000.000.000-00'}}</span>
+        </div>
+        <div class="campo-telefone">
+          <span class="titulo-info">Telefone: </span>
+          <span>{{cliente.telefone | mask: '(00) 0000-0000'}}</span>
+        </div>
+        <div class="campo-celular">
+          <span class="titulo-info">Celular: </span>
+          <span>{{cliente.celular | mask: '(00) 00000-0000'}}</span>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="saldo-devedor text-center">
+          <h2>Saldo devedor:</h2>
+          <h3 style="color: #ea0808;">R${{cliente.saldoDevedor | number}}</h3>
+          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary btn-cancelar-divida" type="button">Cancelar dívida</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

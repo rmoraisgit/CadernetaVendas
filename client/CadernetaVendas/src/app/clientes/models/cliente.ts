@@ -8,6 +8,7 @@ export class Cliente {
     telefone: string;
     celular: string;
     email: string;
+    ativo: boolean;
     endereco: Endereco;
 }
 

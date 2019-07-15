@@ -34,6 +34,8 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         [StringLength(150, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Email { get; set; }
 
+        public bool Ativo { get; set; }
+
         public EnderecoViewModel Endereco { get; set; }
     }
 }
