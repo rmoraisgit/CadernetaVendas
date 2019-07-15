@@ -11,7 +11,6 @@ import { FormControlName } from '@angular/forms';
 export class DetalhesProdutoComponent implements OnInit {
 
     produto: Produto;
-    // kardex: Kardex[] = []
     fotoURL: any;
     imagemForm: any;
     imagemNome: string;
@@ -21,14 +20,13 @@ export class DetalhesProdutoComponent implements OnInit {
     @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
     @ViewChild('nomeImagem') nomeImagem: ElementRef;
 
-    constructor(
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private produtoService: ProdutoService) { }
 
     ngOnInit(): void {
-        const idProduto = this.route.snapshot.params.produtoId;
+        const produtoId = this.route.snapshot.params.produtoId;
 
-        this.produtoService.obterProdutoPorId(idProduto)
+        this.produtoService.obterProdutoPorId(produtoId)
             .subscribe(produto => {
                 this.produto = produto;
                 this.fotoURL = "data:image/png;base64," + this.produto.foto;

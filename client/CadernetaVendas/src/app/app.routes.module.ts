@@ -14,6 +14,7 @@ import { ListaVendasComponent } from './vendas/lista-vendas/lista-vendas.compone
 import { RegistrarVendaComponent } from './vendas/registrar-venda/registrar-venda.component';
 import { DetalhesProdutoComponent } from './produtos/detalhes-produto/detalhes.produto.component';
 import { EditarProdutoComponent } from './produtos/editar-produto/editar-produto.component';
+import { DetalhesClienteComponent } from './clientes/detalhes-cliente/detalhes-cliente.component';
 
 const routes: Routes = [
     {
@@ -50,6 +51,10 @@ const routes: Routes = [
     {
         path: 'clientes/adicionar',
         component: AdicionarClienteComponent
+    },
+    {
+        path: 'clientes/detalhes/:clienteId',
+        component: DetalhesClienteComponent
     },
     {
         path: 'compras',

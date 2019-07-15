@@ -42,11 +42,11 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> ObterPorId(Guid id)
         {
-            var fornecedor = await ObterClienteEndereco(id);
+            var cliente = await ObterClienteEndereco(id);
 
-            if (fornecedor == null) return NotFound();
+            if (cliente == null) return NotFound();
 
-            return Ok(fornecedor);
+            return Ok(cliente);
         }
 
         [HttpPost("adicionar")]
