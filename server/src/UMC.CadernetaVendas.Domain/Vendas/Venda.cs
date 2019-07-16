@@ -22,11 +22,13 @@ namespace UMC.CadernetaVendas.Domain.Vendas
         /* Cliente */
         public Guid ClienteId { get; set; }
         public virtual Cliente Cliente { get; private set; }
+        public virtual ICollection<ClienteCompra> ClientesCompras { get; private set; }
 
         /* Produtos */
         public virtual ICollection<Guid> IdsProdutos { get; private set; }
         public virtual ICollection<Produto> Produtos { get; private set; }
         public virtual ICollection<VendaProduto> VendasProdutos { get; private set; }
+
 
         public override bool EhValido()
         {

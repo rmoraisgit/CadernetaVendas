@@ -20,6 +20,8 @@
     <Compile Remove="Migrations\20190630141455_NovaColunaAtivoClientes.cs" />
     <Compile Remove="Migrations\20190630141744_teste.cs" />
     <Compile Remove="Migrations\20190630142101_tyeste2.cs" />
+    <Compile Remove="Migrations\20190716174135_NovaTabelaClientesCompras.cs" />
+    <Compile Remove="Migrations\20190716174135_NovaTabelaClientesCompras.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UMC.CadernetaVendas.Domain.Clientes;
 using UMC.CadernetaVendas.Domain.Clientes.Repository;
 using UMC.CadernetaVendas.Domain.Core.Notificacoes;
 using UMC.CadernetaVendas.Domain.Interfaces;
@@ -18,19 +19,22 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
         private readonly IProdutoRepository _produtoRepository;
         private readonly IVendaProdutoRepository _vendaProdutoRepository;
         private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteCompraRepository _clienteCompraRepository;
         private readonly IUnitOfWork _UoW;
 
         public VendaService(IVendaRepository vendaRepository,
-                             IProdutoRepository produtoRepository,
-                             IVendaProdutoRepository vendaProdutoRepository,
-                             IClienteRepository clienteRepository,
-                             IUnitOfWork uow,
-                             INotificador notificador) : base(notificador)
+                            IProdutoRepository produtoRepository,
+                            IVendaProdutoRepository vendaProdutoRepository,
+                            IClienteRepository clienteRepository,
+                            IClienteCompraRepository clienteCompraRepository,
+                            IUnitOfWork uow,
+                            INotificador notificador) : base(notificador)
         {
             _vendaRepository = vendaRepository;
             _produtoRepository = produtoRepository;
             _vendaProdutoRepository = vendaProdutoRepository;
             _clienteRepository = clienteRepository;
+            _clienteCompraRepository = clienteCompraRepository;
             _UoW = uow;
         }
 
@@ -61,7 +65,8 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
                 await _vendaProdutoRepository.Adicionar(produtoVenda);
             }
 
-            await IncrementarSaldoDevedorCliente(venda.ClienteId, venda.Total);
+            var cliente = await ObterClientePorId(venda.ClienteId);
+            await GerarRegistroClienteCompra(cliente, venda);
 
             await _UoW.Commit();
         }
@@ -82,11 +87,25 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
             return await _produtoRepository.ObterPorId(vendaProduto.ProdutoId);
         }
 
-        private async Task IncrementarSaldoDevedorCliente(Guid clienteId, decimal valorTotalVenda)
+        private void IncrementarSaldoDevedorCliente(Cliente cliente, decimal valorTotalVenda)
         {
-            var cliente = await _clienteRepository.ObterPorId(clienteId);
             cliente.IncrementarSaldoDevedor(valorTotalVenda);
             _clienteRepository.Atualizar(cliente);
+        }
+
+        private async Task<Cliente> ObterClientePorId(Guid clienteId)
+        {
+            return await _clienteRepository.ObterPorId(clienteId);
+        }
+
+        private async Task GerarRegistroClienteCompra(Cliente cliente, Venda venda)
+        {
+            var registroCompraCliente = new ClienteCompra(cliente.Id, venda.Id);
+
+            registroCompraCliente.SetarSaldoDevedorAntes(cliente.SaldoDevedor);
+            IncrementarSaldoDevedorCliente(cliente, venda.Total);
+            registroCompraCliente.SetarSaldoDevedorDepois(cliente.SaldoDevedor);
+            await _clienteCompraRepository.Adicionar(registroCompraCliente);
         }
     }
 }

@@ -13,6 +13,7 @@ using UMC.CadernetaVendas.Domain.Produtos;
 using UMC.CadernetaVendas.Domain.Vendas;
 using UMC.CadernetaVendas.Infra.Data.Extensions;
 using UMC.CadernetaVendas.Infra.Data.Mappings;
+using UMC.CadernetaVendas.Infra.Data.Mappings.Clientes;
 using UMC.CadernetaVendas.Infra.Data.Mappings.Vendas;
 
 namespace UMC.CadernetaVendas.Infra.Data.Context
@@ -25,6 +26,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
         public DbSet<Categoria> Categorias { get; set; }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<ClienteCompra> ClienteCompra { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
         public DbSet<Venda> Venda { get; set; }
@@ -39,6 +41,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
             modelBuilder.AddConfiguration(new CategoriaMapping());
 
             modelBuilder.AddConfiguration(new ClienteMapping());
+            modelBuilder.AddConfiguration(new ClienteCompraMapping());
             modelBuilder.AddConfiguration(new EnderecoMapping());
 
             modelBuilder.AddConfiguration(new VendaMapping());
