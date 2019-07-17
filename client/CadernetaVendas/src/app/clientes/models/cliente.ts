@@ -1,6 +1,6 @@
 // import { Endereco } from './endereco';
 
-export class Cliente {   
+export class Cliente {
     id: string;
     nome: string;
     cpf: string;
@@ -10,6 +10,7 @@ export class Cliente {
     email: string;
     ativo: boolean;
     endereco: Endereco;
+    clienteCompras: ClienteCompra[];
 }
 
 export class Endereco {
@@ -22,4 +23,10 @@ export class Endereco {
     estado: string;
     uf: string;
     localidade: string;
+}
+
+export class ClienteCompra {
+    saldoDevedorAntes: number;
+    saldoDevedorDepois: number;
+    dataCadastro: Date;
 }

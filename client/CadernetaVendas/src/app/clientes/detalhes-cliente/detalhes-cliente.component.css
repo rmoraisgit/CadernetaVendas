@@ -36,6 +36,18 @@ span {
     display: inline;
 }
 
+.btn-edit {
+    background-color: #e2e3e4;
+    color: black;
+    height: 30px;
+}
+
+.span-btn {
+    font-size: 15px;
+    display: inherit;
+    margin-top: -6px;
+}
+
 .saldo-devedor {
     background-color: #e9ecef;
     border: 1px solid rgba(0,0,0,.125);
@@ -45,4 +57,9 @@ span {
 .btn-cancelar-divida {
     font-weight: 500;
     float: right;
+}
+
+table {
+    border: 1px solid black;
+    background-color: #f9f5f5;
 }

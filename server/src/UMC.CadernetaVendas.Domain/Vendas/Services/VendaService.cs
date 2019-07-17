@@ -100,7 +100,7 @@ namespace UMC.CadernetaVendas.Domain.Vendas.Services
 
         private async Task GerarRegistroClienteCompra(Cliente cliente, Venda venda)
         {
-            var registroCompraCliente = new ClienteCompra(cliente.Id, venda.Id);
+            var registroCompraCliente = new ClienteCompra(cliente.Id, venda.Id, venda.Total);
 
             registroCompraCliente.SetarSaldoDevedorAntes(cliente.SaldoDevedor);
             IncrementarSaldoDevedorCliente(cliente, venda.Total);

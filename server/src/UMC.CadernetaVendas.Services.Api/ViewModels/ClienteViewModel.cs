@@ -37,5 +37,7 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public bool Ativo { get; set; }
 
         public EnderecoViewModel Endereco { get; set; }
+
+        public IEnumerable<ClienteCompraViewModel> ClienteCompras { get; set; }
     }
 }

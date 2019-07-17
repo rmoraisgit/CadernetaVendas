@@ -22,15 +22,18 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IClienteService _clienteService;
         private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteCompraRepository _clienteCompraRepository;
 
         public ClientesController(IMapper mapper,
                                   IClienteService clienteService,
                                   IClienteRepository clienteRepository,
+                                  IClienteCompraRepository clienteCompraRepository,
                                   INotificador notificador) : base(notificador)
         {
             _mapper = mapper;
             _clienteService = clienteService;
             _clienteRepository = clienteRepository;
+            _clienteCompraRepository = clienteCompraRepository;
         }
 
         [HttpGet]
@@ -87,7 +90,10 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
         private async Task<ClienteViewModel> ObterClienteEndereco(Guid id)
         {
-            return _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorId(id));
+            var cliente = _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorId(id));
+            cliente.ClienteCompras = _mapper.Map<IEnumerable<ClienteCompraViewModel>>(await _clienteCompraRepository.ObterComprasClientePorId(id));
+
+            return cliente;
         }
     }
 }

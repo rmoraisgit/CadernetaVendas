@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ClienteService } from '../services/cliente.service';
-import { Cliente } from '../models/cliente';
+import { Cliente, ClienteCompra } from '../models/cliente';
 
 @Component({
   selector: 'cv-detalhes-cliente',
@@ -24,6 +24,7 @@ export class DetalhesClienteComponent implements OnInit {
       .subscribe(cliente => {
         console.log(cliente);
         this.cliente = cliente;
+        console.log(this.cliente);
         this.formatarEndereco();
       })
   }

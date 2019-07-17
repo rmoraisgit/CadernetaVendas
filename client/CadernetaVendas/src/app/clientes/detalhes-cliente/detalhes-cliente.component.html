@@ -29,6 +29,13 @@
           <small>Cadastrado no dia {{cliente.dataCadastro | date}}</small>
         </div>
 
+        <a [routerLink]="['/produtos', 'editar', cliente.id]">
+          <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
+
+              <span class="span-btn">editar cliente</span>
+          </button>
+      </a>
+
         <p style="font-weight: 500;" [innerHtml]="enderecoFormatado"></p>
         <hr>
         <div id="campo-cpf">
@@ -58,7 +65,7 @@
 
 <div class="row mt-3">
   <div class="col-12">
-    <h3>Compras do cliente</h3>
+    <h3 class="text-center">Compras do cliente</h3>
 
     <table class="table table-hover">
       <thead class="thead-dark">
@@ -69,11 +76,11 @@
         <th>Detalhes</th>
       </thead>
       <tbody>
-        <tr>
-          <td>R$1000,00</td>
-          <td>R$200,00</td>
-          <td>R$1.200,00</td>
-          <td>10/10/2019</td>
+        <tr *ngFor="let clienteCompra of cliente.clienteCompras">
+          <td>R${{clienteCompra.valorTotalCompra | number}}</td>
+          <td>R${{clienteCompra.saldoDevedorAntes | number}}</td>
+          <td>R${{clienteCompra.saldoDevedorDepois | number}}</td>
+          <td>{{clienteCompra.dataCadastro | date}}</td>
           <td><i class="fa fa-search-plus" cvChangeColorOnHover aria-hidden="true"></i></td>
         </tr>
       </tbody>
