@@ -31,10 +31,15 @@
 
         <a [routerLink]="['/produtos', 'editar', cliente.id]">
           <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
-
-              <span class="span-btn">editar cliente</span>
+            <span class="span-btn">editar cliente</span>
           </button>
-      </a>
+        </a>
+
+          <button class="mb-3 btn btn-danger btn-danger btn-sm" 
+                  [routerLink]="['/produtos', 'editar', cliente.id]"
+                  [disabled]="cliente.saldoDevedor > 0">
+            <span class="span-btn">desativar cliente</span>
+          </button>
 
         <p style="font-weight: 500;" [innerHtml]="enderecoFormatado"></p>
         <hr>
@@ -54,9 +59,15 @@
       <div class="col-7">
         <div class="saldo-devedor text-center">
           <h2>Saldo devedor:</h2>
-          <h3 style="color: #ea0808;">R${{cliente.saldoDevedor | number}}</h3>
-          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary btn-cancelar-divida" type="button">Cancelar
-            dívida</button>
+          <h3 [ngClass]="cliente.saldoDevedor > 0 ? 'valor-divida-positiva' : 'valor-divida-zerada'">
+            R${{cliente.saldoDevedor | number}}
+          </h3>
+          <button *ngIf="cliente.ativo" class="btn btn-info mt-3" style="float: left;" type="button">
+              Registrar pagamento</button>
+          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
+              Cancelar dívida</button>
+          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
+            Ver extrato</button>
         </div>
       </div>
     </div>
@@ -67,7 +78,7 @@
   <div class="col-12">
     <h3 class="text-center">Compras do cliente</h3>
 
-    <table class="table table-hover">
+    <table class="table table-hover" *ngIf="cliente.clienteCompras.length else clienteSemCompras">
       <thead class="thead-dark">
         <th>TOTAL</th>
         <th>Saldo devedor antes</th>
@@ -85,5 +96,19 @@
         </tr>
       </tbody>
     </table>
+
+    <ng-template #clienteSemCompras>
+      <div class="container-sem-transacoes mt-3">
+        <h4 class="text-center">Este cliente ainda não efetuou uma compra</h4>
+        <p class="transacao-text text-center mt-3">Clique no botão abaixo para realizar
+          registrar a primeira transação:</p>
+        <div class="button-group row justify-content-center mt-3">
+          <div class="col-4">
+            <button class="btn btn-info btn-transacoes" [routerLink]="['/vendas', 'registrar']" type="button">Registrar
+              compra</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
