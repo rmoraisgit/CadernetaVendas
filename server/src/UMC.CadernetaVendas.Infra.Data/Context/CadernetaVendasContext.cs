@@ -87,6 +87,9 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
             {
                 if (entry.State == EntityState.Added)
                     entry.Property("Ativo").CurrentValue = true;
+
+                if (entry.State == EntityState.Modified)
+                    entry.Property("Ativo").IsModified = false;
             }
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);

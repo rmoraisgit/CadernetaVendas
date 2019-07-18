@@ -71,7 +71,7 @@ export class EditarProdutoComponent implements OnInit {
     this.fotoURL = 'data:image/png;base64,' + this.produto.foto;
   }
 
-  preencherFormComDadosProduto() {
+  private preencherFormComDadosProduto() {
 
     this.produtoForm = this.formBuilder.group({
       nome: [this.produto.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(150)]],
@@ -240,7 +240,7 @@ export class EditarProdutoComponent implements OnInit {
     formdata.append('FormFile', this.imagemForm, this.imagemNome);
 
     return this.produtoService.atualizarProduto(this.produto.id, formdata).subscribe(res => {
-      this.alertService.success('Produto adicionado com sucesso.');
+      this.alertService.success('Produto atualizado com sucesso.');
       this.router.navigate(['produtos', 'detalhes', produto.id]);
     });
   }

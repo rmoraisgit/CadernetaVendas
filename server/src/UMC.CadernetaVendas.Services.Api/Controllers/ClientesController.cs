@@ -65,7 +65,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(clienteViewModel);
         }
 
-        [ClaimsAuthorize("Cliente", "Atualizar")]
+        // [ClaimsAuthorize("Cliente", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> Atualizar(Guid id, [FromBody]ClienteViewModel clienteViewModel)
         {
@@ -77,7 +77,10 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _clienteService.Atualizar(_mapper.Map<Cliente>(clienteViewModel));
+            var cliente = _mapper.Map<Cliente>(clienteViewModel);
+            cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
+
+            await _clienteService.Atualizar(cliente);
 
             return CustomResponse(clienteViewModel);
         }

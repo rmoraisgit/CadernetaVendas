@@ -29,14 +29,14 @@
           <small>Cadastrado no dia {{cliente.dataCadastro | date}}</small>
         </div>
 
-        <a [routerLink]="['/produtos', 'editar', cliente.id]">
+        <a [routerLink]="['/clientes', 'editar', cliente.id]">
           <button class="mb-3 btn btn-secondary btn-edit btn-lg btn-block">
             <span class="span-btn">editar cliente</span>
           </button>
         </a>
 
           <button class="mb-3 btn btn-danger btn-danger btn-sm" 
-                  [routerLink]="['/produtos', 'editar', cliente.id]"
+                  [routerLink]="['/clientes', 'editar', cliente.id]"
                   [disabled]="cliente.saldoDevedor > 0">
             <span class="span-btn">desativar cliente</span>
           </button>

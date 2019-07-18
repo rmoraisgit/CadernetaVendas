@@ -73,7 +73,6 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
                 return;
             }
 
-
             _clienteRepository.Atualizar(cliente);
             await _UoW.Commit();
         }

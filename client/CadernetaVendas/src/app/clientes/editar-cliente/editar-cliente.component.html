@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
-    <h1 class="mt-5 titulo">Formulário de Cadastro</h1>
-    <h3 class="mt-2 titulo">Cliente</h3>
+    <h1 class="mt-5 titulo">Editar Cliente</h1>
+    <h3 class="mt-2 titulo">{{cliente.nome}}</h3>
   </div>
 </div>
 
@@ -9,11 +9,11 @@
   <div class="col-7">
 
     <div class="alert alert-danger" *ngIf="errors.length > 0">
-        <button type="button" class="close" (click)="fecharErros()" aria-label="fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <button type="button" class="close" (click)="fecharErros()" aria-label="fechar">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
-     
+
       <ul>
         <li *ngFor="let error of errors">{{ error }}</li>
       </ul>
@@ -21,7 +21,7 @@
 
     <hr>
     <div class="form-cadastro">
-      <form [formGroup]="clienteForm" (submit)="adicionar()">
+      <form [formGroup]="clienteForm" (submit)="atualizarCliente()">
 
         <div class="form-group mt-2">
           <label for="nomeCliente">Nome</label>
@@ -130,10 +130,10 @@
 
         <div class="button-group row">
           <div class="col-6">
-            <button class="btn btn-primary" [routerLink]="['/clientes']" type="button">Voltar</button>
+            <button class="btn btn-primary" [routerLink]="['/clientes', 'detalhes', cliente.id]" type="button">Voltar</button>
           </div>
           <div class="col-6">
-            <button class="btn btn-success" type="submit" [disabled]="clienteForm.invalid">Adicionar</button>
+            <button class="btn btn-success" type="submit" [disabled]="clienteForm.invalid">Atualizar</button>
           </div>
         </div>
       </form>

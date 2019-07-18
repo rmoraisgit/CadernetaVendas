@@ -11,11 +11,12 @@ import { VMessageModule } from '../shared/validation-message/vmessage.module';
 import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-message.module';
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 import { DetalhesClienteComponent } from './detalhes-cliente/detalhes-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 
 @NgModule({
   declarations: [
     ListaClientesComponent, 
-    AdicionarClienteComponent, DetalhesClienteComponent
+    AdicionarClienteComponent, DetalhesClienteComponent, EditarClienteComponent
   ],
   imports: [
     CommonModule,

@@ -39,4 +39,11 @@ export class ClienteService extends BaseService {
           .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
       });
   };
+
+  atualizarCliente(cliente: Cliente) {
+    return this.http.put(this.UrlServiceV1 + `clientes/${cliente.id}`, cliente,   {
+      headers: this.ObterHeaderJson()
+        .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  };
 }

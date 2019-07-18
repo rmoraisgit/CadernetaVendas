@@ -26,7 +26,7 @@ export class DetalhesClienteComponent implements OnInit {
         this.cliente = cliente;
         console.log(this.cliente);
         this.formatarEndereco();
-      })
+      });
   }
 
   private formatarEndereco(): void {
