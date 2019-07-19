@@ -32,6 +32,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public virtual Endereco Endereco { get; private set; }
         public virtual ICollection<Venda> Vendas { get; private set; }
         public virtual ICollection<ClienteCompra> ClientesCompras { get; private set; }
+        public virtual ICollection<Pagamento> Pagamentos { get; private set; }
 
         // EF Core - Construtor Vázio
         protected Cliente() { }
@@ -50,6 +51,11 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public void IncrementarSaldoDevedor(decimal valorCompra)
         {
             SaldoDevedor += valorCompra;
+        }
+
+        public void EfetuarPagamento(decimal valorPagamento)
+        {
+            SaldoDevedor -= valorPagamento;
         }
     }
 }

@@ -11,5 +11,6 @@ namespace UMC.CadernetaVendas.Domain.Interfaces
         Task Adicionar(Cliente cliente);
         Task Atualizar(Cliente cliente);
         void Remover(Guid id);
+        Task RegistrarPagamento(Cliente cliente, Pagamento pagamento);
     }
 }

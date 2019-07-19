@@ -16,9 +16,12 @@ namespace UMC.CadernetaVendas.Services.Api.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<ProdutoViewModel, Produto>();
+
             CreateMap<ClienteViewModel, Cliente>();
             CreateMap<ClienteCompraViewModel, ClienteCompra>();
             CreateMap<EnderecoViewModel, Endereco>();
+            CreateMap<PagamentoViewModel, Pagamento>();
+
             CreateMap<VendaViewModel, Venda>();
             CreateMap<VendaProdutoViewModel, VendaProduto>();
             CreateMap<CompraViewModel, Compra>();

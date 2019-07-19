@@ -28,6 +28,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<ClienteCompra> ClienteCompra { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Pagamento> Pagamentos { get; set; }
 
         public DbSet<Venda> Venda { get; set; }
         public DbSet<VendaProduto> VendasProdutos { get; set; }
@@ -43,6 +44,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Context
             modelBuilder.AddConfiguration(new ClienteMapping());
             modelBuilder.AddConfiguration(new ClienteCompraMapping());
             modelBuilder.AddConfiguration(new EnderecoMapping());
+            modelBuilder.AddConfiguration(new PagamentoMapping());
 
             modelBuilder.AddConfiguration(new VendaMapping());
             modelBuilder.AddConfiguration(new VendaProdutoMapping());

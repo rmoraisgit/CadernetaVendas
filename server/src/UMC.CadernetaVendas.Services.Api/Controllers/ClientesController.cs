@@ -65,6 +65,24 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(clienteViewModel);
         }
 
+        [HttpPost("registrar-pagamento/{id:guid}")]
+        public async Task<ActionResult<ClienteViewModel>> RegistrarPagamento(Guid id, [FromBody]PagamentoViewModel pagamento)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var cliente = await _clienteRepository.ObterPorId(id);
+
+            if(cliente == null)
+            {
+                NotificarErro("Cliente desativado ou inexistente");
+                return CustomResponse();
+            }
+
+            await _clienteService.RegistrarPagamento(cliente, _mapper.Map<Pagamento>(pagamento));
+
+            return CustomResponse(_mapper.Map<ClienteViewModel>(cliente));
+        }
+
         // [ClaimsAuthorize("Cliente", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> Atualizar(Guid id, [FromBody]ClienteViewModel clienteViewModel)

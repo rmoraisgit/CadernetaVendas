@@ -23,6 +23,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
         {
             return await DbSet.AsNoTracking()
                 .Include(c => c.Endereco)
+                .Include(c=>c.Pagamentos)
                 .FirstOrDefaultAsync(c=> c.Id == id);
         }
     }

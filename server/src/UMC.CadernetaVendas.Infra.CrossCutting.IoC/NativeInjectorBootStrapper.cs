@@ -39,6 +39,7 @@ namespace UMC.CadernetaVendas.Infra.CrossCutting.IoC
             services.AddScoped<IVendaProdutoRepository, VendaProdutoRepository>();
             services.AddScoped<ICompraRepository, CompraRepository>();
             services.AddScoped<ICompraProdutoRepository, CompraProdutoRepository>();
+            services.AddScoped<IPagamentoRepository, PagamentoRepository>();
             services.AddScoped<CadernetaVendasContext>();
 
             // Infra - UoW

@@ -18,10 +18,6 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
                 .HasColumnType("varchar(150)")
                 .IsRequired();
 
-            //builder.Property(p => p.Valor)
-            //    .HasColumnType("decimal(10, 2)")
-            //    .IsRequired();
-
             builder.Property(p => p.ValorCompra)
                 .HasColumnType("decimal(10, 2)")
                 .IsRequired();
@@ -58,9 +54,6 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings
 
             builder.Property(p => p.Quantidade)
                 .HasColumnType("int");
-
-            //builder.Property(p => p.Foto)
-            //    .image
 
             builder.Ignore(e => e.ValidationResult);
 

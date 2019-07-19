@@ -38,6 +38,8 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 
         public EnderecoViewModel Endereco { get; set; }
 
+        public IEnumerable<PagamentoViewModel> Pagamentos { get; set; }
+
         public IEnumerable<ClienteCompraViewModel> ClienteCompras { get; set; }
     }
 }

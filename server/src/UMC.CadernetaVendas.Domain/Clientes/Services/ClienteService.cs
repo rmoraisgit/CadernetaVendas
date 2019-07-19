@@ -14,15 +14,18 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
     public class ClienteService : BaseService, IClienteService
     {
         private readonly IClienteRepository _clienteRepository;
+        private readonly IPagamentoRepository _pagamentoRepository;
         private readonly IUnitOfWork _UoW;
         private readonly IUser _user;
 
         public ClienteService(IClienteRepository clienteRepository,
+                              IPagamentoRepository pagamentoRepository,
                               IUnitOfWork uow,
                               IUser user,
                               INotificador notificador) : base(notificador)
         {
             _clienteRepository = clienteRepository;
+            _pagamentoRepository = pagamentoRepository;
             _UoW = uow;
             _user = user;
         }
@@ -82,10 +85,29 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
             throw new NotImplementedException();
         }
 
+        public async Task RegistrarPagamento(Cliente cliente, Pagamento pagamento)
+        {
+            if (pagamento.Valor < 20)
+            {
+                Notificar("O pagamento minímo é R$20,00");
+                return;
+            }
+
+            pagamento.SetarSaldoDevedorAntes(cliente.SaldoDevedor);
+            cliente.EfetuarPagamento(pagamento.Valor);
+            pagamento.SetarSaldoDevedorDepois(cliente.SaldoDevedor);
+
+            cliente.Pagamentos.Add(pagamento);
+
+            await _pagamentoRepository.Adicionar(pagamento);
+            _clienteRepository.Atualizar(cliente);
+
+            await _UoW.Commit();
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
         }
-
     }
 }
