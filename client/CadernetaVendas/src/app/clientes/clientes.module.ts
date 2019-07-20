@@ -12,11 +12,16 @@ import { ListEmptyMessageModule } from '../shared/list-empty-message/list-empty-
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
 import { DetalhesClienteComponent } from './detalhes-cliente/detalhes-cliente.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { RegistroPagamentoComponent } from './registro-pagamento/registro-pagamento.component';
+import { ModalModule } from '../shared/modal/modal.module';
 
 @NgModule({
   declarations: [
     ListaClientesComponent, 
-    AdicionarClienteComponent, DetalhesClienteComponent, EditarClienteComponent
+    AdicionarClienteComponent, 
+    DetalhesClienteComponent, 
+    EditarClienteComponent, 
+    RegistroPagamentoComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,8 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
     ChangeColorOnHoverModule,
     NgxMaskModule.forRoot(),
     VMessageModule,
-    ListEmptyMessageModule
+    ListEmptyMessageModule,
+    ModalModule
   ]
 })
 export class ClientesModule { }

@@ -37,7 +37,6 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     private alertService: AlertService) {
 
     this.genericValidator = new GenericValidator(validationMessagesCompra);
-
   }
 
   ngOnInit(): void {
@@ -59,7 +58,7 @@ export class RegistrarCompraComponent implements OnInit, AfterViewInit {
     })
   }
 
-  open(modalCompra) {
+  openModal(modalCompra) {
     
     this.modalService.abrirModal(modalCompra);
   }

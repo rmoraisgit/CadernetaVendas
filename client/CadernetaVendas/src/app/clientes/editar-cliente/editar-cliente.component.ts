@@ -7,7 +7,7 @@ import { ClienteService } from '../services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { Cliente } from '../models/cliente';
+import { Cliente, Endereco } from '../models/cliente';
 import { validationMessagesCliente } from '../validation-messages-cliente';
 
 @Component({
@@ -114,4 +114,26 @@ export class EditarClienteComponent implements OnInit, AfterViewInit {
 
     return cliente;
   }
+
+  buscarDadosCEP(cepCliente: string) {
+
+    const cliente = this.clienteForm.getRawValue() as Cliente;
+
+    this.enderecoService.obterEndereco(cepCliente).subscribe(
+      res => {
+        cliente.endereco = res;
+        this.preencherCamposEndereco(cliente.endereco);
+      }
+    );
+  }
+
+  preencherCamposEndereco(endereco: Endereco) {
+
+    this.clienteForm.get('logradouro').setValue(endereco.logradouro);
+    this.clienteForm.get('bairro').setValue(endereco.bairro);
+    this.clienteForm.get('complemento').setValue(endereco.complemento);
+    this.clienteForm.get('cidade').setValue(endereco.localidade);
+    this.clienteForm.get('estado').setValue(endereco.uf);
+  }
+
 }

@@ -30,9 +30,6 @@
   <div class="form-group mt-2">
     <label for="produto">Produto</label>
     <input #nomeProduto formControlName="produto" disabled type="text" class="form-control" id="produto">
-
-    <!-- <ap-vmessage *ngIf="displayMessage.produto" text="{{displayMessage.produto}}">
-    </ap-vmessage> -->
   </div>
 
   <div class="form-row">
@@ -47,9 +44,6 @@
       <label for="quantidade">Quantidade</label>
       <input #quantidade formControlName="quantidade" [disabled]="!habilitadoQuantidade" type="number"
         class="form-control" id="quantidade">
-      <!-- 
-      <ap-vmessage *ngIf="displayMessage.quantidade" text="{{displayMessage.quantidade}}">
-      </ap-vmessage> -->
     </div>
     <input style="display: none;" formControlName="auxiliar" type="text" class="form-control" id="auxiliar">
   </div>

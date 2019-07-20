@@ -1,3 +1,9 @@
+<ng-template #modalPagamento>
+  <cv-modal tituloModal="Registrar pagamento">
+    <cv-registro-pagamento></cv-registro-pagamento>
+  </cv-modal>
+</ng-template>
+
 <div class="row">
   <div class="col-12 mt-5">
     <a [routerLink]="['/clientes']">
@@ -35,11 +41,10 @@
           </button>
         </a>
 
-          <button class="mb-3 btn btn-danger btn-danger btn-sm" 
-                  [routerLink]="['/clientes', 'editar', cliente.id]"
-                  [disabled]="cliente.saldoDevedor > 0">
-            <span class="span-btn">desativar cliente</span>
-          </button>
+        <button class="mb-3 btn btn-danger btn-danger btn-sm" [routerLink]="['/clientes', 'editar', cliente.id]"
+          [disabled]="cliente.saldoDevedor > 0">
+          <span class="span-btn">desativar cliente</span>
+        </button>
 
         <p style="font-weight: 500;" [innerHtml]="enderecoFormatado"></p>
         <hr>
@@ -62,10 +67,11 @@
           <h3 [ngClass]="cliente.saldoDevedor > 0 ? 'valor-divida-positiva' : 'valor-divida-zerada'">
             R${{cliente.saldoDevedor | number}}
           </h3>
-          <button *ngIf="cliente.ativo" class="btn btn-info mt-3" style="float: left;" type="button">
-              Registrar pagamento</button>
+          <button *ngIf="cliente.ativo" class="btn btn-info mt-3" (click)="openModal(modalPagamento)"
+            style="float: left;" type="button">
+            Registrar pagamento</button>
           <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
-              Cancelar dívida</button>
+            Cancelar dívida</button>
           <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
             Ver extrato</button>
         </div>
