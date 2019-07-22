@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChildren, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControlName, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, fromEvent, merge } from 'rxjs';
 
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { ClienteService } from '../services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
-import { Observable, fromEvent, merge } from 'rxjs';
 import { Cliente, Endereco } from '../models/cliente';
 import { validationMessagesCliente } from '../validation-messages-cliente';
 
@@ -46,9 +46,7 @@ export class EditarClienteComponent implements OnInit, AfterViewInit {
 
     this.clienteService.obterClientePorId(clienteId)
       .subscribe(cliente => {
-        console.log(cliente);
         this.cliente = cliente;
-        console.log(this.cliente);
         this.preencherFormComDadosProduto();
       });
   }
@@ -135,5 +133,4 @@ export class EditarClienteComponent implements OnInit, AfterViewInit {
     this.clienteForm.get('cidade').setValue(endereco.localidade);
     this.clienteForm.get('estado').setValue(endereco.uf);
   }
-
 }
