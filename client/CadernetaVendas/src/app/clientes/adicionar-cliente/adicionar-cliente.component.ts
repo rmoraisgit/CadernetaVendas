@@ -9,7 +9,6 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { Cliente, Endereco } from '../models/cliente';
 import { validationMessagesCliente } from '../validation-messages-cliente';
-// import { Endereco } from '../models/endereco';
 
 @Component({
   selector: 'cv-adicionar-cliente',
@@ -27,7 +26,6 @@ export class AdicionarClienteComponent implements OnInit, AfterViewInit {
   validationMessages: { [key: string]: { [key: string]: string } };
   displayMessage: { [key: string]: string } = {};
   genericValidator: GenericValidator;
-
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   constructor(

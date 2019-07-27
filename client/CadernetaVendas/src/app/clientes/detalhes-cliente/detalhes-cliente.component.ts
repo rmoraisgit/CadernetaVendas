@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ClienteService } from '../services/cliente.service';
-import { Cliente, ClienteCompra } from '../models/cliente';
+import { Cliente } from '../models/cliente';
 import { ModalService } from 'src/app/shared/modal/modal.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DetalhesClienteComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private clienteService: ClienteService,
-              private modalService: ModalService,) { }
+              private modalService: ModalService) { }
 
   ngOnInit(): void {
     const clienteId = this.route.snapshot.params.clienteId;

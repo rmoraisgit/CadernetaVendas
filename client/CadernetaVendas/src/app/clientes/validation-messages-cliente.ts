@@ -58,3 +58,17 @@ export const validationMessagesCliente = {
       maxlength: 'Informe o estado em um formato correto'
     }
   }
+
+  export const validationMessagesPagamento = {
+    totalPago: {
+      required: 'O total pago é requerido'
+    },
+    cpf: {
+      required: 'O CPF é requerido',
+      minlength: 'Informe o CPF em um formato correto',
+      maxlength: 'Informe o CPF em um formato correto'
+    },
+    dataPagamento: {
+      required: 'A data do pagamento é requerida'
+    }
+  }
