@@ -1,5 +1,21 @@
-<p>
-  confirma-pagamento works!
-</p>
+<div class="confirma-pagamento">
+  <h5 class="destaque">Dados do cliente</h5>
+  <div class="campo-nome-cliente">
+    <span class="titulo-info">Nome do cliente: </span>
+    <span>{{cliente.nome}}</span>
+  </div>
+  <div class="campo-cpf">
+    <span class="titulo-info">CPF: </span>
+    <span>{{cliente.cpf | mask: '000.000.000-00'}}</span>
+  </div>
 
-<h1>TIO RAFAEL</h1>
+  <h5 class="destaque">Dados do pagamento</h5>
+  <div class="campo-valor">
+    <span class="titulo-info">Total do pagamento: </span>
+    <span>R${{dadosPagamento.valor | number}}</span>
+  </div>
+  <div class="campo-dataPagamento">
+    <span class="titulo-info">Data do pagamento: </span>
+    <span>{{dadosPagamento.dataCadastro | date}}</span>
+  </div>
+</div>

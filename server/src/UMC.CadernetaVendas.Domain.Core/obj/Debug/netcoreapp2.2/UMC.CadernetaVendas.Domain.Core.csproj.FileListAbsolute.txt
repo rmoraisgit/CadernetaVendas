@@ -127,3 +127,4 @@ C:\Users\Rafael\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.Cader
 C:\Users\Rafael\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.AssemblyInfo.cs
 C:\Users\Rafael\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.dll
 C:\Users\Rafael\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.pdb
+C:\Users\Rafael\Desktop\Caderneta de Vendas\CadernetaVendas\server\src\UMC.CadernetaVendas.Domain.Core\obj\Debug\netcoreapp2.2\UMC.CadernetaVendas.Domain.Core.csprojAssemblyReference.cache

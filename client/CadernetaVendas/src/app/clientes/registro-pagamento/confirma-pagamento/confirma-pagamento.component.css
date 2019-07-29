@@ -1,0 +1,29 @@
+span {
+    font-weight: 500;
+}
+
+.btn {
+    width: 100%;
+}
+
+.btn-transacoes {
+    width: 100%;
+    font-weight: 500;
+}
+
+.confirma-pagamento {
+    background-color: #f7f7f7;
+}
+
+.destaque {
+    background-color: #e8e6e6;
+    padding: 0.7rem;
+    margin-top: 1rem;
+}
+
+.titulo-info {
+    padding-left: 0.7rem;
+    font-size: 1.05rem;
+    color: #384158;
+    font-weight: 700;
+}
