@@ -22,9 +22,9 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
 
   pagamento: Pagamento;
   @Input() cliente: Cliente;
-  modalConfirmaPagamento : NgbModalRef;
-  result : any;
-  closeResult:any;
+  modalConfirmaPagamento: NgbModalRef;
+  result: any;
+  closeResult: any;
   pagamentoForm: FormGroup;
   metodosPagamento: any =
     [
@@ -74,13 +74,26 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
     this.pagamento.dataCadastro = new Date(dataPagamento.year, dataPagamento.month - 1, dataPagamento.day);
     this.modalConfirmaPagamento = this.modalService.abrirModal(modalConfirmaPagamento);
     this.result = this.modalConfirmaPagamento.result;
- 
+
     console.log(this.modalConfirmaPagamento);
     console.log(this.modalConfirmaPagamento.result);
   }
 
-  fecharModalConfirmacaoPagamento(){
+  fecharModalConfirmacaoPagamento() {
 
     this.modalService.fecharModal('modalConfirmaPagamento');
+  }
+
+  confirmarPagamento() {
+    this.pagamento.clienteId = this.cliente.id;
+    console.log(this.pagamento);
+
+    this.clienteService.registrarPagamentoCliente(this.pagamento).subscribe(
+      res => {
+        this.alertService.success('Pagamento registrado com sucesso.');
+        this.modalService.fecharTodasModals();
+      },
+      fail => { console.log(fail); }
+    );
   }
 }

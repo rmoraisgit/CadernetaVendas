@@ -17,7 +17,7 @@ export class ModalService {
     fecharModal(nomeModal) {
 
         console.log(nomeModal);
-        console.log(this.modalAtiva );
+        console.log(this.modalAtiva);
 
         if (this.modalAtiva != undefined) {
             this.modalAtiva.close();
@@ -28,8 +28,7 @@ export class ModalService {
         this.ngbModalService.dismissAll(nomeModal);
     }
 
-    fecharModalRef(modal: NgbModalRef) {
-
-        this.ngbModalService.dismissAll(modal);
+    fecharTodasModals() {
+        this.ngbModalService.dismissAll();
     }
 }

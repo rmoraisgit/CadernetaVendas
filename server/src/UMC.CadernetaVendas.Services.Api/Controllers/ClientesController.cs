@@ -68,9 +68,15 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         [HttpPost("registrar-pagamento/{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> RegistrarPagamento(Guid id, [FromBody]PagamentoViewModel pagamento)
         {
+            if (id != pagamento.ClienteId)
+            {
+                NotificarErro("O id informado não é o mesmo que foi passado na query");
+                return CustomResponse();
+            }
+
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var cliente = await _clienteRepository.ObterPorId(id);
+            var cliente = await _clienteRepository.ObterPorId(pagamento.ClienteId);
 
             if(cliente == null)
             {

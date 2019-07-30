@@ -10,5 +10,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public decimal Valor { get; set; }
         public decimal SaldoDevedorAntes { get; set; }
         public decimal SaldoDevedorDepois { get; set; }
+        public Guid ClienteId { get; set; }
     }
 }

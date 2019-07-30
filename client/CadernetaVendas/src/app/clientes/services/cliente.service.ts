@@ -1,10 +1,10 @@
-import { Injectable, ɵConsole } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { BaseService } from 'src/app/services/base.service';
-import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
 import { TokenService } from 'src/app/core/token/token.service';
+import { Pagamento } from '../registro-pagamento/pagamento';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,14 @@ export class ClienteService extends BaseService {
   };
 
   atualizarCliente(cliente: Cliente) {
-    return this.http.put(this.UrlServiceV1 + `clientes/${cliente.id}`, cliente,   {
+    return this.http.put(this.UrlServiceV1 + `clientes/${cliente.id}`, cliente, {
+      headers: this.ObterHeaderJson()
+        .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  };
+
+  registrarPagamentoCliente(pagamento: Pagamento) {
+    return this.http.post(this.UrlServiceV1 + `clientes/registrar-pagamento/${pagamento.clienteId}`, pagamento, {
       headers: this.ObterHeaderJson()
         .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
     });
