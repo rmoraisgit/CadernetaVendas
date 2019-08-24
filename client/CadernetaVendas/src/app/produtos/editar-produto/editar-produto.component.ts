@@ -233,6 +233,9 @@ export class EditarProdutoComponent implements OnInit {
     const produto: Produto = this.produtoForm.getRawValue();
     produto.id = this.produto.id;
     produto.categoriaId = this.categoriaSelecionada;
+    produto.quantidade = this.produto.quantidade;
+    produto.valorCompra = this.produto.valorCompra;
+    produto.valorVenda = this.produto.valorVenda;
 
     let formdata = new FormData();
 

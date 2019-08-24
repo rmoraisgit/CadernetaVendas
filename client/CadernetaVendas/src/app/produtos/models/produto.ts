@@ -14,6 +14,8 @@ export class Produto {
     foto: any;
     dataCadastro: Date;
     categoriaId: string;
+    valorCompra: number;
+    valorVenda: number;
     kardex: Kardex[];
 }
 
@@ -24,7 +26,6 @@ export interface Categoria {
 
 export interface Kardex {
     dataCadastro: string;
-    produtoId: "376216cd-b893-4c6b-8d2e-17a8e427d95e"
     quantidade: 10
     quantidadeAntes: 90
     quantidadeDepois: 80
