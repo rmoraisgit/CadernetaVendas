@@ -18,7 +18,7 @@ export class ProdutoService extends BaseService {
     return this.http.get<Produto[]>(this.UrlServiceV1 + 'produtos',
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
       });
   };
 
@@ -26,7 +26,7 @@ export class ProdutoService extends BaseService {
     return this.http.get<Produto>(this.UrlServiceV1 + `produtos/${produtoId}`,
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
       });
   };
 

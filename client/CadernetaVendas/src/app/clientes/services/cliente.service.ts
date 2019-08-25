@@ -18,7 +18,7 @@ export class ClienteService extends BaseService {
     return this.http.get<Cliente[]>(this.UrlServiceV1 + 'clientes',
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
       }
     );
   };
@@ -27,7 +27,7 @@ export class ClienteService extends BaseService {
     return this.http.get<Cliente>(this.UrlServiceV1 + `clientes/${clienteId}`,
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
       }
     );
   };
@@ -36,21 +36,21 @@ export class ClienteService extends BaseService {
     return this.http.post(this.UrlServiceV1 + 'clientes/adicionar', cliente,
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
       });
   };
 
   atualizarCliente(cliente: Cliente) {
     return this.http.put(this.UrlServiceV1 + `clientes/${cliente.id}`, cliente, {
       headers: this.ObterHeaderJson()
-        .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+        .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
     });
   };
 
   registrarPagamentoCliente(pagamento: Pagamento) {
     return this.http.post(this.UrlServiceV1 + `clientes/registrar-pagamento/${pagamento.clienteId}`, pagamento, {
       headers: this.ObterHeaderJson()
-        .headers.set('authorization', `Bearer ${this.tokenService.getToken()}`)
+        .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
     });
   };
 }

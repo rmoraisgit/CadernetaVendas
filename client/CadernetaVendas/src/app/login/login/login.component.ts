@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
 
   onSaveComplete(data: any) {
     console.log(data)
-    // this.authService.persistirUserApp(data);
     this.authService.persistirTokenUserApp(data);
     this.alertService.success('Login efetuado com sucesso.');
     this.router.navigate([''])
