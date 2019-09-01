@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { localStorageService } from '../localStorage/local-storage.service';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import * as jwt_decode from "jwt-decode";
+
 import { User } from '../user/user';
 
 const KEY = 'userAccessToken';
@@ -44,6 +46,19 @@ export class UserTokenService {
 
     getUser() {
         return this.userSubject.asObservable();
+    }
+
+    isTokenValid(): boolean {
+        const userToken = jwt_decode(this.getAccessToken());
+        const expiryDate = new Date(userToken.exp * 1000);
+
+        console.log(new Date());
+        console.log(expiryDate);
+
+        if (new Date() > expiryDate)
+            return false;
+
+        return true;
     }
 
     private NotifyUser() {
