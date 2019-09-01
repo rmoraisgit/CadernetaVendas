@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BaseService } from 'src/app/services/base.service';
 import { UserService } from '../user/user.service';
-import { TokenService } from '../token/token.service';
-
-// import { UserService } from '../user/user.service';
+import { UserTokenService } from '../user-token/user-token.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +12,7 @@ export class AuthService extends BaseService {
 
     constructor(
         private http: HttpClient,
-        private tokenService: TokenService,
+        private userTokenService: UserTokenService,
         private userService: UserService) { super(); }
 
     authenticate(email: string, password: string) {
@@ -26,7 +24,6 @@ export class AuthService extends BaseService {
     }
 
     persistirTokenUserApp(data: any) {
-        this.tokenService.setAccessToken(data.accessToken);
-        this.userService.setUserToken(JSON.stringify(data.userToken));
+        this.userTokenService.setUserAccessToken(data);
     }
 }

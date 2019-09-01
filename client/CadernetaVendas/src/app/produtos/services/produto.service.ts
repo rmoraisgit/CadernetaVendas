@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from 'src/app/services/base.service';
 import { Produto } from '../models/produto';
 import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/core/token/token.service';
+import { UserTokenService } from 'src/app/core/user-token/user-token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,13 @@ import { TokenService } from 'src/app/core/token/token.service';
 export class ProdutoService extends BaseService {
 
   constructor(private http: HttpClient,
-    private tokenService: TokenService) { super(); }
+    private userTokenService: UserTokenService) { super(); }
 
   obterProdutos() {
     return this.http.get<Produto[]>(this.UrlServiceV1 + 'produtos',
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
+          .headers.set('authorization', `Bearer ${this.userTokenService.getAccessToken()}`)
       });
   };
 
@@ -26,7 +26,7 @@ export class ProdutoService extends BaseService {
     return this.http.get<Produto>(this.UrlServiceV1 + `produtos/${produtoId}`,
       {
         headers: this.ObterHeaderJson()
-          .headers.set('authorization', `Bearer ${this.tokenService.getAccessToken()}`)
+          .headers.set('authorization', `Bearer ${this.userTokenService.getAccessToken()}`)
       });
   };
 

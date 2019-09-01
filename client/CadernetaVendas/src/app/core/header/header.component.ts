@@ -1,4 +1,7 @@
-import { Component, OnInit, Renderer, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
+import {  Observable } from 'rxjs';
+import { User } from '../user/user';
+import { UserTokenService } from '../user-token/user-token.service';
 
 @Component({
   selector: 'cv-header',
@@ -7,15 +10,12 @@ import { Component, OnInit, Renderer, ElementRef } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private render: Renderer) { }
+  user$ = new Observable<User>();
+  
+  constructor(private userTokenService : UserTokenService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
 
-  // mouseEnter(elemento: ElementRef) {
-  //   this.render.setElementStyle(elemento, 'color', '#37c6f0');
-  // }
-
-  // mouseLeave(elemento: ElementRef) {
-  //   this.render.setElementStyle(elemento, 'color', '#384158');
-  // }
+    this.user$ = this.userTokenService.getUser();
+  }
 }

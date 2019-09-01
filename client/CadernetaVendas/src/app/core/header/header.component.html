@@ -32,8 +32,26 @@
                 <a class="nav-link" cvChangeColorOnHover [routerLink]="['vendas']">Vendas</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-info" style="color: #fff;" [routerLink]="['login']">Acesse o sistema</a>
+                <div *ngIf="(user$ | async) as user; else login">
+                  <div class="dropdown">
+                    <a class="dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <img class="gravatar"
+                        src="https://s.gravatar.com/avatar/05b5d531820e0ee30a0a6fae3b89b07f?d=mm&amp;s=45" alt="">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Minha conta</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Sair</a>
+                    </div>
+                  </div>
+                </div>
               </li>
+              <ng-template #login>
+                <li class="nav-item">
+                  <a class="btn btn-info" style="color: #fff;" [routerLink]="['login']">Acesse o sistema</a>
+                </li>
+              </ng-template>
             </ul>
           </div>
         </nav>

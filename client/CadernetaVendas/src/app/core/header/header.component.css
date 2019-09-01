@@ -9,6 +9,7 @@ header {
 
 a {
     font-size: 20px;
+    color: #007bff;
 }
 
 .logo {
@@ -51,4 +52,10 @@ a {
 
 li {
     margin-right: 44px;
+}
+
+.gravatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 60px;
 }
