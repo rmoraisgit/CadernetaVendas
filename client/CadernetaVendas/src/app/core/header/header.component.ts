@@ -1,7 +1,8 @@
 import { Component, OnInit, Renderer } from '@angular/core';
-import {  Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../user/user';
 import { UserTokenService } from '../user-token/user-token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cv-header',
@@ -11,11 +12,16 @@ import { UserTokenService } from '../user-token/user-token.service';
 export class HeaderComponent implements OnInit {
 
   user$ = new Observable<User>();
-  
-  constructor(private userTokenService : UserTokenService) { }
 
-  ngOnInit() { 
+  constructor(private router: Router,
+              private userTokenService: UserTokenService) { }
 
+  ngOnInit() {
     this.user$ = this.userTokenService.getUser();
+  }
+
+  logoff() {
+    this.userTokenService.removeUserAccessToken();
+    this.router.navigate(['login'])
   }
 }

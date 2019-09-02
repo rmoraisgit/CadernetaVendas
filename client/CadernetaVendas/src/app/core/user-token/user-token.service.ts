@@ -34,6 +34,7 @@ export class UserTokenService {
 
     removeUserAccessToken() {
         this.localStorageService.removeItem(KEY);
+        this.userSubject.next(null);
     }
 
     getAccessToken() {
