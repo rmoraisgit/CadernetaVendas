@@ -6,9 +6,14 @@ import { RouterModule } from '@angular/router';
 import { AlertModule } from '../shared/alert/alert.module';
 import { FooterComponent } from './footer/footer.component';
 import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-hover/changecolor-on-hover.module';
+import { NaoAutorizadoComponent } from './nao-autorizado/nao-autorizado.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [
+    HeaderComponent, 
+    FooterComponent, 
+    NaoAutorizadoComponent
+  ],
   imports: [
     CommonModule, 
     RouterModule,
@@ -17,7 +22,8 @@ import { ChangeColorOnHoverModule } from '../shared/directives/changecolor-on-ho
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NaoAutorizadoComponent
   ]
 })
 export class CoreModule { }

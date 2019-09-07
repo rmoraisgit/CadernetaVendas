@@ -1,55 +1,60 @@
 <div class="super-container mt-3">
-  <div class="row row-titulo-produtos">
+  <div class="row row-titulo-clientes">
     <div class="col-md-12">
       <h1 class="titulo">Clientes</h1>
     </div>
   </div>
 
-  <div *ngIf="clientes.length == 0; else listaClientes" class="row justify-content-center mt-5">
-    <cv-empty-message titulo="Você ainda não possui clientes cadastrados"
-      corpo="Clique no botão adicionar para cadastrar seu primeiro cliente">
-      <button class="btn btn-success text-center" [routerLink]="['/clientes/adicionar']"
-        type="button">ADICIONAR</button>
-    </cv-empty-message>
-  </div>
-
-  <ng-template #listaClientes>
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-primary" type="button" [routerLink]="['/clientes/adicionar']"
-          id="btn-adicionar">ADICIONAR</button>
-      </div>
+  <div *ngIf="usuarioAutorizado; else paginaNaoAutorizada">
+    <div *ngIf="clientes.length == 0; else listaClientes" class="row justify-content-center mt-5">
+      <cv-empty-message titulo="Você ainda não possui clientes cadastrados"
+        corpo="Clique no botão adicionar para cadastrar seu primeiro cliente">
+        <button class="btn btn-success text-center" [routerLink]="['/clientes/adicionar']"
+          type="button">ADICIONAR</button>
+      </cv-empty-message>
     </div>
 
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Telefone</th>
-          <th scope="col">Celular</th>
-          <th scope="col">Bairro</th>
-          <th scope="col">Cidade</th>
-          <th id="th-center" scope="col">Dívidas</th>
-          <th id="th-center" scope="col">Editar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cliente of clientes">
-          <td>{{cliente.nome}}</td>
-          <td>{{cliente.telefone}}</td>
-          <td>{{cliente.celular}}</td>
-          <td>{{cliente.endereco.bairro}}</td>
-          <td>{{cliente.endereco.cidade}}</td>
-          <td id="td-center">
-            <i class="fa fa-usd" cvChangeColorOnHover aria-hidden="true"></i>
-          </td>
-          <td id="td-center">
-            <a [routerLink]="['detalhes', cliente.id]" style="color: rgb(56, 65, 88);">
-              <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <ng-template #listaClientes>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" type="button" [routerLink]="['/clientes/adicionar']"
+            id="btn-adicionar">ADICIONAR</button>
+        </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Cidade</th>
+            <th id="th-center" scope="col">Dívidas</th>
+            <th id="th-center" scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.telefone}}</td>
+            <td>{{cliente.celular}}</td>
+            <td>{{cliente.endereco.bairro}}</td>
+            <td>{{cliente.endereco.cidade}}</td>
+            <td id="td-center">
+              <i class="fa fa-usd" cvChangeColorOnHover aria-hidden="true"></i>
+            </td>
+            <td id="td-center">
+              <a [routerLink]="['detalhes', cliente.id]" style="color: rgb(56, 65, 88);">
+                <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+  <ng-template #paginaNaoAutorizada>
+    <cv-nao-autorizado nomeConteudo="Clientes"></cv-nao-autorizado>
   </ng-template>
 </div>

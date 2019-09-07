@@ -7,6 +7,7 @@ import { NgxMaskModule } from 'ngx-mask'
 import { NgbModule, NgbDateParserFormatter, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '../shared/modal/modal.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { CoreModule } from '../core/core.module';
 
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { AdicionarClienteComponent } from './adicionar-cliente/adicionar-cliente.component';
@@ -36,6 +37,7 @@ import { ConfirmaPagamentoComponent } from './registro-pagamento/confirma-pagame
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
+    CoreModule,
     NgbModule,
     CurrencyMaskModule,
     ChangeColorOnHoverModule,

@@ -12,6 +12,10 @@ a {
     color: #007bff;
 }
 
+.dropdown-item {
+    cursor: pointer;
+}
+
 .logo {
     display: flex;
 }
