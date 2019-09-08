@@ -1,10 +1,11 @@
 <div class="super-container mt-3">
-    <div class="row row-titulo-produtos">
-      <div class="col-md-12">
-        <h1 class="titulo">Histórico de Vendas</h1>
-      </div>
+  <div class="row row-titulo-produtos">
+    <div class="col-md-12">
+      <h1 class="titulo">Histórico de Vendas</h1>
     </div>
-  
+  </div>
+
+  <div *ngIf="usuarioAutorizado; else paginaNaoAutorizada">
     <ng-template #erroListaVendas>
       <div class="row justify-content-center mt-5">
         <cv-empty-message titulo="Você ainda não registrou uma venda"
@@ -14,7 +15,7 @@
         </cv-empty-message>
       </div>
     </ng-template>
-  
+
     <div *ngIf="vendas.length != 0; else erroListaVendas">
       <div class="row">
         <div class="col-md-12">
@@ -22,7 +23,7 @@
             id="btn-adicionar">Registrar nova venda</button>
         </div>
       </div>
-  
+
       <table class="table table-hover">
         <thead class="thead-dark">
           <tr>
@@ -45,3 +46,7 @@
       </table>
     </div>
   </div>
+  <ng-template #paginaNaoAutorizada>
+    <cv-nao-autorizado nomeConteudo="Vendas"></cv-nao-autorizado>
+  </ng-template>
+</div>

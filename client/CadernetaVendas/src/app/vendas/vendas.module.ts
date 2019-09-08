@@ -13,6 +13,7 @@ import { ListaVendasComponent } from './lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './registrar-venda/registrar-venda.component';
 import { ItensVendaComponent } from './registrar-venda/itens-venda/itens-venda.component';
 import { ClientesDisponiveisComponent } from './registrar-venda/clientes-disponiveis/clientes-disponiveis.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ClientesDisponiveisComponent } from './registrar-venda/clientes-disponi
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    CoreModule,
     ChangeColorOnHoverModule,
     NgbModule,
     CurrencyMaskModule,

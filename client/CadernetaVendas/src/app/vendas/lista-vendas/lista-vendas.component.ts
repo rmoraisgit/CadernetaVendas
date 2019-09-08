@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserTokenService } from 'src/app/core/user-token/user-token.service';
 import { VendasService } from '../services/vendas.service';
 import { Venda } from '../models/venda';
 
@@ -10,16 +11,19 @@ import { Venda } from '../models/venda';
 export class ListaVendasComponent implements OnInit {
 
   vendas: Venda[] = [];
+  usuarioAutorizado: boolean = false;
 
-  constructor(private vendaService: VendasService) { }
+  constructor(private userTokenService: UserTokenService,
+    private vendaService: VendasService) { }
 
   ngOnInit() {
-    this.vendaService.obterVendas().subscribe(
-      vendas => {
-        this.vendas = vendas;
-        console.log(vendas);
-      }
-    )
-  }
+    if (this.userTokenService.hasAccessToken()) {
 
+      this.usuarioAutorizado = true;
+
+      this.vendaService.obterVendas().subscribe(vendas => {
+        this.vendas = vendas;
+      });
+    }
+  }
 }

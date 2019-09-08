@@ -30,8 +30,7 @@
             <th scope="col">Celular</th>
             <th scope="col">Bairro</th>
             <th scope="col">Cidade</th>
-            <th id="th-center" scope="col">Dívidas</th>
-            <th id="th-center" scope="col">Editar</th>
+            <th id="th-center" scope="col">Detalhes</th>
           </tr>
         </thead>
         <tbody>
@@ -41,9 +40,6 @@
             <td>{{cliente.celular}}</td>
             <td>{{cliente.endereco.bairro}}</td>
             <td>{{cliente.endereco.cidade}}</td>
-            <td id="td-center">
-              <i class="fa fa-usd" cvChangeColorOnHover aria-hidden="true"></i>
-            </td>
             <td id="td-center">
               <a [routerLink]="['detalhes', cliente.id]" style="color: rgb(56, 65, 88);">
                 <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>

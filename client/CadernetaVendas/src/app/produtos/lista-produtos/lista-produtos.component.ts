@@ -20,7 +20,7 @@ export class ListaProdutosComponent implements OnInit {
   collectionSize = this.produtos.length;
 
   constructor(private userTokenService: UserTokenService,
-    private produtosService: ProdutoService) { }
+              private produtosService: ProdutoService) { }
 
   ngOnInit() {
     if (this.userTokenService.hasAccessToken()) {
