@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cv-nao-autorizado',
@@ -9,9 +10,8 @@ export class NaoAutorizadoComponent implements OnInit {
 
   @Input() nomeConteudo: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
 }

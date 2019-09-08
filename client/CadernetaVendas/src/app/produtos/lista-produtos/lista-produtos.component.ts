@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { UserTokenService } from 'src/app/core/user-token/user-token.service';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cv-lista-produtos',
@@ -11,16 +13,29 @@ import { ActivatedRoute } from '@angular/router';
 export class ListaProdutosComponent implements OnInit {
 
   produtos: Produto[] = [];
+  usuarioAutorizado: boolean = false;
 
   page: number = 1;
   pageSize: number = 5;
   collectionSize = this.produtos.length;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private userTokenService: UserTokenService,
+    private produtosService: ProdutoService) { }
 
   ngOnInit() {
-    this.produtos = this.activatedRoute.snapshot.data["produtos"];
-    console.log(this.produtos)
+    if (this.userTokenService.hasAccessToken()) {
+
+      this.usuarioAutorizado = true;
+
+      // this.produtos = this.activatedRoute.snapshot.data["produtos"];
+      this.produtosService.obterProdutos().subscribe(produtos => {
+        this.produtos = produtos;
+        this.exibirFotoProdutos(this.produtos);
+      });
+    }
+  }
+
+  private exibirFotoProdutos(produtos: Produto[]) {
     this.produtos.forEach(produto => {
       produto.foto = "data:image/png;base64," + produto.foto
     });

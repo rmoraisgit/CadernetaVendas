@@ -5,48 +5,55 @@
     </div>
   </div>
 
-  <ng-template #erroListaProduto>
-    <div class="row justify-content-center mt-5">
-      <cv-empty-message titulo="Você ainda não possui produtos cadastrados"
-        corpo="Clique no botão adicionar para cadastrar seu primeiro produto">
-        <button class="btn btn-success text-center" [routerLink]="['/produtos/adicionar']"
-          type="button">ADICIONAR</button>
-      </cv-empty-message>
-    </div>
-  </ng-template>
-
-  <div *ngIf="produtos.length != 0; else erroListaProduto">
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-primary" type="button" [routerLink]="['/produtos/adicionar']"
-          id="btn-adicionar">ADICIONAR</button>
+  <div *ngIf="usuarioAutorizado; else paginaNaoAutorizada">
+    <div *ngIf="produtos.length == 0; else listaProdutos">
+      <div class="row justify-content-center mt-5">
+        <cv-empty-message titulo="Você ainda não possui produtos cadastrados"
+          corpo="Clique no botão adicionar para cadastrar seu primeiro produto">
+          <button class="btn btn-success text-center" [routerLink]="['/produtos/adicionar']"
+            type="button">ADICIONAR</button>
+        </cv-empty-message>
       </div>
     </div>
 
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th></th>
-          <th scope="col">Nome</th>
-          <th scope="col">Preço de Venda</th>
-          <th id="th-center" scope="col">Peso(em kg)</th>
-          <th id="th-center" scope="col">Detalhes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-          <td><img class="foto-produto" [src]="produto.foto" title="{{ produto.nome }}" alt="{{ produto.nome }}"></td>
-          <td>{{produto.nome}}</td>
-          <td>R${{produto.valorVenda}}</td>
-          <td id="td-center">{{produto.peso}}kg</td>
-          <td id="td-center">
-            <a [routerLink]="['detalhes', produto.id]" style="color: rgb(56, 65, 88);">
-              <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination>
+
+    <ng-template #listaProdutos>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" type="button" [routerLink]="['/produtos/adicionar']"
+            id="btn-adicionar">ADICIONAR</button>
+        </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th></th>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço de Venda</th>
+            <th id="th-center" scope="col">Peso(em kg)</th>
+            <th id="th-center" scope="col">Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <td><img class="foto-produto" [src]="produto.foto" title="{{ produto.nome }}" alt="{{ produto.nome }}">
+            </td>
+            <td>{{produto.nome}}</td>
+            <td>R${{produto.valorVenda}}</td>
+            <td id="td-center">{{produto.peso}}kg</td>
+            <td id="td-center">
+              <a [routerLink]="['detalhes', produto.id]" style="color: rgb(56, 65, 88);">
+                <i class="fa fa-search fa-1x" cvChangeColorOnHover aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="produtos.length"></ngb-pagination>
+    </ng-template>
   </div>
+  <ng-template #paginaNaoAutorizada>
+    <cv-nao-autorizado nomeConteudo="Produtos"></cv-nao-autorizado>
+  </ng-template>
 </div>

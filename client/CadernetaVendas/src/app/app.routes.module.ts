@@ -28,10 +28,10 @@ const routes: Routes = [
     },
     {
         path: 'produtos',
-        component: ListaProdutosComponent,
-        resolve: {
-            produtos: ListaProdutosResolver
-        }
+        component: ListaProdutosComponent
+        // resolve: {
+        //     produtos: ListaProdutosResolver
+        // }
     },
     {
         path: 'produtos/adicionar',

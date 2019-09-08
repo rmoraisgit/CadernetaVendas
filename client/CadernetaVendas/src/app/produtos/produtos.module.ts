@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CoreModule } from '../core/core.module';
 
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
@@ -27,6 +28,7 @@ import { EditarProdutoComponent } from './editar-produto/editar-produto.componen
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
+    CoreModule,
     NgbModule,
     ChangeColorOnHoverModule,
     CurrencyMaskModule,

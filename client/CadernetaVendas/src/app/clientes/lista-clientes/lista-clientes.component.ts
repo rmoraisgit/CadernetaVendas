@@ -11,14 +11,13 @@ import { Cliente } from '../models/cliente';
 })
 export class ListaClientesComponent implements OnInit {
 
-  clientes: Cliente[] = []
+  clientes: Cliente[] = [];
   usuarioAutorizado: boolean = false;
 
-  constructor(private UserTokenService: UserTokenService,
-    private clienteService: ClienteService) { }
+  constructor(private userTokenService: UserTokenService,
+              private clienteService: ClienteService) { }
 
   ngOnInit() {
-
     if (this.usuarioEstaAutorizado()) {
       this.clienteService.obterClientes().subscribe(clientes => {
         this.clientes = clientes;
@@ -27,7 +26,7 @@ export class ListaClientesComponent implements OnInit {
   }
 
   usuarioEstaAutorizado() {
-    this.usuarioAutorizado = this.UserTokenService.hasAccessToken();
+    this.usuarioAutorizado = this.userTokenService.hasAccessToken();
     return this.usuarioAutorizado;
   }
 }
