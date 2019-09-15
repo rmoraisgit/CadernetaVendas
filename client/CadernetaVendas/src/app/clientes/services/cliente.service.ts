@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { BaseService } from 'src/app/services/base.service';
 import { Cliente } from '../models/cliente';
@@ -47,7 +48,7 @@ export class ClienteService extends BaseService {
     });
   };
 
-  registrarPagamentoCliente(pagamento: Pagamento) {
+  registrarPagamentoCliente(pagamento: Pagamento): Observable<any> {
     return this.http.post(this.UrlServiceV1 + `clientes/registrar-pagamento/${pagamento.clienteId}`, pagamento, {
       headers: this.ObterHeaderJson()
         .headers.set('authorization', `Bearer ${this.UserTokenService.getAccessToken()}`)

@@ -62,9 +62,9 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
     let controlBlurs: Observable<any>[] = this.formInputElements
       .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
-    merge(...controlBlurs).subscribe(value => {
-      this.displayMessage = this.genericValidator.processMessages(this.pagamentoForm);
-    })
+      merge(...controlBlurs).subscribe(() => {
+        this.displayMessage = this.genericValidator.processMessages(this.pagamentoForm);
+      })
   }
 
   gerarDadosPagamento(modalConfirmaPagamento) {
@@ -89,7 +89,9 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
     console.log(this.pagamento);
 
     this.clienteService.registrarPagamentoCliente(this.pagamento).subscribe(
-      res => {
+      result => {
+        this.cliente.saldoDevedor = result.data.saldoDevedor;
+        console.log(this.cliente);
         this.alertService.success('Pagamento registrado com sucesso.');
         this.modalService.fecharTodasModals();
       },
