@@ -78,7 +78,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
 
             var cliente = await _clienteRepository.ObterPorId(pagamento.ClienteId);
 
-            if(cliente == null)
+            if (cliente == null)
             {
                 NotificarErro("Cliente desativado ou inexistente");
                 return CustomResponse();
@@ -107,6 +107,12 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             await _clienteService.Atualizar(cliente);
 
             return CustomResponse(clienteViewModel);
+        }
+
+        [HttpGet("obter-extrato/{id:guid}")]
+        public async Task<ActionResult<IEnumerable<PagamentoViewModel>>> ObterPagamentosPorCliente(Guid id)
+        {
+            return Ok(_mapper.Map<IEnumerable<PagamentoViewModel>>(await _clienteRepository.ObterPagamentosPorCliente(id)));
         }
 
         // DELETE: api/ApiWithActions/5

@@ -26,5 +26,11 @@ namespace UMC.CadernetaVendas.Infra.Data.Repository
                 .Include(c=>c.Pagamentos)
                 .FirstOrDefaultAsync(c=> c.Id == id);
         }
+
+        public async Task<IEnumerable<Pagamento>> ObterPagamentosPorCliente(Guid id)
+        {
+            var cliente = await ObterPorId(id);
+            return cliente.Pagamentos;
+        }
     }
 }
