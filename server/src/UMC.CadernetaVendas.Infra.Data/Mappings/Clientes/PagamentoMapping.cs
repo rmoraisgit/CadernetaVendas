@@ -14,7 +14,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings.Clientes
         {
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.Valor)
+            builder.Property(p => p.ValorTotal)
               .HasColumnType("decimal(10, 2)")
               .IsRequired();
 

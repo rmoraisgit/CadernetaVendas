@@ -8,6 +8,11 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
 {
     public class ClienteViewModel : BaseViewModel
     {
+        public ClienteViewModel()
+        {
+            ExtratoPagamentosCompras = new List<ExtratoPagamentosComprasClienteViewModel>();
+        }
+
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(150, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Nome { get; set; }
@@ -41,5 +46,6 @@ namespace UMC.CadernetaVendas.Services.Api.ViewModels
         public IEnumerable<PagamentoViewModel> Pagamentos { get; set; }
 
         public IEnumerable<ClienteCompraViewModel> ClienteCompras { get; set; }
+        public List<ExtratoPagamentosComprasClienteViewModel> ExtratoPagamentosCompras { get; set; }
     }
 }

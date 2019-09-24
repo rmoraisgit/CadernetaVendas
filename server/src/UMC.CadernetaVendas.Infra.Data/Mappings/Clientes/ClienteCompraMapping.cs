@@ -32,7 +32,7 @@ namespace UMC.CadernetaVendas.Infra.Data.Mappings.Clientes
                 .HasColumnType("decimal(10, 2)")
                 .IsRequired();
 
-            builder.Property(cc => cc.ValorTotalCompra)
+            builder.Property(cc => cc.ValorTotal)
                .HasColumnType("decimal(10, 2)")
                .IsRequired();
 

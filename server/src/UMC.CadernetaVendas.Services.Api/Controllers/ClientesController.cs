@@ -47,6 +47,11 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
         {
             var cliente = await ObterClienteEndereco(id);
 
+            cliente.ExtratoPagamentosCompras.AddRange(_mapper.Map<IEnumerable<ExtratoPagamentosComprasClienteViewModel>>(await _clienteRepository.ObterPagamentosPorCliente(id)));
+            cliente.ExtratoPagamentosCompras.AddRange(_mapper.Map<IEnumerable<ExtratoPagamentosComprasClienteViewModel>>(await _clienteCompraRepository.ObterComprasClientePorId(id)));
+
+            cliente.ExtratoPagamentosCompras = cliente.ExtratoPagamentosCompras.OrderByDescending(e => e.DataCadastro).ToList();
+
             if (cliente == null) return NotFound();
 
             return Ok(cliente);
@@ -107,12 +112,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             await _clienteService.Atualizar(cliente);
 
             return CustomResponse(clienteViewModel);
-        }
-
-        [HttpGet("obter-extrato/{id:guid}")]
-        public async Task<ActionResult<IEnumerable<PagamentoViewModel>>> ObterPagamentosPorCliente(Guid id)
-        {
-            return Ok(_mapper.Map<IEnumerable<PagamentoViewModel>>(await _clienteRepository.ObterPagamentosPorCliente(id)));
         }
 
         // DELETE: api/ApiWithActions/5

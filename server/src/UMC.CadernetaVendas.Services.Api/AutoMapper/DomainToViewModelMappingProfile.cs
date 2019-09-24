@@ -30,6 +30,11 @@ namespace UMC.CadernetaVendas.Services.Api.AutoMapper
             // Kardex Produto
             CreateMap<VendaProduto, KardexProdutoViewModel>();
             CreateMap<CompraProduto, KardexProdutoViewModel>();
+
+            // Extrato de Pagamentos e Compras do Cliente
+            CreateMap<Pagamento, ExtratoPagamentosComprasClienteViewModel>();
+            CreateMap<ClienteCompra, ExtratoPagamentosComprasClienteViewModel>();
+
         }
     }
 }

@@ -105,17 +105,17 @@ export class RegistrarVendaComponent implements OnInit, AfterViewInit {
 
   private calcularValorTotalPago(): Number {
 
-    let valorTotalCompra: number = 0;
+    let valorTotal: number = 0;
 
     if (this.venda.produtosVenda.length == 0) return 0
 
     this.venda.produtosVenda.forEach(produto => {
-      valorTotalCompra += produto.valorFinal;
+      valorTotal += produto.valorFinal;
     });
 
-    console.log(valorTotalCompra);
+    console.log(valorTotal);
 
-    return valorTotalCompra
+    return valorTotal
   }
 
   removerProdutoCarrinho(event) {

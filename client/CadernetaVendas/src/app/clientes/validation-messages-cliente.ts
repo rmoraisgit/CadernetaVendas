@@ -60,7 +60,7 @@ export const validationMessagesCliente = {
   }
 
   export const validationMessagesPagamento = {
-    valor: {
+    valorTotal: {
       required: 'O total pago é requerido'
     },
     cpf: {

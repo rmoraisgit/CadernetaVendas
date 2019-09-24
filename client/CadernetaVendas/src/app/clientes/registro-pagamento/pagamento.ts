@@ -1,6 +1,6 @@
 export class Pagamento {
     id: string;
-    valor: number;
+    valorTotal: number;
     dataCadastro: Date;
     clienteId: string;
 }

@@ -87,14 +87,14 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
 
         public async Task RegistrarPagamento(Cliente cliente, Pagamento pagamento)
         {
-            if (pagamento.Valor < 20)
+            if (pagamento.ValorTotal < 20)
             {
                 Notificar("O pagamento minímo é R$20,00");
                 return;
             }
 
             pagamento.SetarSaldoDevedorAntes(cliente.SaldoDevedor);
-            cliente.EfetuarPagamento(pagamento.Valor);
+            cliente.EfetuarPagamento(pagamento.ValorTotal);
             pagamento.SetarSaldoDevedorDepois(cliente.SaldoDevedor);
 
             cliente.Pagamentos.Add(pagamento);

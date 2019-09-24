@@ -94,7 +94,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let clienteCompra of cliente.clienteCompras">
-          <td>R${{clienteCompra.valorTotalCompra | number}}</td>
+          <td>R${{clienteCompra.valorTotal | number}}</td>
           <td>R${{clienteCompra.saldoDevedorAntes | number}}</td>
           <td>R${{clienteCompra.saldoDevedorDepois | number}}</td>
           <td>{{clienteCompra.dataCadastro | date}}</td>

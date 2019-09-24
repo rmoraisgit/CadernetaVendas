@@ -52,7 +52,7 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
     this.pagamentoForm = this.formBuilder.group({
       dataPagamento: ['', [Validators.required]],
       metodosPagamento: [new FormControl(this.metodosPagamento), [selectValidator]],
-      valor: ['', [Validators.required]]
+      valorTotal: ['', [Validators.required]]
     });
     this.pagamentoForm.get('metodosPagamento').setValue('Selecione...');
   }

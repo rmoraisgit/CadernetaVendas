@@ -7,14 +7,14 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 {
     public class Pagamento : Entity<Pagamento>
     {
-        public Pagamento(decimal valor)
+        public Pagamento(decimal valorTotal)
         {
-            Valor = valor;
+            ValorTotal = valorTotal;
         }
 
         protected Pagamento() { }
 
-        public decimal Valor { get; private set; }
+        public decimal ValorTotal { get; private set; }
         public decimal SaldoDevedorAntes { get; private set; }
         public decimal SaldoDevedorDepois { get; private set; }
         public DateTime DataCadastro { get; private set; }

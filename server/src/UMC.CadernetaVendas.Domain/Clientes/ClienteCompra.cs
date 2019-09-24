@@ -8,11 +8,11 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 {
     public class ClienteCompra : Entity<ClienteCompra>
     {
-        public ClienteCompra(Guid clienteId, Guid compraId, decimal valorTotalCompra)
+        public ClienteCompra(Guid clienteId, Guid compraId, decimal valorTotal)
         {
             ClienteId = clienteId;
             CompraId = compraId;
-            ValorTotalCompra = valorTotalCompra;
+            ValorTotal = valorTotal;
         }
 
         protected ClienteCompra() { }
@@ -21,7 +21,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public Cliente Cliente { get; private set; }
         public Guid CompraId { get; private set; }
         public Venda Compra { get; private set; }
-        public decimal ValorTotalCompra { get; private set; }
+        public decimal ValorTotal { get; private set; }
         public decimal SaldoDevedorAntes { get; private set; }
         public decimal SaldoDevedorDepois { get; private set; }
         public DateTime DataCadastro { get; private set; }
