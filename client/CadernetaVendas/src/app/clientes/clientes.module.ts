@@ -20,6 +20,7 @@ import { RegistroPagamentoComponent } from './registro-pagamento/registro-pagame
 import { I18n, CustomDatepickerI18n } from '../utils/customDatepickerI18n';
 import { NgbDatePTParserFormatter } from '../utils/ngbDatePTParserFormatter';
 import { ConfirmaPagamentoComponent } from './registro-pagamento/confirma-pagamento/confirma-pagamento.component';
+import { ExtratoClienteComponent } from './extrato-cliente/extrato-cliente.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ConfirmaPagamentoComponent } from './registro-pagamento/confirma-pagame
     DetalhesClienteComponent,
     EditarClienteComponent,
     RegistroPagamentoComponent,
-    ConfirmaPagamentoComponent
+    ConfirmaPagamentoComponent,
+    ExtratoClienteComponent
   ],
   imports: [
     CommonModule,

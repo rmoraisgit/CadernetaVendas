@@ -4,6 +4,12 @@
   </cv-modal>
 </ng-template>
 
+<ng-template #modalExtrato>
+  <cv-modal tituloModal="Extrato do cliente">
+    <cv-extrato-cliente [cliente]="cliente"></cv-extrato-cliente>
+  </cv-modal>
+</ng-template>
+
 <div class="row">
   <div class="col-12 mt-5">
     <a [routerLink]="['/clientes']">
@@ -72,7 +78,7 @@
             Registrar pagamento</button>
           <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
             Cancelar dívida</button>
-          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
+          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" (click)="openModal(modalExtrato)" type="button">
             Ver extrato</button>
         </div>
       </div>
