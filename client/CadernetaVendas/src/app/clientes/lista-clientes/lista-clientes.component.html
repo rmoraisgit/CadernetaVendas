@@ -34,8 +34,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientes">
-            <td>{{cliente.nome}}</td>
+          <tr *ngFor="let cliente of clientes"  [ngClass]="cliente.ativo ? 'cliente-ativo' : 'cliente-desativado'">
+            <td>
+              <i class="fa fa-check-circle-o" style="color: green" aria-hidden="true"
+                *ngIf="cliente.ativo else iconeDesativado">
+              </i>
+              <ng-template #iconeDesativado>
+                <i class="fa fa-times-circle-o" style="color: red" aria-hidden="true">
+                </i>
+              </ng-template>
+              {{cliente.nome}}
+            </td>
             <td>{{cliente.telefone}}</td>
             <td>{{cliente.celular}}</td>
             <td>{{cliente.endereco.bairro}}</td>

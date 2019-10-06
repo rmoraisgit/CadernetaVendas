@@ -80,9 +80,18 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
             await _UoW.Commit();
         }
 
-        public void Remover(Guid id)
+        public async Task Desativar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            if(cliente.SaldoDevedor != 0)
+            {
+                Notificar("Não é possível desativar um cliente com dívidas pendentes.");
+                return;
+            }
+
+            cliente.Desativar();
+
+            _clienteRepository.Atualizar(cliente);
+            await _UoW.Commit();
         }
 
         public async Task RegistrarPagamento(Cliente cliente, Pagamento pagamento)

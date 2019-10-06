@@ -52,6 +52,16 @@ namespace UMC.CadernetaVendas.Domain.Clientes
             ValidationResult = Validate(this);
         }
 
+        public void Ativar()
+        {
+            Ativo = true;
+        }
+
+        public void Desativar()
+        {
+            Ativo = false;
+        }
+
         public void AtribuirEndereco(Endereco endereco)
         {
             Endereco = endereco;
@@ -79,6 +89,13 @@ namespace UMC.CadernetaVendas.Domain.Clientes
             RuleFor(c => c.Celular)
                 .NotEmpty().WithMessage("O numero do celular do cliente precisa ser informado")
                 .Length(11).WithMessage("O numero do celular do cliente precisa ter entre 11 caracteres");
+        }
+
+        private void ValidarEmail()
+        {
+            RuleFor(c => c.Celular)
+                .NotEmpty().WithMessage("O email do cliente precisa ser informado")
+                .EmailAddress().WithMessage("O email do cliente precisa estar no formato correto");
         }
     }
 }

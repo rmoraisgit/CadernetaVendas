@@ -63,7 +63,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            //cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
             await _clienteService.Adicionar(cliente);
 
@@ -107,17 +106,35 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
+            //cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
             await _clienteService.Atualizar(cliente);
 
             return CustomResponse(clienteViewModel);
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut("Desativar/{id:guid}")]
+        public async Task<ActionResult<ClienteViewModel>> Desativar(Guid id, [FromBody]ClienteViewModel clienteViewModel)
         {
+            if (id != clienteViewModel.Id)
+            {
+                NotificarErro("O id informado não é o mesmo que foi passado na query");
+                return CustomResponse(clienteViewModel);
+            }
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var cliente = await _clienteRepository.ObterPorId(clienteViewModel.Id);
+
+            if (cliente == null)
+            {
+                NotificarErro("Cliente desativado ou inexistente");
+                return CustomResponse();
+            }
+
+            await _clienteService.Desativar(cliente);
+
+            return CustomResponse(_mapper.Map<ClienteViewModel>(cliente));
         }
 
         private async Task<ClienteViewModel> ObterClienteEndereco(Guid id)

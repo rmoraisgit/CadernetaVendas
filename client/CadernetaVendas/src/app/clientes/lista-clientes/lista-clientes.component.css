@@ -35,6 +35,10 @@ th, td {
     text-align: center;
 }
 
+.cliente-desativado {
+    color: #989898;
+}
+
 #btn-adicionar {
     float: right;
 }
