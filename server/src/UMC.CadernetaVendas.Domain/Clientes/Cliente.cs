@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UMC.CadernetaVendas.Domain.Core.Models;
@@ -39,8 +40,16 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 
         public override bool EhValido()
         {
+            Validar();
+            return ValidationResult.IsValid;
+        }
+
+        private void Validar()
+        {
+            ValidarNome();
+            ValidarNumeroCelular();
+
             ValidationResult = Validate(this);
-            return true;
         }
 
         public void AtribuirEndereco(Endereco endereco)
@@ -56,6 +65,20 @@ namespace UMC.CadernetaVendas.Domain.Clientes
         public void EfetuarPagamento(decimal valorPagamento)
         {
             SaldoDevedor -= valorPagamento;
+        }
+
+        private void ValidarNome()
+        {
+            RuleFor(c => c.Nome)
+                .NotEmpty().WithMessage("O nome do cliente precisa ser informado")
+                .Length(2, 150).WithMessage("O nome do cliente precisa ter entre 2 e 150 caracteres");
+        }
+
+        private void ValidarNumeroCelular()
+        {
+            RuleFor(c => c.Celular)
+                .NotEmpty().WithMessage("O numero do celular do cliente precisa ser informado")
+                .Length(11).WithMessage("O numero do celular do cliente precisa ter entre 11 caracteres");
         }
     }
 }

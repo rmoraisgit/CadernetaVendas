@@ -7,6 +7,16 @@ namespace UMC.CadernetaVendas.Domain.Clientes
 {
     public class Endereco : Entity<Endereco>
     {
+        public Endereco(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
+        {
+            CEP = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Bairro = bairro;
+            Cidade = cidade;
+            Estado = estado;
+        }
+
         public string CEP { get; private set; }
         public string Logradouro { get; private set; }
         public string Numero{ get; private set; }

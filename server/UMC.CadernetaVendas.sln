@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{15610AC2-BB5E-4BA1-9CA6-52E46014AECB}"
 EndProject
@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Infra.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Services.Api", "src\UMC.CadernetaVendas.Services.Api\UMC.CadernetaVendas.Services.Api.csproj", "{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Infra.CrossCutting.IoC", "src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj", "{90D02670-B6F6-4955-AFBC-46B25CA10D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMC.CadernetaVendas.Infra.CrossCutting.IoC", "src\UMC.CadernetaVendas.Infra.CrossCutting.IoC\UMC.CadernetaVendas.Infra.CrossCutting.IoC.csproj", "{90D02670-B6F6-4955-AFBC-46B25CA10D99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMC.CadernetaVendas.Domain.Tests", "tests\UMC.CadernetaVendas.Domain.Tests\UMC.CadernetaVendas.Domain.Tests.csproj", "{56AB71DB-5AEC-48E7-8EA4-B9D48051F457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90D02670-B6F6-4955-AFBC-46B25CA10D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AB71DB-5AEC-48E7-8EA4-B9D48051F457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AB71DB-5AEC-48E7-8EA4-B9D48051F457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AB71DB-5AEC-48E7-8EA4-B9D48051F457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AB71DB-5AEC-48E7-8EA4-B9D48051F457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{54B4E9D6-378A-47ED-8BDF-9C4DD8B9552A} = {A6E60997-03AE-4AB2-86D4-76035F814EB5}
 		{DD28F07D-60FA-48E6-88B5-778C6DDDA6FC} = {15610AC2-BB5E-4BA1-9CA6-52E46014AECB}
 		{90D02670-B6F6-4955-AFBC-46B25CA10D99} = {2BC21901-2473-4E64-AA19-89C7D54194EB}
+		{56AB71DB-5AEC-48E7-8EA4-B9D48051F457} = {08F92BAA-945F-42C7-AD3A-30BCF8E3DC0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {867772CE-AF43-4EFF-B2A7-CD66D49AE0B4}

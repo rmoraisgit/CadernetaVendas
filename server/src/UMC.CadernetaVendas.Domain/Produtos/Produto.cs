@@ -79,13 +79,6 @@ namespace UMC.CadernetaVendas.Domain.Produtos
                 .Length(2, 150).WithMessage("O nome do produto precisa ter entre 2 e 150 caracteres");
         }
 
-        //private void ValidarValor()
-        //{
-        //    RuleFor(c => c.Valor)
-        //        .NotEmpty().WithMessage("O valor do produto precisa ser fornecido")
-        //        .ExclusiveBetween(1, 50001).WithMessage("O valor deve estar entre R$1.00 e R$50.000");
-        //}
-
         private void ValidarDescricao()
         {
             RuleFor(c => c.Descricao)
