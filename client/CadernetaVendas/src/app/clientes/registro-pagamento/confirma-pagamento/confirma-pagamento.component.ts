@@ -19,8 +19,6 @@ export class ConfirmaPagamentoComponent implements OnInit {
   constructor(private modalService: ModalService) { }
 
   ngOnInit() {
-    console.log(this.dadosPagamento)
-    console.log(this.modalAtiva)
   }
 
   fecharModal() {

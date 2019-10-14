@@ -10,6 +10,12 @@
   </cv-modal>
 </ng-template>
 
+<ng-template style="margin-top: 50%;" #modalDesativarCliente>
+  <cv-modal tituloModal="Desativar cliente">
+    <cv-desativar-cliente [cliente]="cliente"></cv-desativar-cliente>
+  </cv-modal>
+</ng-template>
+
 <div class="row">
   <div class="col-12 mt-5">
     <a [routerLink]="['/clientes']">
@@ -33,7 +39,7 @@
             <small *ngSwitchCase="true">ativo <i class="fa fa-check-circle" style="color: green;"
                 aria-hidden="true"></i>
             </small>
-            <small *ngSwitchCase="false">desativado <i class="fa fa-circle" style="color: red;"
+            <small *ngSwitchCase="false">desativado <i class="fa fa-times-circle-o" style="color: red;"
                 aria-hidden="true"></i></small>
           </div>
         </div>
@@ -47,10 +53,18 @@
           </button>
         </a>
 
-        <button class="mb-3 btn btn-danger btn-danger btn-sm" [routerLink]="['/clientes', 'editar', cliente.id]"
+        <button *ngIf="cliente.ativo else ativarCliente" class="mb-3 btn btn-danger btn-sm"
+          (click)="openModal(modalDesativarCliente)"
           [disabled]="cliente.saldoDevedor > 0">
           <span class="span-btn">desativar cliente</span>
         </button>
+
+        <ng-template #ativarCliente>
+          <button class="mb-3 btn btn-success btn-sm" [routerLink]="['/clientes', 'editar', cliente.id]"
+            [disabled]="cliente.saldoDevedor > 0">
+            <span class="span-btn">ativar cliente</span>
+          </button>
+        </ng-template>
 
         <p style="font-weight: 500;" [innerHtml]="enderecoFormatado"></p>
         <hr>
@@ -78,7 +92,8 @@
             Registrar pagamento</button>
           <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" type="button">
             Cancelar dívida</button>
-          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor" (click)="openModal(modalExtrato)" type="button">
+          <button *ngIf="cliente.saldoDevedor > 0" class="btn btn-secondary mt-3 btn-saldo-devedor"
+            (click)="openModal(modalExtrato)" type="button">
             Ver extrato</button>
         </div>
       </div>

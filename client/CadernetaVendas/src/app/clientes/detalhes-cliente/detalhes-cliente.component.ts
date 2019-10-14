@@ -39,7 +39,6 @@ export class DetalhesClienteComponent implements OnInit {
   };
 
   openModal(modalPagamento) {
-    
     this.modalService.abrirModal(modalPagamento);
   }
 }

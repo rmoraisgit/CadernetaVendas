@@ -10,12 +10,11 @@ export class ModalService {
 
     abrirModal(nomeModal) {
 
-        this.modalAtiva = this.ngbModalService.open(nomeModal);
+        this.modalAtiva = this.ngbModalService.open(nomeModal, { centered: true });
         return this.modalAtiva;
     }
 
     fecharModal(nomeModal) {
-
         console.log(nomeModal);
         console.log(this.modalAtiva);
 
