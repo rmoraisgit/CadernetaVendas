@@ -24,9 +24,7 @@ export class DetalhesClienteComponent implements OnInit {
 
     this.clienteService.obterClientePorId(clienteId)
       .subscribe(cliente => {
-        console.log(cliente);
         this.cliente = cliente;
-        console.log(this.cliente);
         this.formatarEndereco();
       });
   }
@@ -38,7 +36,7 @@ export class DetalhesClienteComponent implements OnInit {
       ${this.cliente.endereco.bairro} - ${this.cliente.endereco.cidade}/${this.cliente.endereco.estado}`;
   };
 
-  openModal(modalPagamento) {
-    this.modalService.abrirModal(modalPagamento);
+  openModal(modal) {
+    this.modalService.abrirModal(modal);
   }
 }

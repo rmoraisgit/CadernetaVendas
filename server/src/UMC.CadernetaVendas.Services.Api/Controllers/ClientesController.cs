@@ -113,6 +113,7 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             return CustomResponse(clienteViewModel);
         }
 
+        [ClaimsAuthorize("Cliente", "Atualizar")]
         [HttpPut("Desativar/{id:guid}")]
         public async Task<ActionResult<ClienteViewModel>> Desativar(Guid id, [FromBody]ClienteViewModel clienteViewModel)
         {

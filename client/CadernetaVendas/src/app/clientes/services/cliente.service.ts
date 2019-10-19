@@ -54,4 +54,11 @@ export class ClienteService extends BaseService {
         .headers.set('authorization', `Bearer ${this.UserTokenService.getAccessToken()}`)
     });
   };
+
+  desativarCliente(cliente: Cliente) : Observable<any> {
+    return this.http.put(this.UrlServiceV1 + `clientes/Desativar/${cliente.id}`, cliente, {
+      headers: this.ObterHeaderJson()
+        .headers.set('authorization', `Bearer ${this.UserTokenService.getAccessToken()}`)
+    });
+  };
 }
