@@ -8,7 +8,7 @@ import { ClienteService } from '../services/cliente.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 import { GenericValidator } from 'src/app/utils/genericValidator';
 import { Pagamento } from './pagamento';
-import { Cliente } from '../models/cliente';
+import { Cliente, ExtratoPagamentosCompras } from '../models/cliente';
 import { validationMessagesPagamento } from '../validation-messages-cliente';
 import { selectValidator } from 'src/app/utils/selectValidator';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
@@ -62,9 +62,9 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
     let controlBlurs: Observable<any>[] = this.formInputElements
       .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
-      merge(...controlBlurs).subscribe(() => {
-        this.displayMessage = this.genericValidator.processMessages(this.pagamentoForm);
-      })
+    merge(...controlBlurs).subscribe(() => {
+      this.displayMessage = this.genericValidator.processMessages(this.pagamentoForm);
+    })
   }
 
   gerarDadosPagamento(modalConfirmaPagamento) {
@@ -86,12 +86,22 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
 
   confirmarPagamento() {
     this.pagamento.clienteId = this.cliente.id;
-    console.log(this.pagamento);
 
     this.clienteService.registrarPagamentoCliente(this.pagamento).subscribe(
       result => {
         this.cliente.saldoDevedor = result.data.saldoDevedor;
-        console.log(this.cliente);
+
+        var tamanhoListaPagamentos = result.data.pagamentos.length;
+        var ultimoPagamentoRegistrado = result.data.pagamentos[tamanhoListaPagamentos - 1];
+ 
+        this.cliente.extratoPagamentosCompras.unshift(
+            new ExtratoPagamentosCompras(
+              ultimoPagamentoRegistrado.valorTotal, 
+              ultimoPagamentoRegistrado.dataCadastro,
+              ultimoPagamentoRegistrado.saldoDevedorAntes,
+              ultimoPagamentoRegistrado.saldoDevedorDepois)
+          );
+
         this.alertService.success('Pagamento registrado com sucesso.');
         this.modalService.fecharTodasModals();
       },
