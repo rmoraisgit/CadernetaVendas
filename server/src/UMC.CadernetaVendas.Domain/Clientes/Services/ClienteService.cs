@@ -102,6 +102,12 @@ namespace UMC.CadernetaVendas.Domain.Clientes.Services
                 return;
             }
 
+            if(pagamento.ValorTotal > cliente.SaldoDevedor)
+            {
+                Notificar("O valor do pagamento não pode ser maior que o valor da divida");
+                return;
+            }
+
             pagamento.SetarSaldoDevedorAntes(cliente.SaldoDevedor);
             cliente.EfetuarPagamento(pagamento.ValorTotal);
             pagamento.SetarSaldoDevedorDepois(cliente.SaldoDevedor);

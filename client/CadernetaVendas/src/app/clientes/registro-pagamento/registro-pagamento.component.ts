@@ -24,6 +24,7 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
   @Input() cliente: Cliente;
   modalConfirmaPagamento: NgbModalRef;
   result: any;
+  errors: any[] = [];
   closeResult: any;
   pagamentoForm: FormGroup;
   metodosPagamento: any =
@@ -105,7 +106,21 @@ export class RegistroPagamentoComponent implements OnInit, AfterViewInit {
         this.alertService.success('Pagamento registrado com sucesso.');
         this.modalService.fecharTodasModals();
       },
-      fail => { console.log(fail); }
+      fail => { 
+        console.log(fail); 
+        this.onError(fail);
+        this.modalService.fecharModal('modalConfirmaPagamento');
+      }
     );
+  }
+
+  onError(fail: any) {
+    this.errors = fail.error.errors;
+    this.pagamentoForm.reset();
+    this.pagamentoForm.get('metodosPagamento').setValue('Selecione...');
+  }
+
+  fecharErros() {
+    this.errors = [];
   }
 }

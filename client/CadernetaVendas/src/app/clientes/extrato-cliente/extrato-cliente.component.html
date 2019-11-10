@@ -1,23 +1,29 @@
-<div style="max-height: 510px; overflow-y: scroll;">
-  <table class="table table-hover" *ngIf="cliente.extratoPagamentosCompras.length">
-    <thead class="thead-dark">
-      <th>TOTAL</th>
-      <th>Data registro</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let extrato of cliente.extratoPagamentosCompras">
-        <td>
-          <i class="fa fa-arrow-up mr-3" style="color: green" aria-hidden="true"
-            *ngIf="extrato.saldoDevedorAntes > extrato.saldoDevedorDepois else iconeCompra">
-          </i>
-          <ng-template #iconeCompra>
-            <i class="fa fa-arrow-down mr-3" style="color: red" aria-hidden="true">
+<div>
+  <div class="detalhe-funcionalidade">
+    <span class="mr-4"><i class="fa fa-arrow-up" style="color: green" aria-hidden="true"></i> Pagou</span>
+    <span class="mr-4"><i class="fa fa-arrow-down" style="color: red" aria-hidden="true"></i> Comprou</span>
+  </div>
+  <div class="extrato mt-3" style="max-height: 510px; overflow-y: scroll;">
+    <table class="table table-hover" *ngIf="cliente.extratoPagamentosCompras.length">
+      <thead class="thead-dark">
+        <th>TOTAL</th>
+        <th>Data registro</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let extrato of cliente.extratoPagamentosCompras">
+          <td>
+            <i class="fa fa-arrow-up mr-3" style="color: green" aria-hidden="true"
+              *ngIf="extrato.saldoDevedorAntes > extrato.saldoDevedorDepois else iconeCompra">
             </i>
-          </ng-template>
-          R${{extrato.valorTotal | number}}
-        </td>
-        <td>{{extrato.dataCadastro | date}}</td>
-      </tr>
-    </tbody>
-  </table>
+            <ng-template #iconeCompra>
+              <i class="fa fa-arrow-down mr-3" style="color: red" aria-hidden="true">
+              </i>
+            </ng-template>
+            R${{extrato.valorTotal | number}}
+          </td>
+          <td>{{extrato.dataCadastro | date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
