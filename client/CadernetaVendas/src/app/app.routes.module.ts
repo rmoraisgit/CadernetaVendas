@@ -9,13 +9,14 @@ import { AdicionarClienteComponent } from './clientes/adicionar-cliente/adiciona
 import { RegistrarCompraComponent } from './compras/registrar-compra/registrar-compra.component';
 import { ListaComprasComponent } from './compras/lista-compras/lista-compras.component';
 import { LoginComponent } from './login/login/login.component';
-import { ListaProdutosResolver } from './produtos/lista-produtos/lista-produtos.resolver';
 import { ListaVendasComponent } from './vendas/lista-vendas/lista-vendas.component';
 import { RegistrarVendaComponent } from './vendas/registrar-venda/registrar-venda.component';
 import { DetalhesProdutoComponent } from './produtos/detalhes-produto/detalhes.produto.component';
 import { EditarProdutoComponent } from './produtos/editar-produto/editar-produto.component';
 import { DetalhesClienteComponent } from './clientes/detalhes-cliente/detalhes-cliente.component';
 import { EditarClienteComponent } from './clientes/editar-cliente/editar-cliente.component';
+import { ClientesGuard } from './core/guards/clientes.guard';
+import { ProdutosGuard } from './core/guards/produtos.guard';
 
 const routes: Routes = [
     {
@@ -29,21 +30,21 @@ const routes: Routes = [
     {
         path: 'produtos',
         component: ListaProdutosComponent
-        // resolve: {
-        //     produtos: ListaProdutosResolver
-        // }
     },
     {
         path: 'produtos/adicionar',
-        component: AdicionarProdutoComponent
+        component: AdicionarProdutoComponent,
+        canActivate: [ProdutosGuard]
     },
     {
         path: 'produtos/detalhes/:produtoId',
-        component: DetalhesProdutoComponent
+        component: DetalhesProdutoComponent,
+        canActivate: [ProdutosGuard]
     },
     {
         path: 'produtos/editar/:produtoId',
-        component: EditarProdutoComponent
+        component: EditarProdutoComponent,
+        canActivate: [ProdutosGuard]
     },
     {
         path: 'clientes',
@@ -51,15 +52,18 @@ const routes: Routes = [
     },
     {
         path: 'clientes/adicionar',
-        component: AdicionarClienteComponent
+        component: AdicionarClienteComponent,
+        canActivate: [ClientesGuard]
     },
     {
         path: 'clientes/detalhes/:clienteId',
-        component: DetalhesClienteComponent
+        component: DetalhesClienteComponent,
+        canActivate: [ClientesGuard]
     },
     {
         path: 'clientes/editar/:clienteId',
-        component: EditarClienteComponent
+        component: EditarClienteComponent,
+        canActivate: [ClientesGuard]
     },
     {
         path: 'compras',
