@@ -17,7 +17,7 @@ namespace UMC.CadernetaVendas.Domain.Clientes
             Celular = celular;
             Email = email;
             Endereco = endereco;
-            Ativo = Ativo;
+            Ativo = ativo;
             SaldoDevedor = 0;
         }
 

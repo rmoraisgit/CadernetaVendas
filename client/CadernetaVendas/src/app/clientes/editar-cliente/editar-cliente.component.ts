@@ -48,6 +48,7 @@ export class EditarClienteComponent implements OnInit, AfterViewInit {
       .subscribe(cliente => {
         this.cliente = cliente;
         this.preencherFormComDadosProduto();
+        console.log(this.cliente);
       });
   }
 
@@ -80,37 +81,29 @@ export class EditarClienteComponent implements OnInit, AfterViewInit {
   }
 
   atualizarCliente() {
-    const cliente = this.montarObjetoCliente();
-    cliente.id = this.cliente.id;
-    cliente.ativo = this.cliente.ativo;
-    cliente.saldoDevedor = this.cliente.saldoDevedor;
-    cliente.dataCadastro = this.cliente.dataCadastro;
-    cliente.endereco.id = this.cliente.endereco.id;
-
-    this.clienteService.atualizarCliente(cliente)
-      .subscribe( success => {
+    
+    this.montarObjetoCliente();
+    this.clienteService.atualizarCliente(this.cliente)
+      .subscribe(success => {
         this.alertService.success('Cliente atualizado com sucesso.');
-        this.router.navigate(['clientes', 'detalhes', cliente.id]);
+        this.router.navigate(['clientes', 'detalhes', this.cliente.id]);
       });
   }
 
-  private montarObjetoCliente(): Cliente {
+  private montarObjetoCliente() {
 
-    const cliente: Cliente = new Cliente();
-    cliente.nome = this.clienteForm.get('nome').value;
-    cliente.cpf = this.clienteForm.get('cpf').value;
-    cliente.telefone = this.clienteForm.get('telefone').value;
-    cliente.celular = this.clienteForm.get('celular').value;
-    cliente.email = this.clienteForm.get('email').value;
-    cliente.endereco.cep = this.clienteForm.get('cep').value;
-    cliente.endereco.logradouro = this.clienteForm.get('logradouro').value;
-    cliente.endereco.numero = this.clienteForm.get('numero').value;
-    cliente.endereco.complemento = this.clienteForm.get('complemento').value;
-    cliente.endereco.bairro = this.clienteForm.get('bairro').value;
-    cliente.endereco.cidade = this.clienteForm.get('cidade').value;
-    cliente.endereco.estado = this.clienteForm.get('estado').value;
-
-    return cliente;
+    this.cliente.nome = this.clienteForm.get('nome').value;
+    this.cliente.cpf = this.clienteForm.get('cpf').value;
+    this.cliente.telefone = this.clienteForm.get('telefone').value;
+    this.cliente.celular = this.clienteForm.get('celular').value;
+    this.cliente.email = this.clienteForm.get('email').value;
+    this.cliente.endereco.cep = this.clienteForm.get('cep').value;
+    this.cliente.endereco.logradouro = this.clienteForm.get('logradouro').value;
+    this.cliente.endereco.numero = this.clienteForm.get('numero').value;
+    this.cliente.endereco.complemento = this.clienteForm.get('complemento').value;
+    this.cliente.endereco.bairro = this.clienteForm.get('bairro').value;
+    this.cliente.endereco.cidade = this.clienteForm.get('cidade').value;
+    this.cliente.endereco.estado = this.clienteForm.get('estado').value;
   }
 
   buscarDadosCEP(cepCliente: string) {

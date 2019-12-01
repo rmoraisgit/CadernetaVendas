@@ -106,7 +106,6 @@ namespace UMC.CadernetaVendas.Services.Api.Controllers
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
-            //cliente.AtribuirEndereco(_mapper.Map<Endereco>(clienteViewModel.Endereco));
 
             await _clienteService.Atualizar(cliente);
 
